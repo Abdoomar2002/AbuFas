@@ -1,0 +1,16 @@
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\test printing.exe.config
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\test printing.exe
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\test printing.pdb
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.csproj.AssemblyReference.cache
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.csproj.SuggestedBindingRedirects.cache
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.Properties.Resources.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.csproj.GenerateResource.cache
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.csproj.CoreCompileInputs.cache
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.exe
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.pdb
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Guna.UI2.dll
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.bill.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test printing.csproj.CopyComplete
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.Home.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.firstPage.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.BillBuy.resources
