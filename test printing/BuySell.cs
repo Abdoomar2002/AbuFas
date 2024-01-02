@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,15 @@ namespace test_printing
 {
     public partial class BuySell : UserControl
     {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handle = base.CreateParams;
+                handle.ExStyle |= 0x02000000;
+                return handle;
+            }
+        }
         public BuySell()
         {
             InitializeComponent();
@@ -45,15 +55,24 @@ namespace test_printing
             billBuy1.maxRowsPerPage = 0;
             billBuy1.currentPrintRow = 0;
             if (bill1.Visible == true)
+            {
                 bill1.btn_print(880, 750);
+                //bill1 = new bill();
+            }
             else
+            {
                 billBuy1.btn_print(880, 750);
+                
+            }
         }
 
         private void Calculate_bill_Click(object sender, EventArgs e)
         {
             double result = Double.Parse(grams.Text) * Double.Parse(price.Text);
-            result+=result*Double.Parse(bouns.Text)/100;
+            double bou = 0.0;
+            Double.TryParse(bouns.Text, out bou) ;
+            result += result * bou/100;
+
             Result.Text=result.ToString();
         }
 
@@ -67,13 +86,30 @@ namespace test_printing
 
             Home home = (Home)this.ParentForm;
             home.archive1.BringToFront();
+            home.archive1.LoadTable();
         }
 
         private void price_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != 127)
+            double x;
+
+            Guna2TextBox textBox = (Guna2TextBox)sender;
+            string Text = textBox.Text.Substring(0);
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != 127&&e.KeyChar!='.')
             {
+            
                 e.Handled = true; // Mark the event as handled (prevent the character from being entered)
+
+            }
+            else
+            {
+                if (!Double.TryParse(textBox.Text, out x)&&textBox.Text.Length>1)
+                {
+                    e.Handled = true;
+
+                    MessageBox.Show("رقم غير صحيح");
+                    textBox.Text = Text.Substring(0,Text.Length-1);
+                }
             }
         }
     }

@@ -16,6 +16,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -67,6 +67,9 @@
     <Reference Include="Microsoft.Data.SqlClient, Version=1.13.20136.2, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.SqlClient.1.1.3\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Data.Sqlite, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Sqlite.Core.3.1.32\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
     </Reference>
@@ -78,6 +81,9 @@
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Sqlite, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Sqlite.Core.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore.SqlServer, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.SqlServer.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
@@ -136,6 +142,15 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.7.2151, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.7\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.1.7.2151, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.2.1.7\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.7.2151, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.7\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -154,6 +169,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -221,6 +239,9 @@
     </Compile>
     <Compile Include="db\BillData.cs" />
     <Compile Include="db\Bills.cs" />
+    <Compile Include="db\DayStaticGrams.cs" />
+    <Compile Include="db\DaystaticMoney.cs" />
+    <Compile Include="db\IncomeOutcome.cs" />
     <Compile Include="Editing.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -251,6 +272,27 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20231213143351_initial.cs" />
+    <Compile Include="Migrations\20231213143351_initial.designer.cs">
+      <DependentUpon>20231213143351_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20231215080734_newO.cs" />
+    <Compile Include="Migrations\20231215080734_newO.designer.cs">
+      <DependentUpon>20231215080734_newO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20231215082921_InitialCreate.cs" />
+    <Compile Include="Migrations\20231215082921_InitialCreate.designer.cs">
+      <DependentUpon>20231215082921_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20231215085701_InitialC.cs" />
+    <Compile Include="Migrations\20231215085701_InitialC.designer.cs">
+      <DependentUpon>20231215085701_InitialC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20231217153912_edit1.cs" />
+    <Compile Include="Migrations\20231217153912_edit1.designer.cs">
+      <DependentUpon>20231217153912_edit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="bill.cs">
@@ -303,6 +345,29 @@
       <DependentUpon>bill.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AbuFas.db.DayStaticGrams.datasource" />
+    <None Include="Properties\DataSources\AbuFas.db.DaystaticMoney.datasource" />
+    <None Include="Properties\DataSources\AbuFas.db.IncomeOutcome.datasource" />
+    <None Include="Properties\DataSources\AbuFas.Migrations.AppDbContextModelSnapshot.datasource" />
+    <None Include="Properties\DataSources\AbuFas.Migrations.initial.datasource" />
+    <None Include="Properties\DataSources\bills21.datasource" />
+    <None Include="Properties\DataSources\DayStatic.datasource" />
+    <None Include="Properties\DataSources\Editing.datasource" />
+    <None Include="Properties\DataSources\GramsCount.datasource" />
+    <None Include="Properties\DataSources\InOutCome.datasource" />
+    <None Include="Properties\DataSources\login.datasource" />
+    <None Include="Properties\DataSources\test_printing.AppDbContext.datasource" />
+    <None Include="Properties\DataSources\test_printing.Archive.datasource" />
+    <None Include="Properties\DataSources\test_printing.bill.datasource" />
+    <None Include="Properties\DataSources\test_printing.BillBuy.datasource" />
+    <None Include="Properties\DataSources\test_printing.BuySell.datasource" />
+    <None Include="Properties\DataSources\test_printing.db.BillData.datasource" />
+    <None Include="Properties\DataSources\test_printing.db.Bills.datasource" />
+    <None Include="Properties\DataSources\test_printing.db.DayStaticGrams.datasource" />
+    <None Include="Properties\DataSources\test_printing.db.DaystaticMoney.datasource" />
+    <None Include="Properties\DataSources\test_printing.db.IncomeOutcome.datasource" />
+    <None Include="Properties\DataSources\test_printing.Home.datasource" />
+    <None Include="Properties\DataSources\test_printing.Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

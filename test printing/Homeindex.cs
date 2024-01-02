@@ -11,6 +11,8 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 namespace test_printing
 {
@@ -28,6 +30,7 @@ namespace test_printing
         public Home()
         {
             InitializeComponent();
+            date.Text = DateTime.Today.ToShortDateString();
         }
 
         private void Print_Click(object sender, EventArgs e)
@@ -40,8 +43,14 @@ namespace test_printing
             guna2Panel2.FillColor = Color.FromArgb(180, 0, 0,0);
             guna2Panel1.FillColor = Color.FromArgb(180, 0, 0,0);
             AppDbContext context = new AppDbContext();
+            //context.Database.OpenConnection();
             context.Database.EnsureCreated();
-
+           
+           
+         //   SQLitePCL.ISQLite3Provider provider = new SQLitePCL.ISQLite3Provider();
+         
+          
+          //  MessageBox.Show(context.Bills.ToList().ToString());
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -82,6 +91,11 @@ namespace test_printing
                     
                 }else btn.FillColor = Color.FromArgb(0, 212, 175, 55);
             }
+        }
+
+        private void firstPage1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

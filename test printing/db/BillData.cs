@@ -15,6 +15,7 @@ namespace test_printing.db
         public int Kyrat { get; set; }
         public int Number { get; set; }
         public string Name { get; set; }
+        public Bills Bill { get; set; }
 
     }
 }

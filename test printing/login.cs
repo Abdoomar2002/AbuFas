@@ -1,20 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 using test_printing;
+
 
 namespace AbuFas
 {
     public partial class login : Form
     {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handle = base.CreateParams;
+                handle.ExStyle |= 0x02000000;
+                return handle;
+            }
+        }
         public login()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace AbuFas
         private void guna2Button1_Click(object sender, EventArgs e)
         {
                 AppDbContext context = new AppDbContext();
+            //context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
             if (guna2TextBox2.Text == "123") {
               //  context.Database.OpenConnection();
            
@@ -31,7 +34,16 @@ namespace AbuFas
             }
             else 
             {
-                MessageBox.Show(context.Database.GenerateCreateScript().ToString()) ;
+
+                /*MessageBox.Show(context.Database.GenerateCreateScript().ToString()) ;
+               DaystaticMoney money = new DaystaticMoney();
+              context.Database.Migrate();
+              money.Total = 500;
+               context.DaystaticMoney.Add(money);
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+                context.SaveChanges();
+               MessageBox.Show(context.DaystaticMoney.FirstOrDefault().Total.ToString());*/
              MessageBox.Show( "اسم المستخدم أو كلمة المرور غير صحيحه","خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

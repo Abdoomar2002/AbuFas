@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.Archive = new Guna.UI2.WinForms.Guna2Button();
             this.toggle = new Guna.UI2.WinForms.Guna2Panel();
             this.sell = new Guna.UI2.WinForms.Guna2Button();
             this.Buy = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.bill1 = new test_printing.bill();
+            this.billBuy1 = new test_printing.BillBuy();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
@@ -41,16 +44,13 @@
             this.Calculate_bill = new Guna.UI2.WinForms.Guna2Button();
             this.grams = new Guna.UI2.WinForms.Guna2TextBox();
             this.price = new Guna.UI2.WinForms.Guna2TextBox();
+            this.bouns = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.bouns = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.bill1 = new test_printing.bill();
-            this.billBuy1 = new test_printing.BillBuy();
             this.guna2Panel1.SuspendLayout();
             this.toggle.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -63,7 +63,7 @@
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel1.Controls.Add(this.guna2Button1);
+            this.guna2Panel1.Controls.Add(this.Archive);
             this.guna2Panel1.Controls.Add(this.toggle);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
@@ -72,6 +72,29 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1542, 100);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // Archive
+            // 
+            this.Archive.BackColor = System.Drawing.Color.Transparent;
+            this.Archive.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.Archive.BorderRadius = 5;
+            this.Archive.BorderThickness = 2;
+            this.Archive.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Archive.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Archive.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Archive.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Archive.FillColor = System.Drawing.Color.Transparent;
+            this.Archive.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Archive.ForeColor = System.Drawing.Color.Black;
+            this.Archive.Image = global::AbuFas.Properties.Resources.Vector1;
+            this.Archive.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Archive.Location = new System.Drawing.Point(141, 26);
+            this.Archive.Margin = new System.Windows.Forms.Padding(0);
+            this.Archive.Name = "Archive";
+            this.Archive.Size = new System.Drawing.Size(180, 45);
+            this.Archive.TabIndex = 2;
+            this.Archive.Text = "أرشفه";
+            this.Archive.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // toggle
             // 
@@ -84,8 +107,9 @@
             this.toggle.Controls.Add(this.Buy);
             this.toggle.FillColor = System.Drawing.Color.Black;
             this.toggle.Location = new System.Drawing.Point(1155, 26);
+            this.toggle.Margin = new System.Windows.Forms.Padding(0);
             this.toggle.Name = "toggle";
-            this.toggle.Size = new System.Drawing.Size(315, 45);
+            this.toggle.Size = new System.Drawing.Size(311, 45);
             this.toggle.TabIndex = 1;
             // 
             // sell
@@ -99,7 +123,7 @@
             this.sell.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.sell.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sell.ForeColor = System.Drawing.Color.White;
-            this.sell.Location = new System.Drawing.Point(135, 0);
+            this.sell.Location = new System.Drawing.Point(133, 0);
             this.sell.Name = "sell";
             this.sell.Size = new System.Drawing.Size(180, 45);
             this.sell.TabIndex = 0;
@@ -117,7 +141,7 @@
             this.Buy.FillColor = System.Drawing.Color.Black;
             this.Buy.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Buy.ForeColor = System.Drawing.Color.White;
-            this.Buy.Location = new System.Drawing.Point(0, 0);
+            this.Buy.Location = new System.Drawing.Point(-2, 0);
             this.Buy.Name = "Buy";
             this.Buy.Size = new System.Drawing.Size(180, 45);
             this.Buy.TabIndex = 1;
@@ -136,6 +160,28 @@
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
             this.guna2Panel2.Size = new System.Drawing.Size(930, 813);
             this.guna2Panel2.TabIndex = 1;
+            // 
+            // bill1
+            // 
+            this.bill1.AutoScroll = true;
+            this.bill1.AutoSize = true;
+            this.bill1.BackColor = System.Drawing.Color.White;
+            this.bill1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bill1.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bill1.Location = new System.Drawing.Point(22, 16);
+            this.bill1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
+            this.bill1.Name = "bill1";
+            this.bill1.Size = new System.Drawing.Size(882, 749);
+            this.bill1.TabIndex = 0;
+            // 
+            // billBuy1
+            // 
+            this.billBuy1.AutoScroll = true;
+            this.billBuy1.AutoSize = true;
+            this.billBuy1.Location = new System.Drawing.Point(22, 16);
+            this.billBuy1.Name = "billBuy1";
+            this.billBuy1.Size = new System.Drawing.Size(882, 869);
+            this.billBuy1.TabIndex = 1;
             // 
             // guna2Panel3
             // 
@@ -292,6 +338,34 @@
             this.price.TabIndex = 8;
             this.price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.price_KeyPress);
             // 
+            // bouns
+            // 
+            this.bouns.BorderColor = System.Drawing.Color.Black;
+            this.bouns.BorderRadius = 5;
+            this.bouns.BorderThickness = 2;
+            this.bouns.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bouns.DefaultText = "";
+            this.bouns.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.bouns.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.bouns.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.bouns.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.bouns.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.bouns.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bouns.ForeColor = System.Drawing.Color.Black;
+            this.bouns.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.bouns.IconRight = global::AbuFas.Properties.Resources.percentage;
+            this.bouns.IconRightOffset = new System.Drawing.Point(10, 0);
+            this.bouns.Location = new System.Drawing.Point(15, 427);
+            this.bouns.Margin = new System.Windows.Forms.Padding(0);
+            this.bouns.Name = "bouns";
+            this.bouns.PasswordChar = '\0';
+            this.bouns.PlaceholderText = "";
+            this.bouns.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bouns.SelectedText = "";
+            this.bouns.Size = new System.Drawing.Size(277, 48);
+            this.bouns.TabIndex = 7;
+            this.bouns.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.price_KeyPress);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -354,77 +428,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "الحاسبة";
             // 
-            // bouns
-            // 
-            this.bouns.BorderColor = System.Drawing.Color.Black;
-            this.bouns.BorderRadius = 5;
-            this.bouns.BorderThickness = 2;
-            this.bouns.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bouns.DefaultText = "";
-            this.bouns.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.bouns.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.bouns.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.bouns.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.bouns.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.bouns.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bouns.ForeColor = System.Drawing.Color.Black;
-            this.bouns.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.bouns.IconRight = global::AbuFas.Properties.Resources.percentage;
-            this.bouns.IconRightOffset = new System.Drawing.Point(10, 0);
-            this.bouns.Location = new System.Drawing.Point(15, 427);
-            this.bouns.Margin = new System.Windows.Forms.Padding(0);
-            this.bouns.Name = "bouns";
-            this.bouns.PasswordChar = '\0';
-            this.bouns.PlaceholderText = "";
-            this.bouns.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.bouns.SelectedText = "";
-            this.bouns.Size = new System.Drawing.Size(277, 48);
-            this.bouns.TabIndex = 7;
-            this.bouns.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.price_KeyPress);
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Image = global::AbuFas.Properties.Resources.Vector1;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.guna2Button1.Location = new System.Drawing.Point(141, 26);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button1.TabIndex = 2;
-            this.guna2Button1.Text = "أرشفه";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // bill1
-            // 
-            this.bill1.AutoScroll = true;
-            this.bill1.AutoSize = true;
-            this.bill1.BackColor = System.Drawing.Color.White;
-            this.bill1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bill1.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill1.Location = new System.Drawing.Point(22, 16);
-            this.bill1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
-            this.bill1.Name = "bill1";
-            this.bill1.Size = new System.Drawing.Size(880, 749);
-            this.bill1.TabIndex = 0;
-            // 
-            // billBuy1
-            // 
-            this.billBuy1.Location = new System.Drawing.Point(22, 16);
-            this.billBuy1.Name = "billBuy1";
-            this.billBuy1.Size = new System.Drawing.Size(884, 1208);
-            this.billBuy1.TabIndex = 1;
-            // 
             // BuySell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -455,7 +458,7 @@
         private Guna.UI2.WinForms.Guna2Panel toggle;
         private Guna.UI2.WinForms.Guna2Button sell;
         private Guna.UI2.WinForms.Guna2Button Buy;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button Archive;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private bill bill1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;

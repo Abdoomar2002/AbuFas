@@ -1,4 +1,5 @@
 ﻿using AbuFas;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace test_printing
         [STAThread]
         static void Main()
         {
+            /*    void ConfigureServices(IServiceCollection services)
+               {
+                   // Other services...
+
+                   // Configure Entity Framework with SQLite
+                   services.AddDbContext<AppDbContext>(options =>
+                       options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+                   );
+
+                   // Other configurations...
+               }*/
+            SQLitePCL.Batteries.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new login());

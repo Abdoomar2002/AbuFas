@@ -37,7 +37,7 @@
             this.dayStatic1 = new AbuFas.DayStatic();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
+            this.date = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.Exit = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -61,28 +61,30 @@
             this.guna2Panel3.Controls.Add(this.gramsCount);
             this.guna2Panel3.Controls.Add(this.dayStatic1);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 120);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 94);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1540, 880);
+            this.guna2Panel3.Size = new System.Drawing.Size(1533, 906);
             this.guna2Panel3.TabIndex = 6;
             // 
             // firstPage1
             // 
             this.firstPage1.AutoScroll = true;
+            this.firstPage1.AutoSize = true;
             this.firstPage1.BackColor = System.Drawing.Color.White;
             this.firstPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.firstPage1.Location = new System.Drawing.Point(0, 0);
             this.firstPage1.Name = "firstPage1";
             this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
-            this.firstPage1.Size = new System.Drawing.Size(1540, 880);
+            this.firstPage1.Size = new System.Drawing.Size(1533, 906);
             this.firstPage1.TabIndex = 0;
+            this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
             // 
             // archive1
             // 
             this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.archive1.Location = new System.Drawing.Point(0, 0);
             this.archive1.Name = "archive1";
-            this.archive1.Size = new System.Drawing.Size(1540, 880);
+            this.archive1.Size = new System.Drawing.Size(1533, 906);
             this.archive1.TabIndex = 1;
             // 
             // gramsCount
@@ -92,7 +94,7 @@
             this.gramsCount.Location = new System.Drawing.Point(0, 0);
             this.gramsCount.Name = "gramsCount";
             this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.gramsCount.Size = new System.Drawing.Size(1540, 880);
+            this.gramsCount.Size = new System.Drawing.Size(1533, 906);
             this.gramsCount.TabIndex = 2;
             // 
             // dayStatic1
@@ -101,41 +103,42 @@
             this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dayStatic1.Location = new System.Drawing.Point(0, 0);
             this.dayStatic1.Name = "dayStatic1";
-            this.dayStatic1.Size = new System.Drawing.Size(1540, 880);
+            this.dayStatic1.Size = new System.Drawing.Size(1533, 906);
             this.dayStatic1.TabIndex = 3;
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.AutoSize = true;
             this.guna2Panel1.BackgroundImage = global::AbuFas.Properties.Resources.Vector_1;
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2Panel1.Controls.Add(this.guna2Button7);
+            this.guna2Panel1.Controls.Add(this.date);
             this.guna2Panel1.Controls.Add(this.guna2TextBox1);
             this.guna2Panel1.Controls.Add(this.guna2Button6);
             this.guna2Panel1.Controls.Add(this.Exit);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1540, 120);
+            this.guna2Panel1.Size = new System.Drawing.Size(1533, 94);
             this.guna2Panel1.TabIndex = 4;
             // 
-            // guna2Button7
+            // date
             // 
-            this.guna2Button7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button7.BorderRadius = 10;
-            this.guna2Button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.guna2Button7.DisabledState.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button7.Enabled = false;
-            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.guna2Button7.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button7.ForeColor = System.Drawing.Color.White;
-            this.guna2Button7.Location = new System.Drawing.Point(98, 31);
-            this.guna2Button7.Name = "guna2Button7";
-            this.guna2Button7.Size = new System.Drawing.Size(336, 56);
-            this.guna2Button7.TabIndex = 5;
-            this.guna2Button7.Text = "12/3/2023";
+            this.date.BackColor = System.Drawing.Color.Transparent;
+            this.date.BorderRadius = 10;
+            this.date.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.date.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.date.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.date.DisabledState.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.date.Enabled = false;
+            this.date.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.date.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.ForeColor = System.Drawing.Color.White;
+            this.date.Location = new System.Drawing.Point(98, 31);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(336, 56);
+            this.date.TabIndex = 5;
+            this.date.Text = "12/3/2023";
             // 
             // guna2TextBox1
             // 
@@ -153,7 +156,7 @@
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.IconRight = global::AbuFas.Properties.Resources.search;
             this.guna2TextBox1.IconRightOffset = new System.Drawing.Point(15, 0);
-            this.guna2TextBox1.Location = new System.Drawing.Point(875, 42);
+            this.guna2TextBox1.Location = new System.Drawing.Point(868, 42);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
@@ -175,7 +178,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.Black;
             this.guna2Button6.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(1209, 42);
+            this.guna2Button6.Location = new System.Drawing.Point(1202, 42);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(180, 45);
             this.guna2Button6.TabIndex = 3;
@@ -189,7 +192,7 @@
             this.Exit.Image = global::AbuFas.Properties.Resources.cancelled;
             this.Exit.ImageRotate = 0F;
             this.Exit.InitialImage = global::AbuFas.Properties.Resources.cancelled;
-            this.Exit.Location = new System.Drawing.Point(1499, 12);
+            this.Exit.Location = new System.Drawing.Point(1492, 12);
             this.Exit.Name = "Exit";
             this.Exit.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.Exit.Size = new System.Drawing.Size(35, 38);
@@ -201,6 +204,7 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.AutoSize = true;
             this.guna2Panel2.BackgroundImage = global::AbuFas.Properties.Resources.Rectangle_1157;
             this.guna2Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel2.Controls.Add(this.btnShopper);
@@ -210,9 +214,9 @@
             this.guna2Panel2.Controls.Add(this.billsbtn);
             this.guna2Panel2.Controls.Add(this.label1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel2.Location = new System.Drawing.Point(1540, 0);
+            this.guna2Panel2.Location = new System.Drawing.Point(1533, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(360, 1000);
+            this.guna2Panel2.Size = new System.Drawing.Size(367, 1000);
             this.guna2Panel2.TabIndex = 5;
             // 
             // btnShopper
@@ -325,7 +329,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cairo Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(16, 12);
+            this.label1.Location = new System.Drawing.Point(23, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(354, 75);
             this.label1.TabIndex = 3;
@@ -345,11 +349,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel3.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -371,7 +377,7 @@
         private Guna.UI2.WinForms.Guna2Button Grambtn;
         private Guna.UI2.WinForms.Guna2Button billsbtn;
         private Guna.UI2.WinForms.Guna2Button btnShopper;
-        private Guna.UI2.WinForms.Guna2Button guna2Button7;
+        private Guna.UI2.WinForms.Guna2Button date;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         public Archive archive1;
