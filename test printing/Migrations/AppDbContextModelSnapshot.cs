@@ -16,6 +16,105 @@ namespace AbuFas.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("AbuFas.db.Borrows", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Borrows");
+                });
+
+            modelBuilder.Entity("AbuFas.db.BorrowsData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("BorrowId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Incoume")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Outcome")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BorrowId");
+
+                    b.ToTable("BorrowsData");
+                });
+
+            modelBuilder.Entity("AbuFas.db.Customers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("TotalGrams")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("TotalMoney")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("AbuFas.db.CustomersData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Grams")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsIncome")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("CustomersData");
+                });
+
             modelBuilder.Entity("test_printing.db.BillData", b =>
                 {
                     b.Property<int>("Id")
@@ -162,6 +261,20 @@ namespace AbuFas.Migrations
                     b.HasIndex("MoneyId");
 
                     b.ToTable("IncomeOutcome");
+                });
+
+            modelBuilder.Entity("AbuFas.db.BorrowsData", b =>
+                {
+                    b.HasOne("AbuFas.db.Borrows", "Borrow")
+                        .WithMany("BData")
+                        .HasForeignKey("BorrowId");
+                });
+
+            modelBuilder.Entity("AbuFas.db.CustomersData", b =>
+                {
+                    b.HasOne("AbuFas.db.Customers", "Customer")
+                        .WithMany("Data")
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("test_printing.db.BillData", b =>

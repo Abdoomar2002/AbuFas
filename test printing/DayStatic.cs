@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using test_printing;
+using test_printing.db;
 
 namespace AbuFas
 {
@@ -100,7 +97,7 @@ namespace AbuFas
         private void prev_Click(object sender, EventArgs e)
         {
             AppDbContext context = new AppDbContext();
-         var item= context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
+            var item =context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
             DateTime date=DateTime.Parse(cuurentDate.Text);
             if (date == item.Date)
             {

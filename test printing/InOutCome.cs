@@ -48,7 +48,7 @@ namespace AbuFas
             inout.Rows[0].Cells[4].Value = dateTime.ToShortDateString();
             
             AppDbContext context = new AppDbContext();
-            var items =context.IncomeOutcome.Where(c=>c.Money.Id==id&&c.IsIncome==flag).ToList();
+            var items = new List<IncomeOutcome>(); //context.IncomeOutcome.Where(c=>c.Money.Id==id&&c.IsIncome==flag).ToList();
             moneyId = id;
             fl = flag;
             if (items.Count <= 0) return;

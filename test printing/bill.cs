@@ -124,11 +124,13 @@ namespace test_printing
         public int maxRowsPerPage = 0;
         public void btn_print(int width, int height)
         {
-            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && Int32.Parse(last.Text) > 0)
+            int r = 0;
+            Int32.TryParse(last.Text, out r);
+            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 &&r  > 0)
             {
 
 
-                SaveToDB();
+             
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += printDocument1_PrintPage;
 
@@ -137,7 +139,7 @@ namespace test_printing
 
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-
+                    SaveToDB();
                     printDocument.Print();
 
                 }
@@ -321,13 +323,17 @@ namespace test_printing
             var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
 
             var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); }
-            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); }
-            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); }
+            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
+            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
+            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
             if (dayStatic == null) {
             var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c=>c.Date).FirstOrDefault();
             
                 dayStatic = new DaystaticMoney(); 
+                dayStatic.Bills=new List<Bills>();
+                dayStatic.IncomeOutCome=new List<IncomeOutcome>();
+                dayStatic.Date=DateTime.Now.Date;
+            //    _context.DaystaticMoney.Add(dayStatic);
                 dayStatic.Total=dayStatic2!=null?dayStatic2.Total:0;
             }
 
@@ -340,13 +346,13 @@ namespace test_printing
             dayStatic.Bills.Add(newBill);
             dayStatic.Total = dayStatic.Total == 0 ? totalmoney  : dayStatic.Total + totalmoney;
             dayStatic.Bills.Add(newBill);
-            if (dayStatic.Id == null)
+            if (dayStatic.Id == 0)
                 _context.DaystaticMoney.Add(dayStatic);
-            if (gramsStatic18.Id == null && totalGrams18 > 0)
+            if (gramsStatic18.Id == 0 && totalGrams18 > 0)
                 _context.DayStaticGrams.Add(gramsStatic18);
-            if (gramsStatic18.Id == null && totalGrams21 > 0)
+            if (gramsStatic18.Id == 0 && totalGrams21 > 0)
                 _context.DayStaticGrams.Add(gramsStatic21);
-            if (gramsStatic18.Id == null && totalGrams24 > 0)
+            if (gramsStatic18.Id == 0 && totalGrams24 > 0)
                 _context.DayStaticGrams.Add(gramsStatic24);
             _context.BillData.AddRange(billdata);
             _context.Bills.Add(newBill);
@@ -389,8 +395,12 @@ namespace test_printing
         private void reset() 
         {
             CustName.Text = string.Empty;
+            Home home = (Home)this.ParentForm;
+           home.firstPage1.billBuy1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             BillNum.Text =( Int32.Parse(BillNum.Text)+1).ToString();
+            last.Text = "";
             data.Rows.Clear();
+            data.Height = 150;
             bill_Load(null,null);
         }
 

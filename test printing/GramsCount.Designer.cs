@@ -76,9 +76,9 @@ namespace AbuFas
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1500, 99);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1500, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label9
@@ -88,7 +88,7 @@ namespace AbuFas
             this.label9.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(4, 1);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(164, 97);
+            this.label9.Size = new System.Drawing.Size(164, 98);
             this.label9.TabIndex = 8;
             this.label9.Text = "هالك سبك";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -100,7 +100,7 @@ namespace AbuFas
             this.label8.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(175, 1);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(159, 97);
+            this.label8.Size = new System.Drawing.Size(159, 98);
             this.label8.TabIndex = 7;
             this.label8.Text = "رصيد اليوم";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,7 +112,7 @@ namespace AbuFas
             this.label7.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(341, 1);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(159, 97);
+            this.label7.Size = new System.Drawing.Size(159, 98);
             this.label7.TabIndex = 6;
             this.label7.Text = "رصيد سابق";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,7 +124,7 @@ namespace AbuFas
             this.label6.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(507, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(159, 97);
+            this.label6.Size = new System.Drawing.Size(159, 98);
             this.label6.TabIndex = 5;
             this.label6.Text = "خصم";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,7 +136,7 @@ namespace AbuFas
             this.label5.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(673, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 97);
+            this.label5.Size = new System.Drawing.Size(159, 98);
             this.label5.TabIndex = 4;
             this.label5.Text = "إضافة";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,7 +148,7 @@ namespace AbuFas
             this.label4.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(839, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 97);
+            this.label4.Size = new System.Drawing.Size(159, 98);
             this.label4.TabIndex = 3;
             this.label4.Text = "شراء";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,7 +160,7 @@ namespace AbuFas
             this.label3.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(1005, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 97);
+            this.label3.Size = new System.Drawing.Size(159, 98);
             this.label3.TabIndex = 2;
             this.label3.Text = "بيع";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -173,7 +173,7 @@ namespace AbuFas
             this.label2.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1171, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 97);
+            this.label2.Size = new System.Drawing.Size(159, 98);
             this.label2.TabIndex = 1;
             this.label2.Text = "العيار";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,7 +185,7 @@ namespace AbuFas
             this.label1.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1337, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 97);
+            this.label1.Size = new System.Drawing.Size(159, 98);
             this.label1.TabIndex = 0;
             this.label1.Text = "التاريخ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,7 +200,7 @@ namespace AbuFas
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(20, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1500, 100);
+            this.guna2Panel1.Size = new System.Drawing.Size(1503, 100);
             this.guna2Panel1.TabIndex = 1;
             // 
             // label25
@@ -275,12 +275,13 @@ namespace AbuFas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "GramsCount";
             this.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.Size = new System.Drawing.Size(1540, 880);
+            this.Size = new System.Drawing.Size(1543, 880);
             this.Load += new System.EventHandler(this.GramsCount_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

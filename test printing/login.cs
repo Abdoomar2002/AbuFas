@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Configuration;
 using System.Windows.Forms;
 using test_printing;
 
@@ -23,12 +26,26 @@ namespace AbuFas
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-                AppDbContext context = new AppDbContext();
-            //context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+           /* var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var connectionString = ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString;
+
+            optionsBuilder.UseSqlite(connectionString);
+           */
+            var context = new AppDbContext();
+            //  context.Database.EnsureDeleted();
+
+
+
             if (guna2TextBox2.Text == "123") {
-              //  context.Database.OpenConnection();
+                context.Database.OpenConnection();
+                context.Database.MigrateAsync();
+                context.Database.EnsureCreated();
            
+                context.Database.GetDbConnection().Open();
+               
+              
+                //    MessageBox.Show(context.Database.CanConnect().ToString()); 
+
                 new Home().Show();
                 this.Hide();
             }

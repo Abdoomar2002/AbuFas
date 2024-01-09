@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
-using Guna.UI2.WinForms;
-using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace test_printing
 {
@@ -31,6 +20,8 @@ namespace test_printing
         {
             InitializeComponent();
             date.Text = DateTime.Today.ToShortDateString();
+            firstPage1.BringToFront();
+            
         }
 
         private void Print_Click(object sender, EventArgs e)
@@ -96,6 +87,20 @@ namespace test_printing
         private void firstPage1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            borrow1.BringToFront();
+            Guna2Button btn = (Guna2Button)sender;
+            colorChange(btn.Name);
+        }
+
+        private void btnShopper_Click(object sender, EventArgs e)
+        {
+            customers1.BringToFront();
+            Guna2Button btn = (Guna2Button)sender;
+            colorChange(btn.Name);
         }
     }
 }

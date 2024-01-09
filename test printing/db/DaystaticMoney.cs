@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using test_printing.db;
 
 namespace test_printing.db
 {
@@ -19,7 +16,26 @@ namespace test_printing.db
         public double Total {get; set; }
      public  ICollection<IncomeOutcome> IncomeOutCome { get; set; }
        public  ICollection<Bills> Bills { get; set; }
-        public DaystaticMoney() { }
+        public DaystaticMoney() 
+        {
+            IncomeOutCome=new List<IncomeOutcome>();
+            Bills=new List<Bills>();
+            AppDbContext context = new AppDbContext();
+             // var item=context.DaystaticMoney.OrderBy(c=>c.Date).LastOrDefault();
+         //   if (item != null) Total = item.Total;
+         //   else  Total = 0;
+
+        }
+        public DaystaticMoney( DateTime date)
+        {
+            IncomeOutCome = new List<IncomeOutcome>();
+            Bills = new List<Bills>();
+            AppDbContext context = new AppDbContext();
+            var item = context.DaystaticMoney.OrderBy(b=>b.Date).Where(d=>d.Date<date).LastOrDefault();
+            if (item != null) Total = item.Total;
+            else Total = 0;
+
+        }
 
     }
 }

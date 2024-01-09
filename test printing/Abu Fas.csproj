@@ -162,6 +162,10 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
@@ -224,6 +228,12 @@
     <Compile Include="bills21.Designer.cs">
       <DependentUpon>bills21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Borrow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Borrow.Designer.cs">
+      <DependentUpon>Borrow.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuySell.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +241,12 @@
       <DependentUpon>BuySell.cs</DependentUpon>
     </Compile>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="customers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="customers.Designer.cs">
+      <DependentUpon>customers.cs</DependentUpon>
+    </Compile>
     <Compile Include="DayStatic.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +255,10 @@
     </Compile>
     <Compile Include="db\BillData.cs" />
     <Compile Include="db\Bills.cs" />
+    <Compile Include="db\Borrows.cs" />
+    <Compile Include="db\BorrowsData.cs" />
+    <Compile Include="db\Customers.cs" />
+    <Compile Include="db\CustomersData.cs" />
     <Compile Include="db\DayStaticGrams.cs" />
     <Compile Include="db\DaystaticMoney.cs" />
     <Compile Include="db\IncomeOutcome.cs" />
@@ -292,6 +312,10 @@
     <Compile Include="Migrations\20231217153912_edit1.designer.cs">
       <DependentUpon>20231217153912_edit1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240107221339_secondDeliver.cs" />
+    <Compile Include="Migrations\20240107221339_secondDeliver.designer.cs">
+      <DependentUpon>20240107221339_secondDeliver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -310,8 +334,14 @@
     <EmbeddedResource Include="bills21.resx">
       <DependentUpon>bills21.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Borrow.resx">
+      <DependentUpon>Borrow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuySell.resx">
       <DependentUpon>BuySell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customers.resx">
+      <DependentUpon>customers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DayStatic.resx">
       <DependentUpon>DayStatic.cs</DependentUpon>
@@ -345,6 +375,21 @@
       <DependentUpon>bill.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="photos\36-arrow-left-1.png" />
+    <None Include="photos\36-arrow-right.png" />
+    <None Include="photos\back.png" />
+    <None Include="photos\diamond.png" />
+    <None Include="photos\exit.png" />
+    <None Include="photos\fluent_receipt-24-regular.png" />
+    <None Include="photos\icon-1.png" />
+    <None Include="photos\icon.png" />
+    <None Include="photos\ion_receipt-outline.png" />
+    <None Include="photos\left.png" />
+    <None Include="photos\Rectangle 1157.png" />
+    <None Include="photos\right.png" />
+    <None Include="photos\search.png" />
+    <None Include="photos\Vector 1.png" />
+    <None Include="photos\Vector.png" />
     <None Include="Properties\DataSources\AbuFas.db.DayStaticGrams.datasource" />
     <None Include="Properties\DataSources\AbuFas.db.DaystaticMoney.datasource" />
     <None Include="Properties\DataSources\AbuFas.db.IncomeOutcome.datasource" />
@@ -382,31 +427,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="photos\diamond.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cancelled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\Rectangle 1157.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\Vector 1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\Vector.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\ion_receipt-outline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\fluent_receipt-24-regular.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\left.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -424,25 +445,7 @@
     <None Include="Resources\percentage.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="photos\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\36-arrow-right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\36-arrow-left-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\exit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\icon-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="photos\back.png" />
+    <Content Include="photos\archive.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

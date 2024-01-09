@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using test_printing;
+using test_printing.db;
 
 namespace AbuFas
 {
@@ -82,7 +83,7 @@ namespace AbuFas
             tableLayoutPanel1.Controls.Clear();
            
             AppDbContext context = new AppDbContext();
-            var bills=context.Bills.Where(c=>c.Money.Id==id&&c.IsBuy==flag).ToList();
+            var bills =  context.Bills.Where(c=>c.Money.Id==id&&c.IsBuy==flag).ToList();
             string str = "";
             if(bills.Count>0 ) 
             foreach ( var b in bills ) 

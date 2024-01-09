@@ -6,6 +6,7 @@ C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Guna.UI2.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.SqlClient.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.Sqlite.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.dll
@@ -30,9 +31,13 @@ C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Ident
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Buffers.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Collections.Immutable.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Data.SqlClient.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Memory.dll
@@ -44,6 +49,7 @@ C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Bcl.A
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Bcl.HashCode.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.SqlClient.pdb
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.SqlClient.xml
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.Sqlite.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
@@ -70,6 +76,7 @@ C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Ident
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Buffers.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Data.SqlClient.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Memory.xml
@@ -91,7 +98,9 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.csproj.
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.Archive.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.BillBuy.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.bills21.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.Borrow.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\test_printing.BuySell.resources
+C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.customers.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.DayStatic.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.Editing.resources
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\AbuFas.GramsCount.resources
@@ -105,10 +114,5 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.csproj.
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.csproj.CopyComplete
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.exe
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.pdb
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.Sqlite.dll
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\Microsoft.Data.Sqlite.xml
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.batteries_v2.dll
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.core.dll
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Data.SqlClient.dll
-C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml

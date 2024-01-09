@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace test_printing
         private void Archive_Load(object sender, EventArgs e)
         {
            
-            LoadTable();
+            //LoadTable();
            Single.Visible = false;
             Single.FillColor = Color.FromArgb(128,Color.Black);
             Single.UseTransparentBackground = true;
@@ -50,7 +51,10 @@ namespace test_printing
         public void LoadTable()
         {   
             AppDbContext context = _context;
-            
+            context.Database.OpenConnectionAsync();
+            context.Database.MigrateAsync();
+            context.Database.EnsureCreatedAsync();
+             
             var billList=context.Bills.ToArray();
             ArchiveTable.Controls.Clear();
           

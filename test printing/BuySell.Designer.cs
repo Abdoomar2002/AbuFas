@@ -460,7 +460,7 @@
         private Guna.UI2.WinForms.Guna2Button Buy;
         private Guna.UI2.WinForms.Guna2Button Archive;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private bill bill1;
+        public bill bill1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private Guna.UI2.WinForms.Guna2Button Calculate_bill;
@@ -476,6 +476,6 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button Result;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private BillBuy billBuy1;
+        public BillBuy billBuy1;
     }
 }

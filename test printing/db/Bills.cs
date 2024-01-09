@@ -20,5 +20,9 @@ namespace test_printing.db
         public  DateTime Date { get; set; }
         public DaystaticMoney Money { get; set; }
         public ICollection<BillData> Data { get; set; }
+        public Bills() 
+        {
+            Data = new List<BillData>();
+        }  
     }
 }

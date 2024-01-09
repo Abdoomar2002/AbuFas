@@ -1,7 +1,9 @@
 ﻿using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -46,9 +48,23 @@ namespace AbuFas
                data.Columns[7].Width = w;
                data.Columns[8].Width = w;
                */
+            // Example of how to use DbContextOptions
+        /*    var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var connectionString = ConfigurationManager.ConnectionStrings["AppDbContext"].ConnectionString;
 
-            AppDbContext context = new AppDbContext();
-            var table = context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
+            optionsBuilder.UseSqlite( connectionString);
+            */
+            var context = new AppDbContext();
+                     var table = context.DayStaticGrams
+                    .OrderByDescending(g => g.Date)
+                    .AsEnumerable()
+                    .ToList();
+                // Further code using the context...
+           
+
+           // AppDbContext context = new AppDbContext();
+
+         //   var table = context.DayStaticGrams.OrderByDescending(g => g.Date).AsEnumerable().ToList();
             for (int i = 0; i < table.Count; i++)
             {
                 Random random = new Random();

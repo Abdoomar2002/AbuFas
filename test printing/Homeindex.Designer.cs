@@ -35,6 +35,7 @@
             this.archive1 = new test_printing.Archive();
             this.gramsCount = new AbuFas.GramsCount();
             this.dayStatic1 = new AbuFas.DayStatic();
+            this.borrow1 = new AbuFas.Borrow();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.date = new Guna.UI2.WinForms.Guna2Button();
@@ -48,6 +49,7 @@
             this.Grambtn = new Guna.UI2.WinForms.Guna2Button();
             this.billsbtn = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.customers1 = new AbuFas.customers();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -56,14 +58,16 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.Controls.Add(this.customers1);
             this.guna2Panel3.Controls.Add(this.firstPage1);
             this.guna2Panel3.Controls.Add(this.archive1);
             this.guna2Panel3.Controls.Add(this.gramsCount);
             this.guna2Panel3.Controls.Add(this.dayStatic1);
+            this.guna2Panel3.Controls.Add(this.borrow1);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 94);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 90);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1533, 906);
+            this.guna2Panel3.Size = new System.Drawing.Size(1549, 910);
             this.guna2Panel3.TabIndex = 6;
             // 
             // firstPage1
@@ -75,7 +79,7 @@
             this.firstPage1.Location = new System.Drawing.Point(0, 0);
             this.firstPage1.Name = "firstPage1";
             this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
-            this.firstPage1.Size = new System.Drawing.Size(1533, 906);
+            this.firstPage1.Size = new System.Drawing.Size(1549, 910);
             this.firstPage1.TabIndex = 0;
             this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
             // 
@@ -84,17 +88,18 @@
             this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.archive1.Location = new System.Drawing.Point(0, 0);
             this.archive1.Name = "archive1";
-            this.archive1.Size = new System.Drawing.Size(1533, 906);
+            this.archive1.Size = new System.Drawing.Size(1549, 910);
             this.archive1.TabIndex = 1;
             // 
             // gramsCount
             // 
+            this.gramsCount.AutoSize = true;
             this.gramsCount.BackColor = System.Drawing.Color.White;
             this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gramsCount.Location = new System.Drawing.Point(0, 0);
             this.gramsCount.Name = "gramsCount";
             this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.gramsCount.Size = new System.Drawing.Size(1533, 906);
+            this.gramsCount.Size = new System.Drawing.Size(1549, 910);
             this.gramsCount.TabIndex = 2;
             // 
             // dayStatic1
@@ -103,12 +108,24 @@
             this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dayStatic1.Location = new System.Drawing.Point(0, 0);
             this.dayStatic1.Name = "dayStatic1";
-            this.dayStatic1.Size = new System.Drawing.Size(1533, 906);
+            this.dayStatic1.Size = new System.Drawing.Size(1549, 910);
             this.dayStatic1.TabIndex = 3;
+            // 
+            // borrow1
+            // 
+            this.borrow1.AutoSize = true;
+            this.borrow1.BackColor = System.Drawing.Color.White;
+            this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borrow1.Location = new System.Drawing.Point(0, 0);
+            this.borrow1.Name = "borrow1";
+            this.borrow1.Padding = new System.Windows.Forms.Padding(50);
+            this.borrow1.Size = new System.Drawing.Size(1549, 910);
+            this.borrow1.TabIndex = 4;
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.AutoSize = true;
+            this.guna2Panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel1.BackgroundImage = global::AbuFas.Properties.Resources.Vector_1;
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.Controls.Add(this.date);
@@ -118,7 +135,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1533, 94);
+            this.guna2Panel1.Size = new System.Drawing.Size(1549, 90);
             this.guna2Panel1.TabIndex = 4;
             // 
             // date
@@ -156,7 +173,7 @@
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.IconRight = global::AbuFas.Properties.Resources.search;
             this.guna2TextBox1.IconRightOffset = new System.Drawing.Point(15, 0);
-            this.guna2TextBox1.Location = new System.Drawing.Point(868, 42);
+            this.guna2TextBox1.Location = new System.Drawing.Point(890, 38);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
@@ -178,7 +195,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.Black;
             this.guna2Button6.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(1202, 42);
+            this.guna2Button6.Location = new System.Drawing.Point(1218, 42);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(180, 45);
             this.guna2Button6.TabIndex = 3;
@@ -192,7 +209,7 @@
             this.Exit.Image = global::AbuFas.Properties.Resources.cancelled;
             this.Exit.ImageRotate = 0F;
             this.Exit.InitialImage = global::AbuFas.Properties.Resources.cancelled;
-            this.Exit.Location = new System.Drawing.Point(1492, 12);
+            this.Exit.Location = new System.Drawing.Point(1508, 12);
             this.Exit.Name = "Exit";
             this.Exit.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.Exit.Size = new System.Drawing.Size(35, 38);
@@ -205,6 +222,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.AutoSize = true;
+            this.guna2Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel2.BackgroundImage = global::AbuFas.Properties.Resources.Rectangle_1157;
             this.guna2Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel2.Controls.Add(this.btnShopper);
@@ -214,9 +232,9 @@
             this.guna2Panel2.Controls.Add(this.billsbtn);
             this.guna2Panel2.Controls.Add(this.label1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel2.Location = new System.Drawing.Point(1533, 0);
+            this.guna2Panel2.Location = new System.Drawing.Point(1549, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(367, 1000);
+            this.guna2Panel2.Size = new System.Drawing.Size(351, 1000);
             this.guna2Panel2.TabIndex = 5;
             // 
             // btnShopper
@@ -238,6 +256,7 @@
             this.btnShopper.TabIndex = 8;
             this.btnShopper.Text = "التجار";
             this.btnShopper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnShopper.Click += new System.EventHandler(this.btnShopper_Click);
             // 
             // btnPayment
             // 
@@ -258,6 +277,7 @@
             this.btnPayment.TabIndex = 7;
             this.btnPayment.Text = "سلف";
             this.btnPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // btntStatic
             // 
@@ -329,11 +349,19 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cairo Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(23, 12);
+            this.label1.Location = new System.Drawing.Point(7, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(354, 75);
             this.label1.TabIndex = 3;
             this.label1.Text = "مجوهرات أبو فص";
+            // 
+            // customers1
+            // 
+            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customers1.Location = new System.Drawing.Point(0, 0);
+            this.customers1.Name = "customers1";
+            this.customers1.Size = new System.Drawing.Size(1549, 910);
+            this.customers1.TabIndex = 5;
             // 
             // Home
             // 
@@ -370,7 +398,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private BuySell firstPage1;
+        public BuySell firstPage1;
         private Guna.UI2.WinForms.Guna2ResizeForm guna2ResizeForm1;
         private Guna.UI2.WinForms.Guna2Button btnPayment;
         private Guna.UI2.WinForms.Guna2Button btntStatic;
@@ -381,8 +409,10 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         public Archive archive1;
-        private AbuFas.GramsCount gramsCount;
-        private AbuFas.DayStatic dayStatic1;
+        public AbuFas.GramsCount gramsCount;
+        public AbuFas.DayStatic dayStatic1;
+        public AbuFas.Borrow borrow1;
+        public AbuFas.customers customers1;
     }
 }
 
