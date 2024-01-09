@@ -18,6 +18,8 @@ namespace test_printing.db
         public bool IsBuy { get; set; }
         public double Total {get; set; }
         public  DateTime Date { get; set; }
+        [ForeignKey("MoneyId")]
+        public int MoneyId { get; set; }
         public DaystaticMoney Money { get; set; }
         public ICollection<BillData> Data { get; set; }
         public Bills() 

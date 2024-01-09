@@ -316,6 +316,14 @@
     <Compile Include="Migrations\20240107221339_secondDeliver.designer.cs">
       <DependentUpon>20240107221339_secondDeliver.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240109202959_secDeliver.cs" />
+    <Compile Include="Migrations\20240109202959_secDeliver.designer.cs">
+      <DependentUpon>20240109202959_secDeliver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240109221001_edit.cs" />
+    <Compile Include="Migrations\20240109221001_edit.designer.cs">
+      <DependentUpon>20240109221001_edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

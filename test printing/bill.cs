@@ -80,11 +80,36 @@ namespace test_printing
         }
         private void LoadDataFromDatabase()
         {
+            /*Microsoft.Data.Sqlite.SqliteException
+  HResult=0x80004005
+  Message=SQLite Error 1: 'no such column: b.MoneyId'.
+  Source=Microsoft.Data.Sqlite
+  StackTrace:
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.<PrepareAndEnumerateStatements>d__64.MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.<GetStatements>d__54.MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.NoopExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.LastOrDefault[TSource](IEnumerable`1 source)
+   at test_printing.bill.LoadDataFromDatabase() in C:\Users\Abdo\source\repos\test printing\test printing\bill.cs:line 87
+
+  This exception was originally thrown at this call stack:
+    [External Code]
+    test_printing.bill.LoadDataFromDatabase() in bill.cs*/
             try
             {
                 _context.Database.EnsureCreated();
 
-                var lastBill = _context.Bills.AsEnumerable().LastOrDefault();
+                var last = _context.Bills;
+                
+               var lastBill= last.Local.FirstOrDefault();
+
                 int id = (lastBill != null) ? lastBill.Id + 1 : 1;
 
               BillNum.Text = id.ToString();
@@ -323,9 +348,9 @@ namespace test_printing
             var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
 
             var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
-            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
-            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); dayStatic.Date = DateTime.Today.Date; }
+            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); gramsStatic18.Date = DateTime.Today.Date; }
+            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); gramsStatic21.Date = DateTime.Today.Date; }
+            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); gramsStatic24.Date = DateTime.Today.Date; }
             if (dayStatic == null) {
             var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c=>c.Date).FirstOrDefault();
             
@@ -359,8 +384,7 @@ namespace test_printing
             _context.SaveChanges();
 
             // Helper methods to handle parsing with null check
-           
-
+          
 
 
             return 0;

@@ -32,8 +32,9 @@ namespace AbuFas
             optionsBuilder.UseSqlite(connectionString);
            */
             var context = new AppDbContext();
-            //  context.Database.EnsureDeleted();
-
+           
+              context.Database.EnsureDeleted();
+           
 
 
             if (guna2TextBox2.Text == "123") {

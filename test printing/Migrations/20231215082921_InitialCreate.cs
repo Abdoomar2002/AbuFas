@@ -8,7 +8,7 @@ namespace AbuFas.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "DaystaticMoneyId",
-                table: "InOut",
+                table: "IncomeOutcome",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
@@ -18,7 +18,7 @@ namespace AbuFas.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_InOut_DaystaticMoneyId",
-                table: "InOut",
+                table: "IncomeOutcome",
                 column: "DaystaticMoneyId");
 
             migrationBuilder.CreateIndex(
@@ -30,15 +30,15 @@ namespace AbuFas.Migrations
                 name: "FK_Bills_DayMoney_DaystaticMoneyId",
                 table: "Bills",
                 column: "DaystaticMoneyId",
-                principalTable: "DayMoney",
+                principalTable: "DayStaticMoney",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_InOut_DayMoney_DaystaticMoneyId",
-                table: "InOut",
+                table: "IncomeOutcome",
                 column: "DaystaticMoneyId",
-                principalTable: "DayMoney",
+                principalTable: "DayStaticMoney",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -51,11 +51,11 @@ namespace AbuFas.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_InOut_DayMoney_DaystaticMoneyId",
-                table: "InOut");
+                table: "IncomeOutcome");
 
             migrationBuilder.DropIndex(
                 name: "IX_InOut_DaystaticMoneyId",
-                table: "InOut");
+                table: "IncomeOutcome");
 
             migrationBuilder.DropIndex(
                 name: "IX_Bills_DaystaticMoneyId",
@@ -63,7 +63,7 @@ namespace AbuFas.Migrations
 
             migrationBuilder.DropColumn(
                 name: "DaystaticMoneyId",
-                table: "InOut");
+                table: "IncomeOutcome");
 
             migrationBuilder.DropColumn(
                 name: "DaystaticMoneyId",

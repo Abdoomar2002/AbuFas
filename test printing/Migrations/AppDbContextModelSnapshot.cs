@@ -45,8 +45,11 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BorrowId")
+                    b.Property<int>("BorrowId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("Incoume")
                         .HasColumnType("REAL");
@@ -70,7 +73,16 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsArchived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("TotalGrams")
@@ -90,7 +102,7 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
@@ -121,7 +133,7 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BillId")
+                    b.Property<int>("BillId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Kyrat")
@@ -164,7 +176,7 @@ namespace AbuFas.Migrations
                     b.Property<bool>("IsBuy")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("MoneyId")
+                    b.Property<int>("MoneyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Notes")
@@ -267,28 +279,36 @@ namespace AbuFas.Migrations
                 {
                     b.HasOne("AbuFas.db.Borrows", "Borrow")
                         .WithMany("BData")
-                        .HasForeignKey("BorrowId");
+                        .HasForeignKey("BorrowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AbuFas.db.CustomersData", b =>
                 {
                     b.HasOne("AbuFas.db.Customers", "Customer")
                         .WithMany("Data")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("test_printing.db.BillData", b =>
                 {
                     b.HasOne("test_printing.db.Bills", "Bill")
                         .WithMany("Data")
-                        .HasForeignKey("BillId");
+                        .HasForeignKey("BillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("test_printing.db.Bills", b =>
                 {
                     b.HasOne("test_printing.db.DaystaticMoney", "Money")
                         .WithMany("Bills")
-                        .HasForeignKey("MoneyId");
+                        .HasForeignKey("MoneyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("test_printing.db.IncomeOutcome", b =>

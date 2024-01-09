@@ -22,8 +22,9 @@ namespace AbuFas
             var money = context.DaystaticMoney.Where(x => x.Date == DateTime.Parse(cuurentDate.Text)).FirstOrDefault();
             if (money == null)
             {
-                money = new test_printing.db.DaystaticMoney();
-                money.Id = context.DaystaticMoney.OrderByDescending(x => x.Id).FirstOrDefault().Id + 1;
+                money = new DaystaticMoney();
+                var lastMoney = context.DaystaticMoney.OrderByDescending(x => x.Id).FirstOrDefault();
+                money.Id =lastMoney!=null? lastMoney.Id + 1:1;
                 money.Date = DateTime.Parse(cuurentDate.Text);
                 context.DaystaticMoney.Add(money);
                 context.SaveChanges();
@@ -99,7 +100,7 @@ namespace AbuFas
             AppDbContext context = new AppDbContext();
             var item =context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
             DateTime date=DateTime.Parse(cuurentDate.Text);
-            if (date == item.Date)
+            if (item==null||date == item.Date)
             {
                 MessageBox.Show("لا يوجد ايام اخري");
             }

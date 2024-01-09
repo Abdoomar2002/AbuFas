@@ -12,30 +12,30 @@ namespace AbuFas.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_InOut_DayMoney_DaystaticMoneyId",
-                table: "InOut");
+                table: "IncomeOutcome");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_InOut",
-                table: "InOut");
+                table: "IncomeOutcome");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_DayMoney",
-                table: "DayMoney");
+                table: "DaystaticMoney");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_DayGram",
-                table: "DayGram");
+                table: "DayStaticGrams");
 
             migrationBuilder.RenameTable(
-                name: "InOut",
+                name: "IncomeOutcome",
                 newName: "IncomeOutcome");
 
             migrationBuilder.RenameTable(
-                name: "DayMoney",
+                name: "DaystaticMoney",
                 newName: "DaystaticMoney");
 
             migrationBuilder.RenameTable(
-                name: "DayGram",
+                name: "DayStaticGrams",
                 newName: "DayStaticGrams");
 
             migrationBuilder.RenameIndex(

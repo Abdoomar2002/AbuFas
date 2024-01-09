@@ -14,7 +14,7 @@ namespace AbuFas.Migrations
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.CreateTable(
-                name: "DayGram",
+                name: "DayStaticGrams",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -33,7 +33,7 @@ namespace AbuFas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DayMoney",
+                name: "DaystaticMoney",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -48,7 +48,7 @@ namespace AbuFas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InOut",
+                name: "IncomeOutcome",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -74,7 +74,7 @@ namespace AbuFas.Migrations
                 name: "DayMoney");
 
             migrationBuilder.DropTable(
-                name: "InOut");
+                name: "IncomeOutcome");
 
             migrationBuilder.DropColumn(
                 name: "Date",

@@ -17,6 +17,9 @@ namespace AbuFas.db
         public DateTime Date { get; set; }
         public double Outcome { get; set; }
         public string Notes { get; set; }
+        [ForeignKey("BorrowId")]
+        public int BorrowId { get; set; }
         public Borrows Borrow { get; set; }
+
     }
 }

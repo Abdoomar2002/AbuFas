@@ -51,6 +51,7 @@ namespace test_printing
         private void Grambtn_Click(object sender, EventArgs e)
         {
             gramsCount.BringToFront();
+            gramsCount.GramsCount_Load(null, null);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
 
@@ -67,6 +68,7 @@ namespace test_printing
         private void btntStatic_Click(object sender, EventArgs e)
         {
             dayStatic1.BringToFront();
+            dayStatic1.load(DateTime.Today.Date);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
            
@@ -92,6 +94,7 @@ namespace test_printing
         private void btnPayment_Click(object sender, EventArgs e)
         {
             borrow1.BringToFront();
+            borrow1.load();
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
         }
@@ -99,6 +102,7 @@ namespace test_printing
         private void btnShopper_Click(object sender, EventArgs e)
         {
             customers1.BringToFront();
+            customers1.load();
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
         }

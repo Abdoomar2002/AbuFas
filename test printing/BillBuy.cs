@@ -55,7 +55,11 @@ namespace test_printing
             {
                 _context.Database.EnsureCreated();
 
-                var lastBill = _context.Bills.AsEnumerable().LastOrDefault();
+                _context.Database.EnsureCreated();
+
+                var last = _context.Bills;
+
+                var lastBill = last.Local.FirstOrDefault();
                 int id = (lastBill != null) ? lastBill.Id + 1 : 1;
 
                 BillNum.Text = id.ToString();

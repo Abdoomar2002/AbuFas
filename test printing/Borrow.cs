@@ -183,7 +183,9 @@ namespace AbuFas
             foreach(DataGridViewRow row in DetailsList.Rows) 
             {
                 var item =new BorrowsData();
-                item.Date = DateTime.Parse(row.Cells[2].Value.ToString()).Date;
+                DateTime dateTime= DateTime.MinValue;
+                    DateTime.TryParse(row.Cells[2].Value.ToString(),out dateTime);
+                item.Date = dateTime==DateTime.MinValue ? DateTime.MinValue : dateTime;
                 item.Incoume =(double) TryParseDouble(row.Cells[3].Value);
                 item.Outcome =(double) TryParseDouble(row.Cells[4].Value);
                 item.Notes = row.Cells[5].Value.ToString();
