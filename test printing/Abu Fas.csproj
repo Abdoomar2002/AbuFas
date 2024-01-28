@@ -210,47 +210,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archive.cs">
+    <Compile Include="Control\Archive.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Archive.Designer.cs">
+    <Compile Include="Control\Archive.Designer.cs">
       <DependentUpon>Archive.cs</DependentUpon>
     </Compile>
-    <Compile Include="BillBuy.cs">
+    <Compile Include="Control\BillBuy.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BillBuy.Designer.cs">
+    <Compile Include="Control\BillBuy.Designer.cs">
       <DependentUpon>BillBuy.cs</DependentUpon>
     </Compile>
-    <Compile Include="bills21.cs">
+    <Compile Include="Control\bills21.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="bills21.Designer.cs">
+    <Compile Include="Control\bills21.Designer.cs">
       <DependentUpon>bills21.cs</DependentUpon>
     </Compile>
-    <Compile Include="Borrow.cs">
+    <Compile Include="Control\Borrow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Borrow.Designer.cs">
+    <Compile Include="Control\Borrow.Designer.cs">
       <DependentUpon>Borrow.cs</DependentUpon>
     </Compile>
-    <Compile Include="BuySell.cs">
+    <Compile Include="Control\BuySell.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BuySell.Designer.cs">
+    <Compile Include="Control\BuySell.Designer.cs">
       <DependentUpon>BuySell.cs</DependentUpon>
     </Compile>
     <Compile Include="AppDbContext.cs" />
-    <Compile Include="customers.cs">
+    <Compile Include="Control\customers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="customers.Designer.cs">
+    <Compile Include="Control\customers.Designer.cs">
       <DependentUpon>customers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DayStatic.cs">
+    <Compile Include="Control\DayStatic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DayStatic.Designer.cs">
+    <Compile Include="Control\DayStatic.Designer.cs">
       <DependentUpon>DayStatic.cs</DependentUpon>
     </Compile>
     <Compile Include="db\BillData.cs" />
@@ -262,16 +262,16 @@
     <Compile Include="db\DayStaticGrams.cs" />
     <Compile Include="db\DaystaticMoney.cs" />
     <Compile Include="db\IncomeOutcome.cs" />
-    <Compile Include="Editing.cs">
+    <Compile Include="Control\Editing.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Editing.Designer.cs">
+    <Compile Include="Control\Editing.Designer.cs">
       <DependentUpon>Editing.cs</DependentUpon>
     </Compile>
-    <Compile Include="GramsCount.cs">
+    <Compile Include="Control\GramsCount.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GramsCount.Designer.cs">
+    <Compile Include="Control\GramsCount.Designer.cs">
       <DependentUpon>GramsCount.cs</DependentUpon>
     </Compile>
     <Compile Include="Homeindex.cs">
@@ -280,10 +280,10 @@
     <Compile Include="Homeindex.Designer.cs">
       <DependentUpon>Homeindex.cs</DependentUpon>
     </Compile>
-    <Compile Include="InOutCome.cs">
+    <Compile Include="Control\InOutCome.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InOutCome.Designer.cs">
+    <Compile Include="Control\InOutCome.Designer.cs">
       <DependentUpon>InOutCome.cs</DependentUpon>
     </Compile>
     <Compile Include="login.cs">
@@ -299,43 +299,43 @@
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="bill.cs">
+    <Compile Include="Control\bill.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="bill.Designer.cs">
+    <Compile Include="Control\bill.Designer.cs">
       <DependentUpon>bill.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Archive.resx">
+    <EmbeddedResource Include="Control\Archive.resx">
       <DependentUpon>Archive.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BillBuy.resx">
+    <EmbeddedResource Include="Control\BillBuy.resx">
       <DependentUpon>BillBuy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="bills21.resx">
+    <EmbeddedResource Include="Control\bills21.resx">
       <DependentUpon>bills21.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Borrow.resx">
+    <EmbeddedResource Include="Control\Borrow.resx">
       <DependentUpon>Borrow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BuySell.resx">
+    <EmbeddedResource Include="Control\BuySell.resx">
       <DependentUpon>BuySell.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="customers.resx">
+    <EmbeddedResource Include="Control\customers.resx">
       <DependentUpon>customers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DayStatic.resx">
+    <EmbeddedResource Include="Control\DayStatic.resx">
       <DependentUpon>DayStatic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editing.resx">
+    <EmbeddedResource Include="Control\Editing.resx">
       <DependentUpon>Editing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GramsCount.resx">
+    <EmbeddedResource Include="Control\GramsCount.resx">
       <DependentUpon>GramsCount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Homeindex.resx">
       <DependentUpon>Homeindex.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InOutCome.resx">
+    <EmbeddedResource Include="Control\InOutCome.resx">
       <DependentUpon>InOutCome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
@@ -351,7 +351,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="bill.resx">
+    <EmbeddedResource Include="Control\bill.resx">
       <DependentUpon>bill.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
