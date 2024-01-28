@@ -63,11 +63,9 @@ namespace test_printing
 
                 _context.Database.EnsureCreated();
 
-                _context.Database.EnsureCreated();
+                var last = _context.Bills.AsEnumerable();
 
-                var last = _context.Bills;
-
-                var lastBill = last.Local.FirstOrDefault();
+                var lastBill = last.LastOrDefault();
                 int id = (lastBill != null) ? lastBill.Id + 1 : 1;
 
                 BillNum.Text = id.ToString();
@@ -123,8 +121,8 @@ namespace test_printing
                     SaveToDB();
                     printDocument.Print();
 
-                }
                 reset();
+                }
             }
             else MessageBox.Show("ادخل البيانات كاملة");
         }
@@ -228,7 +226,7 @@ namespace test_printing
 
             newBill.CustomerName = CustName.Text;
             newBill.IsBuy = true;
-            
+
             newBill.Date = DateTime.Now.Date;
             double totalGrams21 = 0;
             double totalGrams18 = 0;
@@ -249,9 +247,9 @@ namespace test_printing
                 dataRow.Kyrat = (int)TryParseInt(row.Cells[3].Value);
                 dataRow.Number = (int)TryParseInt(row.Cells[4].Value);
                 dataRow.Name = row.Cells[5].Value?.ToString();
-                
-                if(dataRow.Kyrat==21)
-                totalGrams21 = dataRow.Weight == null ? totalGrams21 : totalGrams21 + dataRow.Weight;
+
+                if (dataRow.Kyrat == 21)
+                    totalGrams21 = dataRow.Weight == null ? totalGrams21 : totalGrams21 + dataRow.Weight;
                 if (dataRow.Kyrat == 18)
                     totalGrams18 = dataRow.Weight == null ? totalGrams18 : totalGrams18 + dataRow.Weight;
                 if (dataRow.Kyrat == 24)
@@ -260,13 +258,13 @@ namespace test_printing
             }
 
             newBill.Data = billdata;
-            var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
+            var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "18").FirstOrDefault();
+            var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "21").FirstOrDefault();
+            var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "24").FirstOrDefault();
 
             var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams();  }
-            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams();  }
+            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); }
+            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); }
             if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); }
             if (dayStatic == null)
             {
@@ -283,15 +281,15 @@ namespace test_printing
             gramsStatic21.Type = "21";
             gramsStatic24.Type = "24";
             dayStatic.Bills.Add(newBill);
-            dayStatic.Total = dayStatic.Total == 0 ? totalmoney*-1 : dayStatic.Total-totalmoney;
+            dayStatic.Total = dayStatic.Total == 0 ? totalmoney * -1 : dayStatic.Total - totalmoney;
             dayStatic.Bills.Add(newBill);
-            if(dayStatic.Id==0)
-            _context.DaystaticMoney.Add(dayStatic);
-            if(gramsStatic18.Id==0 &&totalGrams18>0)
-            _context.DayStaticGrams.Add(gramsStatic18);
-            if (gramsStatic18.Id == 0 && totalGrams21 > 0)
+            if (dayStatic.Id == 0)
+                _context.DaystaticMoney.Add(dayStatic);
+            if (gramsStatic18.Id == 0 && totalGrams18 > 0)
+                _context.DayStaticGrams.Add(gramsStatic18);
+            if (gramsStatic21.Id == 0 && totalGrams21 > 0)
                 _context.DayStaticGrams.Add(gramsStatic21);
-            if (gramsStatic18.Id == 0 && totalGrams24 > 0)
+            if (gramsStatic24.Id == 0 && totalGrams24 > 0)
                 _context.DayStaticGrams.Add(gramsStatic24);
             _context.BillData.AddRange(billdata);
             _context.Bills.Add(newBill);

@@ -1,18 +1,11 @@
-﻿using Guna.UI2.WinForms;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Common.CommandTrees.ExpressionBuilder;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 //using System.Web.UI;
 using System.Windows.Forms;
 using test_printing.db;
@@ -84,28 +77,7 @@ namespace test_printing
         }
         private void LoadDataFromDatabase()
         {
-            /*Microsoft.Data.Sqlite.SqliteException
-  HResult=0x80004005
-  Message=SQLite Error 1: 'no such column: b.MoneyId'.
-  Source=Microsoft.Data.Sqlite
-  StackTrace:
-   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
-   at Microsoft.Data.Sqlite.SqliteCommand.<PrepareAndEnumerateStatements>d__64.MoveNext()
-   at Microsoft.Data.Sqlite.SqliteCommand.<GetStatements>d__54.MoveNext()
-   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
-   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
-   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
-   at System.Data.Common.DbCommand.ExecuteReader()
-   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
-   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
-   at Microsoft.EntityFrameworkCore.Storage.Internal.NoopExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
-   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
-   at System.Linq.Enumerable.LastOrDefault[TSource](IEnumerable`1 source)
-   at test_printing.bill.LoadDataFromDatabase() in C:\Users\Abdo\source\repos\test printing\test printing\bill.cs:line 87
-
-  This exception was originally thrown at this call stack:
-    [External Code]
-    test_printing.bill.LoadDataFromDatabase() in bill.cs*/
+          
             try
             {
                 _context = new AppDbContext();
@@ -114,7 +86,7 @@ namespace test_printing
 
                 var last = _context.Bills;
                 
-               var lastBill= last.Local.FirstOrDefault();
+               var lastBill= last.AsEnumerable().FirstOrDefault();
 
                 int id = (lastBill != null) ? lastBill.Id + 1 : 1;
 
@@ -173,8 +145,8 @@ namespace test_printing
                     SaveToDB();
                     printDocument.Print();
 
-                }
                     reset();
+                }
             }
             else MessageBox.Show("ادخل البيانات كاملة");
         }
@@ -310,7 +282,7 @@ namespace test_printing
             this.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
             return bmp;
         }
-        public int SaveToDB() 
+        public int SaveToDB()
         {
             Bills newBill = new Bills();
             List<BillData> billdata = new List<BillData>();
@@ -349,23 +321,24 @@ namespace test_printing
             }
 
             newBill.Data = billdata;
-            var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today).FirstOrDefault();
+            var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "18").FirstOrDefault();
+            var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "21").FirstOrDefault();
+            var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "24").FirstOrDefault();
 
             var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
             if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); gramsStatic18.Date = DateTime.Today.Date; }
             if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); gramsStatic21.Date = DateTime.Today.Date; }
             if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); gramsStatic24.Date = DateTime.Today.Date; }
-            if (dayStatic == null) {
-            var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c=>c.Date).FirstOrDefault();
-            
-                dayStatic = new DaystaticMoney(); 
-                dayStatic.Bills=new List<Bills>();
-                dayStatic.IncomeOutCome=new List<IncomeOutcome>();
-                dayStatic.Date=DateTime.Now.Date;
-            //    _context.DaystaticMoney.Add(dayStatic);
-                dayStatic.Total=dayStatic2!=null?dayStatic2.Total:0;
+            if (dayStatic == null)
+            {
+                var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c => c.Date).FirstOrDefault();
+
+                dayStatic = new DaystaticMoney();
+                dayStatic.Bills = new List<Bills>();
+                dayStatic.IncomeOutCome = new List<IncomeOutcome>();
+                dayStatic.Date = DateTime.Now.Date;
+                //    _context.DaystaticMoney.Add(dayStatic);
+                dayStatic.Total = dayStatic2 != null ? dayStatic2.Total : 0;
             }
 
             gramsStatic18.Sell = gramsStatic18.Buy == 0 ? totalGrams18 : totalGrams18 + gramsStatic18.Buy;
@@ -375,26 +348,28 @@ namespace test_printing
             gramsStatic21.Type = "21";
             gramsStatic24.Type = "24";
             dayStatic.Bills.Add(newBill);
-            dayStatic.Total = dayStatic.Total == 0 ? totalmoney  : dayStatic.Total + totalmoney;
+            dayStatic.Total = dayStatic.Total == 0 ? totalmoney : dayStatic.Total + totalmoney;
             dayStatic.Bills.Add(newBill);
             if (dayStatic.Id == 0)
                 _context.DaystaticMoney.Add(dayStatic);
             if (gramsStatic18.Id == 0 && totalGrams18 > 0)
                 _context.DayStaticGrams.Add(gramsStatic18);
-            if (gramsStatic18.Id == 0 && totalGrams21 > 0)
+            if (gramsStatic21.Id == 0 && totalGrams21 > 0)
                 _context.DayStaticGrams.Add(gramsStatic21);
-            if (gramsStatic18.Id == 0 && totalGrams24 > 0)
+            if (gramsStatic24.Id == 0 && totalGrams24 > 0)
                 _context.DayStaticGrams.Add(gramsStatic24);
             _context.BillData.AddRange(billdata);
             _context.Bills.Add(newBill);
             _context.SaveChanges();
 
             // Helper methods to handle parsing with null check
-          
+
+
 
 
             return 0;
         }
+        
         private double? TryParseDouble(object value)
         {
             if (value == null)

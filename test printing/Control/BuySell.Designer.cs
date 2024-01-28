@@ -440,7 +440,7 @@
             this.billBuy1.Location = new System.Drawing.Point(2, 0);
             this.billBuy1.Margin = new System.Windows.Forms.Padding(2);
             this.billBuy1.Name = "billBuy1";
-            this.billBuy1.Size = new System.Drawing.Size(694, 1189);
+            this.billBuy1.Size = new System.Drawing.Size(694, 850);
             this.billBuy1.TabIndex = 1;
             // 
             // BuySell

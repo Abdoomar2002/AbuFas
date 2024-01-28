@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.customers1 = new AbuFas.customers();
             this.firstPage1 = new test_printing.BuySell();
+            this.customers1 = new AbuFas.customers();
             this.archive1 = new test_printing.Archive();
             this.gramsCount = new AbuFas.GramsCount();
             this.dayStatic1 = new AbuFas.DayStatic();
@@ -68,15 +68,6 @@
             this.guna2Panel3.Size = new System.Drawing.Size(988, 622);
             this.guna2Panel3.TabIndex = 6;
             // 
-            // customers1
-            // 
-            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customers1.Location = new System.Drawing.Point(0, 0);
-            this.customers1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.customers1.Name = "customers1";
-            this.customers1.Size = new System.Drawing.Size(988, 622);
-            this.customers1.TabIndex = 5;
-            // 
             // firstPage1
             // 
             this.firstPage1.AutoScroll = true;
@@ -90,6 +81,15 @@
             this.firstPage1.Size = new System.Drawing.Size(988, 622);
             this.firstPage1.TabIndex = 0;
             this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
+            // 
+            // customers1
+            // 
+            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customers1.Location = new System.Drawing.Point(0, 0);
+            this.customers1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.customers1.Name = "customers1";
+            this.customers1.Size = new System.Drawing.Size(988, 622);
+            this.customers1.TabIndex = 5;
             // 
             // archive1
             // 
@@ -106,7 +106,7 @@
             this.gramsCount.BackColor = System.Drawing.Color.White;
             this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gramsCount.Location = new System.Drawing.Point(0, 0);
-            this.gramsCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gramsCount.Margin = new System.Windows.Forms.Padding(2);
             this.gramsCount.Name = "gramsCount";
             this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.gramsCount.Size = new System.Drawing.Size(988, 622);
@@ -117,7 +117,7 @@
             this.dayStatic1.BackColor = System.Drawing.Color.White;
             this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dayStatic1.Location = new System.Drawing.Point(0, 0);
-            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2);
             this.dayStatic1.Name = "dayStatic1";
             this.dayStatic1.Size = new System.Drawing.Size(988, 622);
             this.dayStatic1.TabIndex = 3;
