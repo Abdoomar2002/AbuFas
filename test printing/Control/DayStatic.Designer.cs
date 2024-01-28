@@ -87,7 +87,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(124, 220);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tableLayoutPanel1.RowCount = 6;
@@ -351,15 +351,15 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.bills211);
             this.panel1.Controls.Add(this.cuurentDate);
             this.panel1.Controls.Add(this.inOutCome1);
-            this.panel1.Controls.Add(this.bills211);
             this.panel1.Controls.Add(this.prev);
             this.panel1.Controls.Add(this.next);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(983, 742);
             this.panel1.TabIndex = 1;
@@ -407,7 +407,7 @@
             this.prev.ImageOffset = new System.Drawing.Point(0, 0);
             this.prev.ImageRotate = 0F;
             this.prev.Location = new System.Drawing.Point(20, 334);
-            this.prev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.prev.Margin = new System.Windows.Forms.Padding(2);
             this.prev.Name = "prev";
             this.prev.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.prev.Size = new System.Drawing.Size(48, 44);
@@ -423,7 +423,7 @@
             this.next.ImageOffset = new System.Drawing.Point(0, 0);
             this.next.ImageRotate = 0F;
             this.next.Location = new System.Drawing.Point(890, 334);
-            this.next.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.next.Margin = new System.Windows.Forms.Padding(2);
             this.next.Name = "next";
             this.next.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.next.Size = new System.Drawing.Size(48, 44);
@@ -436,7 +436,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DayStatic";
             this.Size = new System.Drawing.Size(983, 742);
             this.Load += new System.EventHandler(this.DayStatic_Load);
