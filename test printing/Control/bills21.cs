@@ -68,7 +68,7 @@ namespace AbuFas
             tableLayoutPanel1.AutoScroll = true;
 
         }
-        
+
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             //tableLayoutPanel1.
@@ -78,20 +78,20 @@ namespace AbuFas
         {
             this.Visible = false;
         }
-        public void load(int id,bool flag) 
+        public void load(int id, bool flag)
         {
             tableLayoutPanel1.Controls.Clear();
-           
+
             AppDbContext context = new AppDbContext();
-            var bills =  context.Bills.Where(c=>c.Money.Id==id&&c.IsBuy==flag).ToList();
+            var bills = context.Bills.Where(c => c.Money.Id == id && c.IsBuy == flag).ToList();
             string str = "";
-            if(bills.Count>0 ) 
-            foreach ( var b in bills ) 
-            {
+            if (bills.Count > 0)
+                foreach (var b in bills)
+                {
                     str = "الاسم: ";
                     str += b.CustomerName + "\nالتاريخ: " + b.Date.ToShortDateString() + "\nالسعر: " + b.Total;
                     Label label2 = new Label();
-                    label2.Text = (bills.IndexOf(b)+1).ToString();
+                    label2.Text = (bills.IndexOf(b) + 1).ToString();
                     label2.Width = 20;
                     label2.BackColor = Color.FromArgb(255, 212, 175, 55);
                     label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -102,16 +102,16 @@ namespace AbuFas
                     tableLayoutPanel1.Controls.Add(label2);
                     Guna2TextBox newtext1 = new Guna2TextBox
                     {
-                        Multiline= true,
+                        Multiline = true,
                         Margin = guna2TextBox1.Margin,
                         BorderRadius = guna2TextBox1.BorderRadius,
-                       Enabled = false,
+                        Enabled = false,
                         Dock = guna2TextBox1.Dock,
                         Font = new Font("Cairo", 10F, FontStyle.Regular, GraphicsUnit.Point),
-                    BackColor = guna2TextBox1.BackColor,
+                        BackColor = guna2TextBox1.BackColor,
                         ForeColor = guna2TextBox1.ForeColor,
                         Height = guna2TextBox1.Height,
-                        
+
                     };
                     newtext1.Text = str;
                     tableLayoutPanel1.Controls.Add(newtext1);

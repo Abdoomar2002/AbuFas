@@ -17,24 +17,25 @@ namespace AbuFas
 {
     public partial class Borrow : UserControl
     {
-        AppDbContext context ;
-        Guna2DateTimePicker dtp=new Guna2DateTimePicker();
+        AppDbContext context;
+        Guna2DateTimePicker dtp = new Guna2DateTimePicker();
         public Borrow()
         {
             InitializeComponent();
-            inout.Rows[0].Cells[0].Value = 1;
+            context=new AppDbContext();
+            inout.Rows[0].Cells[0].Value = 0;
             inout.Rows[0].Cells[1].Value = Properties.Resources.icon;
             inout.Rows[0].Cells[2].Value = Properties.Resources.icon_1;
             inout.Rows[0].Cells[3].Value = Properties.Resources.archive;
             inout.Rows[0].Cells[4].Value = "";
             inout.Rows[0].Cells[8].Value = 0;
             inout.Rows[0].Height = 40;
-            inout.Columns[8].Visible= false;
+            inout.Columns[8].Visible = false;
             DetailsList.Rows[0].Height = 40;
-            DetailsList.Columns[6].Visible= false;
+            DetailsList.Columns[6].Visible = false;
             DetailsList.Rows[0].Cells[0].Value = Properties.Resources.icon;
             DetailsList.Rows[0].Cells[1].Value = Properties.Resources.icon_1;
-         
+
 
             msgbox.Visible = false;
             details.Visible = false;
@@ -50,7 +51,7 @@ namespace AbuFas
         private void dtp_TextChanged(Object sender, EventArgs e)
         {
             DetailsList.CurrentCell.Value = dtp.Text.ToString();
-            dtp.Visible=false;
+            dtp.Visible = false;
         }
 
         private void inout_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -64,27 +65,26 @@ namespace AbuFas
 
         }
 
-      
-
         private void closeDetails_Click(object sender, EventArgs e)
         {
-            details.Visible=false;
+            details.Visible = false;
         }
-
+        //Check
         private void reject_Click(object sender, EventArgs e)
         {
-            Guna2Button btn=(Guna2Button)sender;
+            Guna2Button btn = (Guna2Button)sender;
             if (btn.Name == "accept")
             {
-                msgbox.Visible=false;
+                msgbox.Visible = false;
+                ActionBorrow();
             }
-            else 
+            else
             {
-                msgbox.Visible=false;
+                msgbox.Visible = false;
             }
 
         }
-
+        //Archive or Edit or Delete
         private void inout_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex > 0 && e.ColumnIndex < 4)
@@ -92,8 +92,10 @@ namespace AbuFas
                 switch (e.ColumnIndex)
                 {
                     case 1: { msgbox.Visible = true; }; break;// Delete
-                    case 2: { details.Visible=true;
-                            detailsLoad(Int32.Parse(inout.Rows[e.RowIndex].Cells[8].Value.ToString()), inout.Rows[e.RowIndex].Cells[4].Value.ToString()); 
+                    case 2:
+                        {
+                            details.Visible = true;
+                            detailsLoad(Int32.Parse(inout.Rows[e.RowIndex].Cells[8].Value.ToString()), inout.Rows[e.RowIndex].Cells[4].Value.ToString());
                         }; break;//Edit
                     case 3: { msgbox.Visible = true; }; break;//Archive
 
@@ -110,27 +112,35 @@ namespace AbuFas
 
             }
         }
-        public void load() 
+        public void load()
         {
-             context=new AppDbContext();
+            inout.Rows.Clear();
+            inout.RowCount = 1;
             context.Database.EnsureCreated();
-            var list=context.Borrows.ToList();
-            if(list.Count > 0) 
-            {inout.RowCount=list.Count+1;
-                foreach( var item in list) 
+            var list = context.Borrows.Where(c => c.IsArchived == false).ToList();
+            if (list.Count > 0)
+            {
+                double total = 0;
+                foreach (var item in list)
                 {
+                    inout.RowCount++;
                     inout.Rows[list.IndexOf(item)].Cells[4].Value = item.Name;
                     inout.Rows[list.IndexOf(item)].Cells[5].Value = item.Date.ToShortDateString();
                     inout.Rows[list.IndexOf(item)].Cells[6].Value = item.Total;
+                    total += item.Total;
                     inout.Rows[list.IndexOf(item)].Cells[7].Value = item.Notes;
                     inout.Rows[list.IndexOf(item)].Cells[8].Value = item.Id;
+
                 }
+                //  inout.RowCount++;
+                inout.Rows[inout.Rows.Count - 1].Cells[0].Value = "";
+                TotalBorrows.Text = total.ToString();
             }
         }
-        private void detailsLoad(int id,string name) 
+        private void detailsLoad(int id, string name)
         {
             label5.Text = name;
-            
+            DetailsList.Rows.Clear();
             if (id != 0)
             {
                 var detailsList = context.BorrowsData.Where(c => c.Borrow.Id == id).ToList();
@@ -139,65 +149,98 @@ namespace AbuFas
                     DetailsList.RowCount = detailsList.Count + 1;
                     foreach (var item in detailsList)
                     {
-                        DetailsList.Rows[detailsList.IndexOf(item)].Cells[2].Value = item.Date;
+                        DetailsList.Rows[detailsList.IndexOf(item)].Cells[0].Value = Properties.Resources.icon;
+                        DetailsList.Rows[detailsList.IndexOf(item)].Cells[1].Value = Properties.Resources.icon_1;
+                        DetailsList.Rows[detailsList.IndexOf(item)].Cells[2].Value = item.Date.ToShortDateString();
                         DetailsList.Rows[detailsList.IndexOf(item)].Cells[3].Value = item.Incoume;
                         DetailsList.Rows[detailsList.IndexOf(item)].Cells[4].Value = item.Outcome;
                         DetailsList.Rows[detailsList.IndexOf(item)].Cells[5].Value = item.Notes;
+                        DetailsList.Rows[detailsList.IndexOf(item)].Cells[6].Value = item.Id;
+
                         DetailsList.Rows[detailsList.IndexOf(item)].ReadOnly = true;
+                        DetailsList.Rows[detailsList.IndexOf(item)].DefaultCellStyle.ForeColor = Color.Gray;
 
 
                     }
                 }
             }
         }
-
+        // edit or remove borrow data
         private void DetailsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex==1||e.ColumnIndex==0) 
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 0)
             {
-                if(e.ColumnIndex==0)
+                if (e.ColumnIndex == 0)
                 {
-                    var message=MessageBox.Show("هل انت متاكد","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-                    if(message != DialogResult.Yes)
+                    var message = MessageBox.Show("هل انت متاكد", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (message == DialogResult.Yes)
                     {
-                        var item = context.BorrowsData.Where(c => c.Id ==Int32.Parse(DetailsList.Rows[e.RowIndex].Cells[6].Value.ToString())).FirstOrDefault();
-                        if(item != null) 
+                        if (DetailsList.Rows[e.RowIndex].Cells[6].Value != null)
                         {
-                            context.BorrowsData.Remove(item);
+                            var item = context.BorrowsData.Where(c => c.Id == Int32.Parse(DetailsList.Rows[e.RowIndex].Cells[6].Value.ToString())).FirstOrDefault();
+                            if (item != null)
+                            {
+                                context.BorrowsData.Remove(item);
+                            }
                         }
-                        DetailsList.Rows.Remove(DetailsList.Rows[e.RowIndex]);
+                        if (e.RowIndex < DetailsList.Rows.Count - 1)
+                            DetailsList.Rows.Remove(DetailsList.Rows[e.RowIndex]);
+                        else
+                        {
+                            MessageBox.Show("هذا الصف فارغ");
+                        }
 
                     }
                 }
-                else 
+                else
                 {
                     DetailsList.Rows[e.RowIndex].ReadOnly = false;
+                    DetailsList.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+
                 }
             }
         }
-
+        //Add or update Borrow Item 
         private void save_Click(object sender, EventArgs e)
         {
-            var items =new List<BorrowsData>();
-            var br=context.Borrows.Where(c=>c.Name==label5.Text).FirstOrDefault();
-            if (br == null) br = new Borrows();
+            if (label5.Text == "") { MessageBox.Show("من فضلك ادخل الاسم"); return; }
+            if (DetailsList.RowCount == 1) { MessageBox.Show("من فضلك ادخل البيانات "); return; }
+
+
+
+            var items = new List<BorrowsData>();
+            var br = context.Borrows.Where(c => c.Name == label5.Text).FirstOrDefault();
+            if (br == null) { br = new Borrows(); context.Borrows.Add(br); }
             br.Name = label5.Text;
             double total = 0;
             string note = "";
             DateTime date = DateTime.MinValue;
-            foreach(DataGridViewRow row in DetailsList.Rows) 
+            foreach (DataGridViewRow row in DetailsList.Rows)
             {
-                var item =new BorrowsData();
-                DateTime dateTime= DateTime.MinValue;
-                    DateTime.TryParse(row.Cells[2].Value.ToString(),out dateTime);
-                item.Date = dateTime==DateTime.MinValue ? DateTime.MinValue : dateTime;
-                item.Incoume =(double) TryParseDouble(row.Cells[3].Value);
-                item.Outcome =(double) TryParseDouble(row.Cells[4].Value);
-                item.Notes = row.Cells[5].Value.ToString();
+                if (DetailsList.Rows.IndexOf(row) == DetailsList.RowCount - 1) { continue; }
+                var item = new BorrowsData();
+                DateTime dateTime = DateTime.MinValue;
+                DateTime.TryParse(row.Cells[2].Value.ToString(), out dateTime);
+                item.Date = dateTime == DateTime.MinValue ? DateTime.MinValue : dateTime;
+                item.Incoume = (double)TryParseDouble(row.Cells[3].Value);
+                item.Outcome = (double)TryParseDouble(row.Cells[4].Value);
+                total += item.Incoume - item.Outcome;
+                item.Notes = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "";
                 items.Add(item);
             }
+
             br.BData = items;
+            br.Total = total;
+            br.Notes = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Notes;
+            br.Date = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Date;
             context.SaveChanges();
+            MessageBox.Show("تمت الاضافة بنجاح");
+            load();
+            details.Visible = false;
+            var list = context.BorrowsData.Where(c => c.Borrow.Id == null).ToList();
+            context.BorrowsData.RemoveRange(list);
+            context.SaveChanges();
+
         }
         private double? TryParseDouble(object value)
         {
@@ -215,13 +258,13 @@ namespace AbuFas
             DetailsList.Rows[e.RowIndex].Height = 40;
             DetailsList.Rows[e.RowIndex].Cells[0].Value = Properties.Resources.icon;
             DetailsList.Rows[e.RowIndex].Cells[1].Value = Properties.Resources.icon_1;
-            
-            
-        }
 
+
+        }
+        // Date Picker Show
         private void DetailsList_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex==2)
+            if (e.ColumnIndex == 2 && DetailsList.CurrentRow.ReadOnly == false)
             {
                 Rectangle rect;
                 rect = DetailsList.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
@@ -231,30 +274,59 @@ namespace AbuFas
 
             }
         }
-
+        //nothing
         private void DetailsList_Scroll(object sender, ScrollEventArgs e)
         {
             dtp.Visible = false;
         }
-
+        //Validating
         private void DetailsList_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex==2) 
+            if (e.ColumnIndex == 2)
             {
                 DetailsList.CurrentCell.Value = dtp.Value.ToShortDateString();
                 dtp.Visible = false;
             }
-            else 
+            else
             {
                 double v = 0;
-                if(e.ColumnIndex == 3||e.ColumnIndex==4) 
+                if (e.ColumnIndex == 3 || e.ColumnIndex == 4)
                 {
-                    if(!Double.TryParse(DetailsList.CurrentCell.EditedFormattedValue.ToString(),out v)) 
+                    if (!Double.TryParse(DetailsList.CurrentCell.EditedFormattedValue.ToString(), out v))
                     {
                         MessageBox.Show("يجب ان يكون المدخل رقم");
-                        
+
                     }
+
                 }
+            }
+        }
+        //Archive Or Delete
+        public void ActionBorrow()
+        {
+            int bid = 0;
+            Int32.TryParse(inout.CurrentRow.Cells[8].Value.ToString(), out bid);
+            var item = context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
+            if (item != null)
+            {
+                if (inout.CurrentCell.ColumnIndex == 1)
+                {
+                    item.BData.Clear();
+                    context.Borrows.Remove(item);
+                }
+                else if (inout.CurrentCell.ColumnIndex == 3)
+                {
+                    item.IsArchived = true;
+                }
+                context.SaveChanges();
+                load();
+
+            }
+            else
+            {
+                if (inout.CurrentRow.Index < inout.RowCount - 1)
+                    inout.Rows.Remove(inout.CurrentRow);
+                else MessageBox.Show("هذا الصف فارغ");
             }
         }
     }
