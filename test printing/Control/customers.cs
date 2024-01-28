@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AbuFas.db;
+using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,7 +17,11 @@ namespace AbuFas
 {
     public partial class customers : UserControl
     {
-        private  AppDbContext context;
+        public AppDbContext context;
+        Guna2DateTimePicker dtp = new Guna2DateTimePicker();
+        Guna2DateTimePicker dtp2 = new Guna2DateTimePicker();
+        bool breaksave = false;
+
         public customers()
         {
             InitializeComponent();
@@ -24,8 +31,13 @@ namespace AbuFas
             outcome.Columns[4].Visible = false;
             SaveChange.Visible = false;
             inoutId.Visible = false;
-          
-            
+            dtp.Visible = false;
+            dtp2.Visible = false;
+            dtp.TextChanged += new EventHandler(dtp_TextChanged);
+            incoume.Controls.Add(dtp);
+            outcome.Controls.Add(dtp2);
+            context = new AppDbContext();
+
         }
         public customers(DbContextOptions<AppDbContext> options)
         {
@@ -37,7 +49,7 @@ namespace AbuFas
             AddCustomer.BringToFront();
             custLoad(0);
             SaveChange.Visible = true;
-            
+
         }
 
         private void CustomersArchiveBtn_Click(object sender, EventArgs e)
@@ -51,8 +63,8 @@ namespace AbuFas
         {
             AddCustomer.BringToFront();
             int r = 0;
-            if(CustomersList.CurrentRow.Cells[2].Value !=null)
-            Int32.TryParse(CustomersList.CurrentRow.Cells[2].Value.ToString(), out r);
+            if (CustomersList.CurrentRow.Cells[2].Value != null)
+                Int32.TryParse(CustomersList.CurrentRow.Cells[2].Value.ToString(), out r);
             custLoad(r);
             SaveChange.Visible = true;
         }
@@ -68,37 +80,44 @@ namespace AbuFas
             AddCustomer.SendToBack();
             SaveChange.Visible = false;
         }
-        public void load() 
+        public void load()
         {
             CustomersList.Rows.Clear();
-            context=new AppDbContext();
-            var list=context.Customers.ToList();
+            var list = context.Customers.Where(c => c.IsArchived == false).ToList();
             index.BringToFront();
-            if(list.Count > 0) 
+            if (list.Count > 0)
             {
                 int i = 0;
-                CustomersList.RowCount= list.Count+1;
-                foreach(var item in list) 
+                CustomersList.RowCount = list.Count + 1;
+                double grams = 0, money = 0;
+                foreach (var item in list)
                 {
-                    
-                    CustomersList.Rows[i].Cells[0].Value = i+1;
+
+                    CustomersList.Rows[i].Cells[0].Value = i + 1;
                     CustomersList.Rows[i].Cells[1].Value = item.Name;
                     CustomersList.Rows[i].Cells[2].Value = item.Id;
                     CustomersList.Rows[i].ReadOnly = true;
+                    money += item.TotalMoney;
+                    grams += item.TotalGrams;
+                    i++;
                 }
+                totalMoney.Text = money.ToString();
+                totalGrams.Text = grams.ToString();
             }
         }
         public void custLoad(int id)
         {
             incoume.Rows.Clear();
             outcome.Rows.Clear();
+            incoume.RowCount = 1;
+            outcome.RowCount = 1;
             custName.Text = "";
             totalGrams.Text = "0000";
             totalMoney.Text = "0000";
 
             if (id != 0)
             {
-                var list = context.CustomersData.Where(c => c.Id == id).ToList();
+                var list = context.CustomersData.Where(c => c.Customer.Id == id).ToList();
                 if (list.Count > 0)
                 {
                     custName.Text = list[0].Customer.Name;
@@ -109,6 +128,7 @@ namespace AbuFas
                     {
                         if (item.IsIncome)
                         {
+                            incoume.RowCount++;
                             incoume.Rows[i].Cells[0].Value = item.Date;
                             incoume.Rows[i].Cells[1].Value = item.Price;
                             incoume.Rows[i].Cells[2].Value = item.Grams;
@@ -117,9 +137,11 @@ namespace AbuFas
                             i++;
                             money += item.Price;
                             grams += item.Grams;
+
                         }
                         else
                         {
+                            outcome.RowCount++;
                             outcome.Rows[j].Cells[0].Value = item.Date;
                             outcome.Rows[j].Cells[1].Value = item.Price;
                             outcome.Rows[j].Cells[2].Value = item.Grams;
@@ -136,26 +158,145 @@ namespace AbuFas
                 }
             }
         }
-        public void ArchiveLoad() 
+        public void ArchiveLoad()
         {
             inout.Rows.Clear();
-            var list=context.Customers.Where(c=>c.IsArchived==true).ToList();
-            if (list.Count > 0) 
+            var list = context.Customers.Where(c => c.IsArchived == true).ToList();
+            if (list.Count > 0)
             {
                 int i = 0;
                 foreach (var item in list)
                 {
-                    inout.Rows[i].Cells[0].Value=i+1;
-                    inout.Rows[i].Cells[1].Value=item.Name;
-                    inout.Rows[i].Cells[2].Value=item.Date.ToShortDateString();
-                    inout.Rows[i].Cells[3].Value=item.TotalMoney;
-                    inout.Rows[i].Cells[4].Value=item.TotalGrams;
-                    inout.Rows[i].Cells[5].Value=item.Notes;
-                    inout.Rows[i].Cells[6].Value=item.Id;
+                    inout.Rows[i].Cells[0].Value = i + 1;
+                    inout.Rows[i].Cells[1].Value = item.Name;
+                    inout.Rows[i].Cells[2].Value = item.Date.ToShortDateString();
+                    inout.Rows[i].Cells[3].Value = item.TotalMoney;
+                    inout.Rows[i].Cells[4].Value = item.TotalGrams;
+                    inout.Rows[i].Cells[5].Value = item.Notes;
+                    inout.Rows[i].Cells[6].Value = item.Id;
                     inout.Rows[i].ReadOnly = true;
                     i++;
                 }
             }
+        }
+
+        private void sendToArchive_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveChange_Click(object sender, EventArgs e)
+        {
+            if (custName.Text.Length == 0) { MessageBox.Show("من فضلك ادخل اسم التاجر"); return; }
+            if (incoume.RowCount == 1 && outcome.RowCount == 1) { MessageBox.Show("من فضلك ادخل البيانات كامله"); return; }
+            var cust = context.Customers.Where(c => c.Name.Equals(custName.Text)).FirstOrDefault();
+            if (cust == null) { cust = new Customers(); context.Customers.Add(cust); }
+            cust.IsArchived = false;
+            cust.Name = custName.Text;
+            double grams = 0, money = 0;
+            var List = new List<CustomersData>();
+            foreach (DataGridViewRow row in incoume.Rows)
+            {
+                CustomersData data = new CustomersData();
+                if (row.Index == incoume.Rows.Count - 1) continue;
+                DateTime date = DateTime.Now;
+                if (row.Cells[0].Value != null) DateTime.TryParse(row.Cells[0].Value.ToString(), out date);
+                data.Date = date.Date;
+                data.Price = (double)TryParseDouble(row.Cells[1].Value);
+                money += data.Price;
+                data.Grams = (double)TryParseDouble(row.Cells[2].Value);
+                grams += data.Grams;
+                data.Notes = row.Cells[3].Value != null ? row.Cells[3].Value.ToString() : "";
+                data.IsIncome = true;
+                List.Add(data);
+            }
+            var outcoumeList = new List<CustomersData>();
+            foreach (DataGridViewRow row in outcome.Rows)
+            {
+                if (row.Index == incoume.Rows.Count - 1) continue;
+                CustomersData data = new CustomersData();
+                DateTime date = DateTime.Now;
+                if (row.Cells[0].Value != null) DateTime.TryParse(row.Cells[0].Value.ToString(), out date);
+                data.Date = date.Date;
+                data.Price = (double)TryParseDouble(row.Cells[1].Value);
+                money -= data.Price;
+                data.Grams = (double)TryParseDouble(row.Cells[2].Value);
+                grams -= data.Grams;
+                data.Notes = row.Cells[3].Value != null ? row.Cells[3].Value.ToString() : "";
+                data.IsIncome = false;
+                List.Add(data);
+
+            }
+            cust.Data = List;
+            cust.Date = List.AsEnumerable().OrderByDescending(d => d.Date).FirstOrDefault().Date.Date;
+            cust.Notes = List.AsEnumerable().OrderByDescending(d => d.Date).FirstOrDefault().Notes;
+            cust.TotalGrams = grams;
+            cust.TotalMoney = money;
+            context.SaveChanges();
+            MessageBox.Show("تمت العملية");
+            load();
+            AddCustomer.SendToBack();
+            var list = context.CustomersData.Where(c => c.Customer == null).ToList();
+            context.CustomersData.RemoveRange(list);
+            context.SaveChanges();
+        }
+        private double? TryParseDouble(object value)
+        {
+            if (value == null)
+            {
+                return 0;
+            }
+
+            double result;
+            return double.TryParse(value.ToString(), out result) ? (double?)result : 0;
+        }
+
+        private void incoume_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Guna2DataGridView view = (Guna2DataGridView)sender;
+            Guna2DateTimePicker dtp1 = view.Name == "outcome" ? dtp2 : dtp;
+
+            if (e.ColumnIndex == 0 && view.CurrentRow.ReadOnly == false)
+            {
+                Rectangle rect;
+                rect = view.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+
+                dtp1.Size = new Size(rect.Width, rect.Height);
+                dtp1.Location = new Point(rect.X, rect.Y);
+                dtp1.Visible = true;
+
+            }
+        }
+
+        private void outcome_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            Guna2DataGridView view = (Guna2DataGridView)sender;
+            Guna2DateTimePicker dtp1 = view.Name == "outcome" ? dtp2 : dtp;
+
+            if (e.ColumnIndex == 0)
+            {
+                view.CurrentCell.Value = dtp1.Value.ToShortDateString();
+                dtp1.Visible = false;
+            }
+            else
+            {
+                double v = 0;
+                if (e.ColumnIndex != 3)
+                {
+                    if (!Double.TryParse(view.CurrentCell.EditedFormattedValue.ToString(), out v))
+                    {
+                        MessageBox.Show("يجب ان يكون المدخل رقم");
+
+
+                    }
+                }
+            }
+        }
+        private void dtp_TextChanged(Object sender, EventArgs e)
+        {
+            Guna2DataGridView view = (Guna2DataGridView)dtp.Parent;
+            view.CurrentCell.Value = dtp.Text.ToString();
+            dtp.Visible = false;
         }
     }
 }
