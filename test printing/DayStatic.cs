@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -11,14 +12,18 @@ namespace AbuFas
     public partial class DayStatic : UserControl
     {
         bool fl, fl1;
+      public readonly  AppDbContext context;
         public DayStatic()
         {
             InitializeComponent();
         }
-
+        public DayStatic(DbContextOptions<AppDbContext> options)
+        {
+            context = new AppDbContext(options);
+        }
         private void label15_Click(object sender, EventArgs e)
         {
-            AppDbContext context = new AppDbContext();
+           
             var money = context.DaystaticMoney.Where(x => x.Date == DateTime.Parse(cuurentDate.Text)).FirstOrDefault();
             if (money == null)
             {
@@ -97,7 +102,7 @@ namespace AbuFas
         }
         private void prev_Click(object sender, EventArgs e)
         {
-            AppDbContext context = new AppDbContext();
+           
             var item =context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
             DateTime date=DateTime.Parse(cuurentDate.Text);
             if (item==null||date == item.Date)
@@ -113,8 +118,8 @@ namespace AbuFas
         {
             cuurentDate.Text = date.ToShortDateString();
             inOutCome1.dateTime = date;
-            AppDbContext context = new AppDbContext();
-            var days = context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
+           
+            DaystaticMoney days =context!=null? context.DaystaticMoney.Where(x => x.Date == date).FirstOrDefault():null;
             double totalIncome = 0, totalOutcome = 0;
             double totalbuy = 0, totalsell = 0;
             double yesterday = 0;

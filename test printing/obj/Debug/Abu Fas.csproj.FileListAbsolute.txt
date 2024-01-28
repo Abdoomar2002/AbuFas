@@ -116,3 +116,121 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.exe
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.pdb
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.config
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.pdb
+D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Guna.UI2.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.HashCode.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.SqlClient.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Options.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Identity.Client.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Logging.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Newtonsoft.Json.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\SQLitePCLRaw.core.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Buffers.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Collections.Immutable.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.ComponentModel.Annotations.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Data.SqlClient.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Memory.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Numerics.Vectors.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.HashCode.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.SqlClient.pdb
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.SqlClient.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Options.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Identity.Client.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Logging.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Newtonsoft.Json.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Buffers.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Collections.Immutable.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Data.SqlClient.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Memory.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Numerics.Vectors.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.Archive.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BillBuy.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.bills21.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Borrow.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BuySell.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.customers.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.DayStatic.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Editing.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.GramsCount.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.Home.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.InOutCome.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.login.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Properties.Resources.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.bill.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.GenerateResource.cache
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CoreCompileInputs.cache
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CopyComplete
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.pdb
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.AssemblyReference.cache
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.SuggestedBindingRedirects.cache

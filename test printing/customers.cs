@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace AbuFas
 {
     public partial class customers : UserControl
     {
-        AppDbContext context=new AppDbContext();
+        private  AppDbContext context;
         public customers()
         {
             InitializeComponent();
@@ -23,7 +24,12 @@ namespace AbuFas
             outcome.Columns[4].Visible = false;
             SaveChange.Visible = false;
             inoutId.Visible = false;
+          
             
+        }
+        public customers(DbContextOptions<AppDbContext> options)
+        {
+            context = new AppDbContext(options);
         }
 
         private void AddCustomerBtn_Click(object sender, EventArgs e)
@@ -65,6 +71,7 @@ namespace AbuFas
         public void load() 
         {
             CustomersList.Rows.Clear();
+            context=new AppDbContext();
             var list=context.Customers.ToList();
             index.BringToFront();
             if(list.Count > 0) 

@@ -22,7 +22,7 @@ namespace test_printing
 {
     public partial class bill : UserControl
     {
-        public AppDbContext _context=new AppDbContext();
+        public  AppDbContext _context;
         protected override CreateParams CreateParams
         {
             get
@@ -36,6 +36,10 @@ namespace test_printing
         public bill()
         {
             InitializeComponent();
+        }
+        public bill(DbContextOptions<AppDbContext> options)
+        {
+            _context = new AppDbContext(options);
         }
         public void AutoSizeAll(Control control) 
         {
@@ -104,6 +108,8 @@ namespace test_printing
     test_printing.bill.LoadDataFromDatabase() in bill.cs*/
             try
             {
+                _context = new AppDbContext();
+
                 _context.Database.EnsureCreated();
 
                 var last = _context.Bills;

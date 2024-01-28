@@ -29,7 +29,11 @@ namespace test_printing
         {
             InitializeComponent();
         }
-       public AppDbContext _context = new AppDbContext();
+        public Archive(DbContextOptions<AppDbContext> options)
+        {
+            _context = new AppDbContext(options);
+        }
+        public AppDbContext _context ;
         private void Archive_Load(object sender, EventArgs e)
         {
            

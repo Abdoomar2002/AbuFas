@@ -18,6 +18,7 @@ namespace AbuFas
 {
     public partial class GramsCount : UserControl
     {
+        public readonly AppDbContext context;
         protected override CreateParams CreateParams
         {
             get
@@ -31,13 +32,16 @@ namespace AbuFas
         {
             InitializeComponent();
         }
-
+        public GramsCount(DbContextOptions<AppDbContext> options)
+        {
+            context = new AppDbContext(options);
+        }
         public void GramsCount_Load(object sender, EventArgs e)
         {
 
            
-            var context = new AppDbContext();
-            if (context.DayStaticGrams!=null)
+          
+            if (context!=null)
             {
                 var table = context.DayStaticGrams
                .OrderByDescending(g => g.Date)

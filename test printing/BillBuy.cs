@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace test_printing
 {
     public partial class BillBuy : UserControl
     {
-        public AppDbContext _context = new AppDbContext();
+        public  AppDbContext _context ;
         protected override CreateParams CreateParams
         {
             get
@@ -32,6 +33,11 @@ namespace test_printing
         public BillBuy()
         {
             InitializeComponent();
+
+        }
+        public BillBuy(DbContextOptions<AppDbContext> options)
+        {
+            _context = new AppDbContext(options);
         }
 
         private void Notes_TextChanged(object sender, EventArgs e)
@@ -53,6 +59,8 @@ namespace test_printing
         {
             try
             {
+                _context = new AppDbContext();
+
                 _context.Database.EnsureCreated();
 
                 _context.Database.EnsureCreated();

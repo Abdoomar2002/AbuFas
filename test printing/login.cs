@@ -33,14 +33,14 @@ namespace AbuFas
            */
             var context = new AppDbContext();
            
-              context.Database.EnsureDeleted();
+            //  context.Database.EnsureDeleted();
+               // context.Database.EnsureCreated();
            
 
 
             if (guna2TextBox2.Text == "123") {
                 context.Database.OpenConnection();
                 context.Database.MigrateAsync();
-                context.Database.EnsureCreated();
            
                 context.Database.GetDbConnection().Open();
                

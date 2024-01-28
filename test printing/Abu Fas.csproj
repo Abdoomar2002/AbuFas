@@ -292,37 +292,9 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20231213143351_initial.cs" />
-    <Compile Include="Migrations\20231213143351_initial.designer.cs">
-      <DependentUpon>20231213143351_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20231215080734_newO.cs" />
-    <Compile Include="Migrations\20231215080734_newO.designer.cs">
-      <DependentUpon>20231215080734_newO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20231215082921_InitialCreate.cs" />
-    <Compile Include="Migrations\20231215082921_InitialCreate.designer.cs">
-      <DependentUpon>20231215082921_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20231215085701_InitialC.cs" />
-    <Compile Include="Migrations\20231215085701_InitialC.designer.cs">
-      <DependentUpon>20231215085701_InitialC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20231217153912_edit1.cs" />
-    <Compile Include="Migrations\20231217153912_edit1.designer.cs">
-      <DependentUpon>20231217153912_edit1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20240107221339_secondDeliver.cs" />
-    <Compile Include="Migrations\20240107221339_secondDeliver.designer.cs">
-      <DependentUpon>20240107221339_secondDeliver.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20240109202959_secDeliver.cs" />
-    <Compile Include="Migrations\20240109202959_secDeliver.designer.cs">
-      <DependentUpon>20240109202959_secDeliver.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20240109221001_edit.cs" />
-    <Compile Include="Migrations\20240109221001_edit.designer.cs">
-      <DependentUpon>20240109221001_edit.cs</DependentUpon>
+    <Compile Include="Migrations\20240126124822_first.cs" />
+    <Compile Include="Migrations\20240126124822_first.designer.cs">
+      <DependentUpon>20240126124822_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
@@ -455,6 +427,7 @@
   <ItemGroup>
     <Content Include="photos\archive.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,7 @@ namespace test_printing
         {
             InitializeComponent();
         }
+      
 
         private void Buy_Click(object sender, EventArgs e)
         {

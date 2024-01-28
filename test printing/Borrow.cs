@@ -1,5 +1,6 @@
 ﻿using AbuFas.db;
 using Guna.UI2.WinForms;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace AbuFas
 {
     public partial class Borrow : UserControl
     {
-        AppDbContext context = new AppDbContext();
+        AppDbContext context ;
         Guna2DateTimePicker dtp=new Guna2DateTimePicker();
         public Borrow()
         {
@@ -41,6 +42,10 @@ namespace AbuFas
             dtp.Visible = false;
             dtp.TextChanged += new EventHandler(dtp_TextChanged);
 
+        }
+        public Borrow(DbContextOptions<AppDbContext> options)
+        {
+            context = new AppDbContext(options);
         }
         private void dtp_TextChanged(Object sender, EventArgs e)
         {
@@ -107,7 +112,7 @@ namespace AbuFas
         }
         public void load() 
         {
-             
+             context=new AppDbContext();
             context.Database.EnsureCreated();
             var list=context.Borrows.ToList();
             if(list.Count > 0) 
