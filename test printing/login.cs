@@ -1,7 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Configuration;
 using System.Windows.Forms;
 using test_printing;
 
@@ -41,7 +39,7 @@ namespace AbuFas
             if (guna2TextBox2.Text == "123") {
                 context.Database.OpenConnection();
                 context.Database.MigrateAsync();
-           
+                context.Database.EnsureCreated();
                 context.Database.GetDbConnection().Open();
                
               

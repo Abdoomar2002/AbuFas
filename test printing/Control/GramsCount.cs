@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -18,7 +19,8 @@ namespace AbuFas
 {
     public partial class GramsCount : UserControl
     {
-        public readonly AppDbContext context;
+        public AppDbContext context;
+
         protected override CreateParams CreateParams
         {
             get
@@ -31,26 +33,28 @@ namespace AbuFas
         public GramsCount()
         {
             InitializeComponent();
+            context = new AppDbContext();
+
         }
         public GramsCount(DbContextOptions<AppDbContext> options)
         {
             context = new AppDbContext(options);
         }
+
         public void GramsCount_Load(object sender, EventArgs e)
         {
+            reset();
 
-           
-          
-            if (context!=null)
+         
+            if (context.DayStaticGrams != null)
             {
-                var table = context.DayStaticGrams
-               .OrderByDescending(g => g.Date)
-               .AsEnumerable()
-               .ToList();
+                var table = context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
                 // Further code using the context...
 
 
                 // AppDbContext context = new AppDbContext();
+                double yesterday = 0;
+                double today = 0;
 
                 //   var table = context.DayStaticGrams.OrderByDescending(g => g.Date).AsEnumerable().ToList();
                 for (int i = 0; i < table.Count; i++)
@@ -68,6 +72,9 @@ namespace AbuFas
                     Guna2TextBox labelCol6 = CopyLabel();
                     Guna2TextBox labelCol7 = CopyLabel();
                     Guna2TextBox labelCol8 = CopyLabel();
+                    labelCol5.ReadOnly = false;
+                    labelCol4.ReadOnly = false;
+                    labelCol8.ReadOnly = false;
 
                     // Set data for each label
 
@@ -82,7 +89,7 @@ namespace AbuFas
                     labelCol8.Text = "";
 
                     // Add labels to the TableLayoutPanel
-                    tableLayoutPanel1.RowCount++;
+                    // tableLayoutPanel1.RowCount++;
                     tableLayoutPanel1.Controls.Add(labelDate, 0, i + 1);
                     tableLayoutPanel1.Controls.Add(labelCol1, 1, i + 1);
                     tableLayoutPanel1.Controls.Add(labelCol2, 2, i + 1);
@@ -92,56 +99,18 @@ namespace AbuFas
                     tableLayoutPanel1.Controls.Add(labelCol6, 6, i + 1);
                     tableLayoutPanel1.Controls.Add(labelCol7, 7, i + 1);
                     tableLayoutPanel1.Controls.Add(labelCol8, 8, i + 1);
-                    tableLayoutPanel1.RowStyles[1].Height = 40;
+                    //   tableLayoutPanel1.RowStyles[1].Height = 40;
+                    if (i + 1 < table.Count)
+                        yesterday += double.Parse(labelCol6.Text);
+
+                    today = double.Parse(labelCol7.Text);
 
 
                 }
 
+                guna2TextBox1.Text = yesterday.ToString();
+                guna2TextBox2.Text = (yesterday + today).ToString();
 
-                /*  for(int i=0;i<tableLayoutPanel1.RowCount;i++)
-                  {
-                     tableLayoutPanel1.RowStyles[i].SizeType = SizeType.Absolute;
-                      tableLayoutPanel1.RowStyles[i].Height = 40;
-
-                  }*/
-
-
-                //data.Rows[0].Cells[16].Value = "150";
-
-                /*  tableLayoutPanel1.RowStyles[1].Height = 40;
-                  for (int row = 2; row < 14; row++)
-                  {
-                      tableLayoutPanel1.RowCount++;
-
-
-                      for (int col = 0; col < 17; col++)
-                      {
-                          // Create a PictureBox
-                          Font cairoFont = new Font("Cairo", 10, FontStyle.Regular);
-                          Random rnd = new Random();
-                          // Create a Label
-                         Guna2TextBoxlbl = new Label
-                          {
-                              Text = rnd.Next(0,800).ToString(),
-                              Font = cairoFont,
-                              Dock = DockStyle.Fill,
-                              TextAlign = ContentAlignment.MiddleCenter
-                          };
-
-                          if (col == 0)
-                          {
-                              lbl.Text = "10/12/2023";
-                              tableLayoutPanel1.Controls.Add(lbl, col, row);
-                              tableLayoutPanel1.SetColumnSpan(lbl, 2);
-                          }else
-                          tableLayoutPanel1.Controls.Add(lbl, col, row);
-                          //tableLayoutPanel1.RowStyles[row-1].Height = 40;
-                      }
-
-
-                  }
-                  tableLayoutPanel1.Height++;
-                */
             }
         }
         private Guna2TextBox CopyLabel()
@@ -157,24 +126,40 @@ namespace AbuFas
             newLabel.RightToLeft = RightToLeft.Yes;
             newLabel.Dock = DockStyle.Fill;
             newLabel.AutoSize = true;
-            newLabel.Margin = new Padding(0,0,1,0);
+            newLabel.Margin = new Padding(0, 0, 1, 0);
             newLabel.BorderThickness = 1;
-            
-            
+            newLabel.ReadOnly = true;
+
+
             newLabel.Height = 40;
-            
+
             // ... copy other properties as needed
 
             return newLabel;
         }
-        public double lastcharge(int i,List<DayStaticGrams> grams)
+        public double lastcharge(int i, List<DayStaticGrams> grams)
         {
             double total = 0;
-            for(int j = grams.Count-1;j>i;j--) 
+            for (int j = grams.Count - 1; j > i; j--)
             {
                 total += grams[j].Buy - grams[j].Sell;
             }
             return total;
+        }
+        public void reset()
+        {
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.RowCount++;
+            tableLayoutPanel1.RowStyles[1].Height = 40;
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(label2, 1, 0);
+            tableLayoutPanel1.Controls.Add(label3, 2, 0);
+            tableLayoutPanel1.Controls.Add(label4, 3, 0);
+            tableLayoutPanel1.Controls.Add(label5, 4, 0);
+            tableLayoutPanel1.Controls.Add(label6, 5, 0);
+            tableLayoutPanel1.Controls.Add(label7, 6, 0);
+            tableLayoutPanel1.Controls.Add(label8, 7, 0);
+            tableLayoutPanel1.Controls.Add(label9, 8, 0);
         }
     }
 }
