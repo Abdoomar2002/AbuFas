@@ -35,13 +35,13 @@
             this.Single = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.billBuy1 = new test_printing.BillBuy();
-            this.bill1 = new test_printing.bill();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.previous = new Guna.UI2.WinForms.Guna2ImageButton();
             this.next = new Guna.UI2.WinForms.Guna2ImageButton();
             this.ArchiveTable = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.bill1 = new test_printing.bill();
+            this.billBuy1 = new test_printing.BillBuy();
             this.Header.SuspendLayout();
             this.Multi.SuspendLayout();
             this.Single.SuspendLayout();
@@ -150,7 +150,7 @@
             this.guna2Button4.FillColor = System.Drawing.Color.Black;
             this.guna2Button4.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(91, 646);
+            this.guna2Button4.Location = new System.Drawing.Point(25, 576);
             this.guna2Button4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(180, 46);
@@ -170,7 +170,7 @@
             this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.guna2Button3.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(91, 580);
+            this.guna2Button3.Location = new System.Drawing.Point(25, 510);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(180, 46);
@@ -178,40 +178,6 @@
             this.guna2Button3.Text = "طباعة";
             this.guna2Button3.UseTransparentBackground = true;
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.AutoScroll = true;
-            this.guna2Panel1.AutoSize = true;
-            this.guna2Panel1.Controls.Add(this.bill1);
-            this.guna2Panel1.Controls.Add(this.billBuy1);
-            this.guna2Panel1.Location = new System.Drawing.Point(339, 6);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(880, 1046);
-            this.guna2Panel1.TabIndex = 4;
-            // 
-            // billBuy1
-            // 
-            this.billBuy1.AutoScroll = true;
-            this.billBuy1.AutoSize = true;
-            this.billBuy1.Location = new System.Drawing.Point(0, 0);
-            this.billBuy1.Margin = new System.Windows.Forms.Padding(0);
-            this.billBuy1.Name = "billBuy1";
-            this.billBuy1.Size = new System.Drawing.Size(686, 1046);
-            this.billBuy1.TabIndex = 1;
-            // 
-            // bill1
-            // 
-            this.bill1.AutoScroll = true;
-            this.bill1.BackColor = System.Drawing.Color.White;
-            this.bill1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bill1.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill1.Location = new System.Drawing.Point(0, 0);
-            this.bill1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bill1.Name = "bill1";
-            this.bill1.Size = new System.Drawing.Size(740, 778);
-            this.bill1.TabIndex = 0;
             // 
             // guna2Button2
             // 
@@ -224,7 +190,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.Black;
             this.guna2Button2.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(43, 34);
+            this.guna2Button2.Location = new System.Drawing.Point(25, 32);
             this.guna2Button2.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(180, 46);
@@ -261,7 +227,7 @@
             this.next.ImageOffset = new System.Drawing.Point(0, 0);
             this.next.ImageRotate = 0F;
             this.next.ImageSize = new System.Drawing.Size(11, 20);
-            this.next.Location = new System.Drawing.Point(1212, 359);
+            this.next.Location = new System.Drawing.Point(1191, 359);
             this.next.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.next.Name = "next";
             this.next.PressedState.ImageSize = new System.Drawing.Size(64, 64);
@@ -289,6 +255,41 @@
             this.ArchiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.ArchiveTable.Size = new System.Drawing.Size(1276, 609);
             this.ArchiveTable.TabIndex = 0;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.AutoScroll = true;
+            this.guna2Panel1.AutoSize = true;
+            this.guna2Panel1.Controls.Add(this.bill1);
+            this.guna2Panel1.Controls.Add(this.billBuy1);
+            this.guna2Panel1.Location = new System.Drawing.Point(233, 6);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(986, 1046);
+            this.guna2Panel1.TabIndex = 4;
+            // 
+            // bill1
+            // 
+            this.bill1.AutoScroll = true;
+            this.bill1.AutoSize = true;
+            this.bill1.BackColor = System.Drawing.Color.White;
+            this.bill1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bill1.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bill1.Location = new System.Drawing.Point(3, 3);
+            this.bill1.Name = "bill1";
+            this.bill1.Size = new System.Drawing.Size(707, 749);
+            this.bill1.TabIndex = 2;
+            // 
+            // billBuy1
+            // 
+            this.billBuy1.AutoScroll = true;
+            this.billBuy1.AutoSize = true;
+            this.billBuy1.Enabled = false;
+            this.billBuy1.Location = new System.Drawing.Point(0, 0);
+            this.billBuy1.Margin = new System.Windows.Forms.Padding(0);
+            this.billBuy1.Name = "billBuy1";
+            this.billBuy1.Size = new System.Drawing.Size(686, 1046);
+            this.billBuy1.TabIndex = 1;
             // 
             // Archive
             // 
@@ -320,11 +321,11 @@
         private Guna.UI2.WinForms.Guna2ImageButton next;
         private Guna.UI2.WinForms.Guna2ImageButton previous;
         private Guna.UI2.WinForms.Guna2Button back;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private bill bill1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private bill bill1;
         private BillBuy billBuy1;
     }
 }

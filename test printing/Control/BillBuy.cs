@@ -159,7 +159,7 @@ namespace test_printing
             Bitmap dataGridViewBitmap = new Bitmap(data.Width, dataGridViewHeight);
 
             data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width, 15 * 24 + data.ColumnHeadersHeight + 396 * (maxRowsPerPage / 10 - 1)));
-            e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 20, 348 - 396 * (maxRowsPerPage / 10 - 1), e.MarginBounds.Width + 60, dataGridViewHeight);
+            e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 20, 308 - 396 * (maxRowsPerPage / 10 - 1), e.MarginBounds.Width + 60, dataGridViewHeight);
             DrawPanelToGraphics(new Panel(), e.Graphics, e.MarginBounds.Left - 20, 0, e.MarginBounds.Width + 60, 20);
             DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left - 20, 20, e.MarginBounds.Width + 60, headerHeight);
             DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left - 20, 276, e.MarginBounds.Width + 60, row1Height);

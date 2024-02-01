@@ -167,6 +167,7 @@ namespace test_printing
         }
         public void show( Bills bigBill, List <BillData> billdata) 
         {
+            double total = 0;
             if (bigBill.IsBuy)
             {
                 bill1.Visible = false;
@@ -192,9 +193,12 @@ namespace test_printing
                     obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
                     obj.Cells[4].Value = table[i].Number.ToString();
                     obj.Cells[5].Value = table[i].Name;
+                    total += table[i].Weight;
 
                     // billBuy1.data.Rows.Add(obj);
                 }
+                billBuy1.last.Text = total.ToString();
+                  billBuy1.textBox2.Text=  bigBill.Total.ToString();
 
 
 
@@ -222,10 +226,12 @@ namespace test_printing
                     obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
                     obj.Cells[4].Value = table[i].Number.ToString();
                     obj.Cells[5].Value = table[i].Name;
+                    total += table[i].Weight;
 
                     // bill1.data.Rows.Add(obj);
                 }
-                bill1.last.Text = bigBill.Total.ToString();
+                bill1.last.Text = total.ToString();
+                bill1.textBox1.Text=bigBill.Total.ToString();
             }
         }
 
@@ -252,10 +258,11 @@ namespace test_printing
             var msg = MessageBox.Show("هل انت متاكد", "", MessageBoxButtons.YesNo);
             if (msg == DialogResult.Yes) 
             {
-               var billToDelete= _context.Bills.Where(c => c.Id == Int32.Parse(bill1.BillNum.Text)).FirstOrDefault();
-               var dataToDelete= _context.BillData.Where(c => c.Bill.Id == Int32.Parse(bill1.BillNum.Text));
-               var MoneyToDelete =   _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
-               var GramToDelete =   _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
+                var id = bill1.Visible ? Int32.Parse(bill1.BillNum.Text) : Int32.Parse(billBuy1.BillNum.Text);
+               var billToDelete= _context.Bills.Where(c => c.Id == id).FirstOrDefault();
+               var dataToDelete= _context.BillData.Where(c => c.Bill.Id == id);
+               var MoneyToDelete = _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
+               var GramToDelete = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
                 double totalgrams = 0;
                 foreach (var d in dataToDelete) 
                 {

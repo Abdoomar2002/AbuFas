@@ -398,6 +398,7 @@
             this.BillNum.Name = "BillNum";
             this.BillNum.PasswordChar = '\0';
             this.BillNum.PlaceholderText = "";
+            this.BillNum.ReadOnly = true;
             this.BillNum.SelectedText = "";
             this.BillNum.Size = new System.Drawing.Size(113, 45);
             this.BillNum.TabIndex = 1;
