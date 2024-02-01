@@ -78,7 +78,8 @@ namespace test_printing
 
         private void BillBuy_Load(object sender, EventArgs e)
         {
-
+            BillDate.Text = DateTime.Now.ToShortDateString();
+            textBox2.Text = "0";
             SetColumnWidths();
             LoadDataFromDatabase();
             data.RowCount = 1;
@@ -104,7 +105,7 @@ namespace test_printing
         public void btn_print(int width, int height)
         {
             int r = 0;
-            Int32.TryParse(last.Text, out r);
+            Int32.TryParse(textBox2.Text, out r);
             if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0)
             {
 
@@ -232,7 +233,7 @@ namespace test_printing
             double totalGrams18 = 0;
             double totalGrams24 = 0;
             double totalmoney = 0;
-            Double.TryParse(last.Text, out totalmoney);
+            Double.TryParse(textBox2.Text, out totalmoney);
             newBill.Total = totalmoney;
             foreach (DataGridViewRow row in data.Rows)
             {
@@ -330,6 +331,7 @@ namespace test_printing
             BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             data.Rows.Clear();
             last.Text = "";
+            textBox2.Text = "";
             data.Height = 150;
 
             BillBuy_Load(null, null);
@@ -366,19 +368,24 @@ namespace test_printing
                     price = Double.Parse(value2.ToString());
 
                     // Perform calculations only if all cells have data
-                    double result1 = (weight * number * price);
-                    data.Rows[e.RowIndex].Cells[0].Value = result1;
-                    double total = 0;
-                    int result0 = (int)((weight * number * price - result1) * 100);
-                    //data.Rows[e.RowIndex].Cells[0].Value = result0;
-                    foreach (DataGridViewRow row in data.Rows)
+                    if (number > 0)
                     {
-                        double r0 = 0;
-                        Double.TryParse(row.Cells[0].Value.ToString(), out r0);
-                        //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                        total += r0;
-                        last.Text = total.ToString();
-                    }
+                        double result1 = (weight  * price);
+                        data.Rows[e.RowIndex].Cells[0].Value = result1;
+
+                        double total = 0;
+                        // int result0 = (int)((weight * number * price - result1) * 100);
+                        //data.Rows[e.RowIndex].Cells[0].Value = result0;
+                        foreach (DataGridViewRow row in data.Rows)
+                        {
+                            double r0 = 0;
+                            Double.TryParse(row.Cells[1].Value.ToString(), out r0);
+
+                            //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+                            total += r0;
+                            last.Text = total.ToString();
+                        }
+                    }//else { MessageBox.Show("يجب ان يكون العدد اكبر من 0"); }
                 }
             }
 

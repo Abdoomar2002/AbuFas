@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.data = new Guna.UI2.WinForms.Guna2DataGridView();
             this.empty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +43,7 @@
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.last = new System.Windows.Forms.TextBox();
             this.Panelrow1 = new System.Windows.Forms.TableLayoutPanel();
@@ -51,6 +52,7 @@
             this.BillNum = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
             this.Header = new Guna.UI2.WinForms.Guna2Panel();
+            this.BillDate = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -119,20 +121,20 @@
             // 
             // data
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.data.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.data.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.data.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.data.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.data.ColumnHeadersHeight = 36;
             this.data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.data.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -142,14 +144,14 @@
             this.type,
             this.number,
             this.item});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.data.DefaultCellStyle = dataGridViewCellStyle4;
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data.GridColor = System.Drawing.Color.Black;
             this.data.Location = new System.Drawing.Point(0, 362);
@@ -157,25 +159,25 @@
             this.data.Name = "data";
             this.data.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.NullValue = "0";
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.NullValue = "0";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.data.RowHeadersVisible = false;
             this.data.RowHeadersWidth = 51;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.data.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.data.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.data.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,7 +186,7 @@
             this.data.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.data.RowTemplate.Height = 30;
             this.data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.data.Size = new System.Drawing.Size(686, 149);
+            this.data.Size = new System.Drawing.Size(686, 143);
             this.data.TabIndex = 20;
             this.data.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.data.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -235,8 +237,8 @@
             // type
             // 
             this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.type.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle3;
             this.type.HeaderText = "العيار";
             this.type.Items.AddRange(new object[] {
             "18",
@@ -264,28 +266,39 @@
             // guna2Panel1
             // 
             this.guna2Panel1.AutoSize = true;
+            this.guna2Panel1.Controls.Add(this.textBox2);
             this.guna2Panel1.Controls.Add(this.textBox1);
             this.guna2Panel1.Controls.Add(this.last);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 511);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 505);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(686, 29);
+            this.guna2Panel1.Size = new System.Drawing.Size(686, 35);
             this.guna2Panel1.TabIndex = 19;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(579, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(99, 29);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(1311, -194);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 1;
             // 
             // last
             // 
             this.last.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.last.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.last.Location = new System.Drawing.Point(427, 3);
+            this.last.Location = new System.Drawing.Point(470, 3);
             this.last.Name = "last";
-            this.last.Size = new System.Drawing.Size(142, 23);
+            this.last.Size = new System.Drawing.Size(99, 29);
             this.last.TabIndex = 0;
             this.last.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -421,6 +434,7 @@
             // 
             // Header
             // 
+            this.Header.Controls.Add(this.BillDate);
             this.Header.Controls.Add(this.guna2PictureBox1);
             this.Header.Controls.Add(this.label9);
             this.Header.Controls.Add(this.label11);
@@ -439,6 +453,15 @@
             this.Header.Size = new System.Drawing.Size(686, 315);
             this.Header.TabIndex = 16;
             // 
+            // BillDate
+            // 
+            this.BillDate.AutoSize = true;
+            this.BillDate.Location = new System.Drawing.Point(72, 282);
+            this.BillDate.Name = "BillDate";
+            this.BillDate.Size = new System.Drawing.Size(51, 16);
+            this.BillDate.TabIndex = 13;
+            this.BillDate.Text = "label35";
+            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Image = global::AbuFas.Properties.Resources.diamond;
@@ -452,21 +475,23 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cairo", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(475, 168);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(178, 29);
+            this.label9.Size = new System.Drawing.Size(216, 34);
             this.label9.TabIndex = 10;
             this.label9.Text = "أولاد الحاج / أحمد أبو فص";
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(535, 231);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 26);
+            this.label11.Size = new System.Drawing.Size(106, 32);
             this.label11.TabIndex = 12;
             this.label11.Text = "س.ت:65286";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -477,29 +502,31 @@
             this.label1.Font = new System.Drawing.Font("Cairo", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 180);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 34);
+            this.label1.Size = new System.Drawing.Size(212, 42);
             this.label1.TabIndex = 1;
             this.label1.Text = "رقم التسجيل الضريبي";
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(268, 182);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 26);
+            this.label8.Size = new System.Drawing.Size(190, 32);
             this.label8.TabIndex = 8;
             this.label8.Text = "محمول : 01005004192";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(535, 197);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 26);
+            this.label10.Size = new System.Drawing.Size(106, 32);
             this.label10.TabIndex = 11;
             this.label10.Text = "ب.ض:63864";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -510,65 +537,70 @@
             this.label2.Font = new System.Drawing.Font("Cairo SemiBold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(61, 234);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 34);
+            this.label2.Size = new System.Drawing.Size(144, 42);
             this.label2.TabIndex = 2;
             this.label2.Text = "633/293/629";
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(239, 211);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(200, 26);
+            this.label7.Size = new System.Drawing.Size(249, 32);
             this.label7.TabIndex = 7;
             this.label7.Text = "01007402240 - 01003858381";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cairo SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(265, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 60);
+            this.label3.Size = new System.Drawing.Size(194, 75);
             this.label3.TabIndex = 3;
             this.label3.Text = "مجوهرات";
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(244, 243);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(191, 26);
+            this.label6.Size = new System.Drawing.Size(238, 32);
             this.label6.TabIndex = 6;
             this.label6.Text = "ت :  2234774-  01111227666";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Cairo ExtraBold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.label4.Location = new System.Drawing.Point(218, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(236, 66);
+            this.label4.Size = new System.Drawing.Size(290, 81);
             this.label4.TabIndex = 4;
             this.label4.Text = "أبــــو فــــــص";
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(544, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 26);
+            this.label5.Size = new System.Drawing.Size(47, 32);
             this.label5.TabIndex = 9;
             this.label5.Text = "إدارة";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -610,7 +642,7 @@
             this.label28.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(17, 284);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(100, 30);
+            this.label28.Size = new System.Drawing.Size(126, 37);
             this.label28.TabIndex = 23;
             this.label28.Text = "المقر بما فيه";
             // 
@@ -620,7 +652,7 @@
             this.label21.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(311, 263);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(146, 30);
+            this.label21.Size = new System.Drawing.Size(184, 37);
             this.label21.TabIndex = 22;
             this.label21.Text = "وهذا اقرار مني بذلك";
             // 
@@ -630,7 +662,7 @@
             this.label20.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(380, 122);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 30);
+            this.label20.Size = new System.Drawing.Size(116, 37);
             this.label20.TabIndex = 8;
             this.label20.Text = "صادرة بتاريخ";
             // 
@@ -640,7 +672,7 @@
             this.label19.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(131, 123);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(92, 30);
+            this.label19.Size = new System.Drawing.Size(117, 37);
             this.label19.TabIndex = 7;
             this.label19.Text = "رقم/مساحة";
             // 
@@ -650,7 +682,7 @@
             this.label18.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(131, 78);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 30);
+            this.label18.Size = new System.Drawing.Size(87, 37);
             this.label18.TabIndex = 6;
             this.label18.Text = "محافظة";
             // 
@@ -660,7 +692,7 @@
             this.label29.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(131, 47);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(69, 30);
+            this.label29.Size = new System.Drawing.Size(87, 37);
             this.label29.TabIndex = 17;
             this.label29.Text = "محافظة";
             // 
@@ -670,7 +702,7 @@
             this.label14.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(317, 78);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(182, 30);
+            this.label14.Size = new System.Drawing.Size(228, 37);
             this.label14.TabIndex = 2;
             this.label14.Text = "بطاقة شخصية/عائلية رقم";
             // 
@@ -680,7 +712,7 @@
             this.label15.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(317, 46);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 30);
+            this.label15.Size = new System.Drawing.Size(89, 37);
             this.label15.TabIndex = 3;
             this.label15.Text = "من ناحية";
             // 
@@ -690,7 +722,7 @@
             this.label17.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(535, 46);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(137, 30);
+            this.label17.Size = new System.Drawing.Size(174, 37);
             this.label17.TabIndex = 5;
             this.label17.Text = "أقر انا الموقع ادناه";
             // 
@@ -700,7 +732,7 @@
             this.label22.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(49, 152);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(604, 90);
+            this.label22.Size = new System.Drawing.Size(761, 111);
             this.label22.TabIndex = 10;
             this.label22.Text = "بـأنني بعت المصوغات الذهبيـة الموضح مواصــفاتها عاليـه وقبــضت الثـمن الموضـح بعا" +
     "ليـه\r\n  وأنني أمتلك هذه المصوغات المباعة منى ـــ و أتحمل كافة المسؤليات الجنائية" +
@@ -713,7 +745,7 @@
             this.label16.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(614, 78);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 30);
+            this.label16.Size = new System.Drawing.Size(73, 37);
             this.label16.TabIndex = 4;
             this.label16.Text = "ومقيم";
             // 
@@ -723,7 +755,7 @@
             this.label13.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(589, 123);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 30);
+            this.label13.Size = new System.Drawing.Size(111, 37);
             this.label13.TabIndex = 1;
             this.label13.Text = "قسم /مركز";
             // 
@@ -733,7 +765,7 @@
             this.label34.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(3, 321);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(142, 22);
+            this.label34.Size = new System.Drawing.Size(168, 27);
             this.label34.TabIndex = 24;
             this.label34.Text = "____________";
             this.label34.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -744,7 +776,7 @@
             this.label33.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(4, 134);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(116, 18);
+            this.label33.Size = new System.Drawing.Size(142, 23);
             this.label33.TabIndex = 21;
             this.label33.Text = "____________";
             this.label33.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -755,7 +787,7 @@
             this.label32.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(246, 129);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(116, 18);
+            this.label32.Size = new System.Drawing.Size(142, 23);
             this.label32.TabIndex = 20;
             this.label32.Text = "____________";
             this.label32.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -766,7 +798,7 @@
             this.label31.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(467, 129);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(116, 18);
+            this.label31.Size = new System.Drawing.Size(142, 23);
             this.label31.TabIndex = 19;
             this.label31.Text = "____________";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -777,7 +809,7 @@
             this.label30.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(9, 90);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(116, 18);
+            this.label30.Size = new System.Drawing.Size(142, 23);
             this.label30.TabIndex = 18;
             this.label30.Text = "____________";
             this.label30.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -788,7 +820,7 @@
             this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(195, 92);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(116, 18);
+            this.label27.Size = new System.Drawing.Size(142, 23);
             this.label27.TabIndex = 15;
             this.label27.Text = "____________";
             this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -799,7 +831,7 @@
             this.label26.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(496, 92);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(116, 18);
+            this.label26.Size = new System.Drawing.Size(142, 23);
             this.label26.TabIndex = 14;
             this.label26.Text = "____________";
             this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -810,7 +842,7 @@
             this.label25.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(9, 52);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(116, 18);
+            this.label25.Size = new System.Drawing.Size(142, 23);
             this.label25.TabIndex = 13;
             this.label25.Text = "____________";
             this.label25.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -821,7 +853,7 @@
             this.label24.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(195, 53);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(116, 18);
+            this.label24.Size = new System.Drawing.Size(142, 23);
             this.label24.TabIndex = 12;
             this.label24.Text = "____________";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -832,7 +864,7 @@
             this.label23.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(382, 53);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(143, 18);
+            this.label23.Size = new System.Drawing.Size(175, 23);
             this.label23.TabIndex = 11;
             this.label23.Text = "_______________";
             this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -843,7 +875,7 @@
             this.label12.Font = new System.Drawing.Font("Cairo Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(404, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 36);
+            this.label12.Size = new System.Drawing.Size(77, 43);
             this.label12.TabIndex = 0;
             this.label12.Text = "(إقرار)";
             // 
@@ -926,5 +958,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.DataGridViewTextBoxColumn item;
+        public System.Windows.Forms.Label BillDate;
+        public System.Windows.Forms.TextBox textBox2;
     }
 }

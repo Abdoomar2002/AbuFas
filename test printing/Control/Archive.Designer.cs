@@ -57,12 +57,14 @@
             this.Header.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(0, 0);
+            this.Header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(1542, 100);
+            this.Header.Size = new System.Drawing.Size(1279, 100);
             this.Header.TabIndex = 0;
             // 
             // back
             // 
+            this.back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.back.BorderRadius = 10;
             this.back.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.back.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -75,9 +77,10 @@
             this.back.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.back.ImageOffset = new System.Drawing.Point(5, 3);
             this.back.ImageSize = new System.Drawing.Size(11, 20);
-            this.back.Location = new System.Drawing.Point(1356, 26);
+            this.back.Location = new System.Drawing.Point(1093, 26);
+            this.back.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(135, 45);
+            this.back.Size = new System.Drawing.Size(135, 46);
             this.back.TabIndex = 4;
             this.back.Text = "عودة";
             this.back.Click += new System.EventHandler(this.back_Click);
@@ -100,7 +103,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(141, 26);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button1.Size = new System.Drawing.Size(180, 46);
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "أرشفه";
             // 
@@ -111,13 +114,15 @@
             this.Multi.Controls.Add(this.ArchiveTable);
             this.Multi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Multi.Location = new System.Drawing.Point(0, 100);
+            this.Multi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Multi.Name = "Multi";
-            this.Multi.Padding = new System.Windows.Forms.Padding(0, 0, 0, 40);
-            this.Multi.Size = new System.Drawing.Size(1542, 813);
+            this.Multi.Padding = new System.Windows.Forms.Padding(0, 0, 0, 39);
+            this.Multi.Size = new System.Drawing.Size(1279, 813);
             this.Multi.TabIndex = 1;
             // 
             // Single
             // 
+            this.Single.AutoScroll = true;
             this.Single.BackColor = System.Drawing.Color.Transparent;
             this.Single.Controls.Add(this.guna2Button4);
             this.Single.Controls.Add(this.guna2Button3);
@@ -128,9 +133,10 @@
             this.Single.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Single.FillColor = System.Drawing.Color.Transparent;
             this.Single.Location = new System.Drawing.Point(0, 0);
+            this.Single.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Single.Name = "Single";
             this.Single.ShadowDecoration.Depth = 3;
-            this.Single.Size = new System.Drawing.Size(1542, 773);
+            this.Single.Size = new System.Drawing.Size(1279, 774);
             this.Single.TabIndex = 1;
             // 
             // guna2Button4
@@ -147,7 +153,7 @@
             this.guna2Button4.Location = new System.Drawing.Point(91, 646);
             this.guna2Button4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button4.Size = new System.Drawing.Size(180, 46);
             this.guna2Button4.TabIndex = 6;
             this.guna2Button4.Text = "حذف";
             this.guna2Button4.UseTransparentBackground = true;
@@ -164,10 +170,10 @@
             this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.guna2Button3.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(91, 573);
+            this.guna2Button3.Location = new System.Drawing.Point(91, 580);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button3.Size = new System.Drawing.Size(180, 46);
             this.guna2Button3.TabIndex = 5;
             this.guna2Button3.Text = "طباعة";
             this.guna2Button3.UseTransparentBackground = true;
@@ -175,11 +181,14 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.billBuy1);
+            this.guna2Panel1.AutoScroll = true;
+            this.guna2Panel1.AutoSize = true;
             this.guna2Panel1.Controls.Add(this.bill1);
+            this.guna2Panel1.Controls.Add(this.billBuy1);
             this.guna2Panel1.Location = new System.Drawing.Point(339, 6);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(880, 750);
+            this.guna2Panel1.Size = new System.Drawing.Size(880, 1046);
             this.guna2Panel1.TabIndex = 4;
             // 
             // billBuy1
@@ -189,20 +198,19 @@
             this.billBuy1.Location = new System.Drawing.Point(0, 0);
             this.billBuy1.Margin = new System.Windows.Forms.Padding(0);
             this.billBuy1.Name = "billBuy1";
-            this.billBuy1.Size = new System.Drawing.Size(880, 800);
+            this.billBuy1.Size = new System.Drawing.Size(686, 1046);
             this.billBuy1.TabIndex = 1;
             // 
             // bill1
             // 
             this.bill1.AutoScroll = true;
-            this.bill1.AutoSize = true;
             this.bill1.BackColor = System.Drawing.Color.White;
             this.bill1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bill1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bill1.Font = new System.Drawing.Font("Cairo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bill1.Location = new System.Drawing.Point(0, 0);
+            this.bill1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bill1.Name = "bill1";
-            this.bill1.Size = new System.Drawing.Size(880, 750);
+            this.bill1.Size = new System.Drawing.Size(740, 778);
             this.bill1.TabIndex = 0;
             // 
             // guna2Button2
@@ -216,10 +224,10 @@
             this.guna2Button2.FillColor = System.Drawing.Color.Black;
             this.guna2Button2.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(91, 37);
+            this.guna2Button2.Location = new System.Drawing.Point(43, 34);
             this.guna2Button2.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button2.Size = new System.Drawing.Size(180, 46);
             this.guna2Button2.TabIndex = 3;
             this.guna2Button2.Text = "اغلاق";
             this.guna2Button2.UseTransparentBackground = true;
@@ -235,6 +243,7 @@
             this.previous.ImageRotate = 0F;
             this.previous.ImageSize = new System.Drawing.Size(11, 20);
             this.previous.Location = new System.Drawing.Point(25, 359);
+            this.previous.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.previous.Name = "previous";
             this.previous.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.previous.ShadowDecoration.BorderRadius = 5;
@@ -244,6 +253,7 @@
             // 
             // next
             // 
+            this.next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.next.BackColor = System.Drawing.Color.Black;
             this.next.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.next.HoverState.ImageSize = new System.Drawing.Size(64, 64);
@@ -251,7 +261,8 @@
             this.next.ImageOffset = new System.Drawing.Point(0, 0);
             this.next.ImageRotate = 0F;
             this.next.ImageSize = new System.Drawing.Size(11, 20);
-            this.next.Location = new System.Drawing.Point(1493, 359);
+            this.next.Location = new System.Drawing.Point(1212, 359);
+            this.next.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.next.Name = "next";
             this.next.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.next.ShadowDecoration.BorderRadius = 5;
@@ -267,7 +278,8 @@
             this.ArchiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337F));
             this.ArchiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337F));
             this.ArchiveTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337F));
-            this.ArchiveTable.Location = new System.Drawing.Point(141, 26);
+            this.ArchiveTable.Location = new System.Drawing.Point(0, 17);
+            this.ArchiveTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ArchiveTable.Name = "ArchiveTable";
             this.ArchiveTable.Padding = new System.Windows.Forms.Padding(15, 15, 25, 15);
             this.ArchiveTable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -275,7 +287,7 @@
             this.ArchiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.ArchiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.ArchiveTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.ArchiveTable.Size = new System.Drawing.Size(1388, 762);
+            this.ArchiveTable.Size = new System.Drawing.Size(1276, 609);
             this.ArchiveTable.TabIndex = 0;
             // 
             // Archive
@@ -284,12 +296,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Multi);
             this.Controls.Add(this.Header);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Archive";
-            this.Size = new System.Drawing.Size(1542, 913);
+            this.Size = new System.Drawing.Size(1279, 913);
             this.Load += new System.EventHandler(this.Archive_Load);
             this.Header.ResumeLayout(false);
             this.Multi.ResumeLayout(false);
             this.Single.ResumeLayout(false);
+            this.Single.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -307,10 +321,10 @@
         private Guna.UI2.WinForms.Guna2ImageButton previous;
         private Guna.UI2.WinForms.Guna2Button back;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private BillBuy billBuy1;
         private bill bill1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private BillBuy billBuy1;
     }
 }

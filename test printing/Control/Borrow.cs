@@ -1,6 +1,7 @@
 ﻿using AbuFas.db;
 using Guna.UI2.WinForms;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace AbuFas
         public Borrow()
         {
             InitializeComponent();
-            context=new AppDbContext();
+            context = new AppDbContext();
             inout.Rows[0].Cells[0].Value = 0;
             inout.Rows[0].Cells[1].Value = Properties.Resources.icon;
             inout.Rows[0].Cells[2].Value = Properties.Resources.icon_1;
@@ -35,6 +36,9 @@ namespace AbuFas
             DetailsList.Columns[6].Visible = false;
             DetailsList.Rows[0].Cells[0].Value = Properties.Resources.icon;
             DetailsList.Rows[0].Cells[1].Value = Properties.Resources.icon_1;
+            Archive.Rows[0].Cells[0].Value = 1;
+            Archive.Columns[6].Visible = false;
+            Archive.Rows[0].Cells[1].Value = Properties.Resources.archive;
 
 
             msgbox.Visible = false;
@@ -117,6 +121,7 @@ namespace AbuFas
             inout.Rows.Clear();
             inout.RowCount = 1;
             context.Database.EnsureCreated();
+            ArchiveLoad();
             var list = context.Borrows.Where(c => c.IsArchived == false).ToList();
             if (list.Count > 0)
             {
@@ -328,6 +333,81 @@ namespace AbuFas
                     inout.Rows.Remove(inout.CurrentRow);
                 else MessageBox.Show("هذا الصف فارغ");
             }
+        }
+        public void ArchiveLoad()
+        {
+            Archive.Rows.Clear();
+            Archive.RowCount = 1;
+            context.Database.EnsureCreated();
+            var list = context.Borrows.Where(c => c.IsArchived == true).ToList();
+            if (list.Count > 0)
+            {
+                double total = 0;
+                foreach (var item in list)
+                {
+                    Archive.RowCount++;
+                    Archive.Rows[list.IndexOf(item)].Cells[2].Value = item.Name;
+                    Archive.Rows[list.IndexOf(item)].Cells[3].Value = item.Date.ToShortDateString();
+                    Archive.Rows[list.IndexOf(item)].Cells[4].Value = item.Total;
+                    total += item.Total;
+                    Archive.Rows[list.IndexOf(item)].Cells[5].Value = item.Notes;
+                    Archive.Rows[list.IndexOf(item)].Cells[6].Value = item.Id;
+                    Archive.Rows[list.IndexOf(item)].ReadOnly = true;
+
+
+                }
+                //  inout.RowCount++;
+                Archive.Rows[Archive.Rows.Count - 1].Cells[0].Value = "";
+                TotalBorrows.Text = total.ToString();
+            }
+
+        }
+
+        private void CustomersArchiveBtn_Click(object sender, EventArgs e)
+        {
+            guna2Panel4.BringToFront();
+            guna2Button1.Visible = true;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            guna2Button1.Visible = false;
+            guna2Panel4.SendToBack();
+        }
+
+        private void Archive_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                var ms = MessageBox.Show("هل انت متأكد من الغاء الارشفة", "", MessageBoxButtons.YesNo);
+                if (ms == DialogResult.Yes)
+                {
+                    int bid = 0;
+                    Int32.TryParse(Archive.CurrentRow.Cells[6].Value.ToString(), out bid);
+                    var item = context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
+                    if (item != null)
+                    {
+                        if (Archive.CurrentCell.ColumnIndex == 1)
+                        {
+                            item.IsArchived = false;
+                        }
+
+                        context.SaveChanges();
+                        load();
+
+                    }
+                }
+            }
+        }
+
+        private void Archive_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            Archive.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
+            Archive.Rows[e.RowIndex].Cells[1].Value = Properties.Resources.archive;
+           // inout.Rows[e.RowIndex].Cells[2].Value = Properties.Resources.icon_1;
+            //inout.Rows[e.RowIndex].Cells[3].Value = Properties.Resources.archive;
+            Archive.Rows[e.RowIndex].Cells[2].Value = "";
+            Archive.Rows[e.RowIndex].Cells[6].Value = 0;
         }
     }
 }

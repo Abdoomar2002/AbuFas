@@ -100,6 +100,7 @@ namespace test_printing
 
         private void bill_Load(object sender, EventArgs e)
         {
+            label12.Text = DateTime.Now.ToShortDateString();
             SetColumnWidths();
             Notes.Height=105;
             LoadDataFromDatabase();
@@ -128,7 +129,7 @@ namespace test_printing
         public void btn_print(int width, int height)
         {
             int r = 0;
-            Int32.TryParse(last.Text, out r);
+            Int32.TryParse(textBox1.Text, out r);
             if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 &&r  > 0)
             {
 
@@ -295,7 +296,7 @@ namespace test_printing
             double totalGrams18 = 0;
             double totalGrams21 = 0;
             double totalGrams24 = 0;
-            Double.TryParse(last.Text, out totalmoney);
+            Double.TryParse(textBox1.Text, out totalmoney);
             newBill.Total = totalmoney;
             foreach (DataGridViewRow row in data.Rows)
             {
@@ -404,6 +405,7 @@ namespace test_printing
            home.firstPage1.billBuy1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             BillNum.Text =( Int32.Parse(BillNum.Text)+1).ToString();
             last.Text = "";
+            textBox1.Text = "";
             data.Rows.Clear();
             data.Height = 150;
             bill_Load(null,null);
@@ -470,20 +472,22 @@ namespace test_printing
                     weight = Double.Parse(value1.ToString()) ;
                     number = Double.Parse(value4.ToString());
                     price = Double.Parse(value2.ToString()) ;
-
-                    // Perform calculations only if all cells have data
-                    double result1 = (weight * number * price);
-                    data.Rows[e.RowIndex].Cells[0].Value = result1;
-                    double total = 0;
-                    int result0 = (int)((weight * number * price - result1) * 100);
-                    //data.Rows[e.RowIndex].Cells[0].Value = result0;
-                    foreach (DataGridViewRow row in data.Rows)
+                    if (number > 0)
                     {
-                        double r0 = 0;
-                        Double.TryParse(row.Cells[0].Value.ToString(), out r0);
-                      //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                        total += r0 ;
-                        last.Text = total.ToString();
+                        // Perform calculations only if all cells have data
+                        double result1 = (weight * price);
+                        data.Rows[e.RowIndex].Cells[0].Value = result1;
+                        double total = 0;
+                        int result0 = (int)((weight * number * price - result1) * 100);
+                        //data.Rows[e.RowIndex].Cells[0].Value = result0;
+                        foreach (DataGridViewRow row in data.Rows)
+                        {
+                            double r0 = 0;
+                            Double.TryParse(row.Cells[1].Value.ToString(), out r0);
+                            //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+                            total += r0;
+                            last.Text = total.ToString();
+                        }
                     }
                 }
             }

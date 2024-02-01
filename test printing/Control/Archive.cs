@@ -28,6 +28,7 @@ namespace test_printing
         public Archive()
         {
             InitializeComponent();
+            _context =new AppDbContext();
         }
         public Archive(DbContextOptions<AppDbContext> options)
         {
@@ -77,6 +78,7 @@ namespace test_printing
                     {
                         arcbill.CustName.Text = billList[row * 4 + col].CustomerName;
                         arcbill.BillNum.Text = billList[row * 4 + col].Id.ToString();
+                        arcbill.BillDate.Text = billList[row * 4 + col].Date.ToShortDateString();
                         int id = billList[row * 4 + col].Id;
                         var tablelis = context.BillData.Where(c => c.Bill.Id == id);
 
@@ -107,6 +109,7 @@ namespace test_printing
                     {
                         arcbill2.CustName.Text = billList[row * 4 + col].CustomerName;
                         arcbill2.BillNum.Text = billList[row * 4 + col].Id.ToString();
+                        arcbill2.label12.Text = billList[row * 4 + col].Date.ToShortDateString();
                         int id = billList[row * 4 + col].Id;
                         var tablelis = context.BillData.Where(c => c.Bill.Id == id);
 
