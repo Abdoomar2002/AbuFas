@@ -119,6 +119,12 @@ namespace AbuFas
         {
             cuurentDate.Text = date.ToShortDateString();
             inOutCome1.dateTime = date;
+            buy21.Text = "";
+            incomemoney.Text = "";
+            sell21.Text = "";
+            outcomemoney.Text = "";
+            yesterdaytotal.Text = "";
+            todaytotal.Text = "";
             AppDbContext context = new AppDbContext();
             var days = context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
             double totalIncome = 0, totalOutcome = 0;
