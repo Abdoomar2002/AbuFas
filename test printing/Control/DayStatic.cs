@@ -12,7 +12,7 @@ namespace AbuFas
     public partial class DayStatic : UserControl
     {
         bool fl, fl1;
-        public readonly AppDbContext context;
+        public  AppDbContext context;
         public DayStatic()
         {
             InitializeComponent();
@@ -126,6 +126,9 @@ namespace AbuFas
             yesterdaytotal.Text = "";
             todaytotal.Text = "";
             AppDbContext context = new AppDbContext();
+
+
+
             var days = context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
             double totalIncome = 0, totalOutcome = 0;
             double totalbuy = 0, totalsell = 0;
@@ -153,15 +156,35 @@ namespace AbuFas
                 outcomemoney.Text = totalOutcome.ToString();
                 buy21.Text = totalbuy.ToString();
                 sell21.Text = totalsell.ToString();
-                var yesterdayMoney = context.DaystaticMoney.AsEnumerable().Where(d => d.Date < days.Date).LastOrDefault();
-                yesterdaytotal.Text = yesterdayMoney == null ? "0" : yesterdayMoney.Total.ToString();
-                todaytotal.Text = (days.Total + Int32.Parse(yesterdaytotal.Text)).ToString();
-
+                double yesterdayMoney = Total(days.Date);
+                yesterdaytotal.Text =yesterdayMoney.ToString() ;
+                days.Total=totalbuy+totalIncome-totalsell-totalOutcome;
+                todaytotal.Text = (days.Total +yesterdayMoney).ToString();
                 inOutCome1.Load(days.Id, fl1);
                 bills211.load(days.Id, fl);
 
             }
 
+        }
+        public double Total(DateTime time) 
+        {
+            double total=0;
+            context=new AppDbContext();
+            var list=context.DaystaticMoney.Where(d=>d.Date < time).OrderByDescending(x=>x.Date).ToList();
+            foreach (var item in list)
+            {
+                foreach (var element in item.Bills)
+                {
+                    if(element.IsBuy)total-=element.Total;
+                    else total+=element.Total;
+                }
+                foreach (var element in item.IncomeOutCome)
+                {
+                    if (element.IsIncome)  total += element.Price;
+                    else total-=element.Price;
+                }
+            }
+            return total;
         }
 
     }

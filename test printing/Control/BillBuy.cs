@@ -264,9 +264,9 @@ namespace test_printing
             var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "24").FirstOrDefault();
 
             var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
-            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); }
-            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); }
-            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); }
+            if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); gramsStatic18.Date = DateTime.Now.Date; }
+            if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); gramsStatic21.Date = DateTime.Now.Date; }
+            if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); gramsStatic24.Date = DateTime.Now.Date; }
             if (dayStatic == null)
             {
                 var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c => c.Date).FirstOrDefault();
@@ -380,10 +380,13 @@ namespace test_printing
                         {
                             double r0 = 0;
                             Double.TryParse(row.Cells[1].Value.ToString(), out r0);
+                            if (row.Cells[3].Value.ToString() == "21")
 
-                            //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                            total += r0;
-                            last.Text = total.ToString();
+                                //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+                                total += r0;
+                            else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
+                            else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
+                            last.Text = Math.Round(total,3).ToString();
                         }
                     }//else { MessageBox.Show("يجب ان يكون العدد اكبر من 0"); }
                 }
@@ -391,6 +394,7 @@ namespace test_printing
 
 
         }
+       
         public Image CaptureScreenshot()
         {
             Bitmap bmp = new Bitmap(this.Width, this.Height);

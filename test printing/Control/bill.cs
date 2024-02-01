@@ -485,8 +485,13 @@ namespace test_printing
                             double r0 = 0;
                             Double.TryParse(row.Cells[1].Value.ToString(), out r0);
                             //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                            total += r0;
-                            last.Text = total.ToString();
+                            if (row.Cells[3].Value.ToString() == "21")
+
+                                //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+                                total += r0;
+                            else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
+                            else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
+                            last.Text = Math.Round(total,3).ToString();
                         }
                     }
                 }

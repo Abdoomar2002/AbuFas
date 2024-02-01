@@ -63,54 +63,55 @@ namespace AbuFas
                     // Assuming you have a TableLayoutPanel named tableLayoutPanel1
 
                     // Create labels for each column
-                    Guna2TextBox labelDate = CopyLabel();
-                    Guna2TextBox labelCol1 = CopyLabel();
-                    Guna2TextBox labelCol2 = CopyLabel();
-                    Guna2TextBox labelCol3 = CopyLabel();
+                    Guna2TextBox date = CopyLabel();
+                    Guna2TextBox kyrat = CopyLabel();
+                    Guna2TextBox sell = CopyLabel();
+                    Guna2TextBox but = CopyLabel();
                     Guna2TextBox labelCol4 = CopyLabel();
                     Guna2TextBox labelCol5 = CopyLabel();
-                    Guna2TextBox labelCol6 = CopyLabel();
-                    Guna2TextBox labelCol7 = CopyLabel();
-                    Guna2TextBox labelCol8 = CopyLabel();
+                    Guna2TextBox old = CopyLabel();
+                    Guna2TextBox curr = CopyLabel();
+                    Guna2TextBox damg = CopyLabel();
                    // labelCol5.ReadOnly = false;
                    // labelCol4.ReadOnly = false;
-                    labelCol8.ReadOnly = false;
-                    labelCol8.TextChanged += Label8_TextChanged;
+                    damg.ReadOnly = false;
+                    damg.TextChanged += Label8_TextChanged;
 
                 
 
                     // Set data for each label
 
-                    labelDate.Text = table[i].Date.ToShortDateString();
-                    labelCol1.Text = table[i].Type;
-                    labelCol3.Text = table[i].Buy.ToString();
-                    labelCol2.Text = table[i].Sell.ToString();
+                    date.Text = table[i].Date.ToShortDateString();
+                    kyrat.Text = table[i].Type;
+                    sell.Text = Math.Round(table[i].Buy,3).ToString();
+                    but.Text =Math.Round(table[i].Sell,3).ToString();
                 //    labelCol4.Text = table[i].Bouns.ToString();
                   //  labelCol5.Text = table[i].Minus.ToString();
-                    labelCol6.Text = lastcharge(i, table).ToString();
-                    labelCol7.Text = (table[i].Buy - table[i].Sell + lastcharge(i, table)).ToString();
-                    labelCol8.Text = table[i].Damaged.ToString();
+                    old.Text = Math.Round(lastcharge(i, table),3).ToString();
+                    curr.Text =Math.Round(table[i].Buy - table[i].Sell - table[i].Damaged,3).ToString();
+                    damg.Text = table[i].Damaged.ToString();
 
                     // Add labels to the TableLayoutPanel
                     // tableLayoutPanel1.RowCount++;
-                    tableLayoutPanel1.Controls.Add(labelDate, 0, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol1, 1, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol2, 2, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol3, 3, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol6, 4, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol7, 5, i + 1);
-                    tableLayoutPanel1.Controls.Add(labelCol8, 6, i + 1);
+                    tableLayoutPanel1.Controls.Add(date, 0, i + 1);
+                    tableLayoutPanel1.Controls.Add(kyrat, 1, i + 1);
+                    tableLayoutPanel1.Controls.Add(sell, 2, i + 1);
+                    tableLayoutPanel1.Controls.Add(but, 3, i + 1);
+                    tableLayoutPanel1.Controls.Add(old, 4, i + 1);
+                    tableLayoutPanel1.Controls.Add(curr, 5, i + 1);
+                    tableLayoutPanel1.Controls.Add(damg, 6, i + 1);
                     //   tableLayoutPanel1.RowStyles[1].Height = 40;
                     if (i + 1 < table.Count)
-                        yesterday += double.Parse(labelCol6.Text);
+                        yesterday += double.Parse(old.Text);
 
-                    today = double.Parse(labelCol7.Text);
+                    today = double.Parse(curr.Text);
 
 
                 }
 
-                guna2TextBox1.Text = yesterday.ToString();
-                guna2TextBox2.Text = (yesterday + today).ToString();
+                guna2TextBox1.Text = Math.Round(yesterday,3).ToString();
+                guna2TextBox2.Text = Math.Round(yesterday + today,3).ToString();
+
 
             }
         }
@@ -160,7 +161,18 @@ namespace AbuFas
             double total = 0;
             for (int j = grams.Count - 1; j > i; j--)
             {
+                if (grams[j].Type=="21")
                 total += grams[j].Buy - grams[j].Sell - grams[i].Damaged;
+                else if (grams[j].Type == "18") 
+                {
+                    double total2 = grams[j].Buy - grams[j].Sell - grams[i].Damaged;
+                    total += total2 * 18 / 21;
+                }
+                else if (grams[j].Type == "24")
+                {
+                    double total2 = grams[j].Buy - grams[j].Sell - grams[i].Damaged;
+                    total += total2 * 24 / 21;
+                }
             }
             return total;
         }

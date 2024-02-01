@@ -31,8 +31,8 @@ namespace AbuFas
            */
             var context = new AppDbContext();
            
-            //  context.Database.EnsureDeleted();
-               // context.Database.EnsureCreated();
+           //   context.Database.EnsureDeleted();
+              //  context.Database.EnsureCreated();
            
 
 
