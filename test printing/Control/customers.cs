@@ -37,6 +37,7 @@ namespace AbuFas
             incoume.Controls.Add(dtp);
             outcome.Controls.Add(dtp2);
             context = new AppDbContext();
+            inout.Rows[0].Cells[1].Value = Properties.Resources.archive;
 
         }
         public customers(DbContextOptions<AppDbContext> options)
@@ -168,12 +169,12 @@ namespace AbuFas
                 foreach (var item in list)
                 {
                     inout.Rows[i].Cells[0].Value = i + 1;
-                    inout.Rows[i].Cells[1].Value = item.Name;
-                    inout.Rows[i].Cells[2].Value = item.Date.ToShortDateString();
-                    inout.Rows[i].Cells[3].Value = item.TotalMoney;
-                    inout.Rows[i].Cells[4].Value = item.TotalGrams;
-                    inout.Rows[i].Cells[5].Value = item.Notes;
-                    inout.Rows[i].Cells[6].Value = item.Id;
+                    inout.Rows[i].Cells[2].Value = item.Name;
+                    inout.Rows[i].Cells[3].Value = item.Date.ToShortDateString();
+                    inout.Rows[i].Cells[4].Value = item.TotalMoney;
+                    inout.Rows[i].Cells[5].Value = item.TotalGrams;
+                    inout.Rows[i].Cells[6].Value = item.Notes;
+                    inout.Rows[i].Cells[7].Value = item.Id;
                     inout.Rows[i].ReadOnly = true;
                     i++;
                 }
@@ -182,7 +183,33 @@ namespace AbuFas
 
         private void sendToArchive_Click(object sender, EventArgs e)
         {
+            var msg = MessageBox.Show("هل تريد ارشفة التاجر ", "تنبيه", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (msg == DialogResult.Yes)
+            {
+                var bid = custName.Text == "" ? null : custName.Text;
+                if (bid != null)
+                {
+                    var custToDelete = context.Customers.Where(c => c.Name == bid).FirstOrDefault();
+                    if (custToDelete == null)
+                    {
+                        MessageBox.Show("هذا التاجر لم يتم حفظه بعد");
+                        return;
+                    }
+                    else
+                    {
+                        custToDelete.IsArchived=true;
+                        context.SaveChanges();
+                        MessageBox.Show("تم ارشفة التاجر بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        load();
 
+                        AddCustomer.SendToBack();
+                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
+                        context.CustomersData.RemoveRange(list);
+                        context.SaveChanges();
+                    }
+                }
+
+            }
         }
 
         private void SaveChange_Click(object sender, EventArgs e)
@@ -297,6 +324,72 @@ namespace AbuFas
             Guna2DataGridView view = (Guna2DataGridView)dtp.Parent;
             view.CurrentCell.Value = dtp.Text.ToString();
             dtp.Visible = false;
+        }
+
+        private void inout_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            inout.Rows[e.RowIndex].Cells[1].Value = Properties.Resources.archive;
+        }
+
+        private void inout_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                var ms = MessageBox.Show("هل انت متأكد من الغاء الارشفة", "", MessageBoxButtons.YesNo);
+                if (ms == DialogResult.Yes)
+                {
+                    int bid = 0;
+                    Int32.TryParse(inout.CurrentRow.Cells[7].Value.ToString(), out bid);
+                    var item = context.Customers.Where(c => c.Id == bid).FirstOrDefault();
+                    if (item != null)
+                    {
+                       
+                        
+                            item.IsArchived = false;
+                        
+
+                        context.SaveChanges();
+                        load();
+                 
+                        AddCustomer.SendToBack();
+                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
+                        context.CustomersData.RemoveRange(list);
+                        context.SaveChanges();
+
+                    }
+                }
+            }
+        }
+
+        private void deleteCustomer_Click(object sender, EventArgs e)
+        {
+            var msg = MessageBox.Show("هل تريد مسح التاجر ","تنبيه",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+            if (msg == DialogResult.Yes) 
+            {
+                var bid = custName.Text==""?null:custName.Text;
+                if(bid != null) 
+                {
+                    var custToDelete=context.Customers.Where(c=>c.Name==bid).FirstOrDefault();
+                    if(custToDelete == null)
+                    {
+                        MessageBox.Show("هذا التاجر لم يتم حفظه بعد");
+                        return;
+                    }
+                    else 
+                    {
+                        context.Customers.Remove(custToDelete);
+                        context.SaveChanges();
+                        MessageBox.Show("تم مسح التاجر بنجاح","",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        load();
+
+                        AddCustomer.SendToBack();
+                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
+                        context.CustomersData.RemoveRange(list);
+                        context.SaveChanges();
+                    }
+                }
+                
+            }
         }
     }
 }

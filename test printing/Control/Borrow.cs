@@ -365,14 +365,14 @@ namespace AbuFas
 
         private void CustomersArchiveBtn_Click(object sender, EventArgs e)
         {
-            guna2Panel4.BringToFront();
+            ArchivePanel.BringToFront();
             guna2Button1.Visible = true;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             guna2Button1.Visible = false;
-            guna2Panel4.SendToBack();
+            ArchivePanel.SendToBack();
         }
 
         private void Archive_CellContentClick(object sender, DataGridViewCellEventArgs e)
