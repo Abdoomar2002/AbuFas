@@ -171,7 +171,7 @@
             this.inout.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.inout.RowTemplate.Height = 40;
             this.inout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.inout.Size = new System.Drawing.Size(1138, 750);
+            this.inout.Size = new System.Drawing.Size(1138, 650);
             this.inout.TabIndex = 4;
             this.inout.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.inout.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Cairo Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -380,7 +380,7 @@
             this.msgbox.Controls.Add(this.reject);
             this.msgbox.Controls.Add(this.accept);
             this.msgbox.Controls.Add(this.message);
-            this.msgbox.Location = new System.Drawing.Point(480, 273);
+            this.msgbox.Location = new System.Drawing.Point(293, 162);
             this.msgbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.msgbox.Name = "msgbox";
             this.msgbox.Size = new System.Drawing.Size(436, 224);
@@ -436,6 +436,7 @@
             this.details.BorderColor = System.Drawing.Color.Black;
             this.details.BorderRadius = 5;
             this.details.BorderThickness = 2;
+            this.details.Controls.Add(this.msgbox);
             this.details.Controls.Add(this.guna2Panel2);
             this.details.Controls.Add(this.DetailsList);
             this.details.Controls.Add(this.guna2Panel5);
@@ -679,7 +680,7 @@
             this.guna2Panel3.Controls.Add(this.CustomersArchiveBtn);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel3.Location = new System.Drawing.Point(51, 0);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1138, 80);
             this.guna2Panel3.TabIndex = 8;
@@ -732,7 +733,7 @@
             this.ArchivePanel.Controls.Add(this.Archive);
             this.ArchivePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArchivePanel.Location = new System.Drawing.Point(51, 0);
-            this.ArchivePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ArchivePanel.Margin = new System.Windows.Forms.Padding(4);
             this.ArchivePanel.Name = "ArchivePanel";
             this.ArchivePanel.Size = new System.Drawing.Size(1138, 830);
             this.ArchivePanel.TabIndex = 9;
@@ -896,10 +897,9 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.msgbox);
             this.Controls.Add(this.details);
-            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.inout);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.ArchivePanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

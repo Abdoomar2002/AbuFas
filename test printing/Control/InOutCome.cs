@@ -52,7 +52,7 @@ namespace AbuFas
             {
                 inout.Rows.Clear();
                 fla = false;
-            }
+            }fla = false;
             inout.Rows[0].Cells[4].Value = dateTime.ToShortDateString();
 
             AppDbContext context = new AppDbContext();

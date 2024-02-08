@@ -372,7 +372,7 @@ namespace AbuFas
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             guna2Button1.Visible = false;
-            ArchivePanel.SendToBack();
+            inout.BringToFront();
         }
 
         private void Archive_CellContentClick(object sender, DataGridViewCellEventArgs e)
