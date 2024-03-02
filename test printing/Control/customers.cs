@@ -73,12 +73,14 @@ namespace AbuFas
         private void ArchiveExit_Click(object sender, EventArgs e)
         {
             CustomersArchive.SendToBack();
+            load();
             SaveChange.Visible = false;
         }
 
         private void AddCustomerExit_Click(object sender, EventArgs e)
         {
             AddCustomer.SendToBack();
+            load();
             SaveChange.Visible = false;
         }
         public void load()
@@ -240,7 +242,7 @@ namespace AbuFas
             var outcoumeList = new List<CustomersData>();
             foreach (DataGridViewRow row in outcome.Rows)
             {
-                if (row.Index == incoume.Rows.Count - 1) continue;
+                if (row.Index == outcome.Rows.Count - 1) continue;
                 CustomersData data = new CustomersData();
                 DateTime date = DateTime.Now;
                 if (row.Cells[0].Value != null) DateTime.TryParse(row.Cells[0].Value.ToString(), out date);

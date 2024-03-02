@@ -257,7 +257,7 @@ namespace test_printing
                     totalGrams24 = dataRow.Weight == null ? totalGrams24 : totalGrams24 + dataRow.Weight;
                 billdata.Add(dataRow);
             }
-
+         //   totalmoney = (double)TryParseDouble(textBox2.Text);
             newBill.Data = billdata;
             var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "18").FirstOrDefault();
             var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "21").FirstOrDefault();
@@ -275,17 +275,17 @@ namespace test_printing
                 dayStatic.IncomeOutCome = new List<IncomeOutcome>();
                 dayStatic.Total = dayStatic2 != null ? dayStatic2.Total : 0;
             }
-            gramsStatic18.Sell = gramsStatic18.Buy == 0 ? totalGrams18 : totalGrams18 + gramsStatic18.Buy;
-            gramsStatic21.Sell = gramsStatic21.Buy == 0 ? totalGrams21 : totalGrams21 + gramsStatic21.Buy;
-            gramsStatic24.Sell = gramsStatic24.Buy == 0 ? totalGrams24 : totalGrams24 + gramsStatic24.Buy;
+            gramsStatic18.Buy = gramsStatic18.Buy == 0 ? totalGrams18 : totalGrams18 + gramsStatic18.Buy;
+            gramsStatic21.Buy = gramsStatic21.Buy == 0 ? totalGrams21 : totalGrams21 + gramsStatic21.Buy;
+            gramsStatic24.Buy = gramsStatic24.Buy == 0 ? totalGrams24 : totalGrams24 + gramsStatic24.Buy;
             gramsStatic18.Type = "18";
             gramsStatic21.Type = "21";
             gramsStatic24.Type = "24";
             dayStatic.Bills.Add(newBill);
             dayStatic.Total = dayStatic.Total == 0 ? totalmoney * -1 : dayStatic.Total - totalmoney;
-            dayStatic.Bills.Add(newBill);
             if (dayStatic.Id == 0)
                 _context.DaystaticMoney.Add(dayStatic);
+            dayStatic.Bills.Add(newBill);
             if (gramsStatic18.Id == 0 && totalGrams18 > 0)
                 _context.DayStaticGrams.Add(gramsStatic18);
             if (gramsStatic21.Id == 0 && totalGrams21 > 0)
@@ -371,7 +371,7 @@ namespace test_printing
                     if (number > 0)
                     {
                         double result1 = (weight  * price);
-                        data.Rows[e.RowIndex].Cells[0].Value = result1;
+                       // data.Rows[e.RowIndex].Cells[0].Value = result1;
 
                         double total = 0;
                         // int result0 = (int)((weight * number * price - result1) * 100);
@@ -384,8 +384,8 @@ namespace test_printing
 
                                 //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
                                 total += r0;
-                            else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
-                            else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
+                          //  else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
+                          //  else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
                             last.Text = Math.Round(total,3).ToString();
                         }
                     }//else { MessageBox.Show("يجب ان يكون العدد اكبر من 0"); }

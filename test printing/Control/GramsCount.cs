@@ -46,8 +46,7 @@ namespace AbuFas
             reset();
 
          
-            if (context.DayStaticGrams != null)
-            {
+          
                 var table = context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
                 // Further code using the context...
 
@@ -83,8 +82,8 @@ namespace AbuFas
 
                     date.Text = table[i].Date.ToShortDateString();
                     kyrat.Text = table[i].Type;
-                    sell.Text = Math.Round(table[i].Buy,3).ToString();
-                    but.Text =Math.Round(table[i].Sell,3).ToString();
+                    but.Text = Math.Round(table[i].Buy,3).ToString();
+                    sell.Text =Math.Round(table[i].Sell,3).ToString();
                 //    labelCol4.Text = table[i].Bouns.ToString();
                   //  labelCol5.Text = table[i].Minus.ToString();
                     old.Text = Math.Round(lastcharge(i, table),3).ToString();
@@ -113,7 +112,7 @@ namespace AbuFas
                 guna2TextBox2.Text = Math.Round(yesterday + today,3).ToString();
 
 
-            }
+            
         }
         private void Label8_TextChanged(object sender, EventArgs e)
         {
@@ -178,9 +177,16 @@ namespace AbuFas
         }
         public void reset()
         {
+            tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.Controls.Clear();
-           // tableLayoutPanel1.RowCount++;
-            tableLayoutPanel1.RowStyles[1].Height = 40;
+            tableLayoutPanel1.RowStyles.Clear();      
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute));
+         // tableLayoutPanel1.Dock= DockStyle.Fill;
+         //  tableLayoutPanel1.RowCount++;
+
+          tableLayoutPanel1.RowStyles[0].Height = 80;
+            tableLayoutPanel1.PerformLayout();
+           // tableLayoutPanel1.r.Height = 40;
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(label2, 1, 0);
             tableLayoutPanel1.Controls.Add(label3, 2, 0);
@@ -188,6 +194,7 @@ namespace AbuFas
             tableLayoutPanel1.Controls.Add(label7, 4, 0);
             tableLayoutPanel1.Controls.Add(label8, 5, 0);
             tableLayoutPanel1.Controls.Add(label9, 6, 0);
+        //    tableLayoutPanel1.Controls[0].Height = 40;
         }
     }
 }

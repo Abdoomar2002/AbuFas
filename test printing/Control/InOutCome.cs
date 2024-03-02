@@ -173,34 +173,3 @@ namespace AbuFas
         }
     }
 }
-/*System.InvalidOperationException
-  HResult=0x80131509
-  Message=Operation is not valid because it results in a reentrant call to the SetCurrentCellAddressCore function.
-  Source=System.Windows.Forms
-  StackTrace:
-   at System.Windows.Forms.DataGridView.SetCurrentCellAddressCore(Int32 columnIndex, Int32 rowIndex, Boolean setAnchorCellAddress, Boolean validateCurrentCell, Boolean throughMouseClick)
-   at System.Windows.Forms.DataGridView.set_CurrentCell(DataGridViewCell value)
-   at System.Windows.Forms.DataGridView.OnClearingRows()
-   at System.Windows.Forms.DataGridViewRowCollection.ClearInternal(Boolean recreateNewRow)
-   at System.Windows.Forms.DataGridViewRowCollection.Clear()
-   at AbuFas.InOutCome.Load(Int32 id, Boolean flag) in D:\AbuFas\AbuFas\test printing\Control\InOutCome.cs:line 50
-   at AbuFas.InOutCome.inout_RowLeave(Object sender, DataGridViewCellEventArgs e) in D:\AbuFas\AbuFas\test printing\Control\InOutCome.cs:line 111
-   at System.Windows.Forms.DataGridView.OnCellEndEdit(DataGridViewCellEventArgs e)
-   at System.Windows.Forms.DataGridView.EndEdit(DataGridViewDataErrorContexts context, DataGridViewValidateCellInternal validateCell, Boolean fireCellLeave, Boolean fireCellEnter, Boolean fireRowLeave, Boolean fireRowEnter, Boolean fireLeave, Boolean keepFocus, Boolean resetCurrentCell, Boolean resetAnchorCell)
-   at System.Windows.Forms.DataGridView.SetCurrentCellAddressCore(Int32 columnIndex, Int32 rowIndex, Boolean setAnchorCellAddress, Boolean validateCurrentCell, Boolean throughMouseClick)
-   at System.Windows.Forms.DataGridView.OnCellMouseDown(HitTestInfo hti, Boolean isShiftDown, Boolean isControlDown)
-   at System.Windows.Forms.DataGridView.OnCellMouseDown(DataGridViewCellMouseEventArgs e)
-   at System.Windows.Forms.DataGridView.OnMouseDown(MouseEventArgs e)
-   at System.Windows.Forms.Control.WmMouseDown(Message& m, MouseButtons button, Int32 clicks)
-   at System.Windows.Forms.Control.WndProc(Message& m)
-   at System.Windows.Forms.DataGridView.WndProc(Message& m)
-   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
-   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
-   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
-   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
-   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
-   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
-   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
-   at System.Windows.Forms.Application.Run(Form mainForm)
-   at test_printing.Program.Main() in D:\AbuFas\AbuFas\test printing\Program.cs:line 34
-*/

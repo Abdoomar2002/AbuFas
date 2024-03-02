@@ -262,18 +262,35 @@ namespace test_printing
                var billToDelete= _context.Bills.Where(c => c.Id == id).FirstOrDefault();
                var dataToDelete= _context.BillData.Where(c => c.Bill.Id == id);
                var MoneyToDelete = _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
-               var GramToDelete = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
-                double totalgrams = 0;
+               var GramToDelete18 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date&&c.Type=="18").FirstOrDefault();
+               var GramToDelete21 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "21").FirstOrDefault();
+               var GramToDelete24 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "24").FirstOrDefault();
+                if(GramToDelete18==null)GramToDelete18=new DayStaticGrams();
+                if(GramToDelete21==null)GramToDelete21=new DayStaticGrams();
+                if(GramToDelete24==null)GramToDelete24=new DayStaticGrams();
+                double totalgrams18 = 0;
+                double totalgrams21 = 0;
+                double totalgrams24 = 0;
                 foreach (var d in dataToDelete) 
                 {
-                    totalgrams += d.Weight;
+                    if(d.Kyrat==18)
+                    totalgrams18 += d.Weight;
+                    if (d.Kyrat == 21)
+                        totalgrams21 += d.Weight;
+                    if (d.Kyrat == 24)
+                        totalgrams24 += d.Weight;
                 }
                 if (billToDelete.IsBuy == true)
-                {   GramToDelete.Buy -= totalgrams;
+                { 
+                    GramToDelete18.Buy -= totalgrams18;
+                    GramToDelete21.Buy -= totalgrams21;
+                    GramToDelete24.Buy -= totalgrams24;
                     MoneyToDelete.Total += billToDelete.Total;
                 }
                 else {
-                    GramToDelete.Sell -= totalgrams;
+                    GramToDelete18.Sell -= totalgrams18;
+                    GramToDelete21.Sell -= totalgrams21;
+                    GramToDelete24.Sell -= totalgrams24;
                     MoneyToDelete.Total -= billToDelete.Total;
 
                 }

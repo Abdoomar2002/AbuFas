@@ -16,7 +16,8 @@ namespace AbuFas.Migrations
                     Name = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     Total = table.Column<double>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false),
+                    IsArchived= table.Column<bool>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -109,7 +110,7 @@ namespace AbuFas.Migrations
                     Grams = table.Column<double>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
                     IsIncome = table.Column<bool>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

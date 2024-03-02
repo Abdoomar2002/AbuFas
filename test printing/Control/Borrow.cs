@@ -95,13 +95,18 @@ namespace AbuFas
             {
                 switch (e.ColumnIndex)
                 {
-                    case 1: { msgbox.Visible = true; }; break;// Delete
+                    case 1: { msgbox.BringToFront(); msgbox.Visible = true; break;  }// Delete
                     case 2:
                         {
                             details.Visible = true;
                             detailsLoad(Int32.Parse(inout.Rows[e.RowIndex].Cells[8].Value.ToString()), inout.Rows[e.RowIndex].Cells[4].Value.ToString());
-                        }; break;//Edit
-                    case 3: { msgbox.Visible = true; }; break;//Archive
+                            break;
+                        }; //Edit
+                    case 3: 
+                        {
+                            msgbox.BringToFront();
+                            msgbox.Visible = true;
+                            break; }; //Archive
 
                 }
             }
