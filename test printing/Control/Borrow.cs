@@ -95,7 +95,7 @@ namespace AbuFas
             {
                 switch (e.ColumnIndex)
                 {
-                    case 1: { msgbox.BringToFront(); msgbox.Visible = true; break;  }// Delete
+                    case 1: {/* msgbox.BringToFront();*/ msgbox.Visible = true; break;  }// Delete
                     case 2:
                         {
                             details.Visible = true;
@@ -104,7 +104,7 @@ namespace AbuFas
                         }; //Edit
                     case 3: 
                         {
-                            msgbox.BringToFront();
+                           // msgbox.BringToFront();
                             msgbox.Visible = true;
                             break; }; //Archive
 
@@ -371,13 +371,14 @@ namespace AbuFas
         private void CustomersArchiveBtn_Click(object sender, EventArgs e)
         {
             ArchivePanel.BringToFront();
+            panel1.SendToBack();
             guna2Button1.Visible = true;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             guna2Button1.Visible = false;
-            inout.BringToFront();
+            panel1.BringToFront();
         }
 
         private void Archive_CellContentClick(object sender, DataGridViewCellEventArgs e)
