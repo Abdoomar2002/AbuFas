@@ -16,7 +16,7 @@ namespace test_printing
 {
     public partial class BillBuy : UserControl
     {
-        public  AppDbContext _context ;
+        
         protected override CreateParams CreateParams
         {
             get
@@ -37,7 +37,7 @@ namespace test_printing
         }
         public BillBuy(DbContextOptions<AppDbContext> options)
         {
-            _context = new AppDbContext(options);
+           
         }
 
         private void Notes_TextChanged(object sender, EventArgs e)
@@ -59,11 +59,9 @@ namespace test_printing
         {
             try
             {
-                _context = new AppDbContext();
+                Program._context.Database.EnsureCreated();
 
-                _context.Database.EnsureCreated();
-
-                var last = _context.Bills.AsEnumerable();
+                var last = Program._context.Bills.AsEnumerable();
 
                 var lastBill = last.LastOrDefault();
                 int id = (lastBill != null) ? lastBill.Id + 1 : 1;
@@ -259,17 +257,17 @@ namespace test_printing
             }
          //   totalmoney = (double)TryParseDouble(textBox2.Text);
             newBill.Data = billdata;
-            var gramsStatic18 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "18").FirstOrDefault();
-            var gramsStatic21 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "21").FirstOrDefault();
-            var gramsStatic24 = _context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "24").FirstOrDefault();
+            var gramsStatic18 = Program._context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "18").FirstOrDefault();
+            var gramsStatic21 = Program._context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "21").FirstOrDefault();
+            var gramsStatic24 = Program._context.DayStaticGrams.Where(e => e.Date == DateTime.Today && e.Type == "24").FirstOrDefault();
 
-            var dayStatic = _context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
+            var dayStatic = Program._context.DaystaticMoney.Where(e => e.Date == DateTime.Today).FirstOrDefault();
             if (gramsStatic18 == null) { gramsStatic18 = new DayStaticGrams(); gramsStatic18.Date = DateTime.Now.Date; }
             if (gramsStatic21 == null) { gramsStatic21 = new DayStaticGrams(); gramsStatic21.Date = DateTime.Now.Date; }
             if (gramsStatic24 == null) { gramsStatic24 = new DayStaticGrams(); gramsStatic24.Date = DateTime.Now.Date; }
             if (dayStatic == null)
             {
-                var dayStatic2 = _context.DaystaticMoney.OrderByDescending(c => c.Date).FirstOrDefault();
+                var dayStatic2 = Program._context.DaystaticMoney.OrderByDescending(c => c.Date).FirstOrDefault();
                 dayStatic = new DaystaticMoney();
                 dayStatic.Bills = new List<Bills>();
                 dayStatic.IncomeOutCome = new List<IncomeOutcome>();
@@ -284,17 +282,17 @@ namespace test_printing
             dayStatic.Bills.Add(newBill);
             dayStatic.Total = dayStatic.Total == 0 ? totalmoney * -1 : dayStatic.Total - totalmoney;
             if (dayStatic.Id == 0)
-                _context.DaystaticMoney.Add(dayStatic);
+                Program._context.DaystaticMoney.Add(dayStatic);
             dayStatic.Bills.Add(newBill);
             if (gramsStatic18.Id == 0 && totalGrams18 > 0)
-                _context.DayStaticGrams.Add(gramsStatic18);
+                Program._context.DayStaticGrams.Add(gramsStatic18);
             if (gramsStatic21.Id == 0 && totalGrams21 > 0)
-                _context.DayStaticGrams.Add(gramsStatic21);
+                Program._context.DayStaticGrams.Add(gramsStatic21);
             if (gramsStatic24.Id == 0 && totalGrams24 > 0)
-                _context.DayStaticGrams.Add(gramsStatic24);
-            _context.BillData.AddRange(billdata);
-            _context.Bills.Add(newBill);
-            _context.SaveChanges();
+                Program._context.DayStaticGrams.Add(gramsStatic24);
+            Program._context.BillData.AddRange(billdata);
+            Program._context.Bills.Add(newBill);
+            Program._context.SaveChanges();
 
 
             // Helper methods to handle parsing with null check

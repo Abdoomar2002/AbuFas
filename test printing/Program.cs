@@ -11,12 +11,14 @@ namespace test_printing
 {
     internal static class Program
     {
+        public static AppDbContext _context;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            _context = new AppDbContext();
             /*    void ConfigureServices(IServiceCollection services)
                {
                    // Other services...

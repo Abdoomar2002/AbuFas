@@ -17,7 +17,7 @@ namespace AbuFas
 {
     public partial class customers : UserControl
     {
-        public AppDbContext context;
+        
         Guna2DateTimePicker dtp = new Guna2DateTimePicker();
         Guna2DateTimePicker dtp2 = new Guna2DateTimePicker();
         bool breaksave = false;
@@ -36,13 +36,13 @@ namespace AbuFas
             dtp.TextChanged += new EventHandler(dtp_TextChanged);
             incoume.Controls.Add(dtp);
             outcome.Controls.Add(dtp2);
-            context = new AppDbContext();
+            Program._context = new AppDbContext();
             inout.Rows[0].Cells[1].Value = Properties.Resources.archive;
 
         }
         public customers(DbContextOptions<AppDbContext> options)
         {
-            context = new AppDbContext(options);
+           
         }
 
         private void AddCustomerBtn_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace AbuFas
         public void load()
         {
             CustomersList.Rows.Clear();
-            var list = context.Customers.Where(c => c.IsArchived == false).ToList();
+            var list = Program._context.Customers.Where(c => c.IsArchived == false).ToList();
             index.BringToFront();
             if (list.Count > 0)
             {
@@ -120,7 +120,7 @@ namespace AbuFas
 
             if (id != 0)
             {
-                var list = context.CustomersData.Where(c => c.Customer.Id == id).ToList();
+                var list = Program._context.CustomersData.Where(c => c.Customer.Id == id).ToList();
                 if (list.Count > 0)
                 {
                     custName.Text = list[0].Customer.Name;
@@ -164,7 +164,7 @@ namespace AbuFas
         public void ArchiveLoad()
         {
             inout.Rows.Clear();
-            var list = context.Customers.Where(c => c.IsArchived == true).ToList();
+            var list = Program._context.Customers.Where(c => c.IsArchived == true).ToList();
             if (list.Count > 0)
             {
                 int i = 0;
@@ -191,7 +191,7 @@ namespace AbuFas
                 var bid = custName.Text == "" ? null : custName.Text;
                 if (bid != null)
                 {
-                    var custToDelete = context.Customers.Where(c => c.Name == bid).FirstOrDefault();
+                    var custToDelete = Program._context.Customers.Where(c => c.Name == bid).FirstOrDefault();
                     if (custToDelete == null)
                     {
                         MessageBox.Show("هذا التاجر لم يتم حفظه بعد");
@@ -200,14 +200,14 @@ namespace AbuFas
                     else
                     {
                         custToDelete.IsArchived=true;
-                        context.SaveChanges();
+                        Program._context.SaveChanges();
                         MessageBox.Show("تم ارشفة التاجر بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         load();
 
                         AddCustomer.SendToBack();
-                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
-                        context.CustomersData.RemoveRange(list);
-                        context.SaveChanges();
+                        var list = Program._context.CustomersData.Where(c => c.Customer == null).ToList();
+                        Program._context.CustomersData.RemoveRange(list);
+                        Program._context.SaveChanges();
                     }
                 }
 
@@ -218,8 +218,8 @@ namespace AbuFas
         {
             if (custName.Text.Length == 0) { MessageBox.Show("من فضلك ادخل اسم التاجر"); return; }
             if (incoume.RowCount == 1 && outcome.RowCount == 1) { MessageBox.Show("من فضلك ادخل البيانات كامله"); return; }
-            var cust = context.Customers.Where(c => c.Name.Equals(custName.Text)).FirstOrDefault();
-            if (cust == null) { cust = new Customers(); context.Customers.Add(cust); }
+            var cust = Program._context.Customers.Where(c => c.Name.Equals(custName.Text)).FirstOrDefault();
+            if (cust == null) { cust = new Customers(); Program._context.Customers.Add(cust); }
             cust.IsArchived = false;
             cust.Name = custName.Text;
             double grams = 0, money = 0;
@@ -261,13 +261,13 @@ namespace AbuFas
             cust.Notes = List.AsEnumerable().OrderByDescending(d => d.Date).FirstOrDefault().Notes;
             cust.TotalGrams = grams;
             cust.TotalMoney = money;
-            context.SaveChanges();
+            Program._context.SaveChanges();
             MessageBox.Show("تمت العملية");
             load();
             AddCustomer.SendToBack();
-            var list = context.CustomersData.Where(c => c.Customer == null).ToList();
-            context.CustomersData.RemoveRange(list);
-            context.SaveChanges();
+            var list = Program._context.CustomersData.Where(c => c.Customer == null).ToList();
+            Program._context.CustomersData.RemoveRange(list);
+            Program._context.SaveChanges();
         }
         private double? TryParseDouble(object value)
         {
@@ -342,7 +342,7 @@ namespace AbuFas
                 {
                     int bid = 0;
                     Int32.TryParse(inout.CurrentRow.Cells[7].Value.ToString(), out bid);
-                    var item = context.Customers.Where(c => c.Id == bid).FirstOrDefault();
+                    var item = Program._context.Customers.Where(c => c.Id == bid).FirstOrDefault();
                     if (item != null)
                     {
                        
@@ -350,13 +350,13 @@ namespace AbuFas
                             item.IsArchived = false;
                         
 
-                        context.SaveChanges();
+                        Program._context.SaveChanges();
                         load();
                  
                         AddCustomer.SendToBack();
-                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
-                        context.CustomersData.RemoveRange(list);
-                        context.SaveChanges();
+                        var list = Program._context.CustomersData.Where(c => c.Customer == null).ToList();
+                        Program._context.CustomersData.RemoveRange(list);
+                        Program._context.SaveChanges();
 
                     }
                 }
@@ -371,7 +371,7 @@ namespace AbuFas
                 var bid = custName.Text==""?null:custName.Text;
                 if(bid != null) 
                 {
-                    var custToDelete=context.Customers.Where(c=>c.Name==bid).FirstOrDefault();
+                    var custToDelete=Program._context.Customers.Where(c=>c.Name==bid).FirstOrDefault();
                     if(custToDelete == null)
                     {
                         MessageBox.Show("هذا التاجر لم يتم حفظه بعد");
@@ -379,15 +379,15 @@ namespace AbuFas
                     }
                     else 
                     {
-                        context.Customers.Remove(custToDelete);
-                        context.SaveChanges();
+                        Program._context.Customers.Remove(custToDelete);
+                        Program._context.SaveChanges();
                         MessageBox.Show("تم مسح التاجر بنجاح","",MessageBoxButtons.OK, MessageBoxIcon.Information);
                         load();
 
                         AddCustomer.SendToBack();
-                        var list = context.CustomersData.Where(c => c.Customer == null).ToList();
-                        context.CustomersData.RemoveRange(list);
-                        context.SaveChanges();
+                        var list = Program._context.CustomersData.Where(c => c.Customer == null).ToList();
+                        Program._context.CustomersData.RemoveRange(list);
+                        Program._context.SaveChanges();
                     }
                 }
                 

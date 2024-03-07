@@ -18,12 +18,12 @@ namespace AbuFas
 {
     public partial class Borrow : UserControl
     {
-        AppDbContext context;
+       
         Guna2DateTimePicker dtp = new Guna2DateTimePicker();
         public Borrow()
         {
             InitializeComponent();
-            context = new AppDbContext();
+            Program._context = new AppDbContext();
             inout.Rows[0].Cells[0].Value = 0;
             inout.Rows[0].Cells[1].Value = Properties.Resources.icon;
             inout.Rows[0].Cells[2].Value = Properties.Resources.icon_1;
@@ -50,7 +50,7 @@ namespace AbuFas
         }
         public Borrow(DbContextOptions<AppDbContext> options)
         {
-            context = new AppDbContext(options);
+           
         }
         private void dtp_TextChanged(Object sender, EventArgs e)
         {
@@ -125,9 +125,9 @@ namespace AbuFas
         {
             inout.Rows.Clear();
             inout.RowCount = 1;
-            context.Database.EnsureCreated();
+            Program._context.Database.EnsureCreated();
             ArchiveLoad();
-            var list = context.Borrows.Where(c => c.IsArchived == false).ToList();
+            var list = Program._context.Borrows.Where(c => c.IsArchived == false).ToList();
             if (list.Count > 0)
             {
                 double total = 0;
@@ -153,7 +153,7 @@ namespace AbuFas
             DetailsList.Rows.Clear();
             if (id != 0)
             {
-                var detailsList = context.BorrowsData.Where(c => c.Borrow.Id == id).ToList();
+                var detailsList = Program._context.BorrowsData.Where(c => c.Borrow.Id == id).ToList();
                 if (detailsList.Count > 0)
                 {
                     DetailsList.RowCount = detailsList.Count + 1;
@@ -187,10 +187,10 @@ namespace AbuFas
                     {
                         if (DetailsList.Rows[e.RowIndex].Cells[6].Value != null)
                         {
-                            var item = context.BorrowsData.Where(c => c.Id == Int32.Parse(DetailsList.Rows[e.RowIndex].Cells[6].Value.ToString())).FirstOrDefault();
+                            var item = Program._context.BorrowsData.Where(c => c.Id == Int32.Parse(DetailsList.Rows[e.RowIndex].Cells[6].Value.ToString())).FirstOrDefault();
                             if (item != null)
                             {
-                                context.BorrowsData.Remove(item);
+                                Program._context.BorrowsData.Remove(item);
                             }
                         }
                         if (e.RowIndex < DetailsList.Rows.Count - 1)
@@ -219,9 +219,9 @@ namespace AbuFas
 
 
             var items = new List<BorrowsData>();
-            var br = context.Borrows.Where(c => c.Name == label5.Text).FirstOrDefault();
-            if (br == null) { br = new Borrows(); context.Borrows.Add(br); }
-            else { context.BorrowsData.RemoveRange(br.BData); context.Borrows.Remove(br);context.SaveChanges(); }
+            var br = Program._context.Borrows.Where(c => c.Name == label5.Text).FirstOrDefault();
+            if (br == null) { br = new Borrows(); Program._context.Borrows.Add(br); }
+            else { Program._context.BorrowsData.RemoveRange(br.BData); Program._context.Borrows.Remove(br);Program._context.SaveChanges(); }
             br.Name = label5.Text;
             double total = 0;
             string note = "";
@@ -246,14 +246,14 @@ namespace AbuFas
             br.Total = total;
             br.Notes = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Notes;
             br.Date = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Date;
-            context.Borrows.Add(br);
-            context.SaveChanges();
+            Program._context.Borrows.Add(br);
+            Program._context.SaveChanges();
             MessageBox.Show("تمت الاضافة بنجاح");
             load();
             details.Visible = false;
-            var list = context.BorrowsData.Where(c => c.Borrow.Id == null).ToList();
-            context.BorrowsData.RemoveRange(list);
-            context.SaveChanges();
+            var list = Program._context.BorrowsData.Where(c => c.Borrow.Id == null).ToList();
+            Program._context.BorrowsData.RemoveRange(list);
+            Program._context.SaveChanges();
 
         }
         private double? TryParseDouble(object value)
@@ -320,19 +320,19 @@ namespace AbuFas
         {
             int bid = 0;
             Int32.TryParse(inout.CurrentRow.Cells[8].Value.ToString(), out bid);
-            var item = context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
+            var item = Program._context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
             if (item != null)
             {
                 if (inout.CurrentCell.ColumnIndex == 1)
                 {
                     item.BData.Clear();
-                    context.Borrows.Remove(item);
+                    Program._context.Borrows.Remove(item);
                 }
                 else if (inout.CurrentCell.ColumnIndex == 3)
                 {
                     item.IsArchived = true;
                 }
-                context.SaveChanges();
+                Program._context.SaveChanges();
                 load();
 
             }
@@ -347,8 +347,8 @@ namespace AbuFas
         {
             Archive.Rows.Clear();
             Archive.RowCount = 1;
-            context.Database.EnsureCreated();
-            var list = context.Borrows.Where(c => c.IsArchived == true).ToList();
+            Program._context.Database.EnsureCreated();
+            var list = Program._context.Borrows.Where(c => c.IsArchived == true).ToList();
             if (list.Count > 0)
             {
                 double total = 0;
@@ -394,7 +394,7 @@ namespace AbuFas
                 {
                     int bid = 0;
                     Int32.TryParse(Archive.CurrentRow.Cells[6].Value.ToString(), out bid);
-                    var item = context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
+                    var item = Program._context.Borrows.Where(c => c.Id == bid).FirstOrDefault();
                     if (item != null)
                     {
                         if (Archive.CurrentCell.ColumnIndex == 1)
@@ -402,7 +402,7 @@ namespace AbuFas
                             item.IsArchived = false;
                         }
 
-                        context.SaveChanges();
+                        Program._context.SaveChanges();
                         load();
 
                     }

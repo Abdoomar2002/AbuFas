@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using Guna.UI2.AnimatorNS;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,15 +49,15 @@ namespace AbuFas
         }
         public void Load(int id, bool flag)
         {
-            if (!fla)
+          /*  if (!fla)
             {
                 inout.Rows.Clear();
                 fla = false;
-            }fla = false;
+            }fla = false;*/
             inout.Rows[0].Cells[4].Value = dateTime.ToShortDateString();
 
-            AppDbContext context = new AppDbContext();
-            var items = context.IncomeOutcome.Where(c=>c.Money.Id==id&&c.IsIncome==flag).ToList();
+            
+            var items = Program._context.IncomeOutcome.Where(c=>c.Money.Id==id&&c.IsIncome==flag).ToList();
             moneyId = id;
             fl = flag;
             if (items.Count <= 0) return;
@@ -83,8 +84,8 @@ namespace AbuFas
 
         private void inout_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            AppDbContext context = new AppDbContext();
-            var item = inout.CurrentRow.Cells[7].Value != null ? context.IncomeOutcome.Where(x => x.Id == Int32.Parse(inout.CurrentRow.Cells[7].Value.ToString())).FirstOrDefault():new IncomeOutcome() ;
+            
+            var item = inout.CurrentRow.Cells[7].Value != null ? Program._context.IncomeOutcome.Where(x => x.Id == Int32.Parse(inout.CurrentRow.Cells[7].Value.ToString())).FirstOrDefault():new IncomeOutcome() ;
             if (e.ColumnIndex > 2)
                 if (inout.Rows[e.RowIndex].Cells[3].Value == null || (inout.Rows[e.RowIndex].Cells[5].Value == null)) { MessageBox.Show("من فضلك ادخل البيانات كامله"); return; }
             item.Name = inout.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -106,20 +107,21 @@ namespace AbuFas
 
 
 
-            var mon = context.DaystaticMoney.Where(c => c.Id == moneyId).FirstOrDefault();
+            var mon = Program._context.DaystaticMoney.Where(c => c.Id == moneyId).FirstOrDefault();
             if (mon.IncomeOutCome == null)
                 mon.IncomeOutCome = new List<IncomeOutcome>();
             if (item.Id == 0)
             {
                 mon.IncomeOutCome.Add(item);
-                context.IncomeOutcome.Add(item);
+                Program._context.IncomeOutcome.Add(item);
             }
-            context.SaveChanges();
+            Program._context.SaveChanges();
             fla = true;
             Load(moneyId, fl);
+
+            Home home = (Home)this.ParentForm;
             
-           // DayStatic day = (DayStatic)this.Parent.Parent;
-           // day.load(dateTime);
+            home.dayStatic1.load(dateTime);
 
         }
         private double? TryParseDouble(object value)
@@ -150,24 +152,57 @@ namespace AbuFas
                     if (ans == DialogResult.Yes)
                     {
                         if (e.RowIndex == inout.RowCount - 1) { MessageBox.Show("لا يوجد صف لمسحه"); return; }
-                        AppDbContext context = new AppDbContext();
-                        var item = context.IncomeOutcome.Where(c => c.Money.Id == moneyId && c.Name == inout.Rows[e.RowIndex].Cells[3].Value.ToString()).FirstOrDefault();
-                        var Moneyitem = context.DaystaticMoney.Where(c => c.Id == moneyId).FirstOrDefault();
+                      
+                        var item = Program._context.IncomeOutcome.Where(c => c.Money.Id == moneyId && c.Name == inout.Rows[e.RowIndex].Cells[3].Value.ToString()).FirstOrDefault();
+                        var Moneyitem = Program._context.DaystaticMoney.Where(c => c.Id == moneyId).FirstOrDefault();
                         if (item != null)
                         {
                             if (fl) Moneyitem.Total -= item.Price;
                             else item.Money.Total += item.Price;
-                            context.IncomeOutcome.Remove(item);
-                            context.SaveChanges();
+                            Program._context.IncomeOutcome.Remove(item);
+                            Program._context.SaveChanges();
                             Load(moneyId, fl);
-                            DayStatic day = (DayStatic)this.Parent.Parent;
-                            day.load(dateTime);
+                            Home home = (Home)this.ParentForm;
+                            
+                            home.dayStatic1.load(dateTime);
                         }
                     }
                 }
             }
         }
+        public void loadOtherSide(int id,bool flag) {
+              if (!fla)
+           {
+               inout.Rows.Clear();
+               fla = false;
+           }fla = false;
+            inout.Rows[0].Cells[4].Value = dateTime.ToShortDateString();
 
+
+            var items = Program._context.IncomeOutcome.Where(c => c.Money.Id == id && c.IsIncome == flag).ToList();
+            moneyId = id;
+            fl = flag;
+            if (items.Count <= 0) return;
+            inout.RowCount = items.Count + 1;
+            if (items.Count > 0)
+            {
+                int i = 0;
+                foreach (var item in items)
+                {
+
+                    inout.Rows[i].Cells[3].Value = item.Name;
+                    inout.Rows[i].Cells[0].Value = i + 1;
+                    inout.Rows[i].Cells[4].Value = dateTime.ToShortDateString();
+                    inout.Rows[i].Cells[5].Value = item.Price;
+                    inout.Rows[i].Cells[6].Value = item.Notes;
+                    //  inout.Rows[i].ReadOnly =(fla==true&&(i+1)==items.Count)? false:true;
+                    inout.Rows[i].Cells[7].Value = item.Id.ToString();
+                    i++;
+                }
+                index = items.Count + 1;
+            }
+
+        }
         private void inout_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
            

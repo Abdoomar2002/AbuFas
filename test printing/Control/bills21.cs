@@ -82,14 +82,14 @@ namespace AbuFas
         {
             tableLayoutPanel1.Controls.Clear();
 
-            AppDbContext context = new AppDbContext();
-            var bills = context.Bills.Where(c => c.Money.Id == id && c.IsBuy == flag).ToList();
+           
+            var bills = Program._context.Bills.Where(c => c.Money.Id == id && c.IsBuy == flag).ToList();
             string str = "";
             if (bills.Count > 0)
                 foreach (var b in bills)
                 {
                     str = "الاسم: ";
-                    var bils = context.BillData.Where(c => c.Bill == b);
+                    var bils = Program._context.BillData.Where(c => c.Bill == b);
                     var total = bils.Sum(c => c.Weight);
                   
                     str += b.CustomerName + "\nالتاريخ: " + b.Date.ToShortDateString() + "\nالسعر: " + b.Total+"\nالجرامات:"+total;

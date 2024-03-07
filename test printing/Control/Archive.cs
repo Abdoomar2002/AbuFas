@@ -55,12 +55,12 @@ namespace test_printing
         }
         public void LoadTable()
         {
-            AppDbContext context = _context;
-            context.Database.OpenConnectionAsync();
-            context.Database.MigrateAsync();
-            context.Database.EnsureCreatedAsync();
+         //   AppDbContext Program._context = _context;
+            Program._context.Database.OpenConnectionAsync();
+            Program._context.Database.MigrateAsync();
+            Program._context.Database.EnsureCreatedAsync();
 
-            var billList = context.Bills.ToArray();
+            var billList = Program._context.Bills.ToArray();
             ArchiveTable.Controls.Clear();
 
 
@@ -80,7 +80,7 @@ namespace test_printing
                         arcbill.BillNum.Text = billList[row * 4 + col].Id.ToString();
                         arcbill.BillDate.Text = billList[row * 4 + col].Date.ToShortDateString();
                         int id = billList[row * 4 + col].Id;
-                        var tablelis = context.BillData.Where(c => c.Bill.Id == id);
+                        var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
 
                         var table = tablelis.ToArray();
                         arcbill.data.RowCount = table.Length;
@@ -111,7 +111,7 @@ namespace test_printing
                         arcbill2.BillNum.Text = billList[row * 4 + col].Id.ToString();
                         arcbill2.label12.Text = billList[row * 4 + col].Date.ToShortDateString();
                         int id = billList[row * 4 + col].Id;
-                        var tablelis = context.BillData.Where(c => c.Bill.Id == id);
+                        var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
 
                         var table = tablelis.ToArray();
                         arcbill2.data.RowCount = table.Length;
@@ -155,9 +155,9 @@ namespace test_printing
         {
             Single.Visible = true;
             PictureBox pictureBox=(sender as PictureBox);
-            AppDbContext context = _context;
-           var bigBill= context.Bills.Where(c => c.Id == Int32.Parse(pictureBox.Name)).FirstOrDefault();
-            var billdata = context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
+           
+           var bigBill= Program._context.Bills.Where(c => c.Id == Int32.Parse(pictureBox.Name)).FirstOrDefault();
+            var billdata = Program._context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
           show(bigBill, billdata);
             Single.BringToFront();
 
@@ -167,7 +167,7 @@ namespace test_printing
         }
         public void show( Bills bigBill, List <BillData> billdata) 
         {
-            double total = 0;
+            double total = 0,total18=0,total24=0;
             if (bigBill.IsBuy)
             {
                 bill1.Visible = false;
@@ -193,11 +193,17 @@ namespace test_printing
                     obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
                     obj.Cells[4].Value = table[i].Number.ToString();
                     obj.Cells[5].Value = table[i].Name;
+                    if (table[i].Kyrat==21)
                     total += table[i].Weight;
+                    else if (table[i].Kyrat==18)
+                        total18 += table[i].Weight;
+                    else total24 += table[i].Weight;
 
                     // billBuy1.data.Rows.Add(obj);
                 }
                 billBuy1.last.Text = total.ToString();
+                billBuy1.textBox3.Text = total18.ToString();
+                billBuy1.textBox4.Text = total24.ToString();
                   billBuy1.textBox2.Text=  bigBill.Total.ToString();
 
 
@@ -226,11 +232,17 @@ namespace test_printing
                     obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
                     obj.Cells[4].Value = table[i].Number.ToString();
                     obj.Cells[5].Value = table[i].Name;
-                    total += table[i].Weight;
+                    if (table[i].Kyrat == 21)
+                        total += table[i].Weight;
+                    else if (table[i].Kyrat == 18)
+                        total18 += table[i].Weight;
+                    else total24 += table[i].Weight;
 
-                    // bill1.data.Rows.Add(obj);
+                    // billBuy1.data.Rows.Add(obj);
                 }
                 bill1.last.Text = total.ToString();
+                bill1.textBox2.Text = total18.ToString();
+                bill1.textBox3.Text = total24.ToString();
                 bill1.textBox1.Text=bigBill.Total.ToString();
             }
         }

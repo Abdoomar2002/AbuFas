@@ -19,7 +19,7 @@ namespace AbuFas
 {
     public partial class GramsCount : UserControl
     {
-        public AppDbContext context;
+        
 
         protected override CreateParams CreateParams
         {
@@ -33,83 +33,85 @@ namespace AbuFas
         public GramsCount()
         {
             InitializeComponent();
-            context = new AppDbContext();
+           
 
         }
         public GramsCount(DbContextOptions<AppDbContext> options)
         {
-            context = new AppDbContext(options);
+            Program._context = new AppDbContext(options);
         }
 
         public void GramsCount_Load(object sender, EventArgs e)
         {
             reset();
+            Program._context = new AppDbContext();
+            var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
 
-         
-          
-                var table = context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
-                // Further code using the context...
+            double yesterday = 0;
+            double today = 0;
 
+            //   var table = Program._context.DayStaticGrams.OrderByDescending(g => g.Date).AsEnumerable().ToList();
+            for (int i = 0; i < table.Count; i++)
+            {
+                Random random = new Random();
+                // Assuming you have a TableLayoutPanel named tableLayoutPanel1
 
-                // AppDbContext context = new AppDbContext();
-                double yesterday = 0;
-                double today = 0;
-
-                //   var table = context.DayStaticGrams.OrderByDescending(g => g.Date).AsEnumerable().ToList();
-                for (int i = 0; i < table.Count; i++)
-                {
-                    Random random = new Random();
-                    // Assuming you have a TableLayoutPanel named tableLayoutPanel1
-
-                    // Create labels for each column
-                    Guna2TextBox date = CopyLabel();
-                    Guna2TextBox kyrat = CopyLabel();
-                    Guna2TextBox sell = CopyLabel();
-                    Guna2TextBox but = CopyLabel();
-                    Guna2TextBox labelCol4 = CopyLabel();
-                    Guna2TextBox labelCol5 = CopyLabel();
-                    Guna2TextBox old = CopyLabel();
-                    Guna2TextBox curr = CopyLabel();
-                    Guna2TextBox damg = CopyLabel();
-                   // labelCol5.ReadOnly = false;
-                   // labelCol4.ReadOnly = false;
-                    damg.ReadOnly = false;
-                    damg.TextChanged += Label8_TextChanged;
+                // Create labels for each column
+                Guna2TextBox date = CopyLabel();
+                Guna2TextBox kyrat = CopyLabel();
+                Guna2TextBox sell = CopyLabel();
+                Guna2TextBox but = CopyLabel();
+                Guna2TextBox labelCol4 = CopyLabel();
+                Guna2TextBox labelCol5 = CopyLabel();
+                Guna2TextBox old = CopyLabel();
+                Guna2TextBox curr = CopyLabel();
+                Guna2TextBox damg = CopyLabel();
+                // labelCol5.ReadOnly = false;
+                // labelCol4.ReadOnly = false;
+                damg.ReadOnly = false;
+                damg.TextChanged += Label8_TextChanged;
 
                 
 
-                    // Set data for each label
+                // Set data for each label
 
-                    date.Text = table[i].Date.ToShortDateString();
-                    kyrat.Text = table[i].Type;
-                    but.Text = Math.Round(table[i].Buy,3).ToString();
-                    sell.Text =Math.Round(table[i].Sell,3).ToString();
+                date.Text = table[i].Date.ToShortDateString();
+                kyrat.Text = table[i].Type;
+                but.Text = Math.Round(table[i].Buy,3).ToString();
+                sell.Text =Math.Round(table[i].Sell,3).ToString();
                 //    labelCol4.Text = table[i].Bouns.ToString();
-                  //  labelCol5.Text = table[i].Minus.ToString();
-                    old.Text = Math.Round(lastcharge(i, table),3).ToString();
-                    curr.Text =Math.Round(table[i].Buy - table[i].Sell - table[i].Damaged,3).ToString();
-                    damg.Text = table[i].Damaged.ToString();
+                //  labelCol5.Text = table[i].Minus.ToString();
+                var oldvalue = calculateOld(table[i].Date, table[i].Type);
+                old.Text = Math.Round(oldvalue,3).ToString();
+                curr.Text =Math.Round(oldvalue+table[i].Buy - table[i].Sell - table[i].Damaged,3).ToString();
+                
+                damg.Text = table[i].Damaged.ToString();
 
-                    // Add labels to the TableLayoutPanel
-                    // tableLayoutPanel1.RowCount++;
-                    tableLayoutPanel1.Controls.Add(date, 0, i + 1);
-                    tableLayoutPanel1.Controls.Add(kyrat, 1, i + 1);
-                    tableLayoutPanel1.Controls.Add(sell, 2, i + 1);
-                    tableLayoutPanel1.Controls.Add(but, 3, i + 1);
-                    tableLayoutPanel1.Controls.Add(old, 4, i + 1);
-                    tableLayoutPanel1.Controls.Add(curr, 5, i + 1);
-                    tableLayoutPanel1.Controls.Add(damg, 6, i + 1);
-                    //   tableLayoutPanel1.RowStyles[1].Height = 40;
-                    if (i + 1 < table.Count)
-                        yesterday += double.Parse(old.Text);
+                // Add labels to the TableLayoutPanel
+                // tableLayoutPanel1.RowCount++;
+                tableLayoutPanel1.Controls.Add(date, 0, i + 1);
+                tableLayoutPanel1.Controls.Add(kyrat, 1, i + 1);
+                tableLayoutPanel1.Controls.Add(sell, 2, i + 1);
+                tableLayoutPanel1.Controls.Add(but, 3, i + 1);
+                tableLayoutPanel1.Controls.Add(old, 4, i + 1);
+                tableLayoutPanel1.Controls.Add(curr, 5, i + 1);
+                tableLayoutPanel1.Controls.Add(damg, 6, i + 1);
+                //   tableLayoutPanel1.RowStyles[1].Height = 40;
+                if (i + 1 < table.Count)
+                    yesterday += double.Parse(old.Text);
 
-                    today = double.Parse(curr.Text);
+                today = double.Parse(curr.Text);
 
 
-                }
-
-                guna2TextBox1.Text = Math.Round(yesterday,3).ToString();
-                guna2TextBox2.Text = Math.Round(yesterday + today,3).ToString();
+            }
+            var yesterday21 = calculateOld(DateTime.Today.Date, "21");
+            var yesterday18 = calculateOld(DateTime.Today.Date, "18")*18/21;
+            var yesterday24 = calculateOld(DateTime.Today.Date, "24")*24/21;
+            var day21 = calculateOld(DateTime.Today.AddDays(1).Date, "21");
+            var day18 = calculateOld(DateTime.Today.AddDays(1).Date, "18") * 18 / 21;
+            var day24 = calculateOld(DateTime.Today.AddDays(1).Date, "24") * 24 / 21;
+            guna2TextBox1.Text = Math.Round(yesterday21+yesterday18+yesterday24,3).ToString();
+            guna2TextBox2.Text = Math.Round(day21+day18+day24,3).ToString();
 
 
             
@@ -121,12 +123,12 @@ namespace AbuFas
             // Get the current line number based on the cursor position
          int r=   tableLayoutPanel1.GetRow(textBox);
 
-            var table = context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
+            var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
             var damage = 0;
             Int32.TryParse(textBox.Text, out damage);
             if (damage > 0&&r>=1)
                 table[r-1].Damaged = damage;
-            context.SaveChanges();
+            Program._context.SaveChanges();
         }
 
 
@@ -195,6 +197,18 @@ namespace AbuFas
             tableLayoutPanel1.Controls.Add(label8, 5, 0);
             tableLayoutPanel1.Controls.Add(label9, 6, 0);
         //    tableLayoutPanel1.Controls[0].Height = 40;
+        }
+
+
+
+        public double calculateOld(DateTime date,string type) 
+        {
+           var cuurentDay= Program._context.DayStaticGrams.Where(c => c.Date == date&&c.Type==type).FirstOrDefault();
+           var oldDays=Program._context.DayStaticGrams.AsEnumerable().OrderBy(c=>c.Date).Where(c=>c.Date<date&&c.Type==type).ToList();
+           double total = 0;
+            if (oldDays.Count > 0)
+                total = (double)oldDays.Sum(e => e.Buy - e.Sell - e.Damaged);
+            return total;
         }
     }
 }

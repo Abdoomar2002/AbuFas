@@ -11,28 +11,28 @@ namespace AbuFas
 {
     public partial class DayStatic : UserControl
     {
-        bool fl, fl1;
-        public  AppDbContext context;
+      static  bool fl, fl1;
+        
         public DayStatic()
         {
             InitializeComponent();
         }
         public DayStatic(DbContextOptions<AppDbContext> options)
         {
-            context = new AppDbContext(options);
+            Program._context = new AppDbContext(options);
         }
         private void label15_Click(object sender, EventArgs e)
         {
-            AppDbContext context = new AppDbContext();
-            var money = context.DaystaticMoney.Where(x => x.Date == DateTime.Parse(cuurentDate.Text)).FirstOrDefault();
+            
+            var money = Program._context.DaystaticMoney.Where(x => x.Date == DateTime.Parse(cuurentDate.Text)).FirstOrDefault();
             if (money == null)
             {
                 money = new DaystaticMoney();
-                var lastMoney = context.DaystaticMoney.OrderByDescending(x => x.Id).FirstOrDefault();
+                var lastMoney = Program._context.DaystaticMoney.OrderByDescending(x => x.Id).FirstOrDefault();
                 money.Id = lastMoney != null ? lastMoney.Id + 1 : 1;
                 money.Date = DateTime.Parse(cuurentDate.Text);
-                context.DaystaticMoney.Add(money);
-                context.SaveChanges();
+                Program._context.DaystaticMoney.Add(money);
+                Program._context.SaveChanges();
             }
             Label label = (Label)sender;
             colorChange(label);
@@ -49,7 +49,7 @@ namespace AbuFas
             {
                 inOutCome1.Visible = true;
                 fl1 = label == label15 ? true : false;
-                inOutCome1.Load(money.Id, fl1);
+                inOutCome1.loadOtherSide(money.Id, fl1);
                 bills211.Visible = false;
                 inOutCome1.Title.Text = label.Text;
             }
@@ -103,8 +103,8 @@ namespace AbuFas
         }
         private void prev_Click(object sender, EventArgs e)
         {
-            AppDbContext context = new AppDbContext();
-            var item = context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
+            
+            var item = Program._context.DaystaticMoney.OrderBy(x => x.Date).FirstOrDefault();
             DateTime date = DateTime.Parse(cuurentDate.Text);
             if (item == null || date == item.Date)
             {
@@ -125,11 +125,11 @@ namespace AbuFas
             outcomemoney.Text = "";
             yesterdaytotal.Text = "";
             todaytotal.Text = "";
-            AppDbContext context = new AppDbContext();
+            
 
 
 
-            var days = context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
+            var days = Program._context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
             double totalIncome = 0, totalOutcome = 0;
             double totalbuy = 0, totalsell = 0;
             double yesterday = 0;
@@ -137,7 +137,7 @@ namespace AbuFas
             if (days != null)
 
             {
-                var inout = context.IncomeOutcome.Where(c => c.Money.Id == days.Id).ToList();
+                var inout = Program._context.IncomeOutcome.Where(c => c.Money.Id == days.Id).ToList();
                 if (inout.Count > 0)
                     foreach (var inco in days.IncomeOutCome)
                     {
@@ -145,7 +145,7 @@ namespace AbuFas
                         else { totalOutcome += inco.Price; }
 
                     }
-                var bills = context.Bills.Where(c => c.Money.Id == days.Id).ToList();
+                var bills = Program._context.Bills.Where(c => c.Money.Id == days.Id).ToList();
                 if (days.Bills != null)
                     foreach (var inco in days.Bills)
                     {
@@ -160,7 +160,7 @@ namespace AbuFas
                 yesterdaytotal.Text =yesterdayMoney.ToString() ;
                 days.Total=totalbuy+totalIncome-totalsell-totalOutcome;
                 todaytotal.Text = (days.Total +yesterdayMoney).ToString();
-                inOutCome1.Load(days.Id, fl1);
+               // inOutCome1.Load(days.Id, fl1);
                 bills211.load(days.Id, fl);
 
             }
@@ -169,8 +169,8 @@ namespace AbuFas
         public double Total(DateTime time) 
         {
             double total=0;
-            context=new AppDbContext();
-            var list=context.DaystaticMoney.Where(d=>d.Date < time).OrderByDescending(x=>x.Date).ToList();
+            
+            var list=Program._context.DaystaticMoney.Where(d=>d.Date < time).OrderByDescending(x=>x.Date).ToList();
             foreach (var item in list)
             {
                 foreach (var element in item.Bills)
