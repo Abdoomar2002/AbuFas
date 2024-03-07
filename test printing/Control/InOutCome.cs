@@ -72,7 +72,7 @@ namespace AbuFas
                     inout.Rows[i].Cells[4].Value = dateTime.ToShortDateString();
                     inout.Rows[i].Cells[5].Value = item.Price;
                     inout.Rows[i].Cells[6].Value = item.Notes;
-                    inout.Rows[i].ReadOnly =(fla==true&&(i+1)==items.Count)? false:true;
+                  //  inout.Rows[i].ReadOnly =(fla==true&&(i+1)==items.Count)? false:true;
                     inout.Rows[i].Cells[7].Value=item.Id.ToString();
                     i++;
                 }
@@ -117,6 +117,7 @@ namespace AbuFas
             context.SaveChanges();
             fla = true;
             Load(moneyId, fl);
+            
            // DayStatic day = (DayStatic)this.Parent.Parent;
            // day.load(dateTime);
 

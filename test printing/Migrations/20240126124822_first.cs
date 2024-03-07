@@ -86,7 +86,7 @@ namespace AbuFas.Migrations
                     Date = table.Column<DateTime>(nullable: false),
                     Outcome = table.Column<double>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
-                    BorrowId = table.Column<int>(nullable: false)
+                    BorrowId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

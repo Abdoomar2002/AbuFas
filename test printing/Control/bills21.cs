@@ -89,7 +89,10 @@ namespace AbuFas
                 foreach (var b in bills)
                 {
                     str = "الاسم: ";
-                    str += b.CustomerName + "\nالتاريخ: " + b.Date.ToShortDateString() + "\nالسعر: " + b.Total;
+                    var bils = context.BillData.Where(c => c.Bill == b);
+                    var total = bils.Sum(c => c.Weight);
+                  
+                    str += b.CustomerName + "\nالتاريخ: " + b.Date.ToShortDateString() + "\nالسعر: " + b.Total+"\nالجرامات:"+total;
                     Label label2 = new Label();
                     label2.Text = (bills.IndexOf(b) + 1).ToString();
                     label2.Width = 20;

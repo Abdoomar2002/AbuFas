@@ -68,6 +68,11 @@
             this.Notes = new Guna.UI2.WinForms.Guna2TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.All.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
@@ -99,6 +104,11 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.label15);
+            this.guna2Panel1.Controls.Add(this.textBox3);
+            this.guna2Panel1.Controls.Add(this.label14);
+            this.guna2Panel1.Controls.Add(this.textBox2);
+            this.guna2Panel1.Controls.Add(this.label13);
             this.guna2Panel1.Controls.Add(this.textBox1);
             this.guna2Panel1.Controls.Add(this.last);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -119,9 +129,9 @@
             // last
             // 
             this.last.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.last.Location = new System.Drawing.Point(464, 13);
+            this.last.Location = new System.Drawing.Point(464, 10);
             this.last.Name = "last";
-            this.last.Size = new System.Drawing.Size(103, 29);
+            this.last.Size = new System.Drawing.Size(57, 29);
             this.last.TabIndex = 0;
             this.last.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -614,6 +624,51 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(527, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 29);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "عيار 21";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(403, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 29);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "عيار 18";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(340, 10);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(57, 29);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(293, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 29);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "عيار 24";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Location = new System.Drawing.Point(230, 10);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(57, 29);
+            this.textBox3.TabIndex = 5;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // bill
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -674,5 +729,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn item;
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        public System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
     }
 }

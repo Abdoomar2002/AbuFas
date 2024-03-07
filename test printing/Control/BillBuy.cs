@@ -371,24 +371,40 @@ namespace test_printing
                     if (number > 0)
                     {
                         double result1 = (weight  * price);
-                       // data.Rows[e.RowIndex].Cells[0].Value = result1;
+                        // data.Rows[e.RowIndex].Cells[0].Value = result1;
 
-                        double total = 0;
-                        // int result0 = (int)((weight * number * price - result1) * 100);
+                        double total = 0, total18 = 0, total24 = 0;
+                        int result0 = (int)((weight * number * price - result1) * 100);
                         //data.Rows[e.RowIndex].Cells[0].Value = result0;
                         foreach (DataGridViewRow row in data.Rows)
                         {
                             double r0 = 0;
                             Double.TryParse(row.Cells[1].Value.ToString(), out r0);
+                            //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+
                             if (row.Cells[3].Value.ToString() == "21")
+                            {
+                                total += r0;
 
                                 //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                                total += r0;
-                          //  else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
-                          //  else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
-                            last.Text = Math.Round(total,3).ToString();
+                                // 
+                                //   else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
+                                //  else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
+                            }
+                            else if (row.Cells[3].Value.ToString() == "18")
+                            {
+                                total18 += r0;
+                            }
+                            else if (row.Cells[3].Value.ToString() == "24")
+                            {
+                                total24 += r0;
+                            }
                         }
-                    }//else { MessageBox.Show("يجب ان يكون العدد اكبر من 0"); }
+                        last.Text = Math.Round(total, 3).ToString();
+                        textBox3.Text = total18.ToString();
+                        textBox4.Text = total24.ToString();
+
+                    }
                 }
             }
 
@@ -400,6 +416,11 @@ namespace test_printing
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             this.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
             return bmp;
+        }
+
+        private void label35_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

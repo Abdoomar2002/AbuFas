@@ -221,6 +221,7 @@ namespace AbuFas
             var items = new List<BorrowsData>();
             var br = context.Borrows.Where(c => c.Name == label5.Text).FirstOrDefault();
             if (br == null) { br = new Borrows(); context.Borrows.Add(br); }
+            else { context.BorrowsData.RemoveRange(br.BData); context.Borrows.Remove(br);context.SaveChanges(); }
             br.Name = label5.Text;
             double total = 0;
             string note = "";
@@ -229,6 +230,7 @@ namespace AbuFas
             {
                 if (DetailsList.Rows.IndexOf(row) == DetailsList.RowCount - 1) { continue; }
                 var item = new BorrowsData();
+                //item.Id = br.BData.ElementAt(DetailsList.Rows.IndexOf(row)-1).Id;
                 DateTime dateTime = DateTime.MinValue;
                 DateTime.TryParse(row.Cells[2].Value.ToString(), out dateTime);
                 item.Date = dateTime == DateTime.MinValue ? DateTime.MinValue : dateTime;
@@ -238,11 +240,13 @@ namespace AbuFas
                 item.Notes = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "";
                 items.Add(item);
             }
-
+        //    items[0].Borrow = br;
+          //  br.BData=new List<BorrowsData>();
             br.BData = items;
             br.Total = total;
             br.Notes = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Notes;
             br.Date = items.AsEnumerable().OrderByDescending(c => c.Date).FirstOrDefault().Date;
+            context.Borrows.Add(br);
             context.SaveChanges();
             MessageBox.Show("تمت الاضافة بنجاح");
             load();

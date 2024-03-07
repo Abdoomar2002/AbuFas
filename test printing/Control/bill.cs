@@ -477,7 +477,7 @@ namespace test_printing
                         // Perform calculations only if all cells have data
                         double result1 = (weight * price);
                       //  data.Rows[e.RowIndex].Cells[0].Value = result1;
-                        double total = 0;
+                        double total = 0,total18=0,total24=0;
                         int result0 = (int)((weight * number * price - result1) * 100);
                         //data.Rows[e.RowIndex].Cells[0].Value = result0;
                         foreach (DataGridViewRow row in data.Rows)
@@ -485,14 +485,29 @@ namespace test_printing
                             double r0 = 0;
                             Double.TryParse(row.Cells[1].Value.ToString(), out r0);
                             //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
+
                             if (row.Cells[3].Value.ToString() == "21")
+                            {
+                                total += r0;
 
                                 //  Int32.TryParse(row.Cells[1].Value.ToString(), out r1);
-                                total += r0;
-                         //   else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
-                          //  else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
-                            last.Text = Math.Round(total,3).ToString();
+                                // 
+                                //   else if (row.Cells[3].Value.ToString() == "18") total += r0 * 18 / 21;
+                                //  else if (row.Cells[3].Value.ToString() == "24") total += r0 * 24 / 21;
+                            }
+                            else if (row.Cells[3].Value.ToString() == "18")
+                            {
+                                total18 += r0;
+                            }
+                            else if (row.Cells[3].Value.ToString() == "24")
+                            {
+                                total24 += r0;
+                            }
                         }
+                                last.Text = Math.Round(total, 3).ToString();
+                                textBox2.Text = total18.ToString();
+                                textBox3.Text = total24.ToString();
+
                     }
                 }
             }
