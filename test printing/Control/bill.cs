@@ -139,6 +139,7 @@ namespace test_printing
                 printDocument.PrintPage += printDocument1_PrintPage;
 
                 PrintDialog printDialog = new PrintDialog();
+                printDocument.DocumentName="فاتورة رقم "+BillNum.Text+" بأسم "+CustName.Text;
                 printDialog.Document = printDocument;
 
                 if (printDialog.ShowDialog() == DialogResult.OK)
@@ -165,7 +166,7 @@ namespace test_printing
             int textBoxHeight = Notes.PreferredSize.Height;
 
             // Calculate the maximum number of rows that can fit on a page
-             maxRowsPerPage += 15;// (e.MarginBounds.Height - headerHeight - row1Height - row2Height - dataGridViewHeight) / data.Rows[0].Height;
+             maxRowsPerPage += 18;// (e.MarginBounds.Height - headerHeight - row1Height - row2Height - dataGridViewHeight) / data.Rows[0].Height;
 
             // Print header panel
             yOffset += headerHeight;
@@ -186,11 +187,11 @@ namespace test_printing
             }
             Bitmap dataGridViewBitmap = new Bitmap(data.Width, dataGridViewHeight);
            
-            data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width, 15*24+data.ColumnHeadersHeight+396*(maxRowsPerPage/15-1)));
-            e.Graphics.DrawImage(dataGridViewBitmap,e.MarginBounds.Left-20,308-396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width+60,dataGridViewHeight);
-            DrawPanelToGraphics(new Panel(),e.Graphics,e.MarginBounds.Left-20,0,e.MarginBounds.Width+60,20);
-            DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left-20, 20, e.MarginBounds.Width + 60, headerHeight);
-            DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left-20, 276, e.MarginBounds.Width + 60, row1Height);
+            data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width+50, 15*24+data.ColumnHeadersHeight+91+396*(maxRowsPerPage/15-1)));
+            e.Graphics.DrawImage(dataGridViewBitmap,e.MarginBounds.Left-80,408-396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width+160,dataGridViewHeight+80);
+        //    DrawPanelToGraphics(new Panel(),e.Graphics,e.MarginBounds.Left-20,0,e.MarginBounds.Width+60,20);
+          //  DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left-20, 20, e.MarginBounds.Width + 60, headerHeight);
+            //DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left-20, 276, e.MarginBounds.Width + 60, row1Height);
           //  DrawPanelToGraphics(Panelrow2, e.Graphics, e.MarginBounds.Left-20, 312, e.MarginBounds.Width + 60, row2Height);
            
            
@@ -208,7 +209,7 @@ namespace test_printing
             format.LineAlignment = StringAlignment.Near;
             format.Alignment = StringAlignment.Far;
 
-            e.Graphics.DrawString(Notes.Text, Font, Brushes.Black, e.MarginBounds.Right, e.MarginBounds.Bottom-160 + textBoxHeight, format);
+       //     e.Graphics.DrawString(Notes.Text, Font, Brushes.Black, e.MarginBounds.Right, e.MarginBounds.Bottom-160 + textBoxHeight, format);
            
             // No more pages
             e.HasMorePages = false;

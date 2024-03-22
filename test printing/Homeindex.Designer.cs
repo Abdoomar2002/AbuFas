@@ -86,7 +86,7 @@
             // 
             this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customers1.Location = new System.Drawing.Point(0, 0);
-            this.customers1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.customers1.Margin = new System.Windows.Forms.Padding(2);
             this.customers1.Name = "customers1";
             this.customers1.Size = new System.Drawing.Size(988, 622);
             this.customers1.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.archive1.Location = new System.Drawing.Point(0, 0);
-            this.archive1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.archive1.Margin = new System.Windows.Forms.Padding(2);
             this.archive1.Name = "archive1";
             this.archive1.Size = new System.Drawing.Size(988, 622);
             this.archive1.TabIndex = 1;
@@ -124,11 +124,12 @@
             // 
             // borrow1
             // 
+            this.borrow1.AutoScroll = true;
             this.borrow1.AutoSize = true;
             this.borrow1.BackColor = System.Drawing.Color.White;
             this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.borrow1.Location = new System.Drawing.Point(0, 0);
-            this.borrow1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.borrow1.Margin = new System.Windows.Forms.Padding(2);
             this.borrow1.Name = "borrow1";
             this.borrow1.Padding = new System.Windows.Forms.Padding(50);
             this.borrow1.Size = new System.Drawing.Size(988, 622);
@@ -367,7 +368,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 56);
+            this.label1.Size = new System.Drawing.Size(327, 70);
             this.label1.TabIndex = 3;
             this.label1.Text = "مجوهرات أبو فص";
             // 

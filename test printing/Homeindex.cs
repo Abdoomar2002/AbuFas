@@ -7,6 +7,7 @@ namespace test_printing
 {
     public partial class Home : Form
     {
+        private Bitmap _backBuffer;
         protected override CreateParams CreateParams
         {
             get
@@ -22,9 +23,23 @@ namespace test_printing
             date.Text = DateTime.Today.ToShortDateString();
             firstPage1.BringToFront();
             right.Width = 300;
-            
-        }
+            _backBuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
 
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            // Draw your graphics onto the back buffer using its Graphics object
+            using (Graphics g = Graphics.FromImage(_backBuffer))
+            {
+                // Your drawing code here (using g)
+            }
+
+            // Blit (transfer) the back buffer onto the form's graphics object
+            e.Graphics.DrawImage(_backBuffer, Point.Empty);
+        }
         private void Print_Click(object sender, EventArgs e)
         {
            // bill1.btn_print(bill1.Width,bill1.Height);
