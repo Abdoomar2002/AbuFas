@@ -403,7 +403,7 @@ namespace test_printing
         {
             CustName.Text = string.Empty;
             Home home = (Home)this.ParentForm;
-           home.firstPage1.billBuy1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
+         //  home.firstPage1.billBuy1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             BillNum.Text =( Int32.Parse(BillNum.Text)+1).ToString();
             last.Text = "";
             textBox1.Text = "";

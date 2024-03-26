@@ -34,9 +34,10 @@ namespace test_printing
             Buy.BringToFront();
             Buy.FillColor = Color.FromArgb(255,212, 175, 55);
             sell.FillColor = Color.Black;
-           
-            billBuy1.Visible = true;
-            bill1.Visible = false;
+           billTable2.Visible = true;
+            billTable1.Visible = false;
+         //   billTable2.Visible = true;
+           // billTable1.Visible = false;
 
         }
 
@@ -45,25 +46,29 @@ namespace test_printing
             sell.BringToFront();
             sell.FillColor = Color.FromArgb(255,212,175,55);
             Buy.FillColor = Color.Black;
-            billBuy1.Visible = false;
-            bill1.Visible = true;
+            billTable1.Visible = true;
+            billTable2.Visible = false;
+            // billTable2.Visible = false;
+            // billTable1.Visible = true;
 
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            bill1.maxRowsPerPage = 0;
-            bill1.currentPrintRow = 0;
-            billBuy1.maxRowsPerPage = 0;
-            billBuy1.currentPrintRow = 0;
-            if (bill1.Visible == true)
+            billTable1.maxRowsPerPage = 0;
+            billTable1.currentPrintRow = 0;
+            billTable2.maxRowsPerPage = 0;
+            billTable2.currentPrintRow = 0;
+            if (billTable1.Visible == true)
             {
-                bill1.btn_print(880, 750);
-                //bill1 = new bill();
+                billTable1.IsBuy = false;
+                billTable1.btn_print(880, 750);
+                //billTable1 = new bill();
             }
             else
             {
-                billBuy1.btn_print(880, 750);
+                billTable2.IsBuy = true;
+                billTable2.btn_print(880, 750);
                 
             }
         }
@@ -80,15 +85,15 @@ namespace test_printing
 
         private void firstPage_Load(object sender, EventArgs e)
         {
-            billBuy1.Visible=false;
+            billTable2.Visible=false;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
 
             Home home = (Home)this.ParentForm;
-            home.archive1.BringToFront();
-            home.archive1.LoadTable();
+         //   home.archive1.BringToFront();
+         //   home.archive1.LoadTable();
         }
 
         private void price_KeyPress(object sender, KeyPressEventArgs e)

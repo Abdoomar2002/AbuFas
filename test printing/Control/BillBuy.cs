@@ -156,11 +156,11 @@ namespace test_printing
             }
             Bitmap dataGridViewBitmap = new Bitmap(data.Width, dataGridViewHeight);
 
-            data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width, 15 * 24 + data.ColumnHeadersHeight + 396 * (maxRowsPerPage / 10 - 1)));
-            e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 20, 308 - 396 * (maxRowsPerPage / 10 - 1), e.MarginBounds.Width + 60, dataGridViewHeight);
-            DrawPanelToGraphics(new Panel(), e.Graphics, e.MarginBounds.Left - 20, 0, e.MarginBounds.Width + 60, 20);
-            DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left - 20, 20, e.MarginBounds.Width + 60, headerHeight);
-            DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left - 20, 276, e.MarginBounds.Width + 60, row1Height);
+            data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width + 50, 15 * 24 + data.ColumnHeadersHeight + 91 + 396 * (maxRowsPerPage / 15 - 1)));
+            e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 80, 408 - 396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width + 160, dataGridViewHeight + 80);
+       //     DrawPanelToGraphics(new Panel(), e.Graphics, e.MarginBounds.Left - 20, 0, e.MarginBounds.Width + 60, 20);
+          //  DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left - 20, 20, e.MarginBounds.Width + 60, headerHeight);
+           // DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left - 20, 276, e.MarginBounds.Width + 60, row1Height);
           
 
             // Print the remaining rows on the next page
@@ -176,7 +176,7 @@ namespace test_printing
             format.LineAlignment = StringAlignment.Far;
 
           //  e.Graphics.DrawString(Notes.Text, Font, Brushes.Black, e.MarginBounds.Right, yOffset + textBoxHeight, format);
-          DrawPanelToGraphics(promise,e.Graphics, e.MarginBounds.Left - 20, yOffset, e.MarginBounds.Width+60, promise.Height);
+        //  DrawPanelToGraphics(promise,e.Graphics, e.MarginBounds.Left - 20, yOffset, e.MarginBounds.Width+60, promise.Height);
             // No more pages
             e.HasMorePages = false;
 
@@ -325,7 +325,7 @@ namespace test_printing
         {
             CustName.Text = string.Empty;
             Home home = (Home)this.ParentForm;
-            home.firstPage1.bill1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
+       //     home.firstPage1.bill1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             data.Rows.Clear();
             last.Text = "";
