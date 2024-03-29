@@ -21,6 +21,7 @@ namespace AbuFas
         Guna2DateTimePicker dtp = new Guna2DateTimePicker();
         Guna2DateTimePicker dtp2 = new Guna2DateTimePicker();
         bool breaksave = false;
+        bool searchkey = false;
 
         public customers()
         {
@@ -83,10 +84,16 @@ namespace AbuFas
             load();
             SaveChange.Visible = false;
         }
-        public void load()
+        public void load(List<Customers>custs=null)
         {
             CustomersList.Rows.Clear();
             var list = Program._context.Customers.Where(c => c.IsArchived == false).ToList();
+            if (searchkey) 
+            {
+                if (custs.Count==0) { MessageBox.Show("لا يوجد بيانات مطابقة"); }
+                else list = custs;
+                searchkey= false;
+            }
             index.BringToFront();
             if (list.Count > 0)
             {
@@ -392,6 +399,12 @@ namespace AbuFas
                 }
                 
             }
+        }
+        public void SearchByName(string name) 
+        {
+            var list =Program._context.Customers.Where(c=>c.Name.Contains(name)).ToList();
+            searchkey = true;
+            load(list);
         }
     }
 }

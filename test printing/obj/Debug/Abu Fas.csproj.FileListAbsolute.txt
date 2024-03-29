@@ -238,3 +238,8 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.BillTable.resources
 D:\AbuFas\AbuFas\test printing\bin\Debug\BouncyCastle.Crypto.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.xml
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.inventory.resources
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.xml

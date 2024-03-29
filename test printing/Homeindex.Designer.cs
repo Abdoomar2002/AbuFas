@@ -1,4 +1,6 @@
-﻿namespace test_printing
+﻿using AbuFas.Control;
+
+namespace test_printing
 {
     partial class Home
     {
@@ -36,10 +38,15 @@
             this.gramsCount = new AbuFas.GramsCount();
             this.dayStatic1 = new AbuFas.DayStatic();
             this.borrow1 = new AbuFas.Borrow();
+            this.inventory1 = new AbuFas.Control.inventory();
             this.top = new Guna.UI2.WinForms.Guna2Panel();
+            this.day = new System.Windows.Forms.Label();
+            this.to = new System.Windows.Forms.Label();
+            this.start = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.from = new System.Windows.Forms.Label();
+            this.end = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.date = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.search = new Guna.UI2.WinForms.Guna2TextBox();
             this.Exit = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.right = new Guna.UI2.WinForms.Guna2Panel();
             this.btnShopper = new Guna.UI2.WinForms.Guna2Button();
@@ -48,6 +55,7 @@
             this.Grambtn = new Guna.UI2.WinForms.Guna2Button();
             this.billsbtn = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel3.SuspendLayout();
             this.top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -62,6 +70,7 @@
             this.guna2Panel3.Controls.Add(this.gramsCount);
             this.guna2Panel3.Controls.Add(this.dayStatic1);
             this.guna2Panel3.Controls.Add(this.borrow1);
+            this.guna2Panel3.Controls.Add(this.inventory1);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 90);
             this.guna2Panel3.Name = "guna2Panel3";
@@ -135,21 +144,113 @@
             this.borrow1.Size = new System.Drawing.Size(988, 622);
             this.borrow1.TabIndex = 4;
             // 
+            // inventory1
+            // 
+            this.inventory1.BackColor = System.Drawing.Color.White;
+            this.inventory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inventory1.Location = new System.Drawing.Point(0, 0);
+            this.inventory1.Margin = new System.Windows.Forms.Padding(2);
+            this.inventory1.Name = "inventory1";
+            this.inventory1.Size = new System.Drawing.Size(988, 622);
+            this.inventory1.TabIndex = 51;
+            // 
             // top
             // 
             this.top.AutoSize = true;
             this.top.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.top.BackgroundImage = global::AbuFas.Properties.Resources.Vector_1;
             this.top.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.top.Controls.Add(this.day);
+            this.top.Controls.Add(this.to);
+            this.top.Controls.Add(this.start);
+            this.top.Controls.Add(this.from);
+            this.top.Controls.Add(this.end);
             this.top.Controls.Add(this.date);
-            this.top.Controls.Add(this.guna2TextBox1);
-            this.top.Controls.Add(this.guna2Button6);
+            this.top.Controls.Add(this.search);
             this.top.Controls.Add(this.Exit);
             this.top.Dock = System.Windows.Forms.DockStyle.Top;
             this.top.Location = new System.Drawing.Point(0, 0);
             this.top.Name = "top";
-            this.top.Size = new System.Drawing.Size(988, 90);
+            this.top.Size = new System.Drawing.Size(988, 73);
             this.top.TabIndex = 4;
+            // 
+            // day
+            // 
+            this.day.AutoSize = true;
+            this.day.BackColor = System.Drawing.Color.Transparent;
+            this.day.Font = new System.Drawing.Font("Cairo Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.day.ForeColor = System.Drawing.Color.White;
+            this.day.Location = new System.Drawing.Point(655, 27);
+            this.day.Name = "day";
+            this.day.Size = new System.Drawing.Size(43, 32);
+            this.day.TabIndex = 10;
+            this.day.Text = "يوم";
+            // 
+            // to
+            // 
+            this.to.AutoSize = true;
+            this.to.BackColor = System.Drawing.Color.Transparent;
+            this.to.Font = new System.Drawing.Font("Cairo Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.to.ForeColor = System.Drawing.Color.White;
+            this.to.Location = new System.Drawing.Point(401, 27);
+            this.to.Name = "to";
+            this.to.Size = new System.Drawing.Size(38, 32);
+            this.to.TabIndex = 9;
+            this.to.Text = "الي";
+            // 
+            // start
+            // 
+            this.start.BackColor = System.Drawing.Color.Transparent;
+            this.start.BorderColor = System.Drawing.Color.White;
+            this.start.BorderRadius = 10;
+            this.start.BorderThickness = 1;
+            this.start.Checked = true;
+            this.start.FillColor = System.Drawing.Color.White;
+            this.start.FocusedColor = System.Drawing.Color.White;
+            this.start.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.start.HoverState.FillColor = System.Drawing.Color.White;
+            this.start.Location = new System.Drawing.Point(450, 15);
+            this.start.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.start.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(194, 48);
+            this.start.TabIndex = 8;
+            this.start.Value = new System.DateTime(2024, 3, 28, 16, 42, 59, 71);
+            this.start.ValueChanged += new System.EventHandler(this.start_ValueChanged);
+            // 
+            // from
+            // 
+            this.from.AutoSize = true;
+            this.from.BackColor = System.Drawing.Color.Transparent;
+            this.from.Font = new System.Drawing.Font("Cairo Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.from.ForeColor = System.Drawing.Color.White;
+            this.from.Location = new System.Drawing.Point(659, 31);
+            this.from.Name = "from";
+            this.from.Size = new System.Drawing.Size(39, 32);
+            this.from.TabIndex = 7;
+            this.from.Text = "من";
+            // 
+            // end
+            // 
+            this.end.BackColor = System.Drawing.Color.Transparent;
+            this.end.BorderColor = System.Drawing.Color.White;
+            this.end.BorderRadius = 10;
+            this.end.BorderThickness = 1;
+            this.end.Checked = true;
+            this.end.FillColor = System.Drawing.Color.White;
+            this.end.FocusedColor = System.Drawing.Color.White;
+            this.end.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.end.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.end.HoverState.FillColor = System.Drawing.Color.White;
+            this.end.Location = new System.Drawing.Point(201, 15);
+            this.end.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.end.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.end.Name = "end";
+            this.end.Size = new System.Drawing.Size(194, 48);
+            this.end.TabIndex = 6;
+            this.end.Value = new System.DateTime(2024, 3, 28, 16, 42, 59, 71);
+            this.end.ValueChanged += new System.EventHandler(this.start_ValueChanged);
             // 
             // date
             // 
@@ -164,55 +265,38 @@
             this.date.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.date.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date.ForeColor = System.Drawing.Color.White;
-            this.date.Location = new System.Drawing.Point(98, 31);
+            this.date.Location = new System.Drawing.Point(12, 14);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(229, 56);
+            this.date.Size = new System.Drawing.Size(183, 56);
             this.date.TabIndex = 5;
             this.date.Text = "12/3/2023";
             // 
-            // guna2TextBox1
+            // search
             // 
-            this.guna2TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderRadius = 10;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.IconRight = global::AbuFas.Properties.Resources.search;
-            this.guna2TextBox1.IconRightOffset = new System.Drawing.Point(15, 0);
-            this.guna2TextBox1.Location = new System.Drawing.Point(440, 38);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "بحث";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(298, 48);
-            this.guna2TextBox1.TabIndex = 4;
-            this.guna2TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guna2Button6
-            // 
-            this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button6.BorderRadius = 10;
-            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.FillColor = System.Drawing.Color.Black;
-            this.guna2Button6.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(744, 42);
-            this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button6.TabIndex = 3;
-            this.guna2Button6.Text = "بحث";
+            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.search.BackColor = System.Drawing.Color.Transparent;
+            this.search.BorderRadius = 10;
+            this.search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.search.DefaultText = "";
+            this.search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.search.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.search.IconRight = global::AbuFas.Properties.Resources.search;
+            this.search.IconRightOffset = new System.Drawing.Point(15, 0);
+            this.search.Location = new System.Drawing.Point(699, 15);
+            this.search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.search.Name = "search";
+            this.search.PasswordChar = '\0';
+            this.search.PlaceholderText = "بحث";
+            this.search.SelectedText = "";
+            this.search.Size = new System.Drawing.Size(242, 48);
+            this.search.TabIndex = 4;
+            this.search.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.search_KeyPress);
             // 
             // Exit
             // 
@@ -237,6 +321,7 @@
             this.right.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.right.BackgroundImage = global::AbuFas.Properties.Resources.Rectangle_1157;
             this.right.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.right.Controls.Add(this.guna2Button1);
             this.right.Controls.Add(this.btnShopper);
             this.right.Controls.Add(this.btnPayment);
             this.right.Controls.Add(this.btntStatic);
@@ -372,6 +457,28 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "مجوهرات أبو فص";
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.guna2Button1.Location = new System.Drawing.Point(60, 536);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(262, 67);
+            this.guna2Button1.TabIndex = 9;
+            this.guna2Button1.Text = "الجرد السنوي";
+            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // Home
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -386,6 +493,7 @@
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.top.ResumeLayout(false);
+            this.top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             this.right.ResumeLayout(false);
             this.right.PerformLayout();
@@ -412,13 +520,19 @@
         private Guna.UI2.WinForms.Guna2Button billsbtn;
         private Guna.UI2.WinForms.Guna2Button btnShopper;
         private Guna.UI2.WinForms.Guna2Button date;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
         public Archive archive1;
         public AbuFas.GramsCount gramsCount;
         public AbuFas.DayStatic dayStatic1;
         public AbuFas.Borrow borrow1;
         public AbuFas.customers customers1;
+        public System.Windows.Forms.Label day;
+        public System.Windows.Forms.Label to;
+        public Guna.UI2.WinForms.Guna2DateTimePicker start;
+        public System.Windows.Forms.Label from;
+        public Guna.UI2.WinForms.Guna2DateTimePicker end;
+        public Guna.UI2.WinForms.Guna2TextBox search;
+        private inventory inventory1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
 

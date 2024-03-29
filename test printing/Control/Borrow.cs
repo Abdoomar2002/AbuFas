@@ -18,7 +18,7 @@ namespace AbuFas
 {
     public partial class Borrow : UserControl
     {
-       
+        bool serachKey = false;
         Guna2DateTimePicker dtp = new Guna2DateTimePicker();
         public Borrow()
         {
@@ -121,13 +121,24 @@ namespace AbuFas
 
             }
         }
-        public void load()
+        public void load(List<Borrows>borrows=null)
         {
+            
             inout.Rows.Clear();
             inout.RowCount = 1;
             Program._context.Database.EnsureCreated();
             ArchiveLoad();
             var list = Program._context.Borrows.Where(c => c.IsArchived == false).ToList();
+            if (serachKey) 
+            {
+                if (borrows.Count==0)
+                {
+                    MessageBox.Show("لا يوجد بيانات مطابقة");
+                }
+                else
+                    list = borrows;
+                serachKey = false;
+            }
             if (list.Count > 0)
             {
                 double total = 0;
@@ -418,6 +429,18 @@ namespace AbuFas
             //inout.Rows[e.RowIndex].Cells[3].Value = Properties.Resources.archive;
             Archive.Rows[e.RowIndex].Cells[2].Value = "";
             Archive.Rows[e.RowIndex].Cells[6].Value = 0;
+        }
+        public void SearchName(string name) 
+        {
+            var list=Program._context.Borrows.Where(c=>c.Name.Contains(name)).ToList();
+            serachKey = true;
+            load(list);
+        }
+        public void SearchDate(DateTime start,DateTime end)
+        {
+            var list = Program._context.Borrows.Where(c => c.Date >= start&&c.Date<=end).ToList();
+            serachKey = true;
+            load(list);
         }
     }
 }

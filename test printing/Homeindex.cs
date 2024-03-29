@@ -8,6 +8,7 @@ namespace test_printing
     public partial class Home : Form
     {
         private Bitmap _backBuffer;
+        private string ActivePage="bills";
         protected override CreateParams CreateParams
         {
             get
@@ -25,6 +26,14 @@ namespace test_printing
             right.Width = 300;
             _backBuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
+            search.Visible = false;
+            from.Visible = false;
+            to.Visible = false;
+            start.Visible = false;
+            end.Visible = false;
+            day.Visible = false;
+            start.MaxDate=DateTime.Now;
+            end.MaxDate=DateTime.Now;
 
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -70,6 +79,13 @@ namespace test_printing
             gramsCount.GramsCount_Load(null, null);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
+            search.Visible = false;
+            from.Visible = true;
+            to.Visible = true;
+            start.Visible = true;
+            end.Visible = true;
+            day.Visible = false;
+            ActivePage = "Grams";
 
 
         }
@@ -79,6 +95,13 @@ namespace test_printing
             firstPage1.BringToFront();
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
+            search.Visible = false;
+            from.Visible = false;
+            to.Visible = false;
+            start.Visible = false;
+            end.Visible = false;
+            day.Visible = false;
+            ActivePage = "bills";
         }
 
         private void btntStatic_Click(object sender, EventArgs e)
@@ -87,7 +110,14 @@ namespace test_printing
             dayStatic1.load(DateTime.Today.Date);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
-           
+            search.Visible = false;
+            from.Visible = false;
+            to.Visible = false;
+            start.Visible = true;
+            end.Visible = false;
+            day.Visible = true;
+            ActivePage = "Day";
+
         }
         private void colorChange(string name) 
         {
@@ -113,6 +143,13 @@ namespace test_printing
             borrow1.load();
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
+            search.Visible = true;
+            from.Visible = true;
+            to.Visible = true;
+            start.Visible = true;
+            end.Visible = true;
+            day.Visible = false;
+            ActivePage = "Borrow";
         }
 
         private void btnShopper_Click(object sender, EventArgs e)
@@ -121,12 +158,65 @@ namespace test_printing
             customers1.load();
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
+            search.Visible = true;
+            from.Visible = false;
+            to.Visible = false;
+            start.Visible = false;
+            end.Visible = false;
+            day.Visible = false;
+            ActivePage = "Customer";
         }
 
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
 
+        }
+
+        private void search_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Keys)e.KeyChar ==Keys.Enter) 
+            {
+                switch (ActivePage) 
+                {
+                    case "bills": { archive1.SearchByName(search.Text); break; }
+                    case "Borrow": { borrow1.SearchName(search.Text); break; }
+                    case "Customer": { customers1.SearchByName( search.Text); break; }
+                    default: { break; }
+                }
+            }
+        }
+
+        private void start_ValueChanged(object sender, EventArgs e)
+        {
+            Guna2DateTimePicker picker=(Guna2DateTimePicker)sender;
+            switch(ActivePage) 
+            {
+                case "bills": { archive1.SearchByDate(start.Value.Date, end.Value.Date); break; }
+                case "Grams": { gramsCount.SearchByDate(start.Value.Date, end.Value.Date); break; }
+                case "Day": { dayStatic1.load(start.Value.Date); break; }
+                case "Borrow": { borrow1.SearchDate(start.Value.Date, end.Value.Date); break; }
+                case "inventor": { inventory1.load(start.Value.Date, end.Value.Date); break; }
+
+                default: { break; }
+
+            }
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            inventory1.BringToFront();
+            inventory1.load(DateTime.Today,DateTime.Today);
+            Guna2Button btn = (Guna2Button)sender;
+            colorChange(btn.Name);
+            search.Visible = false;
+            from.Visible = true;
+            to.Visible = true;
+            start.Visible = true;
+            end.Visible = true;
+            day.Visible = false;
+            ActivePage = "inventor";
         }
     }
 }

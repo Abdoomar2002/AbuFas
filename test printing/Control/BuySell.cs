@@ -92,8 +92,14 @@ namespace test_printing
         {
 
             Home home = (Home)this.ParentForm;
-         //   home.archive1.BringToFront();
-         //   home.archive1.LoadTable();
+            home.archive1.BringToFront();
+            home.archive1.LoadTable();
+            home.search.Visible = true;
+            home.from.Visible = true;
+            home.to.Visible = true;
+            home.start.Visible = true;
+            home.end.Visible = true;
+            home.day.Visible = false;
         }
 
         private void price_KeyPress(object sender, KeyPressEventArgs e)

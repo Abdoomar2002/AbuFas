@@ -19,7 +19,9 @@ namespace AbuFas
 {
     public partial class GramsCount : UserControl
     {
-        
+        DateTime current=DateTime.Now.Date;
+        bool searchFlag = false;
+       List<DayStaticGrams> grams;
 
         protected override CreateParams CreateParams
         {
@@ -43,10 +45,25 @@ namespace AbuFas
 
         public void GramsCount_Load(object sender, EventArgs e)
         {
+            if (!searchFlag)
+            {
+                current = DateTime.Now.Date;
+
+            }
             reset();
             Program._context = new AppDbContext();
             var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
-
+            if (searchFlag) 
+            {
+                if (grams.Count == 0) 
+                {
+                    MessageBox.Show("لا يوجد بيانات مطابقة للفترة");
+                    return;
+                }
+                searchFlag = false;
+                table = grams;
+                current = table[0].Date;
+            }
             double yesterday = 0;
             double today = 0;
 
@@ -68,8 +85,6 @@ namespace AbuFas
                 Guna2TextBox damg = CopyLabel();
                 // labelCol5.ReadOnly = false;
                 // labelCol4.ReadOnly = false;
-                damg.ReadOnly = false;
-                damg.TextChanged += Label8_TextChanged;
 
                 
 
@@ -101,20 +116,25 @@ namespace AbuFas
                     yesterday += double.Parse(old.Text);
 
                 today = double.Parse(curr.Text);
-
+                if (table[i].Date == current)
+                {
+                    damg.ReadOnly = false;
+                    damg.TextChanged += Label8_TextChanged;
+                }
 
             }
-            var yesterday21 = calculateOld(DateTime.Today.Date, "21");
-            var yesterday18 = calculateOld(DateTime.Today.Date, "18")*18/21;
-            var yesterday24 = calculateOld(DateTime.Today.Date, "24")*24/21;
-            var day21 = calculateOld(DateTime.Today.AddDays(1).Date, "21");
-            var day18 = calculateOld(DateTime.Today.AddDays(1).Date, "18") * 18 / 21;
-            var day24 = calculateOld(DateTime.Today.AddDays(1).Date, "24") * 24 / 21;
+            var yesterday21 = calculateOld(current.Date, "21");
+            var yesterday18 = calculateOld(current.Date, "18")*18/21;
+            var yesterday24 = calculateOld(current.Date, "24")*24/21;
+            var day21 = calculateOld(current.AddDays(1).Date, "21");
+            var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
+            var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
             guna2TextBox1.Text = Math.Round(yesterday21+yesterday18+yesterday24,3).ToString();
             guna2TextBox2.Text = Math.Round(day21+day18+day24,3).ToString();
 
+            guna2TextBox4.Text = calculatecurr(current.Date).ToArray()[0].ToString();
+            guna2TextBox3.Text = calculatecurr(current.Date).ToArray()[1].ToString();
 
-            
         }
         private void Label8_TextChanged(object sender, EventArgs e)
         {
@@ -122,6 +142,7 @@ namespace AbuFas
 
             // Get the current line number based on the cursor position
          int r=   tableLayoutPanel1.GetRow(textBox);
+         int c=   tableLayoutPanel1.GetColumn(textBox);
 
             var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
             var damage = 0;
@@ -129,8 +150,30 @@ namespace AbuFas
             if (damage > 0&&r>=1)
                 table[r-1].Damaged = damage;
             Program._context.SaveChanges();
-        }
+            LoadAfter(r,c);
+         //   GramsCount_Load(null, null);
 
+        }
+        private void LoadAfter(int r,int c) 
+        {
+           var damg= tableLayoutPanel1.GetControlFromPosition(c, r);
+           var now= tableLayoutPanel1.GetControlFromPosition(c-1, r);
+           var last= tableLayoutPanel1.GetControlFromPosition(c-2, r);
+           var buy= tableLayoutPanel1.GetControlFromPosition(c-3, r);
+           var sell= tableLayoutPanel1.GetControlFromPosition(c-4, r);
+           var type= tableLayoutPanel1.GetControlFromPosition(c-5, r);
+           var date= tableLayoutPanel1.GetControlFromPosition(c-6, r);
+           var item=Program._context.DayStaticGrams.Where(m=>m.Date==DateTime.Parse(date.Text)&&m.Type==type.Text).FirstOrDefault();
+       //    item.Damaged=Int32.Parse(damg.ToString());
+       now.Text=(Math.Round(Double.Parse(now.Text)-item.Damaged,3)).ToString();
+
+            if(item.Type=="18")
+                guna2TextBox2.Text = (Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged*18/21,3)).ToString();
+            else if(item.Type=="24")
+                guna2TextBox2.Text = (Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged * 24 / 18, 3)).ToString();
+            else
+            guna2TextBox2.Text=(Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged, 3)).ToString();
+        }
 
 
         private Guna2TextBox CopyLabel()
@@ -209,6 +252,29 @@ namespace AbuFas
             if (oldDays.Count > 0)
                 total = (double)oldDays.Sum(e => e.Buy - e.Sell - e.Damaged);
             return total;
+        }
+        public List<double> calculatecurr(DateTime date)
+        {
+            double totalBuy = 0,totalSell=0;
+            var cuurentDay = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).Where(c => c.Date == date ).ToList();
+            foreach (var item in cuurentDay)
+            {
+                if (item.Type == "18") { totalBuy += item.Buy * 18 / 21;totalSell += item.Sell * 18 / 21; }
+                if (item.Type == "24") { totalBuy += item.Buy * 24 / 21;totalSell += item.Sell * 24 / 21; }
+                if (item.Type == "21") { totalBuy += item.Buy ; totalSell += item.Sell ; }
+            }
+          List<double> days = new List<double>();
+            totalBuy = Math.Round(totalBuy, 3);
+            totalSell=Math.Round(totalSell, 3);
+            days.Add(totalBuy);
+            days.Add(totalSell);
+            return days;
+        }
+        public void SearchByDate(DateTime st, DateTime ed) 
+        {
+            grams=Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).Where(c=>c.Date>=st&&c.Date<=ed).ToList();
+            searchFlag = true;
+            GramsCount_Load(null, null);
         }
     }
 }

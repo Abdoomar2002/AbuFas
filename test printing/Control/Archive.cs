@@ -16,6 +16,7 @@ namespace test_printing
 {
     public partial class Archive : UserControl
     {
+        bool searchFlag=false;
         protected override CreateParams CreateParams
         {
             get
@@ -29,6 +30,17 @@ namespace test_printing
         {
             InitializeComponent();
             _context =new AppDbContext();
+            incoume.Columns[4].Visible = false;
+            outcome.Columns[4].Visible = false;
+            incoume.ThemeStyle.RowsStyle.Height = 30;
+            incoume.Rows[0].Height = 30;
+            outcome.ThemeStyle.RowsStyle.Height = 30;
+            outcome.Rows[0].Height = 30;
+            guna2Panel4.Width += 38;
+            guna2Panel6.Width += 38;
+            // outcome.Width +=150 ;
+            incoume.ReadOnly=true; 
+            outcome.ReadOnly=true;
         }
         public Archive(DbContextOptions<AppDbContext> options)
         {
@@ -53,14 +65,15 @@ namespace test_printing
             }
             return scaledImage;
         }
-        public void LoadTable()
+        public void LoadTable(List<Bills>bills=null)
         {
          //   AppDbContext Program._context = _context;
             Program._context.Database.OpenConnectionAsync();
             Program._context.Database.MigrateAsync();
             Program._context.Database.EnsureCreatedAsync();
-
-            var billList = Program._context.Bills.ToArray();
+            outcome.Rows.Clear();
+            incoume.Rows.Clear();
+         /*   var billList = Program._context.Bills.ToArray();
             ArchiveTable.Controls.Clear();
 
 
@@ -148,9 +161,56 @@ namespace test_printing
             for (int i = 0; i < 3; i++)
             {
                 ArchiveTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 3));
+            }*/
+            
+            var Sold=Program._context.Bills.Where(c=>c.IsBuy==true&&c.Date==DateTime.Now.Date).ToList();
+            var Bought = Program._context.Bills.Where(c=>c.IsBuy==false&&c.Date==DateTime.Now.Date).ToList();
+            if (searchFlag == true) {
+                if (bills == null||bills.Count==0) MessageBox.Show("لا يوجد فواتير مطابقة للبحث");
+                else { 
+                    Sold = bills.Where(c => c.IsBuy == true).ToList();
+                    Bought=bills.Where(c=>c.IsBuy == false).ToList();
+                }
+                searchFlag = false;
+            
             }
-        }
+            outcome.RowCount=Bought.Count!=0?Bought.Count:1;
+              for(var i=0;i<Bought.Count; i++)
+              {var item = Bought[i];
+                  outcome.Rows[i].Cells[0].Value=item.Date.ToShortDateString();
+                  outcome.Rows[i].Cells[1].Value=item.CustomerName.ToString();
+                  outcome.Rows[i].Cells[2].Value=item.Total.ToString();
+                  outcome.Rows[i].Cells[3].Value = calcGrams(item);
+                  outcome.Rows[i].Cells[4].Value=item.Id.ToString();
+              }
+           
+            incoume.RowCount = Sold.Count!=0?Sold.Count:1;
+            for (var i = 0; i < Sold.Count; i++)
+            {
+                var item = Sold[i];
+                incoume.Rows[i].Cells[0].Value = item.Date.ToShortDateString();
+                incoume.Rows[i].Cells[1].Value = item.CustomerName.ToString();
+                incoume.Rows[i].Cells[2].Value = item.Total.ToString();
+                incoume.Rows[i].Cells[3].Value = calcGrams(item);
+                incoume.Rows[i].Cells[4].Value = item.Id.ToString();
+            }
 
+        }
+        private double calcGrams(Bills bill) 
+        {
+            var data=Program._context.BillData.Where(c=>c.Bill==bill).ToList();
+            double totalGrams = 0;
+            foreach (var item in data)
+            {
+                if (item.Type == 18)totalGrams += item.Weight * 18.0 / 21.0;
+                else if (item.Type == 21) totalGrams += item.Weight;
+                else totalGrams += item.Weight*24/21;
+            }
+            totalGrams = Math.Round(totalGrams, 3);
+
+            return totalGrams;
+
+        }
         private void PictureBox_Click(object sender, EventArgs e)
         {
             Single.Visible = true;
@@ -258,6 +318,11 @@ namespace test_printing
         {
             Home home = (Home)this.ParentForm;
             home.archive1.SendToBack();
+            home.search.Visible = false;
+            home.from.Visible = false;
+            home.to.Visible = false;
+            home.start.Visible = false;
+            home.end.Visible = false;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -363,5 +428,44 @@ namespace test_printing
             else MessageBox.Show("لا يوجد فواتير اخري ");
 
         }
+
+        private void incoume_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) { return; }
+            int id = 0;
+            Int32.TryParse(incoume.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
+            var bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
+            if (bill == null) {
+                Int32.TryParse(outcome.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
+
+                bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
+            }
+            var data = Program._context.BillData.Where(c => c.Bill == bill).ToList();
+            show(bill,data);
+            Single.BringToFront();
+            Single.Visible = true;
+
+        }
+
+        public void SearchByName(string name) 
+        {
+            List<Bills>bills = new List<Bills>();
+            bills=Program._context.Bills.Where(c=>c.CustomerName.Contains(name)).ToList();
+            searchFlag = true;
+             
+            LoadTable(bills);
+
+        }
+        public void SearchByDate(DateTime start,DateTime end)
+        {
+            List<Bills> bills = new List<Bills>();
+            bills = Program._context.Bills.Where(c => c.Date>=start&&c.Date<=end).ToList();
+            searchFlag = true;
+
+            LoadTable(bills);
+
+        }
+
+
     }
 }
