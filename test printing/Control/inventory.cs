@@ -20,8 +20,8 @@ namespace AbuFas.Control
         }
         public void load(DateTime start,DateTime end) 
         {
-            var TotalBuy = Program._context.Bills.Where(c => c.IsBuy == true&&c.Date>=start&&c.Date<=end).Sum(c => c.Total);
-            var TotalSold = Program._context.Bills.Where(c => c.IsBuy == false && c.Date >= start && c.Date <= end).Sum(c => c.Total);
+            var TotalBuy = Program._context.Bills.Where(c => c.IsBuy == false&&c.Date>=start&&c.Date<=end).Sum(c => c.Total);
+            var TotalSold = Program._context.Bills.Where(c => c.IsBuy == true && c.Date >= start && c.Date <= end).Sum(c => c.Total);
             var Total21 =Program._context.BillData.Where(c => c.Kyrat == 21 && c.Bill.Date >= start && c.Bill.Date <= end).Sum(c => c.Weight);
             var Total18 =Program._context.BillData.Where(c => c.Kyrat == 18 && c.Bill.Date >= start && c.Bill.Date <= end).Sum(c => c.Weight);
             var Total24 =Program._context.BillData.Where(c => c.Kyrat == 24 && c.Bill.Date >= start && c.Bill.Date <= end).Sum(c => c.Weight);

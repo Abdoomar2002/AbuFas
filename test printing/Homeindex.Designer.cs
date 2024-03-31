@@ -32,13 +32,6 @@ namespace test_printing
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.firstPage1 = new test_printing.BuySell();
-            this.customers1 = new AbuFas.customers();
-            this.archive1 = new test_printing.Archive();
-            this.gramsCount = new AbuFas.GramsCount();
-            this.dayStatic1 = new AbuFas.DayStatic();
-            this.borrow1 = new AbuFas.Borrow();
-            this.inventory1 = new AbuFas.Control.inventory();
             this.top = new Guna.UI2.WinForms.Guna2Panel();
             this.day = new System.Windows.Forms.Label();
             this.to = new System.Windows.Forms.Label();
@@ -48,14 +41,21 @@ namespace test_printing
             this.date = new Guna.UI2.WinForms.Guna2Button();
             this.search = new Guna.UI2.WinForms.Guna2TextBox();
             this.Exit = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.right = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnShopper = new Guna.UI2.WinForms.Guna2Button();
-            this.btnPayment = new Guna.UI2.WinForms.Guna2Button();
-            this.btntStatic = new Guna.UI2.WinForms.Guna2Button();
-            this.Grambtn = new Guna.UI2.WinForms.Guna2Button();
             this.billsbtn = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Grambtn = new Guna.UI2.WinForms.Guna2Button();
+            this.btntStatic = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPayment = new Guna.UI2.WinForms.Guna2Button();
+            this.btnShopper = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.right = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.firstPage1 = new test_printing.BuySell();
+            this.customers1 = new AbuFas.customers();
+            this.archive1 = new test_printing.Archive();
+            this.gramsCount = new AbuFas.GramsCount();
+            this.dayStatic1 = new AbuFas.DayStatic();
+            this.borrow1 = new AbuFas.Borrow();
+            this.inventory1 = new AbuFas.Control.inventory();
             this.guna2Panel3.SuspendLayout();
             this.top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -76,83 +76,6 @@ namespace test_printing
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(988, 622);
             this.guna2Panel3.TabIndex = 6;
-            // 
-            // firstPage1
-            // 
-            this.firstPage1.AutoScroll = true;
-            this.firstPage1.AutoSize = true;
-            this.firstPage1.BackColor = System.Drawing.Color.White;
-            this.firstPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.firstPage1.Location = new System.Drawing.Point(0, 0);
-            this.firstPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.firstPage1.Name = "firstPage1";
-            this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
-            this.firstPage1.Size = new System.Drawing.Size(988, 622);
-            this.firstPage1.TabIndex = 0;
-            this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
-            // 
-            // customers1
-            // 
-            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customers1.Location = new System.Drawing.Point(0, 0);
-            this.customers1.Margin = new System.Windows.Forms.Padding(2);
-            this.customers1.Name = "customers1";
-            this.customers1.Size = new System.Drawing.Size(988, 622);
-            this.customers1.TabIndex = 5;
-            // 
-            // archive1
-            // 
-            this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.archive1.Location = new System.Drawing.Point(0, 0);
-            this.archive1.Margin = new System.Windows.Forms.Padding(2);
-            this.archive1.Name = "archive1";
-            this.archive1.Size = new System.Drawing.Size(988, 622);
-            this.archive1.TabIndex = 1;
-            // 
-            // gramsCount
-            // 
-            this.gramsCount.AutoSize = true;
-            this.gramsCount.BackColor = System.Drawing.Color.White;
-            this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gramsCount.Location = new System.Drawing.Point(0, 0);
-            this.gramsCount.Margin = new System.Windows.Forms.Padding(2);
-            this.gramsCount.Name = "gramsCount";
-            this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.gramsCount.Size = new System.Drawing.Size(988, 622);
-            this.gramsCount.TabIndex = 2;
-            // 
-            // dayStatic1
-            // 
-            this.dayStatic1.BackColor = System.Drawing.Color.White;
-            this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dayStatic1.Location = new System.Drawing.Point(0, 0);
-            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2);
-            this.dayStatic1.Name = "dayStatic1";
-            this.dayStatic1.Size = new System.Drawing.Size(988, 622);
-            this.dayStatic1.TabIndex = 3;
-            // 
-            // borrow1
-            // 
-            this.borrow1.AutoScroll = true;
-            this.borrow1.AutoSize = true;
-            this.borrow1.BackColor = System.Drawing.Color.White;
-            this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.borrow1.Location = new System.Drawing.Point(0, 0);
-            this.borrow1.Margin = new System.Windows.Forms.Padding(2);
-            this.borrow1.Name = "borrow1";
-            this.borrow1.Padding = new System.Windows.Forms.Padding(50);
-            this.borrow1.Size = new System.Drawing.Size(988, 622);
-            this.borrow1.TabIndex = 4;
-            // 
-            // inventory1
-            // 
-            this.inventory1.BackColor = System.Drawing.Color.White;
-            this.inventory1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inventory1.Location = new System.Drawing.Point(0, 0);
-            this.inventory1.Margin = new System.Windows.Forms.Padding(2);
-            this.inventory1.Name = "inventory1";
-            this.inventory1.Size = new System.Drawing.Size(988, 622);
-            this.inventory1.TabIndex = 51;
             // 
             // top
             // 
@@ -316,89 +239,27 @@ namespace test_printing
             this.Exit.UseTransparentBackground = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // right
+            // billsbtn
             // 
-            this.right.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.right.BackgroundImage = global::AbuFas.Properties.Resources.Rectangle_1157;
-            this.right.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.right.Controls.Add(this.guna2Button1);
-            this.right.Controls.Add(this.btnShopper);
-            this.right.Controls.Add(this.btnPayment);
-            this.right.Controls.Add(this.btntStatic);
-            this.right.Controls.Add(this.Grambtn);
-            this.right.Controls.Add(this.billsbtn);
-            this.right.Controls.Add(this.label1);
-            this.right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.right.Location = new System.Drawing.Point(988, 0);
-            this.right.Name = "right";
-            this.right.Size = new System.Drawing.Size(328, 712);
-            this.right.TabIndex = 5;
-            // 
-            // btnShopper
-            // 
-            this.btnShopper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShopper.BackColor = System.Drawing.Color.Transparent;
-            this.btnShopper.BorderRadius = 10;
-            this.btnShopper.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnShopper.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnShopper.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnShopper.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnShopper.FillColor = System.Drawing.Color.Transparent;
-            this.btnShopper.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShopper.ForeColor = System.Drawing.Color.White;
-            this.btnShopper.Image = ((System.Drawing.Image)(resources.GetObject("btnShopper.Image")));
-            this.btnShopper.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnShopper.Location = new System.Drawing.Point(60, 463);
-            this.btnShopper.Name = "btnShopper";
-            this.btnShopper.Size = new System.Drawing.Size(262, 67);
-            this.btnShopper.TabIndex = 8;
-            this.btnShopper.Text = "التجار";
-            this.btnShopper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnShopper.Click += new System.EventHandler(this.btnShopper_Click);
-            // 
-            // btnPayment
-            // 
-            this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPayment.BackColor = System.Drawing.Color.Transparent;
-            this.btnPayment.BorderRadius = 10;
-            this.btnPayment.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPayment.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPayment.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPayment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPayment.FillColor = System.Drawing.Color.Transparent;
-            this.btnPayment.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.ForeColor = System.Drawing.Color.White;
-            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
-            this.btnPayment.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnPayment.Location = new System.Drawing.Point(60, 383);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(262, 67);
-            this.btnPayment.TabIndex = 7;
-            this.btnPayment.Text = "سلف";
-            this.btnPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
-            // 
-            // btntStatic
-            // 
-            this.btntStatic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btntStatic.BackColor = System.Drawing.Color.Transparent;
-            this.btntStatic.BorderRadius = 10;
-            this.btntStatic.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btntStatic.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btntStatic.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btntStatic.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btntStatic.FillColor = System.Drawing.Color.Transparent;
-            this.btntStatic.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntStatic.ForeColor = System.Drawing.Color.White;
-            this.btntStatic.Image = ((System.Drawing.Image)(resources.GetObject("btntStatic.Image")));
-            this.btntStatic.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btntStatic.Location = new System.Drawing.Point(60, 303);
-            this.btntStatic.Name = "btntStatic";
-            this.btntStatic.Size = new System.Drawing.Size(262, 67);
-            this.btntStatic.TabIndex = 6;
-            this.btntStatic.Text = "جرد النقد اليومي";
-            this.btntStatic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btntStatic.Click += new System.EventHandler(this.btntStatic_Click);
+            this.billsbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.billsbtn.BackColor = System.Drawing.Color.Transparent;
+            this.billsbtn.BorderRadius = 10;
+            this.billsbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.billsbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.billsbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.billsbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.billsbtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.billsbtn.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billsbtn.ForeColor = System.Drawing.Color.White;
+            this.billsbtn.Image = global::AbuFas.Properties.Resources.fluent_receipt_24_regular;
+            this.billsbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.billsbtn.Location = new System.Drawing.Point(60, 143);
+            this.billsbtn.Name = "billsbtn";
+            this.billsbtn.Size = new System.Drawing.Size(262, 67);
+            this.billsbtn.TabIndex = 4;
+            this.billsbtn.Text = "فواتير البيع والشراء";
+            this.billsbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.billsbtn.Click += new System.EventHandler(this.billsbtn_Click);
             // 
             // Grambtn
             // 
@@ -422,40 +283,71 @@ namespace test_printing
             this.Grambtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Grambtn.Click += new System.EventHandler(this.Grambtn_Click);
             // 
-            // billsbtn
+            // btntStatic
             // 
-            this.billsbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.billsbtn.BackColor = System.Drawing.Color.Transparent;
-            this.billsbtn.BorderRadius = 10;
-            this.billsbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.billsbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.billsbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.billsbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.billsbtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.billsbtn.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billsbtn.ForeColor = System.Drawing.Color.White;
-            this.billsbtn.Image = global::AbuFas.Properties.Resources.fluent_receipt_24_regular;
-            this.billsbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.billsbtn.Location = new System.Drawing.Point(60, 143);
-            this.billsbtn.Name = "billsbtn";
-            this.billsbtn.Size = new System.Drawing.Size(262, 67);
-            this.billsbtn.TabIndex = 4;
-            this.billsbtn.Text = "فواتير البيع والشراء";
-            this.billsbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.billsbtn.Click += new System.EventHandler(this.billsbtn_Click);
+            this.btntStatic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btntStatic.BackColor = System.Drawing.Color.Transparent;
+            this.btntStatic.BorderRadius = 10;
+            this.btntStatic.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btntStatic.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btntStatic.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btntStatic.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btntStatic.FillColor = System.Drawing.Color.Transparent;
+            this.btntStatic.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntStatic.ForeColor = System.Drawing.Color.White;
+            this.btntStatic.Image = ((System.Drawing.Image)(resources.GetObject("btntStatic.Image")));
+            this.btntStatic.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btntStatic.Location = new System.Drawing.Point(60, 303);
+            this.btntStatic.Name = "btntStatic";
+            this.btntStatic.Size = new System.Drawing.Size(262, 67);
+            this.btntStatic.TabIndex = 6;
+            this.btntStatic.Text = "جرد النقد اليومي";
+            this.btntStatic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btntStatic.Click += new System.EventHandler(this.btntStatic_Click);
             // 
-            // label1
+            // btnPayment
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Cairo Black", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(327, 70);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "مجوهرات أبو فص";
+            this.btnPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPayment.BackColor = System.Drawing.Color.Transparent;
+            this.btnPayment.BorderRadius = 10;
+            this.btnPayment.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPayment.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPayment.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPayment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPayment.FillColor = System.Drawing.Color.Transparent;
+            this.btnPayment.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnPayment.Location = new System.Drawing.Point(60, 383);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(262, 67);
+            this.btnPayment.TabIndex = 7;
+            this.btnPayment.Text = "سلف";
+            this.btnPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnShopper
+            // 
+            this.btnShopper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShopper.BackColor = System.Drawing.Color.Transparent;
+            this.btnShopper.BorderRadius = 10;
+            this.btnShopper.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShopper.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShopper.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShopper.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShopper.FillColor = System.Drawing.Color.Transparent;
+            this.btnShopper.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShopper.ForeColor = System.Drawing.Color.White;
+            this.btnShopper.Image = ((System.Drawing.Image)(resources.GetObject("btnShopper.Image")));
+            this.btnShopper.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnShopper.Location = new System.Drawing.Point(60, 463);
+            this.btnShopper.Name = "btnShopper";
+            this.btnShopper.Size = new System.Drawing.Size(262, 67);
+            this.btnShopper.TabIndex = 8;
+            this.btnShopper.Text = "التجار";
+            this.btnShopper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnShopper.Click += new System.EventHandler(this.btnShopper_Click);
             // 
             // guna2Button1
             // 
@@ -478,6 +370,113 @@ namespace test_printing
             this.guna2Button1.Text = "الجرد السنوي";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // right
+            // 
+            this.right.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.right.BackgroundImage = global::AbuFas.Properties.Resources.Rectangle_1157;
+            this.right.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.right.Controls.Add(this.label1);
+            this.right.Controls.Add(this.guna2Button1);
+            this.right.Controls.Add(this.btnShopper);
+            this.right.Controls.Add(this.btnPayment);
+            this.right.Controls.Add(this.btntStatic);
+            this.right.Controls.Add(this.Grambtn);
+            this.right.Controls.Add(this.billsbtn);
+            this.right.Dock = System.Windows.Forms.DockStyle.Right;
+            this.right.Location = new System.Drawing.Point(988, 0);
+            this.right.Name = "right";
+            this.right.Size = new System.Drawing.Size(328, 712);
+            this.right.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Cairo", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.label1.Location = new System.Drawing.Point(12, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(316, 70);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "مجوهرات أبو فص";
+            // 
+            // firstPage1
+            // 
+            this.firstPage1.AutoScroll = true;
+            this.firstPage1.AutoSize = true;
+            this.firstPage1.BackColor = System.Drawing.Color.White;
+            this.firstPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.firstPage1.Location = new System.Drawing.Point(0, 0);
+            this.firstPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.firstPage1.Name = "firstPage1";
+            this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
+            this.firstPage1.Size = new System.Drawing.Size(988, 622);
+            this.firstPage1.TabIndex = 0;
+            this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
+            // 
+            // customers1
+            // 
+            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customers1.Location = new System.Drawing.Point(0, 0);
+            this.customers1.Margin = new System.Windows.Forms.Padding(2);
+            this.customers1.Name = "customers1";
+            this.customers1.Size = new System.Drawing.Size(988, 622);
+            this.customers1.TabIndex = 5;
+            // 
+            // archive1
+            // 
+            this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.archive1.Location = new System.Drawing.Point(0, 0);
+            this.archive1.Margin = new System.Windows.Forms.Padding(2);
+            this.archive1.Name = "archive1";
+            this.archive1.Size = new System.Drawing.Size(988, 622);
+            this.archive1.TabIndex = 1;
+            // 
+            // gramsCount
+            // 
+            this.gramsCount.AutoSize = true;
+            this.gramsCount.BackColor = System.Drawing.Color.White;
+            this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gramsCount.Location = new System.Drawing.Point(0, 0);
+            this.gramsCount.Margin = new System.Windows.Forms.Padding(2);
+            this.gramsCount.Name = "gramsCount";
+            this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.gramsCount.Size = new System.Drawing.Size(988, 622);
+            this.gramsCount.TabIndex = 2;
+            // 
+            // dayStatic1
+            // 
+            this.dayStatic1.BackColor = System.Drawing.Color.White;
+            this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dayStatic1.Location = new System.Drawing.Point(0, 0);
+            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2);
+            this.dayStatic1.Name = "dayStatic1";
+            this.dayStatic1.Size = new System.Drawing.Size(988, 622);
+            this.dayStatic1.TabIndex = 3;
+            // 
+            // borrow1
+            // 
+            this.borrow1.AutoScroll = true;
+            this.borrow1.AutoSize = true;
+            this.borrow1.BackColor = System.Drawing.Color.White;
+            this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borrow1.Location = new System.Drawing.Point(0, 0);
+            this.borrow1.Margin = new System.Windows.Forms.Padding(2);
+            this.borrow1.Name = "borrow1";
+            this.borrow1.Padding = new System.Windows.Forms.Padding(50);
+            this.borrow1.Size = new System.Drawing.Size(988, 622);
+            this.borrow1.TabIndex = 4;
+            // 
+            // inventory1
+            // 
+            this.inventory1.BackColor = System.Drawing.Color.White;
+            this.inventory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inventory1.Location = new System.Drawing.Point(0, 0);
+            this.inventory1.Margin = new System.Windows.Forms.Padding(2);
+            this.inventory1.Name = "inventory1";
+            this.inventory1.Size = new System.Drawing.Size(988, 622);
+            this.inventory1.TabIndex = 51;
             // 
             // Home
             // 
@@ -510,15 +509,8 @@ namespace test_printing
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox Exit;
         private Guna.UI2.WinForms.Guna2Panel top;
-        private Guna.UI2.WinForms.Guna2Panel right;
-        private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         public BuySell firstPage1;
-        private Guna.UI2.WinForms.Guna2Button btnPayment;
-        private Guna.UI2.WinForms.Guna2Button btntStatic;
-        private Guna.UI2.WinForms.Guna2Button Grambtn;
-        private Guna.UI2.WinForms.Guna2Button billsbtn;
-        private Guna.UI2.WinForms.Guna2Button btnShopper;
         private Guna.UI2.WinForms.Guna2Button date;
         public Archive archive1;
         public AbuFas.GramsCount gramsCount;
@@ -532,7 +524,14 @@ namespace test_printing
         public Guna.UI2.WinForms.Guna2DateTimePicker end;
         public Guna.UI2.WinForms.Guna2TextBox search;
         private inventory inventory1;
+        private Guna.UI2.WinForms.Guna2Button billsbtn;
+        private Guna.UI2.WinForms.Guna2Button Grambtn;
+        private Guna.UI2.WinForms.Guna2Button btntStatic;
+        private Guna.UI2.WinForms.Guna2Button btnPayment;
+        private Guna.UI2.WinForms.Guna2Button btnShopper;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Panel right;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -373,25 +373,27 @@ namespace AbuFas.Control
         {
             int r = 0;
             Int32.TryParse(textBox1.Text, out r);
-            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0)
+            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0&&data.RowCount!=1)
             {
 
                 
                 WriteTableToWordInterop("newfileword",GetGridData(data));
-               /* PrintDocument printDocument = new PrintDocument();
-                printDocument.PrintPage += printDocument1_PrintPage;
+                SaveToDB();
+                reset();
+                /* PrintDocument printDocument = new PrintDocument();
+                 printDocument.PrintPage += printDocument1_PrintPage;
 
-                PrintDialog printDialog = new PrintDialog();
-                printDocument.DocumentName = "فاتورة رقم " + BillNum.Text + " بأسم " + CustName.Text;
-                printDialog.Document = printDocument;
+                 PrintDialog printDialog = new PrintDialog();
+                 printDocument.DocumentName = "فاتورة رقم " + BillNum.Text + " بأسم " + CustName.Text;
+                 printDialog.Document = printDocument;
 
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
-                    SaveToDB();
-                    printDocument.Print();
+                 if (printDialog.ShowDialog() == DialogResult.OK)
+                 {
 
-                    reset();
-                }*/
+                     printDocument.Print();
+
+                     
+                 }*/
             }
             else MessageBox.Show("ادخل البيانات كاملة");
         }
@@ -491,6 +493,7 @@ namespace AbuFas.Control
             par5.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
             par5.Range.InsertParagraphAfter(); 
             wordDoc.PrintPreview();
+            string printerName = wordApp.ActivePrinter;
             wordDoc.PrintOut(PrintToFile: false);
             wordDoc.SaveAs(BillNum.Text +" فاتورة رقم");
             wordApp.Quit();

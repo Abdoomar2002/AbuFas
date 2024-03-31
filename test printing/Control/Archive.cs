@@ -163,13 +163,13 @@ namespace test_printing
                 ArchiveTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 3));
             }*/
             
-            var Sold=Program._context.Bills.Where(c=>c.IsBuy==true&&c.Date==DateTime.Now.Date).ToList();
-            var Bought = Program._context.Bills.Where(c=>c.IsBuy==false&&c.Date==DateTime.Now.Date).ToList();
+            var Sold=Program._context.Bills.Where(c=>c.IsBuy==false&&c.Date==DateTime.Now.Date).ToList();
+            var Bought = Program._context.Bills.Where(c=>c.IsBuy==true&&c.Date==DateTime.Now.Date).ToList();
             if (searchFlag == true) {
                 if (bills == null||bills.Count==0) MessageBox.Show("لا يوجد فواتير مطابقة للبحث");
                 else { 
-                    Sold = bills.Where(c => c.IsBuy == true).ToList();
-                    Bought=bills.Where(c=>c.IsBuy == false).ToList();
+                    Sold = bills.Where(c => c.IsBuy == false).ToList();
+                    Bought=bills.Where(c=>c.IsBuy == true).ToList();
                 }
                 searchFlag = false;
             
@@ -202,8 +202,8 @@ namespace test_printing
             double totalGrams = 0;
             foreach (var item in data)
             {
-                if (item.Type == 18)totalGrams += item.Weight * 18.0 / 21.0;
-                else if (item.Type == 21) totalGrams += item.Weight;
+                if (item.Kyrat == 18)totalGrams += item.Weight * 18.0 / 21.0;
+                else if (item.Kyrat == 21) totalGrams += item.Weight;
                 else totalGrams += item.Weight*24/21;
             }
             totalGrams = Math.Round(totalGrams, 3);
@@ -433,12 +433,14 @@ namespace test_printing
         {
             if (e.RowIndex == -1) { return; }
             int id = 0;
-            Int32.TryParse(incoume.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
+            Guna2DataGridView view=(Guna2DataGridView)sender;
+            if (null== view.Rows[e.RowIndex].Cells[4].Value) { MessageBox.Show("لا يوجد بيانات");return; }
+            Int32.TryParse(view.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
             var bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
             if (bill == null) {
-                Int32.TryParse(outcome.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
-
-                bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
+                //Int32.TryParse(outcome.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
+                MessageBox.Show("error");
+                //bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
             }
             var data = Program._context.BillData.Where(c => c.Bill == bill).ToList();
             show(bill,data);
@@ -449,8 +451,11 @@ namespace test_printing
 
         public void SearchByName(string name) 
         {
+            int id = 0;
+            
+            Int32.TryParse(name, out id);
             List<Bills>bills = new List<Bills>();
-            bills=Program._context.Bills.Where(c=>c.CustomerName.Contains(name)).ToList();
+            bills=Program._context.Bills.Where(c=>c.CustomerName.Contains(name)||c.Id==id).ToList();
             searchFlag = true;
              
             LoadTable(bills);

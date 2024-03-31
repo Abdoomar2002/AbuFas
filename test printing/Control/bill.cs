@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Linq;
 //using System.Web.UI;
 using System.Windows.Forms;
 using test_printing.db;
+using Application = Microsoft.Office.Interop.Word.Application;
 using UserControl = System.Windows.Forms.UserControl;
 
 namespace test_printing
@@ -133,22 +135,25 @@ namespace test_printing
             if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 &&r  > 0)
             {
 
+                WriteTableToWordInterop("newfileword", GetGridData(data));
+                SaveToDB();
+                reset();
+                /* PrintDocument printDocument = new PrintDocument();
+                 printDocument.PrintPage += printDocument1_PrintPage;
 
-             
-                PrintDocument printDocument = new PrintDocument();
-                printDocument.PrintPage += printDocument1_PrintPage;
+                 PrintDialog printDialog = new PrintDialog();
+                 printDocument.DocumentName = "فاتورة رقم " + BillNum.Text + " بأسم " + CustName.Text;
+                 printDialog.Document = printDocument;
 
-                PrintDialog printDialog = new PrintDialog();
-                printDocument.DocumentName="فاتورة رقم "+BillNum.Text+" بأسم "+CustName.Text;
-                printDialog.Document = printDocument;
+                 if (printDialog.ShowDialog() == DialogResult.OK)
+                 {
 
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
-                    SaveToDB();
-                    printDocument.Print();
+                     printDocument.Print();
 
-                    reset();
-                }
+                     
+                 }*/
+
+               
             }
             else MessageBox.Show("ادخل البيانات كاملة");
         }
@@ -187,7 +192,7 @@ namespace test_printing
             }
             Bitmap dataGridViewBitmap = new Bitmap(data.Width, dataGridViewHeight);
            
-            data.DrawToBitmap(dataGridViewBitmap, new Rectangle(0, 0, data.Width+50, 15*24+data.ColumnHeadersHeight+91+396*(maxRowsPerPage/15-1)));
+            data.DrawToBitmap(dataGridViewBitmap, new System.Drawing.Rectangle(0, 0, data.Width+50, 15*24+data.ColumnHeadersHeight+91+396*(maxRowsPerPage/15-1)));
             e.Graphics.DrawImage(dataGridViewBitmap,e.MarginBounds.Left-80,408-396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width+160,dataGridViewHeight+80);
         //    DrawPanelToGraphics(new Panel(),e.Graphics,e.MarginBounds.Left-20,0,e.MarginBounds.Width+60,20);
           //  DrawPanelToGraphics(Header, e.Graphics, e.MarginBounds.Left-20, 20, e.MarginBounds.Width + 60, headerHeight);
@@ -222,7 +227,7 @@ namespace test_printing
         {
             Bitmap panelBitmap = new Bitmap(panel.Width, panel.Height);
            
-            panel.DrawToBitmap(panelBitmap, new Rectangle(0, 0, panel.Width, panel.Height));
+            panel.DrawToBitmap(panelBitmap, new System.Drawing.Rectangle(0, 0, panel.Width, panel.Height));
             graphics.DrawImage(panelBitmap, x, y, width, height);
         }
      
@@ -278,12 +283,7 @@ namespace test_printing
                 Notes.Height = Notes.Height;
 
         }
-        public Image CaptureScreenshot()
-        {
-            Bitmap bmp = new Bitmap(this.Width, this.Height);
-            this.DrawToBitmap(bmp, new Rectangle(0, 0, this.Width, this.Height));
-            return bmp;
-        }
+
         public int SaveToDB()
         {
             Bills newBill = new Bills();
@@ -398,7 +398,107 @@ namespace test_printing
         {
             
         }
-    
+        public List<List<string>> GetGridData(DataGridView dataGridView)
+        {
+            // Validate input
+            if (dataGridView == null || dataGridView.Rows.Count == 0 || dataGridView.Columns.Count == 0)
+            {
+                return new List<List<string>>(); // Return empty list if no data
+            }
+
+            // Create a list to store rows of data as lists of strings
+            var data = new List<List<string>>();
+
+            // Extract data from each row
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                var rowData = new List<string>();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Handle null values appropriately (optional)
+                    rowData.Add(cell.Value?.ToString() ?? ""); // Use ?? to provide an empty string for null values
+                }
+                data.Add(rowData);
+            }
+
+            return data;
+        }
+        public void WriteTableToWordInterop(string filePath, List<List<string>> data)
+        {
+            var wordApp = new Application();
+            var wordDoc = wordApp.Documents.Add();
+            wordDoc.Paragraphs.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            wordDoc.PageSetup.TopMargin = 200;
+            wordDoc.PageSetup.BottomMargin = 200;
+            string[] arr = { "جملة الثمن", "الوزن", "الفئة", "العيار", "العدد", "الصنف" };
+            var par = wordDoc.Paragraphs.Add();
+            par.Range.Text = " الاسم " + CustName.Text;
+            par.Range.Bold = 8;
+            par.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+            par.Range.InsertParagraphAfter();
+            var par2 = wordDoc.Paragraphs.Add();
+            par2.Range.Text = BillNum.Text + " رقم الفاتورة ";
+            par2.Range.Bold = 8;
+            par2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+            par2.Range.InsertParagraphAfter();
+            var table = wordDoc.Tables.Add(par2.Range, data.Count, data[0].Count);
+            table.TableDirection = WdTableDirection.wdTableDirectionRtl;
+
+            //   table.Rows.Alignment = WdRowAlignment.wdAlignRowRight;
+            table.Rows.Alignment = WdRowAlignment.wdAlignRowRight;
+            table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleThickThinLargeGap;
+            table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleTriple;
+            // Set header row
+            for (int i = 1; i <= arr.Length; i++)
+            {
+                table.Cell(1, i).Range.Text = arr[i - 1];
+
+
+                table.Cell(1, i).Range.Font.Bold = 4; // Set bold for headers (optional)
+            }
+
+            // Set data rows
+            for (int i = 2; i <= data.Count; i++)
+            {
+                for (int j = 1; j <= data[0].Count; j++)
+                {
+                    table.Cell(i, j).Range.Text = data[i - 2][j - 1];
+                    table.Cell(i, j).VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                }
+
+            }
+
+            string c =
+             textBox1.Text + "          " + label1.Text + "          ";
+            var d = textBox2.Text + "          " + label14.Text + "          ";
+            var e = textBox3.Text + "          " + label15.Text + "          ";
+            var f = last.Text + "          " + label13.Text + "          ";
+            var par3 = wordDoc.Paragraphs.Add();
+            par3.Range.Text = c;
+            par3.Range.Bold = 8;
+            par3.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+            par3.Range.InsertParagraphAfter();
+            var par4 = wordDoc.Paragraphs.Add();
+            par4.Range.Text = d;
+            par4.Range.Bold = 8;
+            par4.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+            par4.Range.InsertParagraphAfter();
+            var par6 = wordDoc.Paragraphs.Add();
+            par6.Range.Text = f;
+            par6.Range.Bold = 8;
+            par6.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+            par6.Range.InsertParagraphAfter();
+            var par5 = wordDoc.Paragraphs.Add();
+            par5.Range.Text = e;
+            par5.Range.Bold = 8;
+            par5.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+            par5.Range.InsertParagraphAfter();
+            wordDoc.PrintPreview();
+            string printerName = wordApp.ActivePrinter;
+            wordDoc.PrintOut(PrintToFile: false);
+            wordDoc.SaveAs(BillNum.Text + " فاتورة رقم");
+            wordApp.Quit();
+        }
         private void reset() 
         {
             CustName.Text = string.Empty;

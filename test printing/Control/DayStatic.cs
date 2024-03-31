@@ -86,7 +86,7 @@ namespace AbuFas
         {
             cuurentDate.Text = DateTime.Today.ToShortDateString();
 
-             load(DateTime.Today);
+           //  load(DateTime.Today);
         }
 
         private void next_Click(object sender, EventArgs e)
@@ -125,8 +125,8 @@ namespace AbuFas
             outcomemoney.Text = "";
             yesterdaytotal.Text = "";
             todaytotal.Text = "";
-            
 
+          //  MessageBox.Show("fg");
 
 
             var days = Program._context.DaystaticMoney.AsEnumerable().Where(x => x.Date == date).FirstOrDefault();
@@ -147,7 +147,7 @@ namespace AbuFas
                     }
                 var bills = Program._context.Bills.Where(c => c.Money.Id == days.Id).ToList();
                 if (days.Bills != null)
-                    foreach (var inco in days.Bills)
+                    foreach (var inco in bills)
                     {
                         if (inco.IsBuy) totalsell += inco.Total;
                         else totalbuy += inco.Total;

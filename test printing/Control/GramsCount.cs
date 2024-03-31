@@ -147,7 +147,7 @@ namespace AbuFas
             var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
             var damage = 0;
             Int32.TryParse(textBox.Text, out damage);
-            if (damage > 0&&r>=1)
+            if (damage >= 0&&r>=1)
                 table[r-1].Damaged = damage;
             Program._context.SaveChanges();
             LoadAfter(r,c);

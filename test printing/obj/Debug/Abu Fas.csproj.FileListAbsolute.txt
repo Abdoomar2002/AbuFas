@@ -116,11 +116,17 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.exe
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.pdb
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.config
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.pdb
+D:\AbuFas\AbuFas\test printing\bin\Debug\BouncyCastle.Crypto.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Guna.UI2.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.HashCode.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.SqlClient.dll
@@ -128,7 +134,6 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
@@ -163,7 +168,10 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\System.Memory.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Numerics.Vectors.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.HashCode.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.SqlClient.pdb
@@ -172,7 +180,6 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
-D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
@@ -218,12 +225,14 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.SuggestedBindingRedirect
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.Archive.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BillBuy.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.bills21.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.BillTable.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Borrow.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BuySell.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.customers.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.DayStatic.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Editing.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.GramsCount.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.inventory.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.Home.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.InOutCome.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.login.resources
@@ -234,12 +243,3 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CoreCompileInputs.cache
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CopyComplete
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.pdb
-D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.BillTable.resources
-D:\AbuFas\AbuFas\test printing\bin\Debug\BouncyCastle.Crypto.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.xml
-D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.inventory.resources
-D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.xml
-D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.xml
