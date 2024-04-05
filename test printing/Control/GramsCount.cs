@@ -58,6 +58,7 @@ namespace AbuFas
                 if (grams.Count == 0) 
                 {
                     MessageBox.Show("لا يوجد بيانات مطابقة للفترة");
+                    searchFlag = false;
                     return;
                 }
                 searchFlag = false;

@@ -207,10 +207,10 @@ namespace test_printing
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             inventory1.BringToFront();
-            inventory1.load(DateTime.Today,DateTime.Today);
+            inventory1.load(start.Value,end.Value);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
-            search.Visible = false;
+            search.Visible = true;
             from.Visible = true;
             to.Visible = true;
             start.Visible = true;

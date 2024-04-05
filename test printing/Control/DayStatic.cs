@@ -172,13 +172,15 @@ namespace AbuFas
             
             var list=Program._context.DaystaticMoney.Where(d=>d.Date < time).OrderByDescending(x=>x.Date).ToList();
             foreach (var item in list)
-            {
-                foreach (var element in item.Bills)
+            { 
+                var bills =Program._context.Bills.Where(b=>b.Money==item).ToList();
+                foreach (var element in bills)
                 {
                     if(element.IsBuy)total-=element.Total;
                     else total+=element.Total;
                 }
-                foreach (var element in item.IncomeOutCome)
+                var incoumeoutcome=Program._context.IncomeOutcome.Where(i=>i.Money==item).ToList();
+                foreach (var element in incoumeoutcome)
                 {
                     if (element.IsIncome)  total += element.Price;
                     else total-=element.Price;
@@ -186,6 +188,26 @@ namespace AbuFas
             }
             return total;
         }
-
+        private double calcYesterday(DateTime time) 
+        {
+            double total=0;
+            time = time.AddDays(-1).Date;
+            var day = Program._context.DaystaticMoney.Where(c => c.Date == time).FirstOrDefault();
+            if(day != null) {
+                var bills = Program._context.Bills.Where(b => b.Money == day).ToList();
+                foreach (var item in bills)
+                {
+                    if(item.IsBuy) total-=item.Total;
+                    else total+=item.Total;
+                }
+                var incomeoutcome=Program._context.IncomeOutcome.Where(i=>i.Money==day).ToList();
+                foreach (var item in incomeoutcome)
+                {
+                    if(item.IsIncome) total+=item.Price;
+                    else total-=item.Price;
+                }
+            }
+            return total;
+        }
     }
 }

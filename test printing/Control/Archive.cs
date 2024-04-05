@@ -166,10 +166,11 @@ namespace test_printing
             var Sold=Program._context.Bills.Where(c=>c.IsBuy==false&&c.Date==DateTime.Now.Date).ToList();
             var Bought = Program._context.Bills.Where(c=>c.IsBuy==true&&c.Date==DateTime.Now.Date).ToList();
             if (searchFlag == true) {
-                if (bills == null||bills.Count==0) MessageBox.Show("لا يوجد فواتير مطابقة للبحث");
-                else { 
+                if (bills == null || bills.Count == 0) { MessageBox.Show("لا يوجد فواتير مطابقة للبحث"); searchFlag = false;return; }
+                else
+                {
                     Sold = bills.Where(c => c.IsBuy == false).ToList();
-                    Bought=bills.Where(c=>c.IsBuy == true).ToList();
+                    Bought = bills.Where(c => c.IsBuy == true).ToList();
                 }
                 searchFlag = false;
             
@@ -337,7 +338,7 @@ namespace test_printing
             {
                 var id = bill1.Visible ? Int32.Parse(bill1.BillNum.Text) : Int32.Parse(billBuy1.BillNum.Text);
                var billToDelete= _context.Bills.Where(c => c.Id == id).FirstOrDefault();
-               var dataToDelete= _context.BillData.Where(c => c.Bill.Id == id);
+               var dataToDelete= _context.BillData.Where(c => c.Bill == billToDelete).ToList();
                var MoneyToDelete = _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
                var GramToDelete18 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date&&c.Type=="18").FirstOrDefault();
                var GramToDelete21 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "21").FirstOrDefault();

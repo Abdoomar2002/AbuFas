@@ -116,8 +116,6 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.exe
 C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.pdb
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
-D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
-D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.config
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.pdb
@@ -134,6 +132,7 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
@@ -180,6 +179,7 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Data.Sqlite.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.Sqlite.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml

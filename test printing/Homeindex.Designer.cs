@@ -1,4 +1,5 @@
 ﻿using AbuFas.Control;
+using System;
 
 namespace test_printing
 {
@@ -32,6 +33,13 @@ namespace test_printing
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.firstPage1 = new test_printing.BuySell();
+            this.customers1 = new AbuFas.customers();
+            this.archive1 = new test_printing.Archive();
+            this.gramsCount = new AbuFas.GramsCount();
+            this.dayStatic1 = new AbuFas.DayStatic();
+            this.borrow1 = new AbuFas.Borrow();
+            this.inventory1 = new AbuFas.Control.inventory();
             this.top = new Guna.UI2.WinForms.Guna2Panel();
             this.day = new System.Windows.Forms.Label();
             this.to = new System.Windows.Forms.Label();
@@ -49,13 +57,6 @@ namespace test_printing
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.right = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.firstPage1 = new test_printing.BuySell();
-            this.customers1 = new AbuFas.customers();
-            this.archive1 = new test_printing.Archive();
-            this.gramsCount = new AbuFas.GramsCount();
-            this.dayStatic1 = new AbuFas.DayStatic();
-            this.borrow1 = new AbuFas.Borrow();
-            this.inventory1 = new AbuFas.Control.inventory();
             this.guna2Panel3.SuspendLayout();
             this.top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
@@ -76,6 +77,83 @@ namespace test_printing
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(988, 622);
             this.guna2Panel3.TabIndex = 6;
+            // 
+            // firstPage1
+            // 
+            this.firstPage1.AutoScroll = true;
+            this.firstPage1.AutoSize = true;
+            this.firstPage1.BackColor = System.Drawing.Color.White;
+            this.firstPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.firstPage1.Location = new System.Drawing.Point(0, 0);
+            this.firstPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.firstPage1.Name = "firstPage1";
+            this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
+            this.firstPage1.Size = new System.Drawing.Size(988, 622);
+            this.firstPage1.TabIndex = 0;
+            this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
+            // 
+            // customers1
+            // 
+            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customers1.Location = new System.Drawing.Point(0, 0);
+            this.customers1.Margin = new System.Windows.Forms.Padding(2);
+            this.customers1.Name = "customers1";
+            this.customers1.Size = new System.Drawing.Size(988, 622);
+            this.customers1.TabIndex = 5;
+            // 
+            // archive1
+            // 
+            this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.archive1.Location = new System.Drawing.Point(0, 0);
+            this.archive1.Margin = new System.Windows.Forms.Padding(2);
+            this.archive1.Name = "archive1";
+            this.archive1.Size = new System.Drawing.Size(988, 622);
+            this.archive1.TabIndex = 1;
+            // 
+            // gramsCount
+            // 
+            this.gramsCount.AutoSize = true;
+            this.gramsCount.BackColor = System.Drawing.Color.White;
+            this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gramsCount.Location = new System.Drawing.Point(0, 0);
+            this.gramsCount.Margin = new System.Windows.Forms.Padding(2);
+            this.gramsCount.Name = "gramsCount";
+            this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.gramsCount.Size = new System.Drawing.Size(988, 622);
+            this.gramsCount.TabIndex = 2;
+            // 
+            // dayStatic1
+            // 
+            this.dayStatic1.BackColor = System.Drawing.Color.White;
+            this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dayStatic1.Location = new System.Drawing.Point(0, 0);
+            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2);
+            this.dayStatic1.Name = "dayStatic1";
+            this.dayStatic1.Size = new System.Drawing.Size(988, 622);
+            this.dayStatic1.TabIndex = 3;
+            // 
+            // borrow1
+            // 
+            this.borrow1.AutoScroll = true;
+            this.borrow1.AutoSize = true;
+            this.borrow1.BackColor = System.Drawing.Color.White;
+            this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borrow1.Location = new System.Drawing.Point(0, 0);
+            this.borrow1.Margin = new System.Windows.Forms.Padding(2);
+            this.borrow1.Name = "borrow1";
+            this.borrow1.Padding = new System.Windows.Forms.Padding(50);
+            this.borrow1.Size = new System.Drawing.Size(988, 622);
+            this.borrow1.TabIndex = 4;
+            // 
+            // inventory1
+            // 
+            this.inventory1.BackColor = System.Drawing.Color.White;
+            this.inventory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inventory1.Location = new System.Drawing.Point(0, 0);
+            this.inventory1.Margin = new System.Windows.Forms.Padding(2);
+            this.inventory1.Name = "inventory1";
+            this.inventory1.Size = new System.Drawing.Size(988, 622);
+            this.inventory1.TabIndex = 51;
             // 
             // top
             // 
@@ -139,7 +217,7 @@ namespace test_printing
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(194, 48);
             this.start.TabIndex = 8;
-            this.start.Value = new System.DateTime(2024, 3, 28, 16, 42, 59, 71);
+            this.start.Value = new System.DateTime(2024, 4, 5, 0, 0, 0, 0);
             this.start.ValueChanged += new System.EventHandler(this.start_ValueChanged);
             // 
             // from
@@ -172,7 +250,7 @@ namespace test_printing
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(194, 48);
             this.end.TabIndex = 6;
-            this.end.Value = new System.DateTime(2024, 3, 28, 16, 42, 59, 71);
+            this.end.Value = new System.DateTime(2024, 4, 5, 0, 0, 0, 0);
             this.end.ValueChanged += new System.EventHandler(this.start_ValueChanged);
             // 
             // date
@@ -401,83 +479,6 @@ namespace test_printing
             this.label1.TabIndex = 10;
             this.label1.Text = "مجوهرات أبو فص";
             // 
-            // firstPage1
-            // 
-            this.firstPage1.AutoScroll = true;
-            this.firstPage1.AutoSize = true;
-            this.firstPage1.BackColor = System.Drawing.Color.White;
-            this.firstPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.firstPage1.Location = new System.Drawing.Point(0, 0);
-            this.firstPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.firstPage1.Name = "firstPage1";
-            this.firstPage1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
-            this.firstPage1.Size = new System.Drawing.Size(988, 622);
-            this.firstPage1.TabIndex = 0;
-            this.firstPage1.Load += new System.EventHandler(this.firstPage1_Load);
-            // 
-            // customers1
-            // 
-            this.customers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customers1.Location = new System.Drawing.Point(0, 0);
-            this.customers1.Margin = new System.Windows.Forms.Padding(2);
-            this.customers1.Name = "customers1";
-            this.customers1.Size = new System.Drawing.Size(988, 622);
-            this.customers1.TabIndex = 5;
-            // 
-            // archive1
-            // 
-            this.archive1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.archive1.Location = new System.Drawing.Point(0, 0);
-            this.archive1.Margin = new System.Windows.Forms.Padding(2);
-            this.archive1.Name = "archive1";
-            this.archive1.Size = new System.Drawing.Size(988, 622);
-            this.archive1.TabIndex = 1;
-            // 
-            // gramsCount
-            // 
-            this.gramsCount.AutoSize = true;
-            this.gramsCount.BackColor = System.Drawing.Color.White;
-            this.gramsCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gramsCount.Location = new System.Drawing.Point(0, 0);
-            this.gramsCount.Margin = new System.Windows.Forms.Padding(2);
-            this.gramsCount.Name = "gramsCount";
-            this.gramsCount.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.gramsCount.Size = new System.Drawing.Size(988, 622);
-            this.gramsCount.TabIndex = 2;
-            // 
-            // dayStatic1
-            // 
-            this.dayStatic1.BackColor = System.Drawing.Color.White;
-            this.dayStatic1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dayStatic1.Location = new System.Drawing.Point(0, 0);
-            this.dayStatic1.Margin = new System.Windows.Forms.Padding(2);
-            this.dayStatic1.Name = "dayStatic1";
-            this.dayStatic1.Size = new System.Drawing.Size(988, 622);
-            this.dayStatic1.TabIndex = 3;
-            // 
-            // borrow1
-            // 
-            this.borrow1.AutoScroll = true;
-            this.borrow1.AutoSize = true;
-            this.borrow1.BackColor = System.Drawing.Color.White;
-            this.borrow1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.borrow1.Location = new System.Drawing.Point(0, 0);
-            this.borrow1.Margin = new System.Windows.Forms.Padding(2);
-            this.borrow1.Name = "borrow1";
-            this.borrow1.Padding = new System.Windows.Forms.Padding(50);
-            this.borrow1.Size = new System.Drawing.Size(988, 622);
-            this.borrow1.TabIndex = 4;
-            // 
-            // inventory1
-            // 
-            this.inventory1.BackColor = System.Drawing.Color.White;
-            this.inventory1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inventory1.Location = new System.Drawing.Point(0, 0);
-            this.inventory1.Margin = new System.Windows.Forms.Padding(2);
-            this.inventory1.Name = "inventory1";
-            this.inventory1.Size = new System.Drawing.Size(988, 622);
-            this.inventory1.TabIndex = 51;
-            // 
             // Home
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -486,6 +487,7 @@ namespace test_printing
             this.Controls.Add(this.top);
             this.Controls.Add(this.right);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
