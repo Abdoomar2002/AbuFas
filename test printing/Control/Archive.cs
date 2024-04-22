@@ -16,7 +16,7 @@ namespace test_printing
 {
     public partial class Archive : UserControl
     {
-        bool searchFlag=false;
+        bool searchFlag = false;
         protected override CreateParams CreateParams
         {
             get
@@ -29,7 +29,7 @@ namespace test_printing
         public Archive()
         {
             InitializeComponent();
-            _context =new AppDbContext();
+            _context = new AppDbContext();
             incoume.Columns[4].Visible = false;
             outcome.Columns[4].Visible = false;
             incoume.ThemeStyle.RowsStyle.Height = 30;
@@ -39,20 +39,21 @@ namespace test_printing
             guna2Panel4.Width += 38;
             guna2Panel6.Width += 38;
             // outcome.Width +=150 ;
-            incoume.ReadOnly=true; 
-            outcome.ReadOnly=true;
+            incoume.ReadOnly = true;
+            outcome.ReadOnly = true;
+            billTable1.data.ReadOnly = true;
         }
         public Archive(DbContextOptions<AppDbContext> options)
         {
             _context = new AppDbContext(options);
         }
-        public AppDbContext _context ;
+        public AppDbContext _context;
         private void Archive_Load(object sender, EventArgs e)
         {
-           
+
             //LoadTable();
-           Single.Visible = false;
-            Single.FillColor = Color.FromArgb(128,Color.Black);
+            Single.Visible = false;
+            Single.FillColor = Color.FromArgb(128, Color.Black);
             Single.UseTransparentBackground = true;
         }
         private Image ScaleImage(Image image, int width, int height)
@@ -65,127 +66,129 @@ namespace test_printing
             }
             return scaledImage;
         }
-        public void LoadTable(List<Bills>bills=null)
+        public void LoadTable(List<Bills> bills = null)
         {
-         //   AppDbContext Program._context = _context;
+            //   AppDbContext Program._context = _context;
             Program._context.Database.OpenConnectionAsync();
             Program._context.Database.MigrateAsync();
             Program._context.Database.EnsureCreatedAsync();
             outcome.Rows.Clear();
             incoume.Rows.Clear();
-         /*   var billList = Program._context.Bills.ToArray();
-            ArchiveTable.Controls.Clear();
+            /*   var billList = Program._context.Bills.ToArray();
+               ArchiveTable.Controls.Clear();
 
 
-            for (int row = 0; row < Math.Ceiling(billList.Length / 4.0); row++)
+               for (int row = 0; row < Math.Ceiling(billList.Length / 4.0); row++)
+               {
+                   for (int col = 0; col < 4; col++)
+                   {
+                       if (billList.Length == row * 4 + col) break;
+                       var b = new bill();
+                       var bu = new BillBuy();
+                       var arcbill = billList[row * 4 + col].IsBuy ? bu : null;
+                       var arcbill2 = !billList[row * 4 + col].IsBuy ? b : null;
+
+                       if (arcbill != null)
+                       {
+                           arcbill.CustName.Text = billList[row * 4 + col].CustomerName;
+                           arcbill.BillNum.Text = billList[row * 4 + col].Id.ToString();
+                           arcbill.BillDate.Text = billList[row * 4 + col].Date.ToShortDateString();
+                           int id = billList[row * 4 + col].Id;
+                           var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
+
+                           var table = tablelis.ToArray();
+                           arcbill.data.RowCount = table.Length;
+
+                           Image image = ScaleImage(arcbill.CaptureScreenshot(), 300, 340);
+                           // Create a PictureBox
+                           Guna2PictureBox pictureBox = new Guna2PictureBox
+                           {
+                               // Set PictureBox properties as needed
+                               SizeMode = PictureBoxSizeMode.StretchImage,
+
+                               Image = image,
+                               Dock = DockStyle.Fill,
+                               Name = id.ToString(),
+                               Cursor = Cursors.Hand,
+
+                               // BorderStyle = BorderStyle.FixedSingle, // Optional: Add a border
+
+                           };
+                           pictureBox.Click += PictureBox_Click;
+
+                           // Add PictureBox to the TableLayoutPanel
+                           ArchiveTable.Controls.Add(pictureBox, col, row);
+                       }
+                       else
+                       {
+                           arcbill2.CustName.Text = billList[row * 4 + col].CustomerName;
+                           arcbill2.BillNum.Text = billList[row * 4 + col].Id.ToString();
+                           arcbill2.label12.Text = billList[row * 4 + col].Date.ToShortDateString();
+                           int id = billList[row * 4 + col].Id;
+                           var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
+
+                           var table = tablelis.ToArray();
+                           arcbill2.data.RowCount = table.Length;
+
+                           Image image = ScaleImage(arcbill2.CaptureScreenshot(), 300, 340);
+                           // Create a PictureBox
+                           Guna2PictureBox pictureBox = new Guna2PictureBox
+                           {
+                               // Set PictureBox properties as needed
+                               SizeMode = PictureBoxSizeMode.StretchImage,
+
+                               Image = image,
+                               Dock = DockStyle.Fill,
+                               Name = id.ToString(),
+                               Cursor = Cursors.Hand,
+
+                               // BorderStyle = BorderStyle.FixedSingle, // Optional: Add a border
+
+                           };
+                           pictureBox.Click += PictureBox_Click;
+
+                           // Add PictureBox to the TableLayoutPanel
+                           ArchiveTable.Controls.Add(pictureBox, col, row);
+                       }
+                   }
+               }
+
+               for (int i = 0; i < 4; i++)
+               {
+                   ArchiveTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / 4));
+               }
+
+               // Set the space between rows
+               for (int i = 0; i < 3; i++)
+               {
+                   ArchiveTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 3));
+               }*/
+
+            var Sold = Program._context.Bills.Where(c => c.IsBuy == false && c.Date == DateTime.Now.Date).ToList();
+            var Bought = Program._context.Bills.Where(c => c.IsBuy == true && c.Date == DateTime.Now.Date).ToList();
+            if (searchFlag == true)
             {
-                for (int col = 0; col < 4; col++)
-                {
-                    if (billList.Length == row * 4 + col) break;
-                    var b = new bill();
-                    var bu = new BillBuy();
-                    var arcbill = billList[row * 4 + col].IsBuy ? bu : null;
-                    var arcbill2 = !billList[row * 4 + col].IsBuy ? b : null;
-
-                    if (arcbill != null)
-                    {
-                        arcbill.CustName.Text = billList[row * 4 + col].CustomerName;
-                        arcbill.BillNum.Text = billList[row * 4 + col].Id.ToString();
-                        arcbill.BillDate.Text = billList[row * 4 + col].Date.ToShortDateString();
-                        int id = billList[row * 4 + col].Id;
-                        var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
-
-                        var table = tablelis.ToArray();
-                        arcbill.data.RowCount = table.Length;
-
-                        Image image = ScaleImage(arcbill.CaptureScreenshot(), 300, 340);
-                        // Create a PictureBox
-                        Guna2PictureBox pictureBox = new Guna2PictureBox
-                        {
-                            // Set PictureBox properties as needed
-                            SizeMode = PictureBoxSizeMode.StretchImage,
-
-                            Image = image,
-                            Dock = DockStyle.Fill,
-                            Name = id.ToString(),
-                            Cursor = Cursors.Hand,
-
-                            // BorderStyle = BorderStyle.FixedSingle, // Optional: Add a border
-
-                        };
-                        pictureBox.Click += PictureBox_Click;
-
-                        // Add PictureBox to the TableLayoutPanel
-                        ArchiveTable.Controls.Add(pictureBox, col, row);
-                    }
-                    else
-                    {
-                        arcbill2.CustName.Text = billList[row * 4 + col].CustomerName;
-                        arcbill2.BillNum.Text = billList[row * 4 + col].Id.ToString();
-                        arcbill2.label12.Text = billList[row * 4 + col].Date.ToShortDateString();
-                        int id = billList[row * 4 + col].Id;
-                        var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
-
-                        var table = tablelis.ToArray();
-                        arcbill2.data.RowCount = table.Length;
-
-                        Image image = ScaleImage(arcbill2.CaptureScreenshot(), 300, 340);
-                        // Create a PictureBox
-                        Guna2PictureBox pictureBox = new Guna2PictureBox
-                        {
-                            // Set PictureBox properties as needed
-                            SizeMode = PictureBoxSizeMode.StretchImage,
-
-                            Image = image,
-                            Dock = DockStyle.Fill,
-                            Name = id.ToString(),
-                            Cursor = Cursors.Hand,
-
-                            // BorderStyle = BorderStyle.FixedSingle, // Optional: Add a border
-
-                        };
-                        pictureBox.Click += PictureBox_Click;
-
-                        // Add PictureBox to the TableLayoutPanel
-                        ArchiveTable.Controls.Add(pictureBox, col, row);
-                    }
-                }
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                ArchiveTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / 4));
-            }
-
-            // Set the space between rows
-            for (int i = 0; i < 3; i++)
-            {
-                ArchiveTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 3));
-            }*/
-            
-            var Sold=Program._context.Bills.Where(c=>c.IsBuy==false&&c.Date==DateTime.Now.Date).ToList();
-            var Bought = Program._context.Bills.Where(c=>c.IsBuy==true&&c.Date==DateTime.Now.Date).ToList();
-            if (searchFlag == true) {
-                if (bills == null || bills.Count == 0) { MessageBox.Show("لا يوجد فواتير مطابقة للبحث"); searchFlag = false;return; }
+                if (bills == null || bills.Count == 0) { MessageBox.Show("لا يوجد فواتير مطابقة للبحث"); searchFlag = false; return; }
                 else
                 {
                     Sold = bills.Where(c => c.IsBuy == false).ToList();
                     Bought = bills.Where(c => c.IsBuy == true).ToList();
                 }
                 searchFlag = false;
-            
+
             }
-            outcome.RowCount=Bought.Count!=0?Bought.Count:1;
-              for(var i=0;i<Bought.Count; i++)
-              {var item = Bought[i];
-                  outcome.Rows[i].Cells[0].Value=item.Date.ToShortDateString();
-                  outcome.Rows[i].Cells[1].Value=item.CustomerName.ToString();
-                  outcome.Rows[i].Cells[2].Value=item.Total.ToString();
-                  outcome.Rows[i].Cells[3].Value = calcGrams(item);
-                  outcome.Rows[i].Cells[4].Value=item.Id.ToString();
-              }
-           
-            incoume.RowCount = Sold.Count!=0?Sold.Count:1;
+            outcome.RowCount = Bought.Count != 0 ? Bought.Count : 1;
+            for (var i = 0; i < Bought.Count; i++)
+            {
+                var item = Bought[i];
+                outcome.Rows[i].Cells[0].Value = item.Date.ToShortDateString();
+                outcome.Rows[i].Cells[1].Value = item.CustomerName.ToString();
+                outcome.Rows[i].Cells[2].Value = item.Total.ToString();
+                outcome.Rows[i].Cells[3].Value = calcGrams(item);
+                outcome.Rows[i].Cells[4].Value = item.Id.ToString();
+            }
+
+            incoume.RowCount = Sold.Count != 0 ? Sold.Count : 1;
             for (var i = 0; i < Sold.Count; i++)
             {
                 var item = Sold[i];
@@ -197,15 +200,15 @@ namespace test_printing
             }
 
         }
-        private double calcGrams(Bills bill) 
+        private double calcGrams(Bills bill)
         {
-            var data=Program._context.BillData.Where(c=>c.Bill==bill).ToList();
+            var data = Program._context.BillData.Where(c => c.Bill == bill).ToList();
             double totalGrams = 0;
             foreach (var item in data)
             {
-                if (item.Kyrat == 18)totalGrams += item.Weight * 18.0 / 21.0;
+                if (item.Kyrat == 18) totalGrams += item.Weight * 18.0 / 21.0;
                 else if (item.Kyrat == 21) totalGrams += item.Weight;
-                else totalGrams += item.Weight*24/21;
+                else totalGrams += item.Weight * 24 / 21;
             }
             totalGrams = Math.Round(totalGrams, 3);
 
@@ -215,97 +218,56 @@ namespace test_printing
         private void PictureBox_Click(object sender, EventArgs e)
         {
             Single.Visible = true;
-            PictureBox pictureBox=(sender as PictureBox);
-           
-           var bigBill= Program._context.Bills.Where(c => c.Id == Int32.Parse(pictureBox.Name)).FirstOrDefault();
+            PictureBox pictureBox = (sender as PictureBox);
+
+            var bigBill = Program._context.Bills.Where(c => c.Id == Int32.Parse(pictureBox.Name)).FirstOrDefault();
             var billdata = Program._context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
-          show(bigBill, billdata);
+            show(bigBill, billdata);
             Single.BringToFront();
 
-         
 
-           
+
+
         }
-        public void show( Bills bigBill, List <BillData> billdata) 
+        public void show(Bills bigBill, List<BillData> billdata)
         {
-            double total = 0,total18=0,total24=0;
-            if (bigBill.IsBuy)
+            double total = 0, total18 = 0, total24 = 0;
+            billTable1.Visible = false;
+            billTable1.Visible = true;
+            billTable1.CustName.Text = bigBill.CustomerName;
+            billTable1.BillNum.Text = bigBill.Id.ToString();
+            var table = billdata.ToArray();
+            billTable1.data.RowCount = table.Length;
+            for (int i = 0; i < table.Length; i++)
             {
-                bill1.Visible = false;
-                billBuy1.Visible = true;
+                DataGridViewRow obj = billTable1.data.Rows[i];
 
-                billBuy1.CustName.Text = bigBill.CustomerName;
-                billBuy1.BillNum.Text = bigBill.Id.ToString();
-
-                var table = billdata.ToArray();
-                billBuy1.data.RowCount = table.Length;
-
-                for (int i = 0; i < table.Length; i++)
-                {
-                    DataGridViewRow obj = billBuy1.data.Rows[i];
-
-
-                    obj.Cells[0].Value = table[i].Price.ToString();
-                    //   obj.Cells[1].Value = ((long)table[i].Price).ToString();
-                    obj.Cells[1].Value = table[i].Weight.ToString();
-                    //  obj.Cells[3].Value = ((int)table[i].Weight).ToString();
-                    obj.Cells[2].Value = table[i].Type.ToString();
-                    //obj.Cells[5].Value = ((int)table[i].Type).ToString();
-                    obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
-                    obj.Cells[4].Value = table[i].Number.ToString();
-                    obj.Cells[5].Value = table[i].Name;
-                    if (table[i].Kyrat==21)
+                obj.Cells[0].Value = table[i].Price.ToString();
+                //   obj.Cells[1].Value = ((long)table[i].Price).ToString();
+                obj.Cells[1].Value = table[i].Weight.ToString();
+                //  obj.Cells[3].Value = ((int)table[i].Weight).ToString();
+                obj.Cells[2].Value = table[i].Type.ToString();
+                //obj.Cells[5].Value = ((int)table[i].Type).ToString();
+                obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
+                obj.Cells[4].Value = table[i].Number.ToString();
+                obj.Cells[5].Value = table[i].Name;
+                if (table[i].Kyrat == 21)
                     total += table[i].Weight;
-                    else if (table[i].Kyrat==18)
-                        total18 += table[i].Weight;
-                    else total24 += table[i].Weight;
+                else if (table[i].Kyrat == 18)
+                    total18 += table[i].Weight;
+                else total24 += table[i].Weight;
 
-                    // billBuy1.data.Rows.Add(obj);
-                }
-                billBuy1.last.Text = total.ToString();
-                billBuy1.textBox3.Text = total18.ToString();
-                billBuy1.textBox4.Text = total24.ToString();
-                  billBuy1.textBox2.Text=  bigBill.Total.ToString();
-
-
-
+                // billTable1.data.Rows.Add(obj);
             }
-            else
-            {
-                bill1.Visible = true;
-                billBuy1.Visible = false;
-                bill1.CustName.Text = bigBill.CustomerName;
-                bill1.BillNum.Text = bigBill.Id.ToString();
-                bill1.Enabled = false;
-                var table = billdata.ToArray();
-                bill1.data.RowCount = table.Length;
-                for (int i = 0; i < table.Length; i++)
-                {
-                    DataGridViewRow obj = bill1.data.Rows[i];
+            billTable1.last.Text = total.ToString();
+            billTable1.textBox2.Text = total18.ToString();
+            billTable1.textBox3.Text = total24.ToString();
+            billTable1.textBox1.Text = bigBill.Total.ToString();
 
 
-                    obj.Cells[0].Value = table[i].Price.ToString();
-                    //   obj.Cells[1].Value = ((long)table[i].Price).ToString();
-                    obj.Cells[1].Value = table[i].Weight.ToString();
-                    //  obj.Cells[3].Value = ((int)table[i].Weight).ToString();
-                    obj.Cells[2].Value = table[i].Type.ToString();
-                    //obj.Cells[5].Value = ((int)table[i].Type).ToString();
-                    obj.Cells[3].Value = table[i].Kyrat == 0 ? null : table[i].Kyrat.ToString();
-                    obj.Cells[4].Value = table[i].Number.ToString();
-                    obj.Cells[5].Value = table[i].Name;
-                    if (table[i].Kyrat == 21)
-                        total += table[i].Weight;
-                    else if (table[i].Kyrat == 18)
-                        total18 += table[i].Weight;
-                    else total24 += table[i].Weight;
 
-                    // billBuy1.data.Rows.Add(obj);
-                }
-                bill1.last.Text = total.ToString();
-                bill1.textBox2.Text = total18.ToString();
-                bill1.textBox3.Text = total24.ToString();
-                bill1.textBox1.Text=bigBill.Total.ToString();
-            }
+        
+    
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -328,15 +290,15 @@ namespace test_printing
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            if (bill1.Visible) bill1.btn_print(200, 300);
-            else billBuy1.btn_print(200, 300);
+            if (billTable1.Visible) billTable1.btn_print(200, 300);
+            else billTable1.btn_print(200, 300);
         }
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             var msg = MessageBox.Show("هل انت متاكد", "", MessageBoxButtons.YesNo);
             if (msg == DialogResult.Yes) 
             {
-                var id = bill1.Visible ? Int32.Parse(bill1.BillNum.Text) : Int32.Parse(billBuy1.BillNum.Text);
+                var id = Int32.Parse(billTable1.BillNum.Text) ;
                var billToDelete= _context.Bills.Where(c => c.Id == id).FirstOrDefault();
                var dataToDelete= _context.BillData.Where(c => c.Bill == billToDelete).ToList();
                var MoneyToDelete = _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
@@ -399,15 +361,11 @@ namespace test_printing
         private void previous_Click(object sender, EventArgs e)
         {
             var bigBill = new Bills();
-            if (bill1.Visible == true)
-                bigBill = _context.Bills.AsEnumerable().Where(c => c.Id < Int32.Parse(bill1.BillNum.Text)).LastOrDefault();
-            else
-                bigBill = _context.Bills.Where(c => c.Id < Int32.Parse(billBuy1.BillNum.Text)).FirstOrDefault();
+                bigBill = _context.Bills.AsEnumerable().Where(c => c.Id < Int32.Parse(billTable1.BillNum.Text)).LastOrDefault();
             if (bigBill != null)
             {
                 var billData = _context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
                 show(bigBill, billData);
-
             }
             else MessageBox.Show("لا يوجد فواتير اخري ");
         }
@@ -415,11 +373,7 @@ namespace test_printing
         private void next_Click(object sender, EventArgs e)
         {
             var bigBill=new Bills();
-            if(bill1.Visible==true) 
-                 bigBill = _context.Bills.Where(c => c.Id > Int32.Parse(bill1.BillNum.Text)).FirstOrDefault();
-            else
-                bigBill = _context.Bills.Where(c => c.Id > Int32.Parse(billBuy1.BillNum.Text)).FirstOrDefault();
-
+                 bigBill = _context.Bills.Where(c => c.Id > Int32.Parse(billTable1.BillNum.Text)).FirstOrDefault();
             if (bigBill != null)
             {
                 var billData = _context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
@@ -467,11 +421,7 @@ namespace test_printing
             List<Bills> bills = new List<Bills>();
             bills = Program._context.Bills.Where(c => c.Date>=start&&c.Date<=end).ToList();
             searchFlag = true;
-
             LoadTable(bills);
-
         }
-
-
     }
 }
