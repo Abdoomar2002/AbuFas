@@ -16,7 +16,13 @@ using test_printing.db;
 using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 using System.Web.UI.WebControls.WebParts;
-
+using Org.BouncyCastle.Asn1.X509;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using System.Windows.Interop;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.ExtendedProperties;
+using System.Runtime.InteropServices;
+using Word = Microsoft.Office.Interop.Word;
 namespace AbuFas.Control
 {
     public partial class BillTable : UserControl
@@ -369,8 +375,13 @@ namespace AbuFas.Control
             int result;
             return int.TryParse(value.ToString(), out result) ? (int?)result : 0;
         }
-        public void btn_print(int width, int height)
+        public void btn_print(int width, int height,bool flag=false)
         {
+            if (flag)
+            {
+                WriteTableToWordInterop("newfileword", GetGridData(data));
+                return;
+            }
             int r = 0;
             Int32.TryParse(textBox1.Text, out r);
             if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0&&data.RowCount!=1)
@@ -422,83 +433,195 @@ namespace AbuFas.Control
 
             return data;
         }
-        public  void WriteTableToWordInterop(string filePath, List<List<string>> data)
+        /* public  void WriteTableToWordInterop(string filePath, List<List<string>> data)
+     {
+         var wordApp = new Application();
+         var wordDoc = wordApp.Documents.Add();
+             wordDoc.Paragraphs.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+             wordDoc.PageSetup.TopMargin = 200;
+             wordDoc.PageSetup.BottomMargin = 200;
+             string []arr = { "جملة الثمن", "الوزن","الفئة","العيار","العدد","الصنف" };
+             var par = wordDoc.Paragraphs.Add();
+             par.Range.Text =  " الاسم "+ CustName.Text;
+             par.Range.Bold = 8;
+             par.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+             par.Range.InsertParagraphAfter();
+             var par2 = wordDoc.Paragraphs.Add();
+             par2.Range.Text = BillNum.Text + " رقم الفاتورة ";
+             par2.Range.Bold = 8;
+             par2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+             par2.Range.InsertParagraphAfter();
+             var table = wordDoc.Tables.Add(par2.Range, data.Count, data[0].Count);
+             table.TableDirection = WdTableDirection.wdTableDirectionRtl;
+
+          //   table.Rows.Alignment = WdRowAlignment.wdAlignRowRight;
+             table.Rows.Alignment=WdRowAlignment.wdAlignRowRight;
+             table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleThickThinLargeGap;
+             table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleTriple;
+             // Set header row
+             for (int i = 1; i<=arr.Length ; i++)
+         {
+             table.Cell(1, i).Range.Text = arr[i-1];
+
+
+                 table.Cell(1, i).Range.Font.Bold = 4; // Set bold for headers (optional)
+         }
+
+         // Set data rows
+         for (int i = 2; i <= data.Count; i++)
+         {
+             for (int j = 1; j <= data[0].Count; j++)
+             {
+                 table.Cell(i, j).Range.Text = data[i - 2][j - 1];
+                     table.Cell(i, j).VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+             }
+
+         }
+
+             string c = 
+              textBox1.Text + "     " + label1.Text + "     ";
+          var d= textBox2.Text + "     " + label14.Text + "     ";  
+            var e= textBox3.Text + "     " + label15.Text + "     ";
+              var f=   last.Text + "     " + label13.Text + "     ";
+             var par3 = wordDoc.Paragraphs.Add();
+             par3.Range.Text = c;
+             par3.Range.Bold = 8;
+             par3.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; 
+             par3.Range.InsertParagraphAfter();
+             var par4 = wordDoc.Paragraphs.Add();
+             par4.Range.Text = d;
+             par4.Range.Bold = 8;
+             par4.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+             par4.Range.InsertParagraphAfter(); 
+             var par6 = wordDoc.Paragraphs.Add();
+             par6.Range.Text = f;
+             par6.Range.Bold = 8;
+             par6.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+             par6.Range.InsertParagraphAfter();
+             var par5 = wordDoc.Paragraphs.Add();
+             par5.Range.Text = e;
+             par5.Range.Bold = 8;
+             par5.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+             par5.Range.InsertParagraphAfter(); 
+             wordDoc.PrintPreview();
+             string printerName = wordApp.ActivePrinter;
+             wordDoc.FitToPages();
+             wordDoc.PageSetup.PaperSize = WdPaperSize.wdPaperA5;
+
+             wordDoc.PrintOut(PrintToFile: false);
+             wordDoc.SaveAs(BillNum.Text +" فاتورة رقم");
+             wordApp.Quit();
+     }
+        */
+
+ 
+public void WriteTableToWordInterop(string filePath, List<List<string>> data)
     {
-        var wordApp = new Application();
-        var wordDoc = wordApp.Documents.Add();
-            wordDoc.Paragraphs.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-            wordDoc.PageSetup.TopMargin = 200;
-            wordDoc.PageSetup.BottomMargin = 200;
-            string []arr = { "جملة الثمن", "الوزن","الفئة","العيار","العدد","الصنف" };
-            var par = wordDoc.Paragraphs.Add();
-            par.Range.Text =  " الاسم "+ CustName.Text;
+        dynamic wordApp = null;
+        dynamic wordDoc = null;
+
+        try
+        {
+            // Initialize Word application
+            wordApp = new Word.Application();
+            wordDoc = wordApp.Documents.Add();
+
+            wordDoc.Paragraphs.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+            wordDoc.PageSetup.TopMargin = wordApp.CentimetersToPoints(5f); // Adjust as needed
+            wordDoc.PageSetup.BottomMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
+            wordDoc.PageSetup.LeftMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
+            wordDoc.PageSetup.RightMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
+
+            wordDoc.PageSetup.PaperSize = Word.WdPaperSize.wdPaperA5;
+            wordDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
+
+            string[] headers = { "جملة الثمن", "الوزن", "الفئة", "العيار", "العدد", "الصنف" };
+
+            // Add customer name paragraph
+            dynamic par = wordDoc.Paragraphs.Add();
+            par.Range.Text = " الاسم " + CustName.Text;
             par.Range.Bold = 8;
-            par.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+            par.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
             par.Range.InsertParagraphAfter();
-            var par2 = wordDoc.Paragraphs.Add();
+
+            // Add bill number paragraph
+            dynamic par2 = wordDoc.Paragraphs.Add();
             par2.Range.Text = BillNum.Text + " رقم الفاتورة ";
             par2.Range.Bold = 8;
-            par2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
+            par2.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
             par2.Range.InsertParagraphAfter();
-            var table = wordDoc.Tables.Add(par2.Range, data.Count, data[0].Count);
-            table.TableDirection = WdTableDirection.wdTableDirectionRtl;
-            
-         //   table.Rows.Alignment = WdRowAlignment.wdAlignRowRight;
-            table.Rows.Alignment=WdRowAlignment.wdAlignRowRight;
-            table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleThickThinLargeGap;
-            table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleTriple;
+
+            // Add table
+            dynamic table = wordDoc.Tables.Add(par2.Range, data.Count + 1, data[0].Count);
+            table.TableDirection = Word.WdTableDirection.wdTableDirectionRtl;
+            table.Rows.Alignment = Word.WdRowAlignment.wdAlignRowRight;
+            table.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleThickThinLargeGap;
+            table.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleTriple;
+
             // Set header row
-            for (int i = 1; i<=arr.Length ; i++)
-        {
-            table.Cell(1, i).Range.Text = arr[i-1];
-
-
-                table.Cell(1, i).Range.Font.Bold = 4; // Set bold for headers (optional)
-        }
-            
-        // Set data rows
-        for (int i = 2; i <= data.Count; i++)
-        {
-            for (int j = 1; j <= data[0].Count; j++)
+            for (int i = 0; i < headers.Length; i++)
             {
-                table.Cell(i, j).Range.Text = data[i - 2][j - 1];
-                    table.Cell(i, j).VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                table.Cell(1, i + 1).Range.Text = headers[i];
+                table.Cell(1, i + 1).Range.Font.Bold = 4; // Set bold for headers
             }
-                   
-        }
 
-            string c = 
-             textBox1.Text + "          " + label1.Text + "          ";
-         var d= textBox2.Text + "          " + label14.Text + "          ";  
-           var e= textBox3.Text + "          " + label15.Text + "          ";
-             var f=   last.Text + "          " + label13.Text + "          ";
-            var par3 = wordDoc.Paragraphs.Add();
-            par3.Range.Text = c;
-            par3.Range.Bold = 8;
-            par3.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; 
-            par3.Range.InsertParagraphAfter();
-            var par4 = wordDoc.Paragraphs.Add();
-            par4.Range.Text = d;
-            par4.Range.Bold = 8;
-            par4.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-            par4.Range.InsertParagraphAfter(); 
-            var par6 = wordDoc.Paragraphs.Add();
-            par6.Range.Text = f;
-            par6.Range.Bold = 8;
-            par6.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-            par6.Range.InsertParagraphAfter();
-            var par5 = wordDoc.Paragraphs.Add();
-            par5.Range.Text = e;
-            par5.Range.Bold = 8;
-            par5.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-            par5.Range.InsertParagraphAfter(); 
-            wordDoc.PrintPreview();
-            string printerName = wordApp.ActivePrinter;
-            wordDoc.PrintOut(PrintToFile: false);
-            wordDoc.SaveAs(BillNum.Text +" فاتورة رقم");
-            wordApp.Quit();
+            // Set data rows
+            for (int i = 0; i < data.Count; i++)
+            {
+                for (int j = 0; j < data[i].Count; j++)
+                {
+                    table.Cell(i + 2, j + 1).Range.Text = data[i][j];
+                    table.Cell(i + 2, j + 1).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                }
+            }
+
+            // Add additional paragraphs in one row
+            dynamic additionalTable = wordDoc.Tables.Add(wordDoc.Paragraphs.Add().Range, 1, 4); // Create a table with 1 row and 4 columns
+            additionalTable.Rows.Alignment = Word.WdRowAlignment.wdAlignRowRight;
+            additionalTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+            additionalTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+
+            SetTableCell(additionalTable, 1, 1, textBox2.Text + "     " + label14.Text);
+            SetTableCell(additionalTable, 1, 2, last.Text + "     " + label13.Text);
+            SetTableCell(additionalTable, 1, 3, textBox3.Text + "     " + label15.Text);
+            SetTableCell(additionalTable, 1, 4, textBox1.Text + " " + label1.Text);
+
+            // Set the correct printer tray and print
+            wordDoc.PageSetup.FirstPageTray = Word.WdPaperTray.wdPrinterDefaultBin;
+            wordDoc.PageSetup.OtherPagesTray = Word.WdPaperTray.wdPrinterDefaultBin;
+            wordDoc.PrintOut();
+
+            // Save as PDF
+            wordDoc.SaveAs2(filePath, Word.WdSaveFormat.wdFormatPDF);
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions
+            Console.WriteLine("Exception: " + ex.Message);
+        }
+        finally
+        {
+            // Clean up
+            if (wordDoc != null)
+            {
+                wordDoc.Close(false);
+                // Marshal.ReleaseComObject(wordDoc);
+            }
+            if (wordApp != null)
+            {
+                wordApp.Quit(false);
+                // Marshal.ReleaseComObject(wordApp);
+            }
+        }
     }
 
+    private void SetTableCell(dynamic table, int row, int column, string text)
+    {
+        table.Cell(row, column).Range.Text = text;
+        table.Cell(row, column).Range.Bold = 8;
+        table.Cell(row, column).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+        table.Cell(row, column).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+    }
     private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
           //  data.RowCount = data.RowCount < 15 ? 15 : data.RowCount;
@@ -562,4 +685,28 @@ namespace AbuFas.Control
   
     }
 
-}
+}/*
+System.InvalidCastException
+  HResult = 0x80004002
+  Message=Unable to cast COM object of type 'Microsoft.Office.Interop.Word.ApplicationClass' to interface type 'Microsoft.Office.Interop.Word._Application'.This operation failed because the QueryInterface call on the COM component for the interface with IID '{00020970-0000-0000-C000-000000000046}' failed due to the following error: Error loading type library/DLL. (Exception from HRESULT: 0x80029C4A(TYPE_E_CANTLOADLIBRARY)).
+  Source = mscorlib
+  StackTrace:
+at System.StubHelpers.StubHelpers.GetCOMIPFromRCW(Object objSrc, IntPtr pCPCMD, IntPtr & ppTarget, Boolean & pfNeedsRelease)
+   at Microsoft.Office.Interop.Word.ApplicationClass.get_Documents()
+   at AbuFas.Control.BillTable.WriteTableToWordInterop(String filePath, List`1 data) in D:\AbuFas\AbuFas\test printing\Control\BillTable.cs:line 428
+   at AbuFas.Control.BillTable.btn_print(Int32 width, Int32 height) in D:\AbuFas\AbuFas\test printing\Control\BillTable.cs:line 380
+   at test_printing.BuySell.guna2Button4_Click(Object sender, EventArgs e) in D:\AbuFas\AbuFas\test printing\Control\BuySell.cs:line 65
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at Guna.UI2.WinForms.Guna2Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Control.WmMouseUp(Message & m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message & m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message & m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message & m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG & msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at test_printing.Program.Main() in D:\AbuFas\AbuFas\test printing\Program.cs:line 36
+*/

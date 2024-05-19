@@ -2,13 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using test_printing.db;
 
@@ -290,8 +286,8 @@ namespace test_printing
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            if (billTable1.Visible) billTable1.btn_print(200, 300);
-            else billTable1.btn_print(200, 300);
+            if (billTable1.Visible) billTable1.btn_print(200, 300,true);
+            else billTable1.btn_print(200, 300,true);
         }
         private void guna2Button4_Click(object sender, EventArgs e)
         {

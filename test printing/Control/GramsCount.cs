@@ -52,7 +52,7 @@ namespace AbuFas
             }
             reset();
             Program._context = new AppDbContext();
-            var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
+            var table = Program._context.DayStaticGrams.OrderByDescending(g => g.Date).Take(12).ToList();
             if (searchFlag) 
             {
                 if (grams.Count == 0) 
@@ -273,7 +273,7 @@ namespace AbuFas
         }
         public void SearchByDate(DateTime st, DateTime ed) 
         {
-            grams=Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).Where(c=>c.Date>=st&&c.Date<=ed).ToList();
+            grams=Program._context.DayStaticGrams.OrderByDescending(g => g.Date).Where(c=>c.Date>=st&&c.Date<=ed).ToList();
             searchFlag = true;
             GramsCount_Load(null, null);
         }
