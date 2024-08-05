@@ -25,7 +25,7 @@ namespace test_printing
         public Archive()
         {
             InitializeComponent();
-            _context = new AppDbContext();
+            Program._context = new AppDbContext();
             incoume.Columns[4].Visible = false;
             outcome.Columns[4].Visible = false;
             incoume.ThemeStyle.RowsStyle.Height = 30;
@@ -41,9 +41,9 @@ namespace test_printing
         }
         public Archive(DbContextOptions<AppDbContext> options)
         {
-            _context = new AppDbContext(options);
+
         }
-        public AppDbContext _context;
+
         private void Archive_Load(object sender, EventArgs e)
         {
 
@@ -64,13 +64,13 @@ namespace test_printing
         }
         public void LoadTable(List<Bills> bills = null)
         {
-            //   AppDbContext Program._context = _context;
+            //   AppDbContext Program.Program._context = Program._context;
             Program._context.Database.OpenConnectionAsync();
             Program._context.Database.MigrateAsync();
             Program._context.Database.EnsureCreatedAsync();
             outcome.Rows.Clear();
             incoume.Rows.Clear();
-            /*   var billList = Program._context.Bills.ToArray();
+            /*   var billList = Program.Program._context.Bills.ToArray();
                ArchiveTable.Controls.Clear();
 
 
@@ -90,7 +90,7 @@ namespace test_printing
                            arcbill.BillNum.Text = billList[row * 4 + col].Id.ToString();
                            arcbill.BillDate.Text = billList[row * 4 + col].Date.ToShortDateString();
                            int id = billList[row * 4 + col].Id;
-                           var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
+                           var tablelis = Program.Program._context.BillData.Where(c => c.Bill.Id == id);
 
                            var table = tablelis.ToArray();
                            arcbill.data.RowCount = table.Length;
@@ -121,7 +121,7 @@ namespace test_printing
                            arcbill2.BillNum.Text = billList[row * 4 + col].Id.ToString();
                            arcbill2.label12.Text = billList[row * 4 + col].Date.ToShortDateString();
                            int id = billList[row * 4 + col].Id;
-                           var tablelis = Program._context.BillData.Where(c => c.Bill.Id == id);
+                           var tablelis = Program.Program._context.BillData.Where(c => c.Bill.Id == id);
 
                            var table = tablelis.ToArray();
                            arcbill2.data.RowCount = table.Length;
@@ -162,7 +162,7 @@ namespace test_printing
 
             var Sold = Program._context.Bills.Where(c => c.IsBuy == false && c.Date == DateTime.Now.Date).ToList();
             var Bought = Program._context.Bills.Where(c => c.IsBuy == true && c.Date == DateTime.Now.Date).ToList();
-            if (searchFlag == true)
+            if (searchFlag == true) 
             {
                 if (bills == null || bills.Count == 0) { MessageBox.Show("لا يوجد فواتير مطابقة للبحث"); searchFlag = false; return; }
                 else
@@ -295,12 +295,13 @@ namespace test_printing
             if (msg == DialogResult.Yes) 
             {
                 var id = Int32.Parse(billTable1.BillNum.Text) ;
-               var billToDelete= _context.Bills.Where(c => c.Id == id).FirstOrDefault();
-               var dataToDelete= _context.BillData.Where(c => c.Bill == billToDelete).ToList();
-               var MoneyToDelete = _context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
-               var GramToDelete18 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date&&c.Type=="18").FirstOrDefault();
-               var GramToDelete21 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "21").FirstOrDefault();
-               var GramToDelete24 = _context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "24").FirstOrDefault();
+
+               var billToDelete= Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
+               var dataToDelete= Program._context.BillData.Where(c => c.Bill == billToDelete).ToList();
+               var MoneyToDelete = Program._context.DaystaticMoney.Where(c => c.Date == billToDelete.Date).FirstOrDefault();
+               var GramToDelete18 = Program._context.DayStaticGrams.Where(c => c.Date == billToDelete.Date&&c.Type=="18").FirstOrDefault();
+               var GramToDelete21 = Program._context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "21").FirstOrDefault();
+               var GramToDelete24 = Program._context.DayStaticGrams.Where(c => c.Date == billToDelete.Date && c.Type == "24").FirstOrDefault();
                 if(GramToDelete18==null)GramToDelete18=new DayStaticGrams();
                 if(GramToDelete21==null)GramToDelete21=new DayStaticGrams();
                 if(GramToDelete24==null)GramToDelete24=new DayStaticGrams();
@@ -330,7 +331,7 @@ namespace test_printing
                     MoneyToDelete.Total -= billToDelete.Total;
 
                 }
-                var moneyList = _context.DaystaticMoney.Where(c => c.Date >= MoneyToDelete.Date).ToList();
+                var moneyList = Program._context.DaystaticMoney.Where(c => c.Date >= MoneyToDelete.Date).ToList();
                 if (moneyList.Count > 0)
                 {
                     foreach (var item in moneyList)
@@ -345,9 +346,9 @@ namespace test_printing
                 }
                 MoneyToDelete.Bills.Remove(billToDelete);
 
-                _context.BillData.RemoveRange(dataToDelete);
-                _context.Bills.Remove(billToDelete);
-                _context.SaveChanges();
+                Program._context.BillData.RemoveRange(dataToDelete);
+                Program._context.Bills.Remove(billToDelete);
+                Program._context.SaveChanges();
                 Single.Visible = false;
                 Single.SendToBack();
                 LoadTable();
@@ -357,10 +358,10 @@ namespace test_printing
         private void previous_Click(object sender, EventArgs e)
         {
             var bigBill = new Bills();
-                bigBill = _context.Bills.AsEnumerable().Where(c => c.Id < Int32.Parse(billTable1.BillNum.Text)).LastOrDefault();
+                bigBill = Program._context.Bills.AsEnumerable().Where(c => c.Id < Int32.Parse(billTable1.BillNum.Text)).LastOrDefault();
             if (bigBill != null)
             {
-                var billData = _context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
+                var billData = Program._context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
                 show(bigBill, billData);
             }
             else MessageBox.Show("لا يوجد فواتير اخري ");
@@ -369,10 +370,10 @@ namespace test_printing
         private void next_Click(object sender, EventArgs e)
         {
             var bigBill=new Bills();
-                 bigBill = _context.Bills.Where(c => c.Id > Int32.Parse(billTable1.BillNum.Text)).FirstOrDefault();
+                 bigBill = Program._context.Bills.Where(c => c.Id > Int32.Parse(billTable1.BillNum.Text)).FirstOrDefault();
             if (bigBill != null)
             {
-                var billData = _context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
+                var billData = Program._context.BillData.Where(c => c.Bill.Id == bigBill.Id).ToList();
                 show(bigBill, billData);
 
             }
@@ -391,7 +392,7 @@ namespace test_printing
             if (bill == null) {
                 //Int32.TryParse(outcome.Rows[e.RowIndex].Cells[4].Value.ToString(), out id);
                 MessageBox.Show("error");
-                //bill = Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
+                //bill = Program.Program._context.Bills.Where(c => c.Id == id).FirstOrDefault();
             }
             var data = Program._context.BillData.Where(c => c.Bill == bill).ToList();
             show(bill,data);

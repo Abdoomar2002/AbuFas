@@ -21,6 +21,7 @@ namespace AbuFas
     {
         DateTime current=DateTime.Now.Date;
         bool searchFlag = false;
+        int counter = 0;
        List<DayStaticGrams> grams;
 
         protected override CreateParams CreateParams
@@ -52,7 +53,10 @@ namespace AbuFas
             }
             reset();
             Program._context = new AppDbContext();
-            var table = Program._context.DayStaticGrams.OrderByDescending(g => g.Date).Take(12).ToList();
+            var tableDates =  Program._context.DayStaticGrams.ToList().OrderByDescending(g => g.Date).Select(g => g.Date)
+                                                   .Distinct()
+                                                  .Take(3).ToList();
+            var table =  Program._context.DayStaticGrams.Where(g=>tableDates.Contains(g.Date)).OrderByDescending(g => g.Date).ToList();
             if (searchFlag) 
             {
                 if (grams.Count == 0) 
@@ -67,9 +71,9 @@ namespace AbuFas
             }
             double yesterday = 0;
             double today = 0;
-
+            counter = 0;
             //   var table = Program._context.DayStaticGrams.OrderByDescending(g => g.Date).AsEnumerable().ToList();
-            for (int i = 0; i < table.Count; i++)
+            for (int i = 0; i < table.Count; i++,counter++)
             {
                 Random random = new Random();
                 // Assuming you have a TableLayoutPanel named tableLayoutPanel1
@@ -117,11 +121,11 @@ namespace AbuFas
                     yesterday += double.Parse(old.Text);
 
                 today = double.Parse(curr.Text);
-                if (table[i].Date == current)
-                {
+              //  if (table[i].Date == current)
+                //{
                     damg.ReadOnly = false;
                     damg.TextChanged += Label8_TextChanged;
-                }
+               // }
 
             }
             var yesterday21 = calculateOld(current.Date, "21");
@@ -141,20 +145,22 @@ namespace AbuFas
         {
             Guna2TextBox textBox = (Guna2TextBox)sender;
 
-            // Get the current line number based on the cursor position
-         int r=   tableLayoutPanel1.GetRow(textBox);
-         int c=   tableLayoutPanel1.GetColumn(textBox);
+            int row = tableLayoutPanel1.GetRow(textBox);
+            int column = tableLayoutPanel1.GetColumn(textBox);
 
             var table = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).ToList();
-            var damage = 0;
-            Int32.TryParse(textBox.Text, out damage);
-            if (damage >= 0&&r>=1)
-                table[r-1].Damaged = damage;
+            double damage = 0.0;
+            Double.TryParse(textBox.Text, out damage);
+            if (damage >= 0 && row >= 1)
+                table[row - 1].Damaged = damage;
             Program._context.SaveChanges();
-            LoadAfter(r,c);
-         //   GramsCount_Load(null, null);
 
+            LoadAfter(row, column);
+
+            // Call CalcOthers to update all rows
+            CalcOthers();
         }
+
         private void LoadAfter(int r,int c) 
         {
            var damg= tableLayoutPanel1.GetControlFromPosition(c, r);
@@ -165,17 +171,29 @@ namespace AbuFas
            var type= tableLayoutPanel1.GetControlFromPosition(c-5, r);
            var date= tableLayoutPanel1.GetControlFromPosition(c-6, r);
            var item=Program._context.DayStaticGrams.Where(m=>m.Date==DateTime.Parse(date.Text)&&m.Type==type.Text).FirstOrDefault();
-       //    item.Damaged=Int32.Parse(damg.ToString());
-       now.Text=(Math.Round(Double.Parse(now.Text)-item.Damaged,3)).ToString();
+            //    item.Damaged=Int32.Parse(damg.ToString());
+            var oldvalue = calculateOld(current, type.Text.ToString());
+            last.Text = Math.Round(oldvalue, 3).ToString();
+            now.Text = Math.Round(oldvalue + Double.Parse(buy.Text.ToString()) - Double.Parse(sell.Text.ToString()) - item.Damaged, 3).ToString();
 
-            if(item.Type=="18")
+            var yesterday21 = calculateOld(current.Date, "21");
+            var yesterday18 = calculateOld(current.Date, "18") * 18 / 21;
+            var yesterday24 = calculateOld(current.Date, "24") * 24 / 21;
+            var day21 = calculateOld(current.AddDays(1).Date, "21");
+            var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
+            var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
+            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 3).ToString();
+            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 3).ToString();
+/*
+            if (item.Type=="18")
                 guna2TextBox2.Text = (Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged*18/21,3)).ToString();
             else if(item.Type=="24")
                 guna2TextBox2.Text = (Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged * 24 / 18, 3)).ToString();
             else
             guna2TextBox2.Text=(Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged, 3)).ToString();
+     */
         }
-
+        
 
         private Guna2TextBox CopyLabel()
         {
@@ -243,13 +261,57 @@ namespace AbuFas
         //    tableLayoutPanel1.Controls[0].Height = 40;
         }
 
-
-
-        public double calculateOld(DateTime date,string type) 
+        private void CalcOthers()
         {
-           var cuurentDay= Program._context.DayStaticGrams.Where(c => c.Date == date&&c.Type==type).FirstOrDefault();
-           var oldDays=Program._context.DayStaticGrams.AsEnumerable().OrderBy(c=>c.Date).Where(c=>c.Date<date&&c.Type==type).ToList();
-           double total = 0;
+            // Iterate through each row in the TableLayoutPanel
+            for (int i = 1; i <= counter; i++)
+            {
+                // Get the controls from the current row
+                var dateControl = tableLayoutPanel1.GetControlFromPosition(0, i) as Guna2TextBox;
+                var typeControl = tableLayoutPanel1.GetControlFromPosition(1, i) as Guna2TextBox;
+                var sellControl = tableLayoutPanel1.GetControlFromPosition(2, i) as Guna2TextBox;
+                var buyControl = tableLayoutPanel1.GetControlFromPosition(3, i) as Guna2TextBox;
+                var oldControl = tableLayoutPanel1.GetControlFromPosition(4, i) as Guna2TextBox;
+                var currControl = tableLayoutPanel1.GetControlFromPosition(5, i) as Guna2TextBox;
+                var damgControl = tableLayoutPanel1.GetControlFromPosition(6, i) as Guna2TextBox;
+
+                if (dateControl != null && typeControl != null && sellControl != null && buyControl != null && oldControl != null && currControl != null && damgControl != null)
+                {
+                    // Parse the necessary values
+                    DateTime date = DateTime.Parse(dateControl.Text);
+                    string type = typeControl.Text;
+                    double buy = double.Parse(buyControl.Text);
+                    double sell = double.Parse(sellControl.Text);
+                    double damaged = 0.0;
+                    double.TryParse(damgControl.Text,out damaged);
+
+                    // Calculate old and current values
+                    var oldvalue = calculateOld(date, type);
+                    oldControl.Text = Math.Round(oldvalue, 3).ToString();
+                    currControl.Text = Math.Round(oldvalue + buy - sell - damaged, 3).ToString();
+                }
+            }
+
+            // Recalculate the total values for the text boxes at the bottom
+            var yesterday21 = calculateOld(current.Date, "21");
+            var yesterday18 = calculateOld(current.Date, "18") * 18 / 21;
+            var yesterday24 = calculateOld(current.Date, "24") * 24 / 21;
+            var day21 = calculateOld(current.AddDays(1).Date, "21");
+            var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
+            var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
+            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 3).ToString();
+            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 3).ToString();
+
+            guna2TextBox4.Text = calculatecurr(current.Date).ToArray()[0].ToString();
+            guna2TextBox3.Text = calculatecurr(current.Date).ToArray()[1].ToString();
+        }
+
+
+        public double calculateOld(DateTime date, string type)
+        {
+            var cuurentDay =  Program._context.DayStaticGrams.Where(c => c.Date == date && c.Type == type).FirstOrDefault();
+            var oldDays = Program._context.DayStaticGrams.AsEnumerable().OrderBy(c => c.Date).Where(c => c.Date < date && c.Type == type).ToList();
+            double total = 0;
             if (oldDays.Count > 0)
                 total = (double)oldDays.Sum(e => e.Buy - e.Sell - e.Damaged);
             return total;
@@ -257,7 +319,7 @@ namespace AbuFas
         public List<double> calculatecurr(DateTime date)
         {
             double totalBuy = 0,totalSell=0;
-            var cuurentDay = Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).Where(c => c.Date == date ).ToList();
+            var cuurentDay =  Program._context.DayStaticGrams.AsEnumerable().OrderByDescending(g => g.Date).Where(c => c.Date == date ).ToList();
             foreach (var item in cuurentDay)
             {
                 if (item.Type == "18") { totalBuy += item.Buy * 18 / 21;totalSell += item.Sell * 18 / 21; }

@@ -22,8 +22,8 @@ namespace AbuFas.Control
         }
         public void load(DateTime startDate,DateTime endDate) 
         {
-            var TotalBuy = Program._context.Bills.Where(c => c.IsBuy == false&&c.Date>=startDate&&c.Date<=endDate).Sum(c => c.Total);
-            var TotalSold = Program._context.Bills.Where(c => c.IsBuy == true && c.Date >= startDate && c.Date <= endDate).Sum(c => c.Total);
+            var TotalBuy = Program._context.Bills.Where(c => c.IsBuy == true&&c.Date>=startDate&&c.Date<=endDate).Sum(c => c.Total);
+            var TotalSold = Program._context.Bills.Where(c => c.IsBuy == false && c.Date >= startDate && c.Date <= endDate).Sum(c => c.Total);
             var TotalBuy21 =Program._context.BillData.Where(c => c.Kyrat == 21 && c.Bill.Date >= startDate && c.Bill.Date <= endDate &&c.Bill.IsBuy).Sum(c => c.Weight);
             var TotalBuy18 =Program._context.BillData.Where(c => c.Kyrat == 18 && c.Bill.Date >= startDate && c.Bill.Date <= endDate && c.Bill.IsBuy).Sum(c => c.Weight);
             var TotalBuy24 =Program._context.BillData.Where(c => c.Kyrat == 24 && c.Bill.Date >= startDate && c.Bill.Date <= endDate && c.Bill.IsBuy).Sum(c => c.Weight);
@@ -68,7 +68,7 @@ namespace AbuFas.Control
             }
             else result.Text = "0";
         }
-
+        
 
     }
 }

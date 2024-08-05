@@ -98,6 +98,7 @@ namespace test_printing
             home.from.Visible = true;
             home.to.Visible = true;
             home.start.Visible = true;
+            home.searchButton.Visible = true;
             home.end.Visible = true;
             home.day.Visible = false;
         }

@@ -433,88 +433,7 @@ namespace AbuFas.Control
 
             return data;
         }
-        /* public  void WriteTableToWordInterop(string filePath, List<List<string>> data)
-     {
-         var wordApp = new Application();
-         var wordDoc = wordApp.Documents.Add();
-             wordDoc.Paragraphs.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-             wordDoc.PageSetup.TopMargin = 200;
-             wordDoc.PageSetup.BottomMargin = 200;
-             string []arr = { "جملة الثمن", "الوزن","الفئة","العيار","العدد","الصنف" };
-             var par = wordDoc.Paragraphs.Add();
-             par.Range.Text =  " الاسم "+ CustName.Text;
-             par.Range.Bold = 8;
-             par.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
-             par.Range.InsertParagraphAfter();
-             var par2 = wordDoc.Paragraphs.Add();
-             par2.Range.Text = BillNum.Text + " رقم الفاتورة ";
-             par2.Range.Bold = 8;
-             par2.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; // Center alignment
-             par2.Range.InsertParagraphAfter();
-             var table = wordDoc.Tables.Add(par2.Range, data.Count, data[0].Count);
-             table.TableDirection = WdTableDirection.wdTableDirectionRtl;
 
-          //   table.Rows.Alignment = WdRowAlignment.wdAlignRowRight;
-             table.Rows.Alignment=WdRowAlignment.wdAlignRowRight;
-             table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleThickThinLargeGap;
-             table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleTriple;
-             // Set header row
-             for (int i = 1; i<=arr.Length ; i++)
-         {
-             table.Cell(1, i).Range.Text = arr[i-1];
-
-
-                 table.Cell(1, i).Range.Font.Bold = 4; // Set bold for headers (optional)
-         }
-
-         // Set data rows
-         for (int i = 2; i <= data.Count; i++)
-         {
-             for (int j = 1; j <= data[0].Count; j++)
-             {
-                 table.Cell(i, j).Range.Text = data[i - 2][j - 1];
-                     table.Cell(i, j).VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-             }
-
-         }
-
-             string c = 
-              textBox1.Text + "     " + label1.Text + "     ";
-          var d= textBox2.Text + "     " + label14.Text + "     ";  
-            var e= textBox3.Text + "     " + label15.Text + "     ";
-              var f=   last.Text + "     " + label13.Text + "     ";
-             var par3 = wordDoc.Paragraphs.Add();
-             par3.Range.Text = c;
-             par3.Range.Bold = 8;
-             par3.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight; 
-             par3.Range.InsertParagraphAfter();
-             var par4 = wordDoc.Paragraphs.Add();
-             par4.Range.Text = d;
-             par4.Range.Bold = 8;
-             par4.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-             par4.Range.InsertParagraphAfter(); 
-             var par6 = wordDoc.Paragraphs.Add();
-             par6.Range.Text = f;
-             par6.Range.Bold = 8;
-             par6.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-             par6.Range.InsertParagraphAfter();
-             var par5 = wordDoc.Paragraphs.Add();
-             par5.Range.Text = e;
-             par5.Range.Bold = 8;
-             par5.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-             par5.Range.InsertParagraphAfter(); 
-             wordDoc.PrintPreview();
-             string printerName = wordApp.ActivePrinter;
-             wordDoc.FitToPages();
-             wordDoc.PageSetup.PaperSize = WdPaperSize.wdPaperA5;
-
-             wordDoc.PrintOut(PrintToFile: false);
-             wordDoc.SaveAs(BillNum.Text +" فاتورة رقم");
-             wordApp.Quit();
-     }
-        */
-
- 
 public void WriteTableToWordInterop(string filePath, List<List<string>> data)
     {
         dynamic wordApp = null;
@@ -675,38 +594,21 @@ public void WriteTableToWordInterop(string filePath, List<List<string>> data)
             e.HasMorePages = false;
 
         }
-        private void DrawPanelToGraphics(Panel panel, Graphics graphics, int x, int y, int width, int height)
+    private void DrawPanelToGraphics(Panel panel, Graphics graphics, int x, int y, int width, int height)
         {
             Bitmap panelBitmap = new Bitmap(panel.Width, panel.Height);
 
             panel.DrawToBitmap(panelBitmap, new System.Drawing.Rectangle(0, 0, panel.Width, panel.Height));
             graphics.DrawImage(panelBitmap, x, y, width, height);
         }
-  
+
+        private void data_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+                MessageBox.Show("يجب ان يكون المدخل رقم\nاعد ادخال القيمة بشكل صحيح", "خطأ في ادخال البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.ThrowException = false; // Prevent the default error dialog from showing
+
+        }
     }
 
-}/*
-System.InvalidCastException
-  HResult = 0x80004002
-  Message=Unable to cast COM object of type 'Microsoft.Office.Interop.Word.ApplicationClass' to interface type 'Microsoft.Office.Interop.Word._Application'.This operation failed because the QueryInterface call on the COM component for the interface with IID '{00020970-0000-0000-C000-000000000046}' failed due to the following error: Error loading type library/DLL. (Exception from HRESULT: 0x80029C4A(TYPE_E_CANTLOADLIBRARY)).
-  Source = mscorlib
-  StackTrace:
-at System.StubHelpers.StubHelpers.GetCOMIPFromRCW(Object objSrc, IntPtr pCPCMD, IntPtr & ppTarget, Boolean & pfNeedsRelease)
-   at Microsoft.Office.Interop.Word.ApplicationClass.get_Documents()
-   at AbuFas.Control.BillTable.WriteTableToWordInterop(String filePath, List`1 data) in D:\AbuFas\AbuFas\test printing\Control\BillTable.cs:line 428
-   at AbuFas.Control.BillTable.btn_print(Int32 width, Int32 height) in D:\AbuFas\AbuFas\test printing\Control\BillTable.cs:line 380
-   at test_printing.BuySell.guna2Button4_Click(Object sender, EventArgs e) in D:\AbuFas\AbuFas\test printing\Control\BuySell.cs:line 65
-   at System.Windows.Forms.Control.OnClick(EventArgs e)
-   at Guna.UI2.WinForms.Guna2Button.OnClick(EventArgs e)
-   at System.Windows.Forms.Control.WmMouseUp(Message & m, MouseButtons button, Int32 clicks)
-   at System.Windows.Forms.Control.WndProc(Message & m)
-   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message & m)
-   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message & m)
-   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
-   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG & msg)
-   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
-   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
-   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
-   at System.Windows.Forms.Application.Run(Form mainForm)
-   at test_printing.Program.Main() in D:\AbuFas\AbuFas\test printing\Program.cs:line 36
-*/
+}

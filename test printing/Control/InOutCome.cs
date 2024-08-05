@@ -171,7 +171,7 @@ namespace AbuFas
             }
         }
         public void loadOtherSide(int id,bool flag) {
-              if (!fla)
+              if (!flag)
            {
                inout.Rows.Clear();
                fla = false;

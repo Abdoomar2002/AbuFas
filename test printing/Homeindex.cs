@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,7 +9,14 @@ namespace test_printing
     public partial class Home : Form
     {
         private Bitmap _backBuffer;
+        private Dictionary<string, DateTime> FromDate = new Dictionary<string, DateTime>();
+        private Dictionary<string, DateTime> ToDate = new Dictionary<string, DateTime>();
+        private Dictionary<string, string> SearchKey = new Dictionary<string, string>();
+        private DateTime currentDate= DateTime.Today;
+        private DateTime currentDate2= DateTime.Today;
+        private bool activeSearch=false;
         private string ActivePage="bills";
+        private static bool isDateChangingProgrammatically= false;
         protected override CreateParams CreateParams
         {
             get
@@ -23,6 +31,11 @@ namespace test_printing
             InitializeComponent();
             date.Text = DateTime.Today.ToShortDateString();
             firstPage1.BringToFront();
+            search.TextChanged += search_TextChange;
+            start.CloseUp += start_LostFocus;
+            start.ValueChanged += end_valueChanged;
+            end.ValueChanged += end_valueChanged;
+            end.CloseUp += start_LostFocus;
             right.Width = 300;
             _backBuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
@@ -31,9 +44,15 @@ namespace test_printing
             to.Visible = false;
             start.Visible = false;
             end.Visible = false;
+            searchButton.Visible = false;
             day.Visible = false;
+            isDateChangingProgrammatically = true;
+            start.Value = DateTime.Now;
+            end.Value = DateTime.Now;
             start.MaxDate=DateTime.Now;
             end.MaxDate=DateTime.Now;
+            isDateChangingProgrammatically = false;
+            //label1.Visible=false;
 
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -68,7 +87,10 @@ namespace test_printing
           
           //  MessageBox.Show(context.Bills.ToList().ToString());
         }
-
+        private void end_valueChanged(object sender,EventArgs e)
+        {
+            activeSearch=false;
+        }
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -83,13 +105,39 @@ namespace test_printing
             from.Visible = true;
             to.Visible = true;
             start.Visible = true;
+            searchButton.Visible = true;
             end.Visible = true;
             day.Visible = false;
             ActivePage = "Grams";
+            handelSearch();
 
 
         }
-
+        private void handelSearch()
+        {
+            if (FromDate.ContainsKey(ActivePage))
+            {
+                isDateChangingProgrammatically = true;
+                start.Value = FromDate[ActivePage] != null ? FromDate[ActivePage] : DateTime.Now;
+                end.Value = ToDate[ActivePage] != null ? ToDate[ActivePage] : DateTime.Now;
+                search.Text = SearchKey[ActivePage] ?? "";
+                isDateChangingProgrammatically = false;
+            }
+            else
+            {
+               
+                
+              
+                isDateChangingProgrammatically = true;
+                start.Value = DateTime.Today;
+                end.Value = DateTime.Today;
+                search.Text = "";
+                FromDate[ActivePage] = start.Value;
+                ToDate[ActivePage] = end.Value;
+                SearchKey[ActivePage] = search.Text;
+                isDateChangingProgrammatically = false;
+            }
+        }
         private void billsbtn_Click(object sender, EventArgs e)
         {
             firstPage1.BringToFront();
@@ -99,9 +147,13 @@ namespace test_printing
             from.Visible = false;
             to.Visible = false;
             start.Visible = false;
+            searchButton.Visible = false;
             end.Visible = false;
             day.Visible = false;
             ActivePage = "bills";
+            handelSearch();
+
+
         }
 
         private void btntStatic_Click(object sender, EventArgs e)
@@ -114,9 +166,13 @@ namespace test_printing
             from.Visible = false;
             to.Visible = false;
             start.Visible = true;
+            searchButton.Visible = true;
             end.Visible = false;
             day.Visible = true;
             ActivePage = "Day";
+            handelSearch();
+
+
 
         }
         private void colorChange(string name) 
@@ -134,9 +190,12 @@ namespace test_printing
 
         private void firstPage1_Load(object sender, EventArgs e)
         {
-
+            
         }
-
+        public void search_TextChange(object sender, EventArgs e)
+        {
+            activeSearch = true;
+        }
         private void btnPayment_Click(object sender, EventArgs e)
         {
             borrow1.BringToFront();
@@ -147,9 +206,12 @@ namespace test_printing
             from.Visible = true;
             to.Visible = true;
             start.Visible = true;
+            searchButton.Visible = true;
             end.Visible = true;
             day.Visible = false;
             ActivePage = "Borrow";
+            handelSearch();
+
         }
 
         private void btnShopper_Click(object sender, EventArgs e)
@@ -162,9 +224,12 @@ namespace test_printing
             from.Visible = false;
             to.Visible = false;
             start.Visible = false;
+            searchButton.Visible = true;
             end.Visible = false;
             day.Visible = false;
             ActivePage = "Customer";
+            handelSearch();
+
         }
 
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
@@ -177,31 +242,52 @@ namespace test_printing
         {
             if ((Keys)e.KeyChar ==Keys.Enter) 
             {
-                switch (ActivePage) 
-                {
-                    case "bills": { archive1.SearchByName(search.Text); break; }
-                    case "Borrow": { borrow1.SearchName(search.Text); break; }
-                    case "Customer": { customers1.SearchByName( search.Text); break; }
-                    default: { break; }
-                }
+                searchExecute();
             }
         }
-
+        private void searchExecute()
+        {
+            switch (ActivePage)
+            {
+                case "bills": { archive1.SearchByName(search.Text); break; }
+                case "Borrow": { borrow1.SearchName(search.Text); break; }
+                case "Customer": { customers1.SearchByName(search.Text); break; }
+                default: { break; }
+            }
+        }
         private void start_ValueChanged(object sender, EventArgs e)
         {
-            Guna2DateTimePicker picker=(Guna2DateTimePicker)sender;
-            switch(ActivePage) 
+            if (!isDateChangingProgrammatically)
             {
-                case "bills": { archive1.SearchByDate(start.Value.Date, end.Value.Date); break; }
-                case "Grams": { gramsCount.SearchByDate(start.Value.Date, end.Value.Date); break; }
-                case "Day": { dayStatic1.load(start.Value.Date); break; }
-                case "Borrow": { borrow1.SearchDate(start.Value.Date, end.Value.Date); break; }
-                case "inventor": { inventory1.load(start.Value.Date, end.Value.Date); break; }
+                Guna2DateTimePicker picker = (Guna2DateTimePicker)sender;
+                isDateChangingProgrammatically = true;
+                FromDate[ActivePage] = start.Value;
+                ToDate[ActivePage] = end.Value;
+                SearchKey[ActivePage] = search.Text;
+                isDateChangingProgrammatically = false;
+                currentDate = start.Value;
+                currentDate2= end.Value;    
+                switch (ActivePage)
+                {
+                    case "bills": { archive1.SearchByDate(start.Value.Date, end.Value.Date); break; }
+                    case "Grams": { gramsCount.SearchByDate(start.Value.Date, end.Value.Date); break; }
+                    case "Day": { dayStatic1.load(start.Value.Date); break; }
+                    case "Borrow": { borrow1.SearchDate(start.Value.Date, end.Value.Date); break; }
+                    case "inventor": { inventory1.load(start.Value.Date, end.Value.Date); break; }
 
-                default: { break; }
+                    default: { break; }
 
+                }
             }
 
+        }
+        private void start_LostFocus(object sender,EventArgs e)
+        {
+            if (start.Value == FromDate[ActivePage] && end.Value == ToDate[ActivePage])
+            {
+                start_ValueChanged(null, null);
+            }
+            
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -214,9 +300,24 @@ namespace test_printing
             from.Visible = true;
             to.Visible = true;
             start.Visible = true;
+            searchButton.Visible = true;
             end.Visible = true;
             day.Visible = false;
             ActivePage = "inventor";
+            handelSearch();
+
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        {
+            if (activeSearch) searchExecute();
+            else
+            start_ValueChanged(null,null);
         }
     }
 }
