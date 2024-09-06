@@ -14,13 +14,12 @@ namespace test_printing
         public DbSet<IncomeOutcome> IncomeOutcome { get; set; }
         public DbSet<Customers>Customers { get; set; }
         public DbSet<CustomersData> CustomersData { get; set; }
+        public DbSet<Cust>Custs { get; set; }
+        public DbSet<CustData> CustDatas { get; set; }
         public DbSet<Borrows> Borrows { get; set; }
         public DbSet<BorrowsData>BorrowsData { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options) 
-        {
-        }
+
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

@@ -1,0 +1,82 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\AbuFas\\AbuFas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Abu Fas||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|031911c8-6148-4e25-b1b1-44bca9a0c45c"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Abu Fas",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
+              "RelativeDocumentMoniker": "test printing\\Abu Fas.csproj",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
+              "RelativeToolTip": "test printing\\Abu Fas.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-06T15:37:25.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Borrow.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Borrow.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\Borrow.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Borrow.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\Borrow.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:37:06.199Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Archive.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Archive.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\Archive.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Archive.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\Archive.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:37:05.903Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

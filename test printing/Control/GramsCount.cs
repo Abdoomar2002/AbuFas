@@ -36,13 +36,11 @@ namespace AbuFas
         public GramsCount()
         {
             InitializeComponent();
-           
+           // Program._context = new AppDbContext();
+
 
         }
-        public GramsCount(DbContextOptions<AppDbContext> options)
-        {
-            Program._context = new AppDbContext(options);
-        }
+
 
         public void GramsCount_Load(object sender, EventArgs e)
         {
@@ -52,8 +50,8 @@ namespace AbuFas
 
             }
             reset();
-            Program._context = new AppDbContext();
-            var tableDates =  Program._context.DayStaticGrams.ToList().OrderByDescending(g => g.Date).Select(g => g.Date)
+           // Program._context = new AppDbContext();
+            var tableDates =  Program._context.DayStaticGrams.ToList().AsQueryable().OrderByDescending(g => g.Date).Select(g => g.Date)
                                                    .Distinct()
                                                   .Take(3).ToList();
             var table =  Program._context.DayStaticGrams.Where(g=>tableDates.Contains(g.Date)).OrderByDescending(g => g.Date).ToList();

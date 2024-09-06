@@ -25,6 +25,9 @@ namespace AbuFas.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsArchived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -45,7 +48,7 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BorrowId")
+                    b.Property<int?>("BorrowId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
@@ -65,6 +68,66 @@ namespace AbuFas.Migrations
                     b.HasIndex("BorrowId");
 
                     b.ToTable("BorrowsData");
+                });
+
+            modelBuilder.Entity("AbuFas.db.Cust", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsArchived")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("TotalGrams")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("TotalMoney")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Custs");
+                });
+
+            modelBuilder.Entity("AbuFas.db.CustData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Grams")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsIncome")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("CustDatas");
                 });
 
             modelBuilder.Entity("AbuFas.db.Customers", b =>
@@ -102,7 +165,7 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
@@ -133,7 +196,7 @@ namespace AbuFas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BillId")
+                    b.Property<int?>("BillId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Kyrat")
@@ -176,7 +239,7 @@ namespace AbuFas.Migrations
                     b.Property<bool>("IsBuy")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MoneyId")
+                    b.Property<int?>("MoneyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Notes")
@@ -279,36 +342,35 @@ namespace AbuFas.Migrations
                 {
                     b.HasOne("AbuFas.db.Borrows", "Borrow")
                         .WithMany("BData")
-                        .HasForeignKey("BorrowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BorrowId");
+                });
+
+            modelBuilder.Entity("AbuFas.db.CustData", b =>
+                {
+                    b.HasOne("AbuFas.db.Cust", "Customer")
+                        .WithMany("Data")
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("AbuFas.db.CustomersData", b =>
                 {
                     b.HasOne("AbuFas.db.Customers", "Customer")
                         .WithMany("Data")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("test_printing.db.BillData", b =>
                 {
                     b.HasOne("test_printing.db.Bills", "Bill")
                         .WithMany("Data")
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillId");
                 });
 
             modelBuilder.Entity("test_printing.db.Bills", b =>
                 {
                     b.HasOne("test_printing.db.DaystaticMoney", "Money")
                         .WithMany("Bills")
-                        .HasForeignKey("MoneyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MoneyId");
                 });
 
             modelBuilder.Entity("test_printing.db.IncomeOutcome", b =>

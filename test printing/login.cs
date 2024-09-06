@@ -41,8 +41,9 @@ namespace AbuFas
                 context.Database.OpenConnection();
                 context.Database.MigrateAsync();
                 context.Database.EnsureCreated();
+
                 context.Database.GetDbConnection().Open();
-               
+
               
                 //    MessageBox.Show(context.Database.CanConnect().ToString()); 
 

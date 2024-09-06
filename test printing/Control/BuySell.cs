@@ -63,12 +63,18 @@ namespace test_printing
             {
                 billTable1.IsBuy = false;
                 billTable1.btn_print(880, 750);
+                billTable1.Height -= 80;
+                MessageBox.Show(billTable1.Height.ToString());
+
                 //billTable1 = new bill();
             }
             else
             {
                 billTable2.IsBuy = true;
                 billTable2.btn_print(880, 750);
+                billTable2.Height -= 80;
+
+                MessageBox.Show(billTable2.Height.ToString());
                 
             }
         }

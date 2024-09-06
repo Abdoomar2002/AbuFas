@@ -16,11 +16,9 @@ namespace AbuFas
         public DayStatic()
         {
             InitializeComponent();
+            Program._context = new AppDbContext();
         }
-        public DayStatic(DbContextOptions<AppDbContext> options)
-        {
-            Program._context = new AppDbContext(options);
-        }
+
         private void label15_Click(object sender, EventArgs e)
         {
             
@@ -49,6 +47,7 @@ namespace AbuFas
             {
                 inOutCome1.Visible = true;
                 fl1 = label == label15 ? true : false;
+                inOutCome1.inout.Rows.Clear();
                 inOutCome1.loadOtherSide(money.Id, fl1);
                 bills211.Visible = false;
                 inOutCome1.Title.Text = label.Text;

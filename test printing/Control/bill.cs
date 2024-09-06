@@ -510,6 +510,7 @@ namespace test_printing
             data.Rows.Clear();
             data.Height = 150;
             bill_Load(null,null);
+            
         }
 
         private void BillNum_TextChanged(object sender, EventArgs e)

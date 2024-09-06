@@ -221,7 +221,6 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\ru\Microsoft.Data.SqlClient.resources.d
 D:\AbuFas\AbuFas\test printing\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.AssemblyReference.cache
-D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.SuggestedBindingRedirects.cache
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.Archive.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BillBuy.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.bills21.resources
@@ -240,6 +239,11 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Properties.Resources.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.bill.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.GenerateResource.cache
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CoreCompileInputs.cache
-D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CopyComplete
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.pdb
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.Up2Date
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.cust.resources
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.manifest
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.application
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe.manifest
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.application

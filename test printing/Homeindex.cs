@@ -52,7 +52,7 @@ namespace test_printing
             start.MaxDate=DateTime.Now;
             end.MaxDate=DateTime.Now;
             isDateChangingProgrammatically = false;
-            //label1.Visible=false;
+           // label1.Visible=false;
 
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -98,7 +98,7 @@ namespace test_printing
         private void Grambtn_Click(object sender, EventArgs e)
         {
             gramsCount.BringToFront();
-            gramsCount.GramsCount_Load(null, null);
+           // gramsCount.GramsCount_Load(null, null);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
             search.Visible = false;
@@ -159,7 +159,7 @@ namespace test_printing
         private void btntStatic_Click(object sender, EventArgs e)
         {
             dayStatic1.BringToFront();
-            dayStatic1.load(DateTime.Today.Date);
+           // dayStatic1.load(DateTime.Today.Date);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
             search.Visible = false;
@@ -177,7 +177,7 @@ namespace test_printing
         }
         private void colorChange(string name) 
         {
-            Guna2Button []btns = { btnPayment, btnShopper, billsbtn, Grambtn, btntStatic };
+            Guna2Button []btns = { btnPayment, btnShopper, billsbtn, Grambtn, btntStatic,BtnShopper2 };
             foreach(Guna2Button btn in  btns) 
             {
                 if(btn.Name == name)
@@ -252,6 +252,7 @@ namespace test_printing
                 case "bills": { archive1.SearchByName(search.Text); break; }
                 case "Borrow": { borrow1.SearchName(search.Text); break; }
                 case "Customer": { customers1.SearchByName(search.Text); break; }
+                case "Cust": { Cust.SearchByName(search.Text); break; }
                 default: { break; }
             }
         }
@@ -318,6 +319,24 @@ namespace test_printing
             if (activeSearch) searchExecute();
             else
             start_ValueChanged(null,null);
+        }
+
+        private void BtnShopper2_Click(object sender, EventArgs e)
+        {
+            Cust.BringToFront();
+            Cust.load();
+            Guna2Button btn = (Guna2Button)sender;
+            colorChange(btn.Name);
+            search.Visible = true;
+            from.Visible = false;
+            to.Visible = false;
+            start.Visible = false;
+            searchButton.Visible = true;
+            end.Visible = false;
+            day.Visible = false;
+            ActivePage = "Cust";
+            handelSearch();
+
         }
     }
 }
