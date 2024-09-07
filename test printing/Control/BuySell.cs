@@ -14,6 +14,7 @@ namespace test_printing
 {
     public partial class BuySell : UserControl
     {
+        int gridHeight;
         protected override CreateParams CreateParams
         {
             get
@@ -63,8 +64,8 @@ namespace test_printing
             {
                 billTable1.IsBuy = false;
                 billTable1.btn_print(880, 750);
-                billTable1.Height -= 80;
-                MessageBox.Show(billTable1.Height.ToString());
+                billTable1.Height =gridHeight ;
+               // MessageBox.Show(billTable1.Height.ToString());
 
                 //billTable1 = new bill();
             }
@@ -72,9 +73,9 @@ namespace test_printing
             {
                 billTable2.IsBuy = true;
                 billTable2.btn_print(880, 750);
-                billTable2.Height -= 80;
+                billTable2.Height =gridHeight ;
 
-                MessageBox.Show(billTable2.Height.ToString());
+                //MessageBox.Show(billTable2.Height.ToString());
                 
             }
         }
@@ -92,6 +93,7 @@ namespace test_printing
         private void firstPage_Load(object sender, EventArgs e)
         {
             billTable2.Visible=false;
+            gridHeight=billTable1.Height;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

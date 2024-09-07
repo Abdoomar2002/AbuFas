@@ -32,10 +32,10 @@ namespace test_printing
             date.Text = DateTime.Today.ToShortDateString();
             firstPage1.BringToFront();
             search.TextChanged += search_TextChange;
-            start.CloseUp += start_LostFocus;
+         //   start.CloseUp += start_LostFocus;
             start.ValueChanged += end_valueChanged;
-            end.ValueChanged += end_valueChanged;
-            end.CloseUp += start_LostFocus;
+           end.ValueChanged += end_valueChanged;
+       //     end.CloseUp += start_LostFocus;
             right.Width = 300;
             _backBuffer = new Bitmap(ClientSize.Width, ClientSize.Height);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
@@ -52,7 +52,7 @@ namespace test_printing
             start.MaxDate=DateTime.Now;
             end.MaxDate=DateTime.Now;
             isDateChangingProgrammatically = false;
-           // label1.Visible=false;
+            label1.Visible=false;
 
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -98,7 +98,7 @@ namespace test_printing
         private void Grambtn_Click(object sender, EventArgs e)
         {
             gramsCount.BringToFront();
-           // gramsCount.GramsCount_Load(null, null);
+            gramsCount.GramsCount_Load(null, null);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
             search.Visible = false;
@@ -159,7 +159,7 @@ namespace test_printing
         private void btntStatic_Click(object sender, EventArgs e)
         {
             dayStatic1.BringToFront();
-           // dayStatic1.load(DateTime.Today.Date);
+            dayStatic1.load(DateTime.Today.Date);
             Guna2Button btn = (Guna2Button)sender;
             colorChange(btn.Name);
             search.Visible = false;
