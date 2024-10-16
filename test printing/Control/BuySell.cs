@@ -94,6 +94,7 @@ namespace test_printing
         {
             billTable2.Visible=false;
             gridHeight=billTable1.Height;
+           
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -132,6 +133,32 @@ namespace test_printing
                     MessageBox.Show("رقم غير صحيح");
                     textBox.Text = Text.Substring(0,Text.Length-1);
                 }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            billTable1.maxRowsPerPage = 0;
+            billTable1.currentPrintRow = 0;
+            billTable2.maxRowsPerPage = 0;
+            billTable2.currentPrintRow = 0;
+            if (billTable1.Visible == true)
+            {
+                billTable1.IsBuy = false;
+                billTable1.btn_Save();
+                billTable1.Height = gridHeight;
+                // MessageBox.Show(billTable1.Height.ToString());
+
+                //billTable1 = new bill();
+            }
+            else
+            {
+                billTable2.IsBuy = true;
+                billTable2.btn_Save();
+                billTable2.Height = gridHeight;
+
+                //MessageBox.Show(billTable2.Height.ToString());
+
             }
         }
     }

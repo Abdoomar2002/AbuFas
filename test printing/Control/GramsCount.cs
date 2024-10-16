@@ -95,13 +95,13 @@ namespace AbuFas
 
                 date.Text = table[i].Date.ToShortDateString();
                 kyrat.Text = table[i].Type;
-                but.Text = Math.Round(table[i].Buy,3).ToString();
-                sell.Text =Math.Round(table[i].Sell,3).ToString();
+                but.Text = Math.Round(table[i].Buy,2).ToString();
+                sell.Text =Math.Round(table[i].Sell,2).ToString();
                 //    labelCol4.Text = table[i].Bouns.ToString();
                 //  labelCol5.Text = table[i].Minus.ToString();
                 var oldvalue = calculateOld(table[i].Date, table[i].Type);
-                old.Text = Math.Round(oldvalue,3).ToString();
-                curr.Text =Math.Round(oldvalue+table[i].Buy - table[i].Sell - table[i].Damaged,3).ToString();
+                old.Text = Math.Round(oldvalue,2).ToString();
+                curr.Text =Math.Round(oldvalue+table[i].Buy - table[i].Sell - table[i].Damaged,2).ToString();
                 
                 damg.Text = table[i].Damaged.ToString();
 
@@ -132,8 +132,8 @@ namespace AbuFas
             var day21 = calculateOld(current.AddDays(1).Date, "21");
             var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
             var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
-            guna2TextBox1.Text = Math.Round(yesterday21+yesterday18+yesterday24,3).ToString();
-            guna2TextBox2.Text = Math.Round(day21+day18+day24,3).ToString();
+            guna2TextBox1.Text = Math.Round(yesterday21+yesterday18+yesterday24,2).ToString();
+            guna2TextBox2.Text = Math.Round(day21+day18+day24,2).ToString();
 
             guna2TextBox4.Text = calculatecurr(current.Date).ToArray()[0].ToString();
             guna2TextBox3.Text = calculatecurr(current.Date).ToArray()[1].ToString();
@@ -171,8 +171,8 @@ namespace AbuFas
            var item=Program._context.DayStaticGrams.Where(m=>m.Date==DateTime.Parse(date.Text)&&m.Type==type.Text).FirstOrDefault();
             //    item.Damaged=Int32.Parse(damg.ToString());
             var oldvalue = calculateOld(current, type.Text.ToString());
-            last.Text = Math.Round(oldvalue, 3).ToString();
-            now.Text = Math.Round(oldvalue + Double.Parse(buy.Text.ToString()) - Double.Parse(sell.Text.ToString()) - item.Damaged, 3).ToString();
+            last.Text = Math.Round(oldvalue, 2).ToString();
+            now.Text = Math.Round(oldvalue + Double.Parse(buy.Text.ToString()) - Double.Parse(sell.Text.ToString()) - item.Damaged, 2).ToString();
 
             var yesterday21 = calculateOld(current.Date, "21");
             var yesterday18 = calculateOld(current.Date, "18") * 18 / 21;
@@ -180,8 +180,8 @@ namespace AbuFas
             var day21 = calculateOld(current.AddDays(1).Date, "21");
             var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
             var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
-            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 3).ToString();
-            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 3).ToString();
+            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 2).ToString();
+            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 2).ToString();
 /*
             if (item.Type=="18")
                 guna2TextBox2.Text = (Math.Round(Double.Parse(guna2TextBox2.Text) - item.Damaged*18/21,3)).ToString();
@@ -285,8 +285,8 @@ namespace AbuFas
 
                     // Calculate old and current values
                     var oldvalue = calculateOld(date, type);
-                    oldControl.Text = Math.Round(oldvalue, 3).ToString();
-                    currControl.Text = Math.Round(oldvalue + buy - sell - damaged, 3).ToString();
+                    oldControl.Text = Math.Round(oldvalue, 2).ToString();
+                    currControl.Text = Math.Round(oldvalue + buy - sell - damaged, 2).ToString();
                 }
             }
 
@@ -297,8 +297,8 @@ namespace AbuFas
             var day21 = calculateOld(current.AddDays(1).Date, "21");
             var day18 = calculateOld(current.AddDays(1).Date, "18") * 18 / 21;
             var day24 = calculateOld(current.AddDays(1).Date, "24") * 24 / 21;
-            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 3).ToString();
-            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 3).ToString();
+            guna2TextBox1.Text = Math.Round(yesterday21 + yesterday18 + yesterday24, 2).ToString();
+            guna2TextBox2.Text = Math.Round(day21 + day18 + day24, 2).ToString();
 
             guna2TextBox4.Text = calculatecurr(current.Date).ToArray()[0].ToString();
             guna2TextBox3.Text = calculatecurr(current.Date).ToArray()[1].ToString();
@@ -325,8 +325,8 @@ namespace AbuFas
                 if (item.Type == "21") { totalBuy += item.Buy ; totalSell += item.Sell ; }
             }
           List<double> days = new List<double>();
-            totalBuy = Math.Round(totalBuy, 3);
-            totalSell=Math.Round(totalSell, 3);
+            totalBuy = Math.Round(totalBuy, 2);
+            totalSell=Math.Round(totalSell, 2);
             days.Add(totalBuy);
             days.Add(totalSell);
             return days;

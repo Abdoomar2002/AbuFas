@@ -52,7 +52,8 @@ namespace test_printing
             start.MaxDate=DateTime.Now;
             end.MaxDate=DateTime.Now;
             isDateChangingProgrammatically = false;
-            label1.Visible=false;
+            //label1.Text="أولاد عليان";
+          //  label1.Location =new Point(label1.Location.X+ 100,label1.Location.Y);
 
         }
         protected override void OnPaint(PaintEventArgs e)

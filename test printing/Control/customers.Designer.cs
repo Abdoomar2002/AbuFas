@@ -36,6 +36,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(customers));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,8 +48,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(customers));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.CustomersArchiveBtn = new Guna.UI2.WinForms.Guna2Button();
             this.AddCustomerBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -64,6 +64,14 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomersArchive = new Guna.UI2.WinForms.Guna2Panel();
             this.inout = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.column10 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inoutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.ArchiveExit = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label6 = new System.Windows.Forms.Label();
@@ -87,19 +95,12 @@
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.deleteCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.sendToArchive = new Guna.UI2.WinForms.Guna2Button();
             this.AddCustomerExit = new Guna.UI2.WinForms.Guna2ImageButton();
             this.custName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.column10 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inoutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteCustomer = new Guna.UI2.WinForms.Guna2Button();
+            this.PrintBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.index.SuspendLayout();
@@ -494,6 +495,69 @@
             this.inout.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inout_CellDoubleClick);
             this.inout.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.inout_RowsAdded);
             // 
+            // Column7
+            // 
+            this.Column7.FillWeight = 3.905833F;
+            this.Column7.HeaderText = "الرقم";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // column10
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle6.NullValue")));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.column10.DefaultCellStyle = dataGridViewCellStyle6;
+            this.column10.FillWeight = 6F;
+            this.column10.HeaderText = "الغاء ارشفة ";
+            this.column10.MinimumWidth = 6;
+            this.column10.Name = "column10";
+            this.column10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 14.37299F;
+            this.Column3.HeaderText = "الاسم";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 14.37299F;
+            this.Column4.HeaderText = "التاريخ";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 14.37299F;
+            this.Column5.HeaderText = "المبلغ";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 14.37299F;
+            this.Column1.HeaderText = "الجرامات";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 14.37299F;
+            this.Column6.HeaderText = "الملاحظات ";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            // 
+            // inoutId
+            // 
+            this.inoutId.FillWeight = 20.80588F;
+            this.inoutId.HeaderText = "id";
+            this.inoutId.MinimumWidth = 6;
+            this.inoutId.Name = "inoutId";
+            // 
             // guna2Panel8
             // 
             this.guna2Panel8.Controls.Add(this.ArchiveExit);
@@ -541,7 +605,7 @@
             this.AddCustomer.Location = new System.Drawing.Point(0, 100);
             this.AddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddCustomer.Name = "AddCustomer";
-            this.AddCustomer.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.AddCustomer.Padding = new System.Windows.Forms.Padding(15);
             this.AddCustomer.Size = new System.Drawing.Size(1309, 680);
             this.AddCustomer.TabIndex = 5;
             // 
@@ -866,6 +930,7 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.Controls.Add(this.PrintBtn);
             this.guna2Panel3.Controls.Add(this.deleteCustomer);
             this.guna2Panel3.Controls.Add(this.sendToArchive);
             this.guna2Panel3.Controls.Add(this.AddCustomerExit);
@@ -877,6 +942,27 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1279, 92);
             this.guna2Panel3.TabIndex = 8;
+            // 
+            // deleteCustomer
+            // 
+            this.deleteCustomer.BackColor = System.Drawing.Color.White;
+            this.deleteCustomer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.deleteCustomer.BorderRadius = 5;
+            this.deleteCustomer.BorderThickness = 2;
+            this.deleteCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.deleteCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.deleteCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.deleteCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.deleteCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.deleteCustomer.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteCustomer.ForeColor = System.Drawing.Color.Black;
+            this.deleteCustomer.Location = new System.Drawing.Point(327, 26);
+            this.deleteCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deleteCustomer.Name = "deleteCustomer";
+            this.deleteCustomer.Size = new System.Drawing.Size(180, 46);
+            this.deleteCustomer.TabIndex = 5;
+            this.deleteCustomer.Text = "حذف التاجر";
+            this.deleteCustomer.Click += new System.EventHandler(this.deleteCustomer_Click);
             // 
             // sendToArchive
             // 
@@ -950,89 +1036,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "الاسم";
             // 
-            // Column7
+            // PrintBtn
             // 
-            this.Column7.FillWeight = 3.905833F;
-            this.Column7.HeaderText = "الرقم";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // column10
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle6.NullValue")));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.column10.DefaultCellStyle = dataGridViewCellStyle6;
-            this.column10.FillWeight = 6F;
-            this.column10.HeaderText = "الغاء ارشفة ";
-            this.column10.MinimumWidth = 6;
-            this.column10.Name = "column10";
-            this.column10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 14.37299F;
-            this.Column3.HeaderText = "الاسم";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 14.37299F;
-            this.Column4.HeaderText = "التاريخ";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 14.37299F;
-            this.Column5.HeaderText = "المبلغ";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 14.37299F;
-            this.Column1.HeaderText = "الجرامات";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 14.37299F;
-            this.Column6.HeaderText = "الملاحظات ";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            // 
-            // inoutId
-            // 
-            this.inoutId.FillWeight = 20.80588F;
-            this.inoutId.HeaderText = "id";
-            this.inoutId.MinimumWidth = 6;
-            this.inoutId.Name = "inoutId";
-            // 
-            // deleteCustomer
-            // 
-            this.deleteCustomer.BackColor = System.Drawing.Color.White;
-            this.deleteCustomer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.deleteCustomer.BorderRadius = 5;
-            this.deleteCustomer.BorderThickness = 2;
-            this.deleteCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.deleteCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.deleteCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.deleteCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.deleteCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.deleteCustomer.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteCustomer.ForeColor = System.Drawing.Color.Black;
-            this.deleteCustomer.Location = new System.Drawing.Point(331, 26);
-            this.deleteCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.deleteCustomer.Name = "deleteCustomer";
-            this.deleteCustomer.Size = new System.Drawing.Size(180, 46);
-            this.deleteCustomer.TabIndex = 5;
-            this.deleteCustomer.Text = "حذف التاجر";
-            this.deleteCustomer.Click += new System.EventHandler(this.deleteCustomer_Click);
+            this.PrintBtn.BackColor = System.Drawing.Color.White;
+            this.PrintBtn.BorderRadius = 5;
+            this.PrintBtn.BorderThickness = 2;
+            this.PrintBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.PrintBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.PrintBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.PrintBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.PrintBtn.FillColor = System.Drawing.Color.Black;
+            this.PrintBtn.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintBtn.ForeColor = System.Drawing.Color.White;
+            this.PrintBtn.Location = new System.Drawing.Point(549, 26);
+            this.PrintBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.Size = new System.Drawing.Size(180, 46);
+            this.PrintBtn.TabIndex = 6;
+            this.PrintBtn.Text = "طباعة";
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
             // 
             // customers
             // 
@@ -1124,5 +1146,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn inoutId;
         private Guna.UI2.WinForms.Guna2Button deleteCustomer;
+        private Guna.UI2.WinForms.Guna2Button PrintBtn;
     }
 }

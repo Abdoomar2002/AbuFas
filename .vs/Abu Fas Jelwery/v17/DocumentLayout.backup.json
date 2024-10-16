@@ -3,35 +3,71 @@
   "WorkspaceRootPath": "D:\\AbuFas\\AbuFas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\homeindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\homeindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\gramscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\gramscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\billtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\billtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\gramscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\gramscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\homeindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\homeindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|d:\\abufas\\abufas\\test printing\\control\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\buysell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\archive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Abu Fas||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\billtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\billtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\borrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\cust.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\cust.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|D:\\AbuFas\\AbuFas\\test printing\\control\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D398D4E-2171-454B-AFDA-AB7DF2EF6BA7}|test printing\\Abu Fas.csproj|solutionrelative:test printing\\control\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Abu Fas||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,7 +77,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,28 +88,49 @@
               "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GramsCount.cs",
-              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\GramsCount.cs",
-              "RelativeDocumentMoniker": "test printing\\Control\\GramsCount.cs",
-              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\GramsCount.cs",
-              "RelativeToolTip": "test printing\\Control\\GramsCount.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwCYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T18:00:30.226Z"
+              "$type": "Bookmark",
+              "Name": "ST:964794552:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2146387278:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1934565743:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:706191822:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:920206097:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Homeindex.cs",
-              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Homeindex.cs",
-              "RelativeDocumentMoniker": "test printing\\Homeindex.cs",
-              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Homeindex.cs",
-              "RelativeToolTip": "test printing\\Homeindex.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDYAAAALAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "inventory.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\inventory.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\inventory.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\inventory.cs",
+              "RelativeToolTip": "test printing\\Control\\inventory.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwEgAAACVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T16:04:55.963Z",
+              "WhenOpened": "2024-10-16T20:08:20.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BuySell.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\BuySell.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs",
+              "RelativeToolTip": "test printing\\Control\\BuySell.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T20:38:37.91Z",
               "EditorCaption": ""
             },
             {
@@ -84,51 +141,27 @@
               "RelativeDocumentMoniker": "test printing\\Control\\Archive.cs",
               "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Archive.cs",
               "RelativeToolTip": "test printing\\Control\\Archive.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAUwCIAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAYwNQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T16:04:43.508Z",
+              "WhenOpened": "2024-10-07T20:32:41.26Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "BuySell.cs",
-              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs",
-              "RelativeDocumentMoniker": "test printing\\Control\\BuySell.cs",
-              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs",
-              "RelativeToolTip": "test printing\\Control\\BuySell.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowE0AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T16:01:47.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "BillTable.cs",
               "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BillTable.cs",
               "RelativeDocumentMoniker": "test printing\\Control\\BillTable.cs",
               "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BillTable.cs",
               "RelativeToolTip": "test printing\\Control\\BillTable.cs",
-              "ViewState": "AgIAADcBAAAAAAAAAAAUwFoBAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAmwJoBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T16:01:43.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Abu Fas",
-              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
-              "RelativeDocumentMoniker": "test printing\\Abu Fas.csproj",
-              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
-              "RelativeToolTip": "test printing\\Abu Fas.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-06T15:37:25.321Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Borrow.cs [Design]",
               "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Borrow.cs",
               "RelativeDocumentMoniker": "test printing\\Control\\Borrow.cs",
@@ -140,15 +173,151 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GramsCount.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\GramsCount.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\GramsCount.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\GramsCount.cs",
+              "RelativeToolTip": "test printing\\Control\\GramsCount.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAAowAQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T18:00:30.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Homeindex.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Homeindex.cs",
+              "RelativeDocumentMoniker": "test printing\\Homeindex.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Homeindex.cs",
+              "RelativeToolTip": "test printing\\Homeindex.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T16:04:55.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "login.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\login.cs",
+              "RelativeDocumentMoniker": "test printing\\login.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\login.cs",
+              "RelativeToolTip": "test printing\\login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T14:57:40.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BuySell.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\BuySell.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BuySell.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\BuySell.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T12:24:04.863Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Borrow.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Borrow.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\Borrow.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Borrow.cs",
+              "RelativeToolTip": "test printing\\Control\\Borrow.cs",
+              "ViewState": "AgIAABEBAAAAAAAAAAAmwC0BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T00:12:33.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Archive.cs [Design]",
               "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Archive.cs",
               "RelativeDocumentMoniker": "test printing\\Control\\Archive.cs",
               "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\Archive.cs [Design]",
               "RelativeToolTip": "test printing\\Control\\Archive.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T15:37:05.903Z",
+              "WhenOpened": "2024-09-06T15:37:05.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BillTable.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BillTable.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\BillTable.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\BillTable.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\BillTable.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T22:38:34.712Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "inventory.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\inventory.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\inventory.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\inventory.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\inventory.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T19:44:52.519Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "customers.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\customers.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\customers.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\customers.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\customers.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T23:15:12.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "customers.cs",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\customers.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\customers.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\customers.cs",
+              "RelativeToolTip": "test printing\\Control\\customers.cs",
+              "ViewState": "AgIAAIkBAAAAAAAAAAAYwJsBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T23:16:23.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "cust.cs [Design]",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Control\\cust.cs",
+              "RelativeDocumentMoniker": "test printing\\Control\\cust.cs",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Control\\cust.cs [Design]",
+              "RelativeToolTip": "test printing\\Control\\cust.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T23:24:19.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Abu Fas",
+              "DocumentMoniker": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
+              "RelativeDocumentMoniker": "test printing\\Abu Fas.csproj",
+              "ToolTip": "D:\\AbuFas\\AbuFas\\test printing\\Abu Fas.csproj",
+              "RelativeToolTip": "test printing\\Abu Fas.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-06T15:37:25.321Z"
             }
           ]
         }

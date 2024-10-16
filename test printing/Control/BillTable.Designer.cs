@@ -44,17 +44,17 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.last = new System.Windows.Forms.TextBox();
             this.data = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Panelrow1 = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.CustName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.BillNum = new Guna.UI2.WinForms.Guna2TextBox();
             this.empty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empty2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empty3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Panelrow1 = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.CustName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.BillNum = new Guna.UI2.WinForms.Guna2TextBox();
             this.Notes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             this.Panelrow1.SuspendLayout();
@@ -261,60 +261,11 @@
             this.data.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.data.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.data.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_CellEndEdit);
+            this.data.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_CellEnter);
+            this.data.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_CellLeave);
             this.data.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.data_DataError);
             this.data.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.data_RowsAdded);
             this.data.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.data_KeyPress);
-            // 
-            // empty1
-            // 
-            this.empty1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.empty1.HeaderText = "جملة الثمن";
-            this.empty1.MinimumWidth = 6;
-            this.empty1.Name = "empty1";
-            this.empty1.ReadOnly = true;
-            // 
-            // empty2
-            // 
-            this.empty2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.empty2.HeaderText = "الوزن";
-            this.empty2.MinimumWidth = 6;
-            this.empty2.Name = "empty2";
-            // 
-            // empty3
-            // 
-            this.empty3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.empty3.HeaderText = "الفئة";
-            this.empty3.MinimumWidth = 6;
-            this.empty3.Name = "empty3";
-            // 
-            // type
-            // 
-            this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.type.DefaultCellStyle = dataGridViewCellStyle3;
-            this.type.HeaderText = "العيار";
-            this.type.Items.AddRange(new object[] {
-            "18",
-            "21",
-            "24"});
-            this.type.MinimumWidth = 6;
-            this.type.Name = "type";
-            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // number
-            // 
-            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.number.HeaderText = "العدد";
-            this.number.MinimumWidth = 6;
-            this.number.Name = "number";
-            // 
-            // item
-            // 
-            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.item.HeaderText = "الصنف";
-            this.item.MinimumWidth = 6;
-            this.item.Name = "item";
             // 
             // Panelrow1
             // 
@@ -447,6 +398,58 @@
             this.BillNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.BillNum.TextOffset = new System.Drawing.Point(10, 0);
             // 
+            // empty1
+            // 
+            this.empty1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.empty1.HeaderText = "جملة الثمن";
+            this.empty1.MinimumWidth = 6;
+            this.empty1.Name = "empty1";
+            this.empty1.ReadOnly = true;
+            // 
+            // empty2
+            // 
+            this.empty2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.empty2.HeaderText = "الوزن";
+            this.empty2.MinimumWidth = 6;
+            this.empty2.Name = "empty2";
+            // 
+            // empty3
+            // 
+            this.empty3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.empty3.HeaderText = "الفئة";
+            this.empty3.MinimumWidth = 6;
+            this.empty3.Name = "empty3";
+            // 
+            // type
+            // 
+            this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle3;
+            this.type.HeaderText = "العيار";
+            this.type.Items.AddRange(new object[] {
+            "18",
+            "21",
+            "24"});
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
+            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // number
+            // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.number.HeaderText = "العدد";
+            this.number.MinimumWidth = 6;
+            this.number.Name = "number";
+            // 
+            // item
+            // 
+            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.item.DataPropertyName = "Name";
+            this.item.HeaderText = "الصنف";
+            this.item.MinimumWidth = 6;
+            this.item.Name = "item";
+            // 
             // BillTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 24F);
@@ -482,17 +485,17 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox last;
         public Guna.UI2.WinForms.Guna2DataGridView data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empty1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empty2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empty3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel Panelrow1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox8;
         public Guna.UI2.WinForms.Guna2TextBox CustName;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
         public Guna.UI2.WinForms.Guna2TextBox BillNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empty1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empty2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empty3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item;
     }
 }

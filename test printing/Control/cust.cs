@@ -1,11 +1,13 @@
 ﻿using AbuFas.db;
 using Guna.UI2.WinForms;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -404,6 +406,79 @@ namespace AbuFas.Control
             var list = Program._context.Custs.Where(c => c.Name.Contains(name)).ToList();
             searchkey = true;
             load(list);
+        }
+
+        private void PrintBtn_Click(object sender, EventArgs e)
+        {
+            string customerName = custName.Text;
+
+            // Call function to create and save Excel file
+            CreateExcelSheet(customerName, incoume, outcome);
+        }
+
+
+        public void CreateExcelSheet(string customerName, DataGridView gridWared, DataGridView gridMansaref)
+        {
+            // Initialize the SaveFileDialog
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "Save an Excel File";
+                saveFileDialog.FileName = $"{customerName}.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                    // Create the Excel package
+                    using (ExcelPackage package = new ExcelPackage())
+                    {
+                        // Create the first sheet for "وارد"
+                        ExcelWorksheet waredSheet = package.Workbook.Worksheets.Add("وارد");
+                        PopulateSheet(waredSheet, gridWared);
+
+                        // Create the second sheet for "منصرف"
+                        ExcelWorksheet mansarefSheet = package.Workbook.Worksheets.Add("منصرف");
+                        PopulateSheet(mansarefSheet, gridMansaref);
+
+                        // Save the package to the selected file
+                        try
+                        {
+
+                            FileInfo fi = new FileInfo(filePath);
+                            if (fi.Exists) fi.Delete();
+                            package.SaveAs(fi);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        MessageBox.Show($"Excel file saved successfully at {filePath}");
+                    }
+                }
+            }
+        }
+
+        private void PopulateSheet(ExcelWorksheet sheet, DataGridView grid)
+        {
+            // Add headers
+            for (int col = 0; col < grid.Columns.Count - 1; col++)
+            {
+                sheet.Cells[1, col + 1].Value = grid.Columns[col].HeaderText;
+            }
+
+            // Add data rows
+            for (int row = 0; row < grid.Rows.Count; row++)
+            {
+                for (int col = 0; col < grid.Columns.Count - 1; col++)
+                {
+                    sheet.Cells[row + 2, col + 1].Value = grid.Rows[row].Cells[col].Value?.ToString();
+                }
+            }
+
+            // Adjust column widths
+            sheet.Cells[sheet.Dimension.Address].AutoFitColumns();
         }
 
     }

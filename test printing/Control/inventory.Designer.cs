@@ -61,6 +61,11 @@
             this.start = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.totalgramsBuy = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.totalgramsSell = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.top.SuspendLayout();
@@ -95,13 +100,13 @@
             this.sell.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sell.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sell.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.sell.Location = new System.Drawing.Point(854, 121);
+            this.sell.Location = new System.Drawing.Point(817, 121);
             this.sell.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.sell.Name = "sell";
             this.sell.PasswordChar = '\0';
             this.sell.PlaceholderText = "";
             this.sell.SelectedText = "";
-            this.sell.Size = new System.Drawing.Size(170, 50);
+            this.sell.Size = new System.Drawing.Size(207, 50);
             this.sell.TabIndex = 11;
             this.sell.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -110,7 +115,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1222, 326);
+            this.label1.Location = new System.Drawing.Point(1222, 398);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 37);
             this.label1.TabIndex = 14;
@@ -132,13 +137,13 @@
             this.sell21.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sell21.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sell21.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.sell21.Location = new System.Drawing.Point(854, 319);
+            this.sell21.Location = new System.Drawing.Point(817, 391);
             this.sell21.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.sell21.Name = "sell21";
             this.sell21.PasswordChar = '\0';
             this.sell21.PlaceholderText = "";
             this.sell21.SelectedText = "";
-            this.sell21.Size = new System.Drawing.Size(170, 50);
+            this.sell21.Size = new System.Drawing.Size(207, 50);
             this.sell21.TabIndex = 13;
             this.sell21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -147,7 +152,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1222, 425);
+            this.label2.Location = new System.Drawing.Point(1222, 488);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 37);
             this.label2.TabIndex = 16;
@@ -159,7 +164,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1222, 227);
+            this.label3.Location = new System.Drawing.Point(1222, 308);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 37);
             this.label3.TabIndex = 18;
@@ -181,13 +186,13 @@
             this.sell24.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sell24.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sell24.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.sell24.Location = new System.Drawing.Point(854, 418);
+            this.sell24.Location = new System.Drawing.Point(817, 481);
             this.sell24.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.sell24.Name = "sell24";
             this.sell24.PasswordChar = '\0';
             this.sell24.PlaceholderText = "";
             this.sell24.SelectedText = "";
-            this.sell24.Size = new System.Drawing.Size(170, 50);
+            this.sell24.Size = new System.Drawing.Size(207, 50);
             this.sell24.TabIndex = 17;
             this.sell24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -220,13 +225,13 @@
             this.sell18.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sell18.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sell18.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.sell18.Location = new System.Drawing.Point(854, 220);
+            this.sell18.Location = new System.Drawing.Point(817, 301);
             this.sell18.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.sell18.Name = "sell18";
             this.sell18.PasswordChar = '\0';
             this.sell18.PlaceholderText = "";
             this.sell18.SelectedText = "";
-            this.sell18.Size = new System.Drawing.Size(170, 50);
+            this.sell18.Size = new System.Drawing.Size(207, 50);
             this.sell18.TabIndex = 19;
             this.sell18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -301,13 +306,13 @@
             this.buy18.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.buy18.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buy18.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.buy18.Location = new System.Drawing.Point(145, 220);
+            this.buy18.Location = new System.Drawing.Point(108, 301);
             this.buy18.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.buy18.Name = "buy18";
             this.buy18.PasswordChar = '\0';
             this.buy18.PlaceholderText = "";
             this.buy18.SelectedText = "";
-            this.buy18.Size = new System.Drawing.Size(170, 50);
+            this.buy18.Size = new System.Drawing.Size(207, 50);
             this.buy18.TabIndex = 30;
             this.buy18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -316,7 +321,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(521, 227);
+            this.label8.Location = new System.Drawing.Point(521, 308);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 37);
             this.label8.TabIndex = 29;
@@ -338,13 +343,13 @@
             this.buy24.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.buy24.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buy24.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.buy24.Location = new System.Drawing.Point(145, 418);
+            this.buy24.Location = new System.Drawing.Point(108, 481);
             this.buy24.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.buy24.Name = "buy24";
             this.buy24.PasswordChar = '\0';
             this.buy24.PlaceholderText = "";
             this.buy24.SelectedText = "";
-            this.buy24.Size = new System.Drawing.Size(170, 50);
+            this.buy24.Size = new System.Drawing.Size(207, 50);
             this.buy24.TabIndex = 28;
             this.buy24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -353,7 +358,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(521, 425);
+            this.label9.Location = new System.Drawing.Point(521, 488);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 37);
             this.label9.TabIndex = 27;
@@ -365,7 +370,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(521, 326);
+            this.label10.Location = new System.Drawing.Point(521, 398);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 37);
             this.label10.TabIndex = 26;
@@ -387,13 +392,13 @@
             this.buy21.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.buy21.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buy21.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.buy21.Location = new System.Drawing.Point(145, 319);
+            this.buy21.Location = new System.Drawing.Point(108, 391);
             this.buy21.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.buy21.Name = "buy21";
             this.buy21.PasswordChar = '\0';
             this.buy21.PlaceholderText = "";
             this.buy21.SelectedText = "";
-            this.buy21.Size = new System.Drawing.Size(170, 50);
+            this.buy21.Size = new System.Drawing.Size(207, 50);
             this.buy21.TabIndex = 25;
             this.buy21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -412,13 +417,13 @@
             this.buy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.buy.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buy.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.buy.Location = new System.Drawing.Point(145, 121);
+            this.buy.Location = new System.Drawing.Point(108, 121);
             this.buy.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.buy.Name = "buy";
             this.buy.PasswordChar = '\0';
             this.buy.PlaceholderText = "";
             this.buy.SelectedText = "";
-            this.buy.Size = new System.Drawing.Size(170, 50);
+            this.buy.Size = new System.Drawing.Size(207, 50);
             this.buy.TabIndex = 24;
             this.buy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -427,7 +432,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(443, 524);
+            this.label11.Location = new System.Drawing.Point(443, 578);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(164, 37);
             this.label11.TabIndex = 32;
@@ -439,7 +444,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1199, 524);
+            this.label12.Location = new System.Drawing.Point(1199, 578);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(109, 37);
             this.label12.TabIndex = 33;
@@ -461,13 +466,13 @@
             this.outc.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.outc.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outc.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.outc.Location = new System.Drawing.Point(145, 517);
+            this.outc.Location = new System.Drawing.Point(108, 571);
             this.outc.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.outc.Name = "outc";
             this.outc.PasswordChar = '\0';
             this.outc.PlaceholderText = "";
             this.outc.SelectedText = "";
-            this.outc.Size = new System.Drawing.Size(170, 50);
+            this.outc.Size = new System.Drawing.Size(207, 50);
             this.outc.TabIndex = 34;
             this.outc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -486,13 +491,13 @@
             this.inc.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.inc.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inc.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inc.Location = new System.Drawing.Point(854, 517);
+            this.inc.Location = new System.Drawing.Point(817, 571);
             this.inc.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.inc.Name = "inc";
             this.inc.PasswordChar = '\0';
             this.inc.PlaceholderText = "";
             this.inc.SelectedText = "";
-            this.inc.Size = new System.Drawing.Size(170, 50);
+            this.inc.Size = new System.Drawing.Size(207, 50);
             this.inc.TabIndex = 35;
             this.inc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -510,7 +515,7 @@
             this.search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.search.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.search.Location = new System.Drawing.Point(952, 672);
+            this.search.Location = new System.Drawing.Point(952, 644);
             this.search.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.search.Name = "search";
             this.search.PasswordChar = '\0';
@@ -526,7 +531,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1254, 679);
+            this.label13.Location = new System.Drawing.Point(1254, 651);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 37);
             this.label13.TabIndex = 36;
@@ -548,7 +553,7 @@
             this.result.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.result.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.result.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.result.Location = new System.Drawing.Point(34, 672);
+            this.result.Location = new System.Drawing.Point(34, 644);
             this.result.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
             this.result.Name = "result";
             this.result.PasswordChar = '\0';
@@ -563,7 +568,7 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(238, 679);
+            this.label14.Location = new System.Drawing.Point(238, 651);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 37);
             this.label14.TabIndex = 39;
@@ -582,13 +587,13 @@
             this.end.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.end.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.end.HoverState.FillColor = System.Drawing.Color.White;
-            this.end.Location = new System.Drawing.Point(337, 673);
+            this.end.Location = new System.Drawing.Point(337, 645);
             this.end.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.end.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(194, 48);
             this.end.TabIndex = 40;
-            this.end.Value = System.DateTime.Today;
+            this.end.Value = new System.DateTime(2024, 9, 28, 0, 0, 0, 0);
             this.end.ValueChanged += new System.EventHandler(this.search_TextChanged);
             // 
             // start
@@ -603,13 +608,13 @@
             this.start.Font = new System.Drawing.Font("Cairo SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.start.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.start.HoverState.FillColor = System.Drawing.Color.White;
-            this.start.Location = new System.Drawing.Point(644, 673);
+            this.start.Location = new System.Drawing.Point(644, 645);
             this.start.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.start.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(194, 48);
             this.start.TabIndex = 41;
-            this.start.Value = System.DateTime.Today;
+            this.start.Value = new System.DateTime(2024, 9, 28, 0, 0, 0, 0);
             this.start.ValueChanged += new System.EventHandler(this.search_TextChanged);
             // 
             // label15
@@ -617,7 +622,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(872, 679);
+            this.label15.Location = new System.Drawing.Point(872, 651);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 37);
             this.label15.TabIndex = 42;
@@ -629,18 +634,116 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(565, 679);
+            this.label16.Location = new System.Drawing.Point(565, 651);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(45, 37);
             this.label16.TabIndex = 43;
             this.label16.Text = "الي";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // totalgramsBuy
+            // 
+            this.totalgramsBuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalgramsBuy.BorderRadius = 10;
+            this.totalgramsBuy.BorderThickness = 2;
+            this.totalgramsBuy.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.totalgramsBuy.DefaultText = "45214515";
+            this.totalgramsBuy.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.totalgramsBuy.DisabledState.FillColor = System.Drawing.Color.White;
+            this.totalgramsBuy.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.totalgramsBuy.DisabledState.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.totalgramsBuy.Enabled = false;
+            this.totalgramsBuy.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalgramsBuy.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalgramsBuy.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalgramsBuy.Location = new System.Drawing.Point(108, 211);
+            this.totalgramsBuy.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
+            this.totalgramsBuy.Name = "totalgramsBuy";
+            this.totalgramsBuy.PasswordChar = '\0';
+            this.totalgramsBuy.PlaceholderText = "";
+            this.totalgramsBuy.SelectedText = "";
+            this.totalgramsBuy.Size = new System.Drawing.Size(207, 50);
+            this.totalgramsBuy.TabIndex = 47;
+            this.totalgramsBuy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(526, 218);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(81, 37);
+            this.label17.TabIndex = 46;
+            this.label17.Text = "جرامات";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalgramsSell
+            // 
+            this.totalgramsSell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalgramsSell.BorderRadius = 10;
+            this.totalgramsSell.BorderThickness = 2;
+            this.totalgramsSell.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.totalgramsSell.DefaultText = "45214515";
+            this.totalgramsSell.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.totalgramsSell.DisabledState.FillColor = System.Drawing.Color.White;
+            this.totalgramsSell.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.totalgramsSell.DisabledState.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.totalgramsSell.Enabled = false;
+            this.totalgramsSell.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalgramsSell.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalgramsSell.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.totalgramsSell.Location = new System.Drawing.Point(817, 211);
+            this.totalgramsSell.Margin = new System.Windows.Forms.Padding(4, 9, 4, 9);
+            this.totalgramsSell.Name = "totalgramsSell";
+            this.totalgramsSell.PasswordChar = '\0';
+            this.totalgramsSell.PlaceholderText = "";
+            this.totalgramsSell.SelectedText = "";
+            this.totalgramsSell.Size = new System.Drawing.Size(207, 50);
+            this.totalgramsSell.TabIndex = 45;
+            this.totalgramsSell.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Cairo Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(1227, 218);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(81, 37);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "جرامات";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.BorderRadius = 5;
+            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrint.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnPrint.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.Black;
+            this.btnPrint.Location = new System.Drawing.Point(1091, 705);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(217, 54);
+            this.btnPrint.TabIndex = 48;
+            this.btnPrint.Text = "طباعة";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.totalgramsBuy);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.totalgramsSell);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.start);
@@ -718,5 +821,10 @@
         public Guna.UI2.WinForms.Guna2DateTimePicker start;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private Guna.UI2.WinForms.Guna2TextBox totalgramsBuy;
+        private System.Windows.Forms.Label label17;
+        private Guna.UI2.WinForms.Guna2TextBox totalgramsSell;
+        private System.Windows.Forms.Label label18;
+        private Guna.UI2.WinForms.Guna2Button btnPrint;
     }
 }

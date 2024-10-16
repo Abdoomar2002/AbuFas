@@ -117,12 +117,17 @@ C:\Users\Abdo\source\repos\test printing\test printing\obj\Debug\Abu Fas.pdb
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
 C:\Users\Abdo\source\repos\test printing\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.config
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.manifest
+D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.application
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe
 D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.pdb
 D:\AbuFas\AbuFas\test printing\bin\Debug\BouncyCastle.Crypto.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\EPPlus.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\EPPlus.Interfaces.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\EPPlus.System.Drawing.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Guna.UI2.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
@@ -152,6 +157,7 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Logging.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\Newtonsoft.Json.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\SQLitePCLRaw.batteries_v2.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\SQLitePCLRaw.core.dll
@@ -162,14 +168,19 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\System.ComponentModel.Annotations.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Configuration.ConfigurationManager.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Data.SqlClient.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Formats.Asn1.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Memory.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Numerics.Vectors.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Text.Encodings.Web.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Text.Json.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.ValueTuple.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\DocumentFormat.OpenXml.Framework.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\EntityFramework.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\EPPlus.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\itextsharp.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.Bcl.HashCode.xml
@@ -199,17 +210,22 @@ D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Logging.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\Newtonsoft.Json.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Buffers.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Collections.Immutable.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Configuration.ConfigurationManager.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Data.SqlClient.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Formats.Asn1.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Memory.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Numerics.Vectors.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Text.Encodings.Web.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.Text.Json.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\AbuFas\AbuFas\test printing\bin\Debug\System.ValueTuple.xml
 D:\AbuFas\AbuFas\test printing\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
 D:\AbuFas\AbuFas\test printing\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
@@ -227,6 +243,7 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.bills21.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.BillTable.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Borrow.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.BuySell.resources
+D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.cust.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.customers.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.DayStatic.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Editing.resources
@@ -239,11 +256,8 @@ D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Properties.Resources.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\test_printing.bill.resources
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.GenerateResource.cache
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.CoreCompileInputs.cache
-D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe
-D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.pdb
-D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.Up2Date
-D:\AbuFas\AbuFas\test printing\obj\Debug\AbuFas.Control.cust.resources
-D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.exe.manifest
-D:\AbuFas\AbuFas\test printing\bin\Debug\Abu Fas.application
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe.manifest
 D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.application
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.csproj.Up2Date
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.exe
+D:\AbuFas\AbuFas\test printing\obj\Debug\Abu Fas.pdb

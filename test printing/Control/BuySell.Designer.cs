@@ -34,8 +34,10 @@
             this.sell = new Guna.UI2.WinForms.Guna2Button();
             this.Buy = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.billTable2 = new AbuFas.Control.BillTable();
+            this.billTable1 = new AbuFas.Control.BillTable();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.Result = new Guna.UI2.WinForms.Guna2Button();
@@ -49,8 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.billTable2 = new AbuFas.Control.BillTable();
-            this.billTable1 = new AbuFas.Control.BillTable();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.toggle.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -164,9 +165,36 @@
             this.guna2Panel2.Size = new System.Drawing.Size(972, 813);
             this.guna2Panel2.TabIndex = 1;
             // 
+            // billTable2
+            // 
+            this.billTable2.AutoScroll = true;
+            this.billTable2.AutoSize = true;
+            this.billTable2.BackColor = System.Drawing.Color.White;
+            this.billTable2.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billTable2.Location = new System.Drawing.Point(0, 0);
+            this.billTable2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.billTable2.Name = "billTable2";
+            this.billTable2.Padding = new System.Windows.Forms.Padding(20);
+            this.billTable2.Size = new System.Drawing.Size(907, 703);
+            this.billTable2.TabIndex = 1;
+            // 
+            // billTable1
+            // 
+            this.billTable1.AutoScroll = true;
+            this.billTable1.AutoSize = true;
+            this.billTable1.BackColor = System.Drawing.Color.White;
+            this.billTable1.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billTable1.Location = new System.Drawing.Point(0, 0);
+            this.billTable1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.billTable1.Name = "billTable1";
+            this.billTable1.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
+            this.billTable1.Size = new System.Drawing.Size(907, 703);
+            this.billTable1.TabIndex = 0;
+            // 
             // guna2Panel3
             // 
-            this.guna2Panel3.Controls.Add(this.guna2Button4);
+            this.guna2Panel3.Controls.Add(this.btnSave);
+            this.guna2Panel3.Controls.Add(this.btnPrint);
             this.guna2Panel3.Controls.Add(this.guna2Panel4);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 100);
@@ -177,24 +205,25 @@
             this.guna2Panel3.Size = new System.Drawing.Size(335, 813);
             this.guna2Panel3.TabIndex = 2;
             // 
-            // guna2Button4
+            // btnPrint
             // 
-            this.guna2Button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button4.BorderRadius = 5;
-            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.guna2Button4.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button4.Location = new System.Drawing.Point(15, 548);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(307, 63);
-            this.guna2Button4.TabIndex = 13;
-            this.guna2Button4.Text = "طبع الفاتورة";
-            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.BorderRadius = 5;
+            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrint.FillColor = System.Drawing.Color.Black;
+            this.btnPrint.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(15, 581);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.PressedColor = System.Drawing.Color.Gray;
+            this.btnPrint.Size = new System.Drawing.Size(307, 54);
+            this.btnPrint.TabIndex = 13;
+            this.btnPrint.Text = "طبع الفاتورة";
+            this.btnPrint.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Panel4
             // 
@@ -222,7 +251,7 @@
             this.guna2Panel4.ShadowDecoration.Depth = 5;
             this.guna2Panel4.ShadowDecoration.Enabled = true;
             this.guna2Panel4.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(10);
-            this.guna2Panel4.Size = new System.Drawing.Size(307, 529);
+            this.guna2Panel4.Size = new System.Drawing.Size(307, 505);
             this.guna2Panel4.TabIndex = 0;
             // 
             // label5
@@ -415,31 +444,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "الحاسبة";
             // 
-            // billTable2
+            // btnSave
             // 
-            this.billTable2.AutoScroll = true;
-            this.billTable2.AutoSize = true;
-            this.billTable2.BackColor = System.Drawing.Color.White;
-            this.billTable2.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billTable2.Location = new System.Drawing.Point(0, 0);
-            this.billTable2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.billTable2.Name = "billTable2";
-            this.billTable2.Padding = new System.Windows.Forms.Padding(20);
-            this.billTable2.Size = new System.Drawing.Size(907, 703);
-            this.billTable2.TabIndex = 1;
-            // 
-            // billTable1
-            // 
-            this.billTable1.AutoScroll = true;
-            this.billTable1.AutoSize = true;
-            this.billTable1.BackColor = System.Drawing.Color.White;
-            this.billTable1.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billTable1.Location = new System.Drawing.Point(0, 0);
-            this.billTable1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.billTable1.Name = "billTable1";
-            this.billTable1.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-            this.billTable1.Size = new System.Drawing.Size(907, 703);
-            this.billTable1.TabIndex = 0;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BorderRadius = 5;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnSave.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Location = new System.Drawing.Point(15, 523);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(307, 54);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "حفظ الفاتورة";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // BuySell
             // 
@@ -488,8 +510,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button Result;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btnPrint;
         public AbuFas.Control.BillTable billTable1;
         public AbuFas.Control.BillTable billTable2;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
     }
 }

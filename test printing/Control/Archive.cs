@@ -13,6 +13,7 @@ namespace test_printing
     public partial class Archive : UserControl
     {
         bool searchFlag = false;
+        DateTime curr=new DateTime();
         protected override CreateParams CreateParams
         {
             get
@@ -206,7 +207,7 @@ namespace test_printing
                 else if (item.Kyrat == 21) totalGrams += item.Weight;
                 else totalGrams += item.Weight * 24 / 21;
             }
-            totalGrams = Math.Round(totalGrams, 3);
+            totalGrams = Math.Round(totalGrams, 2);
 
             return totalGrams;
 
@@ -255,6 +256,7 @@ namespace test_printing
 
                 // billTable1.data.Rows.Add(obj);
             }
+            curr = bigBill.Date;
             billTable1.last.Text = total.ToString();
             billTable1.textBox2.Text = total18.ToString();
             billTable1.textBox3.Text = total24.ToString();
@@ -286,8 +288,8 @@ namespace test_printing
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            if (billTable1.Visible) billTable1.btn_print(200, 300,true);
-            else billTable1.btn_print(200, 300,true);
+            if (billTable1.Visible) billTable1.btn_print(200, 300,curr,true);
+            else billTable1.btn_print(200, 300,curr,true);
         }
         private void guna2Button4_Click(object sender, EventArgs e)
         {

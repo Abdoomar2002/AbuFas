@@ -21,6 +21,16 @@ namespace AbuFas
         public login()
         {
             InitializeComponent();
+            AutoCompleteStringCollection autoCompleteData = new AutoCompleteStringCollection();
+            autoCompleteData.AddRange(new string[]
+            {
+        "John", "Jane", "James", "Jack", "Joan", "Jake", "Joseph", "Jasmine", "Jessica"
+            });
+
+            // Set properties for the TextBox to enable autocomplete
+            guna2TextBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            guna2TextBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            guna2TextBox1.AutoCompleteCustomSource = autoCompleteData;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

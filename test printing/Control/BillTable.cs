@@ -23,6 +23,9 @@ using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.ExtendedProperties;
 using System.Runtime.InteropServices;
 using Word = Microsoft.Office.Interop.Word;
+using Guna.UI2.WinForms;
+using static System.Net.WebRequestMethods;
+using System.Data.Entity;
 namespace AbuFas.Control
 {
     public partial class BillTable : UserControl
@@ -30,7 +33,9 @@ namespace AbuFas.Control
         Bitmap bmp;
         public int currentPrintRow = 0;
         public int maxRowsPerPage = 0;
-        public bool IsBuy=false;
+        public bool IsBuy = false;
+       
+
         protected override CreateParams CreateParams
         {
             get
@@ -43,6 +48,7 @@ namespace AbuFas.Control
         public BillTable()
         {
             InitializeComponent();
+           
         }
         private void SetRowHeights(DataGridView dataGridView, int height)
         {
@@ -51,6 +57,18 @@ namespace AbuFas.Control
                 row.Height = height;
             }
         }
+        // Date Picker Show
+        private void data_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5 )
+            {
+               // data.CurrentCell.ReadOnly = false;
+                System.Drawing.Rectangle rect;
+                rect = data.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                
+            }
+        }
+
         private void LoadDataFromDatabase()
         {
 
@@ -114,6 +132,7 @@ namespace AbuFas.Control
             data.Columns[1].ValueType = typeof(double);
             data.Columns[2].ValueType = typeof(double);
             data.Columns[4].ValueType = typeof(double);
+           
 
         }
 
@@ -131,9 +150,9 @@ namespace AbuFas.Control
             int newHeight;
             // Calculate new height based on the content of TextBox and DataGridView
             if (data.Height > data.PreferredSize.Height)
-                newHeight =  Panelrow1.Height + Notes.Height + data.Height;
+                newHeight = Panelrow1.Height + Notes.Height + data.Height;
             else
-                newHeight =  Panelrow1.Height + Notes.Height + data.PreferredSize.Height;
+                newHeight = Panelrow1.Height + Notes.Height + data.PreferredSize.Height;
 
             // Set the new size for the UserControl
             this.Size = new Size(this.Width, newHeight);
@@ -144,10 +163,10 @@ namespace AbuFas.Control
         {
             CustName.Text = string.Empty;
             Home home = (Home)this.ParentForm;
-            if(!IsBuy)
-              home.firstPage1.billTable2.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
-            else 
-              home.firstPage1.billTable1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
+            if (!IsBuy)
+                home.firstPage1.billTable2.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
+            else
+                home.firstPage1.billTable1.BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             BillNum.Text = (Int32.Parse(BillNum.Text) + 1).ToString();
             last.Text = "";
             textBox1.Text = "";
@@ -157,7 +176,7 @@ namespace AbuFas.Control
             data.Height = 150;
 
             BillTable_Load(null, null);
-           
+
         }
 
         private void data_KeyPress(object sender, KeyPressEventArgs e)
@@ -330,10 +349,10 @@ namespace AbuFas.Control
             if (dayStatic.Id == 0)
                 Program._context.DaystaticMoney.Add(dayStatic);
             dayStatic.Bills.Add(newBill);
-            if(!IsBuy)
-            dayStatic.Total = dayStatic.Total == 0 ? totalmoney : dayStatic.Total + totalmoney;
+            if (!IsBuy)
+                dayStatic.Total = dayStatic.Total == 0 ? totalmoney : dayStatic.Total + totalmoney;
             else
-            dayStatic.Total = dayStatic.Total == 0 ? totalmoney * -1 : dayStatic.Total - totalmoney;
+                dayStatic.Total = dayStatic.Total == 0 ? totalmoney * -1 : dayStatic.Total - totalmoney;
 
             dayStatic.Bills.Add(newBill);
             if (gramsStatic18.Id == 0 && totalGrams18 > 0)
@@ -375,21 +394,22 @@ namespace AbuFas.Control
             int result;
             return int.TryParse(value.ToString(), out result) ? (int?)result : 0;
         }
-        public void btn_print(int width, int height,bool flag=false)
+        public void btn_print(int width, int height, DateTime time=new DateTime(), bool flag = false)
         {
+            if(new DateTime()==time)time = DateTime.Now;
             if (flag)
             {
-                WriteTableToWordInterop("newfileword", GetGridData(data));
+                WriteTableToWordInterop("newfileword", GetGridData(data),time);
                 return;
             }
             int r = 0;
             Int32.TryParse(textBox1.Text, out r);
-            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0&&data.RowCount!=1)
+            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0 && data.RowCount != 1)
             {
 
-                
-                WriteTableToWordInterop("newfileword",GetGridData(data));
+
                 SaveToDB();
+                WriteTableToWordInterop("newfileword", GetGridData(data),time);
                 reset();
                 /* PrintDocument printDocument = new PrintDocument();
                  printDocument.PrintPage += printDocument1_PrintPage;
@@ -408,7 +428,7 @@ namespace AbuFas.Control
             }
             else MessageBox.Show("ادخل البيانات كاملة");
         }
-        public  List<List<string>> GetGridData(DataGridView dataGridView)
+        public List<List<string>> GetGridData(DataGridView dataGridView)
         {
             // Validate input
             if (dataGridView == null || dataGridView.Rows.Count == 0 || dataGridView.Columns.Count == 0)
@@ -434,130 +454,198 @@ namespace AbuFas.Control
             return data;
         }
 
-public void WriteTableToWordInterop(string filePath, List<List<string>> data)
-    {
-        dynamic wordApp = null;
-        dynamic wordDoc = null;
-
-        try
+        public void WriteTableToWordInterop(string filePath, List<List<string>> data,DateTime time)
         {
-            // Initialize Word application
-            wordApp = new Word.Application();
-            wordDoc = wordApp.Documents.Add();
+            dynamic wordApp = null;
+            dynamic wordDoc = null;
 
-            wordDoc.Paragraphs.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
-            wordDoc.PageSetup.TopMargin = wordApp.CentimetersToPoints(5f); // Adjust as needed
-            wordDoc.PageSetup.BottomMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
-            wordDoc.PageSetup.LeftMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
-            wordDoc.PageSetup.RightMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
-
-            wordDoc.PageSetup.PaperSize = Word.WdPaperSize.wdPaperA5;
-            wordDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
-
-            string[] headers = { "جملة الثمن", "الوزن", "الفئة", "العيار", "العدد", "الصنف" };
-
-            // Add customer name paragraph
-            dynamic par = wordDoc.Paragraphs.Add();
-            par.Range.Text = " الاسم " + CustName.Text;
-            par.Range.Bold = 8;
-            par.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
-            par.Range.InsertParagraphAfter();
-
-            // Add bill number paragraph
-            dynamic par2 = wordDoc.Paragraphs.Add();
-            par2.Range.Text = BillNum.Text + " رقم الفاتورة ";
-            par2.Range.Bold = 8;
-            par2.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
-            par2.Range.InsertParagraphAfter();
-
-            // Add table
-            dynamic table = wordDoc.Tables.Add(par2.Range, data.Count + 1, data[0].Count);
-            table.TableDirection = Word.WdTableDirection.wdTableDirectionRtl;
-            table.Rows.Alignment = Word.WdRowAlignment.wdAlignRowRight;
-            table.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleThickThinLargeGap;
-            table.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleTriple;
-
-            // Set header row
-            for (int i = 0; i < headers.Length; i++)
+            try
             {
-                table.Cell(1, i + 1).Range.Text = headers[i];
-                table.Cell(1, i + 1).Range.Font.Bold = 4; // Set bold for headers
-            }
+                // Initialize Word application
+                wordApp = new Word.Application();
+                wordDoc = wordApp.Documents.Add();
 
-            // Set data rows
-            for (int i = 0; i < data.Count; i++)
-            {
-                for (int j = 0; j < data[i].Count; j++)
+                wordDoc.Paragraphs.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                wordDoc.PageSetup.TopMargin = wordApp.CentimetersToPoints(6f); // Adjust as needed
+                wordDoc.PageSetup.BottomMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
+                wordDoc.PageSetup.LeftMargin = wordApp.CentimetersToPoints(1f); // Adjust as needed
+                wordDoc.PageSetup.RightMargin = wordApp.CentimetersToPoints(1f); // Adjust as needed
+
+                wordDoc.PageSetup.PaperSize = Word.WdPaperSize.wdPaperB5;
+                wordDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
+
+                string[] headers = { "جملة الثمن", "الوزن", "الفئة", "العيار", "العدد", "الصنف" };
+
+                // Add customer name paragraph
+                /* dynamic par2 = wordDoc.Paragraphs.Add();
+                 par2.Range.Text = DateTime.Now.ToShortDateString() + " تاريخ الفاتورة ";
+                 par2.Range.Bold = 8;
+                 par2.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                 par2.Range.InsertParagraphAfter();
+
+
+                 dynamic par3 = wordDoc.Paragraphs.Add();
+                 par3.Range.Text = BillNum.Text + " رقم الفاتورة ";
+                 par3.Range.Bold = 8;
+                 par3.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                 par3.Range.InsertParagraphAfter();
+
+                 dynamic par = wordDoc.Paragraphs.Add();
+                 par.Range.Font.Size += 15;  // Increase font size by 2 points, or set a specific size like par.Range.Font.Size = 14;
+                 par.Range.Text = " الاسم " + CustName.Text;
+
+                 // Set font to "Cairo" and increase font size
+                 par.Range.Font.Name = "Cairo";
+
+                 par.Range.Bold = 8;
+                 par.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                 par.Range.InsertParagraphAfter();
+                 par.Range.Font.Size = 10;  // Increase font size by 2 points, or set a specific size like par.Range.Font.Size = 14;
+                */
+
+                wordDoc.PageSetup.TopMargin = wordApp.CentimetersToPoints(6f); // Adjust as needed
+                wordDoc.PageSetup.BottomMargin = wordApp.CentimetersToPoints(1.5f); // Adjust as needed
+                wordDoc.PageSetup.LeftMargin = wordApp.CentimetersToPoints(1f); // Adjust as needed
+                wordDoc.PageSetup.RightMargin = wordApp.CentimetersToPoints(1f); // Adjust as needed
+                wordDoc.PageSetup.PaperSize = Word.WdPaperSize.wdPaperB5;
+                wordDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientPortrait;
+
+                // Create a table for the first two paragraphs, with two columns
+                dynamic headerTable = wordDoc.Tables.Add(wordDoc.Paragraphs.Add().Range, 1, 2);
+                headerTable.Rows.Alignment = Word.WdRowAlignment.wdAlignRowCenter;
+                headerTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+                headerTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+
+                // Add content for the first column (first paragraph)
+                headerTable.Cell(1, 1).Range.Text = time.ToString("dd/MM/yyyy")+ " :تاريخ الفاتورة";
+                headerTable.Cell(1, 1).Range.Font.NameBi = "Cairo";
+                headerTable.Cell(1, 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                headerTable.Cell(1, 1).Range.Font.Bold = 8;
+               // headerTable.Cell(1, 1).Range.ParagraphFormat.ReadingOrder = Word.WdReadingOrder.wdReadingOrderRtl; // Right to left
+
+                // Add content for the second column (second paragraph)
+                headerTable.Cell(1, 2).Range.Text = BillNum.Text + " :رقم الفاتورة ";
+                headerTable.Cell(1, 2).Range.Font.NameBi = "Cairo";
+                headerTable.Cell(1, 2).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+                headerTable.Cell(1, 2).Range.Font.Bold = 8;
+              //  headerTable.Cell(1, 2).Range.ParagraphFormat.ReadingOrder = Word.WdReadingOrder.wdReadingOrderRtl; // Right to left
+
+                // Add third paragraph with a larger font (Arabic text)
+                dynamic par = wordDoc.Paragraphs.Add();
+                par.Range.Text = "الاسم: " + CustName.Text;
+                par.Range.Font.NameBi = "Cairo";  // Apply the font for Bi-Directional (Arabic) text
+                par.Range.Font.SizeBi = 18;  // Set font size for Arabic text
+                par.Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;  // Align center
+                par.Range.BoldBi = 8;
+               // par.Range.ParagraphFormat.ReadingOrder = Word.WdReadingOrder.wdReadingOrderRtl;  // Ensure it's right-to-left
+                par.Range.InsertParagraphAfter();
+
+                // Add bill number paragraph
+                // Add table
+                dynamic table = wordDoc.Tables.Add(par.Range, data.Count + 1, data[0].Count);
+                table.TableDirection = Word.WdTableDirection.wdTableDirectionRtl;
+                table.Rows.Alignment = Word.WdRowAlignment.wdAlignRowCenter;
+                table.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+                table.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+                table.Borders.InsideLineWidth = Word.WdLineWidth.wdLineWidth150pt;
+                table.Borders.OutsideLineWidth = Word.WdLineWidth.wdLineWidth150pt;
+                // Set header row
+                for (int i = 0; i < headers.Length; i++)
                 {
-                    table.Cell(i + 2, j + 1).Range.Text = data[i][j];
-                    table.Cell(i + 2, j + 1).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                    table.Cell(1, i + 1).Range.Text = headers[i];
+                    table.Cell(1, i + 1).Range.Font.BoldBi = 4; // Set bold for headers
+                    table.Cell(1, i + 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    table.Cell(1, i + 1).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                   // table.Cell(1, i + 1).Range.ParagraphFormat.ReadingOrder = Word.WdReadingOrder.wdReadingOrderLtr;
+                    table.Cell(1, i + 1).Range.Font.SizeBi = 12;
+                    table.Cell(1, i + 1).Range.Font.NameBi = "Cairo";
+
+                }
+
+                // Set data rows
+                for (int i = 0; i < data.Count; i++)
+                {
+                    for (int j = 0; j < data[i].Count; j++)
+                    {
+                        table.Cell(i + 2, j + 1).Range.Text = data[i][j];
+                        table.Cell(i + 2, j + 1).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        table.Cell(i + 2, j + 1).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                        table.Cell(i + 2, j + 1).Range.Font.SizeBi = 12;
+                        table.Cell(i + 2, j + 1).Range.Font.Bold = 8;
+                        table.Cell(i + 2, j + 1).Range.Font.NameBi = "Cairo";
+
+
+
+                    }
+                }
+
+                // Add additional paragraphs in one row
+                dynamic additionalTable = wordDoc.Tables.Add(wordDoc.Paragraphs.Add().Range, 1, 4); // Create a table with 1 row and 4 columns
+                additionalTable.Rows.Alignment = Word.WdRowAlignment.wdAlignRowRight;
+                additionalTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+                additionalTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
+
+                SetTableCell(additionalTable, 1, 1, textBox2.Text + "    : " + label14.Text);
+                SetTableCell(additionalTable, 1, 2, last.Text + "    : " + label13.Text);
+                SetTableCell(additionalTable, 1, 3, textBox3.Text + "    : " + label15.Text);
+                SetTableCell(additionalTable, 1, 4, textBox1.Text + " : " + "المبلغ");
+
+                // Set the correct printer tray and print
+                wordDoc.PageSetup.FirstPageTray = Word.WdPaperTray.wdPrinterDefaultBin;
+                wordDoc.PageSetup.OtherPagesTray = Word.WdPaperTray.wdPrinterDefaultBin;
+                wordDoc.PrintOut();
+
+                // Save as PDF
+                wordDoc.SaveAs2(filePath, Word.WdSaveFormat.wdFormatPDF);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                // Clean up
+                if (wordDoc != null)
+                {
+                    wordDoc.Close(false);
+                    // Marshal.ReleaseComObject(wordDoc);
+                }
+                if (wordApp != null)
+                {
+                    wordApp.Quit(false);
+                    // Marshal.ReleaseComObject(wordApp);
                 }
             }
-
-            // Add additional paragraphs in one row
-            dynamic additionalTable = wordDoc.Tables.Add(wordDoc.Paragraphs.Add().Range, 1, 4); // Create a table with 1 row and 4 columns
-            additionalTable.Rows.Alignment = Word.WdRowAlignment.wdAlignRowRight;
-            additionalTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
-            additionalTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleNone;
-
-            SetTableCell(additionalTable, 1, 1, textBox2.Text + "     " + label14.Text);
-            SetTableCell(additionalTable, 1, 2, last.Text + "     " + label13.Text);
-            SetTableCell(additionalTable, 1, 3, textBox3.Text + "     " + label15.Text);
-            SetTableCell(additionalTable, 1, 4, textBox1.Text + " " + label1.Text);
-
-            // Set the correct printer tray and print
-            wordDoc.PageSetup.FirstPageTray = Word.WdPaperTray.wdPrinterDefaultBin;
-            wordDoc.PageSetup.OtherPagesTray = Word.WdPaperTray.wdPrinterDefaultBin;
-            wordDoc.PrintOut();
-
-            // Save as PDF
-            wordDoc.SaveAs2(filePath, Word.WdSaveFormat.wdFormatPDF);
         }
-        catch (Exception ex)
-        {
-            // Handle exceptions
-            Console.WriteLine("Exception: " + ex.Message);
-        }
-        finally
-        {
-            // Clean up
-            if (wordDoc != null)
-            {
-                wordDoc.Close(false);
-                // Marshal.ReleaseComObject(wordDoc);
-            }
-            if (wordApp != null)
-            {
-                wordApp.Quit(false);
-                // Marshal.ReleaseComObject(wordApp);
-            }
-        }
-    }
 
-    private void SetTableCell(dynamic table, int row, int column, string text)
-    {
-        table.Cell(row, column).Range.Text = text;
-        table.Cell(row, column).Range.Bold = 8;
-        table.Cell(row, column).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
-        table.Cell(row, column).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-    }
-    private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        private void SetTableCell(dynamic table, int row, int column, string text)
         {
-          //  data.RowCount = data.RowCount < 15 ? 15 : data.RowCount;
-          
+            table.Cell(row, column).Range.Text = text;
+            table.Cell(row, column).Range.BoldBi = 8;
+            table.Cell(row, column).Range.Bold = 8;
+            table.Cell(row, column).Range.Font.SizeBi = 10;
+            table.Cell(row, column).Range.Font.NameBi = "Cairo";
+            table.Cell(row, column).Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphRight;
+            table.Cell(row, column).VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+        }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            //  data.RowCount = data.RowCount < 15 ? 15 : data.RowCount;
+
             data.ClearSelection();
 
-      
+
             int row1Height = Panelrow1.Height;
             // int row2Height = Panelrow2.Height;
             int yOffset = 396;
             int dataGridViewHeight = data.PreferredSize.Height;
-      
+
 
             // Calculate the maximum number of rows that can fit on a page
             maxRowsPerPage += 18;// (e.MarginBounds.Height - headerHeight - row1Height - row2Height - dataGridViewHeight) / data.Rows[0].Height;
 
-              // Print DataGridView rows
+            // Print DataGridView rows
             while (currentPrintRow < data.Rows.Count && currentPrintRow < maxRowsPerPage)
             {
                 DataGridViewRow row = data.Rows[currentPrintRow];
@@ -565,22 +653,22 @@ public void WriteTableToWordInterop(string filePath, List<List<string>> data)
                 yOffset += row.Height;
                 currentPrintRow++;
             }
-            Bitmap dataGridViewBitmap = new Bitmap(data.Width, data.ColumnHeadersHeight + data.RowCount * 50+10);
+            Bitmap dataGridViewBitmap = new Bitmap(data.Width, data.ColumnHeadersHeight + data.RowCount * 50 + 10);
 
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Far;
             format.LineAlignment = StringAlignment.Near;
             format.Alignment = StringAlignment.Far;
-            var newFont = new System.Drawing.Font("Cairo", 12,FontStyle.Bold);
-            
-            string c = last.Text + "        \t         " + label13.Text+ "        \t         ";
+            var newFont = new System.Drawing.Font("Cairo", 12, FontStyle.Bold);
+
+            string c = last.Text + "        \t         " + label13.Text + "        \t         ";
             c += textBox2.Text + "        \t         " + label14.Text + "        \t         ";
             c += textBox3.Text + "        \t         " + label15.Text + "        \t         ";
-             c += textBox1.Text + "        \t         " + label1.Text + "        \t         ";
-            e.Graphics.DrawString(c, newFont, Brushes.Black, e.MarginBounds.Right+80,e.MarginBounds.Bottom, format);
-          data.DrawToBitmap(dataGridViewBitmap, new System.Drawing.Rectangle(0, 0, data.Width + 50, 15 * 24 + data.ColumnHeadersHeight + data.RowCount*50 +80 + 396 * (maxRowsPerPage / 15 - 1)));
-           e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 80, 408 - 396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width + 160, data.RowCount*50+80 );
-            DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left-80, 372, e.MarginBounds.Width + 160, row1Height);
+            c += textBox1.Text + "        \t         " + label1.Text + "        \t         ";
+            e.Graphics.DrawString(c, newFont, Brushes.Black, e.MarginBounds.Right + 80, e.MarginBounds.Bottom, format);
+            data.DrawToBitmap(dataGridViewBitmap, new System.Drawing.Rectangle(0, 0, data.Width + 50, 15 * 24 + data.ColumnHeadersHeight + data.RowCount * 50 + 80 + 396 * (maxRowsPerPage / 15 - 1)));
+            e.Graphics.DrawImage(dataGridViewBitmap, e.MarginBounds.Left - 80, 408 - 396 * (maxRowsPerPage / 15 - 1), e.MarginBounds.Width + 160, data.RowCount * 50 + 80);
+            DrawPanelToGraphics(Panelrow1, e.Graphics, e.MarginBounds.Left - 80, 372, e.MarginBounds.Width + 160, row1Height);
 
             // Print the remaining rows on the next page
             if (currentPrintRow < data.Rows.Count)
@@ -594,7 +682,7 @@ public void WriteTableToWordInterop(string filePath, List<List<string>> data)
             e.HasMorePages = false;
 
         }
-    private void DrawPanelToGraphics(Panel panel, Graphics graphics, int x, int y, int width, int height)
+        private void DrawPanelToGraphics(Panel panel, Graphics graphics, int x, int y, int width, int height)
         {
             Bitmap panelBitmap = new Bitmap(panel.Width, panel.Height);
 
@@ -605,9 +693,43 @@ public void WriteTableToWordInterop(string filePath, List<List<string>> data)
         private void data_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
-                MessageBox.Show("يجب ان يكون المدخل رقم\nاعد ادخال القيمة بشكل صحيح", "خطأ في ادخال البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.ThrowException = false; // Prevent the default error dialog from showing
+            MessageBox.Show("يجب ان يكون المدخل رقم\nاعد ادخال القيمة بشكل صحيح", "خطأ في ادخال البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            e.ThrowException = false; // Prevent the default error dialog from showing
 
+        }
+        public void btn_Save()
+        {
+
+            int r = 0;
+            Int32.TryParse(textBox1.Text, out r);
+            if (CustName.Text.Trim(' ').Length > 0 && BillNum.Text.Length > 0 && r > 0 && data.RowCount != 1)
+            {
+
+
+
+                SaveToDB();
+                reset();
+                /* PrintDocument printDocument = new PrintDocument();
+                 printDocument.PrintPage += printDocument1_PrintPage;
+
+                 PrintDialog printDialog = new PrintDialog();
+                 printDocument.DocumentName = "فاتورة رقم " + BillNum.Text + " بأسم " + CustName.Text;
+                 printDialog.Document = printDocument;
+
+                 if (printDialog.ShowDialog() == DialogResult.OK)
+                 {
+
+                     printDocument.Print();
+
+                     
+                 }*/
+            }
+            else MessageBox.Show("ادخل البيانات كاملة");
+        }
+
+        private void data_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+             
         }
     }
 
